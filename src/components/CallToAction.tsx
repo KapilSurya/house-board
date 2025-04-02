@@ -19,21 +19,6 @@ const CallToAction: React.FC = () => {
         >
           Download Now
         </Button>
-        
-        <div className="mt-12 grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-            <div className="text-2xl font-bold">100%</div>
-            <p className="text-sm opacity-80">Privacy-Focused</p>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-            <div className="text-2xl font-bold">10k+</div>
-            <p className="text-sm opacity-80">Happy Couples</p>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-            <div className="text-2xl font-bold">4.9/5</div>
-            <p className="text-sm opacity-80">App Store Rating</p>
-          </div>
-        </div>
       </div>
     </section>
   );
