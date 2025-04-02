@@ -46,28 +46,32 @@ const WhoIsItFor: React.FC = () => {
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Before HouseBoard */}
-            <div className="bg-gray-200 rounded-2xl p-6 md:p-8 shadow-md">
+            <div className="bg-gray-200 rounded-2xl p-6 md:p-8 shadow-md transform transition-transform hover:scale-105">
               <h3 className="text-2xl font-bold text-gray-700 mb-4">How it feels:</h3>
               <div className="space-y-5 mb-6">
                 {problemPoints.map((point, index) => (
                   <div key={index} className="flex items-start space-x-3">
-                    <span className="text-red-500 flex-shrink-0 mt-1">💔</span>
                     <p className="text-gray-700">{point}</p>
                   </div>
                 ))}
               </div>
+              <div className="mt-6 flex justify-center">
+                <img src="/illustration-before.svg" alt="Before HouseBoard" className="w-32 h-32" />
+              </div>
             </div>
 
             {/* After HouseBoard */}
-            <div className="bg-gradient-to-r from-[#FFD3B6] to-[#FFAAA5] rounded-2xl p-6 md:p-8 shadow-md">
-              <h3 className="text-2xl font-bold text-houseboard-dark mb-4">How it can be:</h3>
+            <div className="bg-gradient-to-r from-[#052534] to-[#094663] text-white rounded-2xl p-6 md:p-8 shadow-md transform transition-transform hover:scale-105">
+              <h3 className="text-2xl font-bold mb-4">How it can be:</h3>
               <div className="space-y-5 mb-6">
                 {solutionPoints.map((point, index) => (
                   <div key={index} className="flex items-start space-x-3">
-                    <span className="text-houseboard-medium flex-shrink-0 mt-1">💙</span>
-                    <p className="text-houseboard-dark">{point}</p>
+                    <p>{point}</p>
                   </div>
                 ))}
+              </div>
+              <div className="mt-6 flex justify-center">
+                <img src="/illustration-after.svg" alt="After HouseBoard" className="w-32 h-32" />
               </div>
             </div>
           </div>
