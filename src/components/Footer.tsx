@@ -5,32 +5,14 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-houseboard-dark text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">
-              House<span className="text-houseboard-medium">Board</span>
+            <h3 className="text-xl font-bold mb-4 text-white">
+              HouseBoard
             </h3>
             <p className="text-gray-300">
               A digital home for stronger relationships.
             </p>
-          </div>
-          
-          <div>
-            <h4 className="font-semibold mb-4">Product</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
-              <li><a href="#who-is-it-for" className="hover:text-white transition-colors">Who Is It For</a></li>
-              <li><a href="#testimonials" className="hover:text-white transition-colors">Testimonials</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-semibold mb-4">Legal</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Cookie Policy</a></li>
-            </ul>
           </div>
           
           <div>

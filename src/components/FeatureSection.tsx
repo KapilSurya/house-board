@@ -14,16 +14,8 @@ const FeatureSection: React.FC = () => {
           title="Smart Chat for Real Connection"
           description="Easily share moods, update statuses, and send nudges for clear, meaningful communication no matter where you are."
           ctaText="See Smart Chat in Action"
-          imageRight={false}
-        />
-
-        <div className="border-t border-gray-200 my-8"></div>
-
-        <Feature
-          title="Mood & Status Tracking"
-          description="Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other."
-          ctaText="Learn More About Mood Tracking"
           imageRight={true}
+          iconName="MessageSquare"
         />
 
         <div className="border-t border-gray-200 my-8"></div>
@@ -33,15 +25,7 @@ const FeatureSection: React.FC = () => {
           description="Create and track habits like quality time and shared goals to strengthen your bond and bring more joy to your relationship."
           ctaText="Explore Shared Habits"
           imageRight={false}
-        />
-
-        <div className="border-t border-gray-200 my-8"></div>
-
-        <Feature
-          title="Nudge for What Matters"
-          description="Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don't fall through the cracks."
-          ctaText="Discover the Power of Nudges"
-          imageRight={true}
+          iconName="CalendarDays"
         />
 
         <div className="border-t border-gray-200 my-8"></div>
@@ -50,7 +34,28 @@ const FeatureSection: React.FC = () => {
           title="Your Relationship Log"
           description="Automatically track moods, habits, and milestones to cherish your journey together and see how you've grown as a couple."
           ctaText="See Your Relationship Timeline"
+          imageRight={true}
+          iconName="BookHeart"
+        />
+
+        <div className="border-t border-gray-200 my-8"></div>
+
+        <Feature
+          title="Nudge for What Matters"
+          description="Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don't fall through the cracks."
+          ctaText="Discover the Power of Nudges"
           imageRight={false}
+          iconName="Bell"
+        />
+
+        <div className="border-t border-gray-200 my-8"></div>
+
+        <Feature
+          title="Mood & Status Tracking"
+          description="Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other."
+          ctaText="Learn More About Mood Tracking"
+          imageRight={true}
+          iconName="Heart"
         />
       </div>
     </section>

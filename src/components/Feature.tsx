@@ -2,20 +2,40 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { cn } from '@/lib/utils';
+import { 
+  MessageSquare, 
+  CalendarDays, 
+  BookHeart, 
+  Bell, 
+  Heart, 
+  LucideIcon 
+} from 'lucide-react';
 
 interface FeatureProps {
   title: string;
   description: string;
   ctaText: string;
   imageRight?: boolean;
+  iconName?: string;
 }
 
 const Feature: React.FC<FeatureProps> = ({
   title,
   description,
   ctaText,
-  imageRight = false
+  imageRight = false,
+  iconName = 'MessageSquare'
 }) => {
+  const icons: Record<string, LucideIcon> = {
+    MessageSquare,
+    CalendarDays,
+    BookHeart,
+    Bell,
+    Heart
+  };
+  
+  const FeatureIcon = icons[iconName as keyof typeof icons] || MessageSquare;
+
   return (
     <div className={cn(
       "grid md:grid-cols-2 gap-8 items-center py-16",
@@ -33,13 +53,31 @@ const Feature: React.FC<FeatureProps> = ({
       </div>
 
       <div className={cn(
-        "bg-gradient-to-br from-houseboard-dark/10 to-houseboard-medium/10 p-4 rounded-2xl shadow-lg animate-float",
+        "flex justify-center",
         imageRight ? "md:col-start-2" : ""
       )}>
-        <div className="bg-white rounded-xl aspect-video flex items-center justify-center">
-          <div className="text-center">
-            <p className="text-houseboard-medium font-medium">{title} Demo</p>
-            <p className="text-sm text-gray-500">Interactive visualization</p>
+        <div className="w-64 h-[500px] rounded-3xl bg-gray-100 border-8 border-gray-300 shadow-xl overflow-hidden relative">
+          <div className="absolute top-0 left-0 right-0 h-6 bg-gray-300 rounded-t-xl"></div>
+          <div className="mt-6 h-[calc(100%-6px)] bg-gradient-to-br from-houseboard-dark/10 to-houseboard-medium/20 p-4 flex flex-col items-center justify-center">
+            <div className="w-14 h-14 rounded-full bg-white shadow-md flex items-center justify-center mb-4">
+              <FeatureIcon className="w-8 h-8 text-houseboard-medium" />
+            </div>
+            <p className="text-houseboard-dark font-medium text-center mb-2">{title}</p>
+            <p className="text-sm text-gray-600 text-center">Tap to explore</p>
+            
+            <div className="mt-auto w-full">
+              <div className="bg-white rounded-lg p-3 shadow-md">
+                <div className="flex items-center">
+                  <div className="w-8 h-8 rounded-full bg-houseboard-medium/20 flex items-center justify-center mr-2">
+                    <FeatureIcon className="w-4 h-4 text-houseboard-medium" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-xs font-medium">{title}</p>
+                    <p className="text-xs text-gray-500">Interactive preview</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

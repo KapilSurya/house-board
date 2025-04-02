@@ -15,9 +15,10 @@ const CallToAction: React.FC = () => {
         
         <Button 
           size="lg" 
-          className="bg-white text-houseboard-dark hover:bg-gray-100 btn-hover-effect text-lg px-8 py-6 animate-pulse-gentle"
+          className="bg-white text-houseboard-dark hover:text-white relative overflow-hidden transition-all duration-300 transform hover:scale-105 px-8 py-6 group text-lg"
         >
-          Download Now
+          <span className="relative z-10">Download Now</span>
+          <span className="absolute left-0 top-0 bg-houseboard-medium h-full w-0 group-hover:w-full transition-all duration-300 ease-in-out"></span>
         </Button>
       </div>
     </section>
