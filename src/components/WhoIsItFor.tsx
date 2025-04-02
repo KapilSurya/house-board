@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Button } from "@/components/ui/button";
 
 const WhoIsItFor: React.FC = () => {
   const [isRightVisible, setIsRightVisible] = useState(false);
@@ -98,15 +97,6 @@ const WhoIsItFor: React.FC = () => {
             
             <p className="text-gray-700 text-sm">HouseBoard helps couples bridge the communication gap, strengthen their bond, and create meaningful habits—before small issues become big problems.</p>
           </div>
-        </div>
-        
-        <div className="mt-8 text-center">
-          <p className="text-xl text-houseboard-dark font-medium mb-6">Start today. Because love should be nurtured, not left to chance.</p>
-          <Button 
-            className="bg-houseboard-medium hover:bg-houseboard-dark text-white btn-hover-effect"
-          >
-            Get Started
-          </Button>
         </div>
       </div>
     </section>
