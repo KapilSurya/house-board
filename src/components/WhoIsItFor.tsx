@@ -9,7 +9,9 @@ const WhoIsItFor: React.FC = () => {
   
   const problemPoints = [
     "Miscommunication creates distance.",
-   
+    "Unspoken emotions lead to frustration.",
+    "Busy schedules make staying connected hard.",
+    "Good intentions get lost in the chaos."
   ];
 
   const solutionPoints = [
