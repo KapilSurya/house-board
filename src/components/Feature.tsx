@@ -1,88 +1,61 @@
-
 import React from 'react';
-import { Button } from "@/components/ui/button";
-import { cn } from '@/lib/utils';
-import { 
-  MessageSquare, 
-  CalendarDays, 
-  BookHeart, 
-  Bell, 
-  Heart, 
-  LucideIcon 
-} from 'lucide-react';
+import Feature from './Feature';
 
-interface FeatureProps {
-  title: string;
-  description: string;
-  ctaText: string;
-  imageRight?: boolean;
-  iconName?: string;
-}
-
-const Feature: React.FC<FeatureProps> = ({
-  title,
-  description,
-  ctaText,
-  imageRight = false,
-  iconName = 'MessageSquare'
-}) => {
-  const icons: Record<string, LucideIcon> = {
-    MessageSquare,
-    CalendarDays,
-    BookHeart,
-    Bell,
-    Heart
-  };
-  
-  const FeatureIcon = icons[iconName as keyof typeof icons] || MessageSquare;
+const FeatureSection: React.FC = () => {
+  const features = [
+    {
+      title: "Smart Chat for Real Connection",
+      description: "Easily share moods, update statuses, and send nudges for clear, meaningful communication no matter where you are.",
+      ctaText: "See Smart Chat in Action",
+      iconName: "MessageSquare"
+    },
+    {
+      title: "Build Positive Habits Together",
+      description: "Create and track habits like quality time and shared goals to strengthen your bond and bring more joy to your relationship.",
+      ctaText: "Explore Shared Habits",
+      iconName: "CalendarDays"
+    },
+    {
+      title: "Your Relationship Log",
+      description: "Automatically track moods, habits, and milestones to cherish your journey together and see how you've grown as a couple.",
+      ctaText: "See Your Relationship Timeline",
+      iconName: "BookHeart"
+    },
+    {
+      title: "Nudge for What Matters",
+      description: "Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don't fall through the cracks.",
+      ctaText: "Discover the Power of Nudges",
+      iconName: "Bell"
+    },
+    {
+      title: "Mood & Status Tracking",
+      description: "Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other.",
+      ctaText: "Learn More About Mood Tracking",
+      iconName: "Heart"
+    }
+  ];
 
   return (
-    <div className={cn(
-      "grid md:grid-cols-2 gap-8 items-center py-16",
-      imageRight ? "md:grid-flow-dense" : ""
-    )}>
-      <div className={cn(
-        "space-y-4",
-        imageRight ? "md:col-start-1" : ""
-      )}>
-        <h3 className="text-2xl md:text-3xl font-bold text-houseboard-dark">{title}</h3>
-        <p className="text-gray-700 text-lg">{description}</p>
-        <Button className="mt-4 bg-houseboard-medium hover:bg-houseboard-dark text-white btn-hover-effect">
-          {ctaText}
-        </Button>
-      </div>
+    <section id="features" className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-houseboard-dark mb-16">
+          Features Designed for Your Relationship
+        </h2>
 
-      <div className={cn(
-        "flex justify-center",
-        imageRight ? "md:col-start-2" : ""
-      )}>
-        <div className="w-64 h-[500px] rounded-3xl bg-gray-100 border-8 border-gray-300 shadow-xl overflow-hidden relative">
-          <div className="absolute top-0 left-0 right-0 h-6 bg-gray-300 rounded-t-xl"></div>
-          <div className="mt-6 h-[calc(100%-6px)] bg-gradient-to-br from-houseboard-dark/10 to-houseboard-medium/20 p-4 flex flex-col items-center justify-center">
-            <div className="w-14 h-14 rounded-full bg-white shadow-md flex items-center justify-center mb-4">
-              <FeatureIcon className="w-8 h-8 text-houseboard-medium" />
-            </div>
-            <p className="text-houseboard-dark font-medium text-center mb-2">{title}</p>
-            <p className="text-sm text-gray-600 text-center">Tap to explore</p>
-            
-            <div className="mt-auto w-full">
-              <div className="bg-white rounded-lg p-3 shadow-md">
-                <div className="flex items-center">
-                  <div className="w-8 h-8 rounded-full bg-houseboard-medium/20 flex items-center justify-center mr-2">
-                    <FeatureIcon className="w-4 h-4 text-houseboard-medium" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-xs font-medium">{title}</p>
-                    <p className="text-xs text-gray-500">Interactive preview</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {features.map((feature, index) => (
+          <div key={index} className={index % 2 === 0 ? "flex flex-col md:flex-row items-center" : "flex flex-col md:flex-row-reverse items-center"}>
+            <Feature 
+              title={feature.title} 
+              description={feature.description} 
+              ctaText={feature.ctaText} 
+              iconName={feature.iconName} 
+            />
+            {index < features.length - 1 && <div className="border-t border-gray-200 my-8 w-full"></div>}
           </div>
-        </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Feature;
+export default FeatureSection;
