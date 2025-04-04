@@ -38,8 +38,6 @@ const WhoIsItFor: React.FC = () => {
                 <span className="animate-pulse mr-2">💔</span> Before HouseBoard
               </h3>
               <ul className="space-y-3 text-gray-700 list-disc pl-5">
-                <li className="transition-all duration-300 hover:translate-x-1">Even strong relationships can feel fragile.</li>
-                <li className="transition-all duration-300 hover:translate-x-1">You care deeply — but life gets in the way.</li>
                 <li className="transition-all duration-300 hover:translate-x-1">Misunderstandings turn into silence.</li>
                 <li className="transition-all duration-300 hover:translate-x-1">Emotions stay bottled up.</li>
                 <li className="transition-all duration-300 hover:translate-x-1">Busyness replaces closeness.</li>
@@ -60,8 +58,7 @@ const WhoIsItFor: React.FC = () => {
                 <span className="animate-bounce inline-block mr-2">❤️</span> After HouseBoard
               </h3>
               <ul className="space-y-3 text-[#C7E1E9] list-disc pl-5">
-                <li className="transition-all duration-300 hover:translate-x-1">Feel seen. Stay close. Grow together.</li>
-                <li className="transition-all duration-300 hover:translate-x-1">HouseBoard helps couples stay emotionally connected, even when life gets chaotic.</li>
+              
                 <li className="transition-all duration-300 hover:translate-x-1">Share how you feel in seconds — even when words fail.</li>
                 <li className="transition-all duration-300 hover:translate-x-1">Build healthy, loving habits without effort.</li>
                 <li className="transition-all duration-300 hover:translate-x-1">Keep track of each other's moods, goals, and little wins.</li>
