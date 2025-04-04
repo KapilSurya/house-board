@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Feature from './Feature';
 
@@ -36,24 +37,26 @@ const FeatureSection: React.FC = () => {
   ];
 
   return (
-    <section id="features" className="py-16 bg-gray-50">
+    <section id="features" className="py-10 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-houseboard-dark mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-houseboard-dark mb-10 animate-pulse-gentle">
           Features Designed for Your Relationship
         </h2>
 
-        {features.map((feature, index) => (
-          <div key={index}>
-            <Feature 
-              title={feature.title} 
-              description={feature.description} 
-              ctaText={feature.ctaText} 
-              imageRight={index % 2 === 0} 
-              iconName={feature.iconName} 
-            />
-            {index < features.length - 1 && <div className="border-t border-gray-200 my-8"></div>}
-          </div>
-        ))}
+        <div className="grid gap-6">
+          {features.map((feature, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-6">
+              <Feature 
+                title={feature.title} 
+                description={feature.description} 
+                ctaText={feature.ctaText} 
+                imageRight={index % 2 === 0} 
+                iconName={feature.iconName} 
+                compact={true}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
