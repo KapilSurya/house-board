@@ -45,20 +45,20 @@ const FeatureSection: React.FC = () => {
       description: 'Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other.',
       previewText: 'Placeholder for sharing and viewing moods visually.',
       ctaText: 'Track Your Mood'
-    },
+    }
   ];
 
   return (
-    <section id="features" className="py-16 bg-white">
+    <section id="features" className="py-12 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-houseboard-dark mb-6 animate-fade-in">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-houseboard-dark mb-4 animate-fade-in">
           Features Designed for Your Relationship
         </h2>
-        <p className="text-center text-houseboard-muted mb-10 max-w-2xl mx-auto">
+        <p className="text-center text-houseboard-muted mb-8 max-w-2xl mx-auto">
           Each feature in HouseBoard is thoughtfully designed to help you build a stronger, more connected relationship.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-7xl mx-auto">
           {features.map((feature) => (
             <Card 
               key={feature.id} 
@@ -72,7 +72,7 @@ const FeatureSection: React.FC = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-700 mb-4">{feature.description}</p>
-                <div className="bg-gray-100 rounded-lg p-4 text-sm text-gray-500 min-h-[100px] flex items-center justify-center text-center">
+                <div className="bg-gray-100 rounded-lg p-3 text-sm text-gray-500 min-h-[80px] flex items-center justify-center text-center">
                   {feature.previewText}
                 </div>
               </CardContent>
