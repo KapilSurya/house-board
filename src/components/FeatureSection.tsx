@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, BookOpen, Bell, LineChart } from 'lucide-react';
 
 const FeatureSection: React.FC = () => {
@@ -9,36 +8,32 @@ const FeatureSection: React.FC = () => {
       id: 'habits',
       icon: <Heart className="h-6 w-6 text-houseboard-medium" />,
       title: 'Build Healthy Habits',
-      description: 'Strengthen your bond by building habits like spending quality time, showing gratitude, and setting shared goals, making your chats more meaningful and connected. Imagine a shared calendar where you can track your progress and celebrate milestones together. See how easily you can log your daily wins!',
+      description: 'Strengthen your bond by building habits like spending quality time, showing gratitude, and setting shared goals, making your chats more meaningful and connected',
       previewText: 'Preview of shared habit tracking.',
-      ctaText: 'Explore Habits',
       mockupImage: '/images/habit-mockup-small.png', // Use smaller mockup images
     },
     {
       id: 'log',
       icon: <BookOpen className="h-6 w-6 text-houseboard-medium" />,
       title: 'Your Relationship Log',
-      description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you\'ve grown as a couple. Think of a timeline filled with your special moments and how your feelings have evolved. Scroll through your history and relive those precious memories.',
+      description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you\'ve grown as a couple',
       previewText: 'Relationship milestones timeline.',
-      ctaText: 'View Log',
       mockupImage: '/images/log-mockup-small.png', // Use smaller mockup images
     },
     {
       id: 'nudges',
       icon: <Bell className="h-6 w-6 text-houseboard-medium" />,
       title: 'Nudge for What Matters',
-      description: 'Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don\'t fall through the cracks. Picture a friendly reminder popping up for that date night you planned. A simple tap keeps you both on the same page.',
+      description: 'Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don\'t fall through the cracks',
       previewText: 'Sending gentle, playful nudges.',
-      ctaText: 'Send Nudge',
       mockupImage: '/images/nudge-mockup-small.png', // Use smaller mockup images
     },
     {
       id: 'mood',
       icon: <LineChart className="h-6 w-6 text-houseboard-medium" />,
       title: 'Mood & Status Tracking',
-      description: 'Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other. Envision a simple way to share how you\'re feeling with your partner. See your mood trends over time.',
+      description: 'Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other',
       previewText: 'Sharing and viewing moods visually.',
-      ctaText: 'Track Mood',
       mockupImage: '/images/mood-mockup-small.png', // Use smaller mockup images
     }
   ];
@@ -82,13 +77,7 @@ const FeatureSection: React.FC = () => {
                     <p className="text-gray-600 text-sm mb-6">{feature.description}</p>
                   </CardContent>
                 </div>
-                <CardFooter className="p-0 mt-4">
-                  <Button
-                    className="w-full bg-houseboard-medium hover:bg-houseboard-dark text-white text-sm transition-colors duration-300"
-                  >
-                    {feature.ctaText}
-                  </Button>
-                </CardFooter>
+                {/* CardFooter with Button removed */}
               </div>
             </Card>
           ))}
