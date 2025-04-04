@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, BookOpen, Bell, LineChart } from 'lucide-react';
@@ -10,7 +11,7 @@ const FeatureSection: React.FC = () => {
       title: 'Build Healthy Habits',
       description: 'Strengthen your bond by building habits like spending quality time, showing gratitude, and setting shared goals, making your chats more meaningful and connected',
       previewText: 'Preview of shared habit tracking.',
-      mockupImage: '/images/habit-mockup-small.png', // Use smaller mockup images
+      mockupImage: '/lovable-uploads/e4815842-97ed-4402-beb6-f628331ffd4b.png',
     },
     {
       id: 'log',
@@ -18,7 +19,7 @@ const FeatureSection: React.FC = () => {
       title: 'Your Relationship Log',
       description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you\'ve grown as a couple',
       previewText: 'Relationship milestones timeline.',
-      mockupImage: '/images/log-mockup-small.png', // Use smaller mockup images
+      mockupImage: '/lovable-uploads/8bfc8c3e-48c9-43dc-aa4f-e56932593871.png',
     },
     {
       id: 'nudges',
@@ -26,7 +27,7 @@ const FeatureSection: React.FC = () => {
       title: 'Nudge for What Matters',
       description: 'Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don\'t fall through the cracks',
       previewText: 'Sending gentle, playful nudges.',
-      mockupImage: '/images/nudge-mockup-small.png', // Use smaller mockup images
+      mockupImage: '/lovable-uploads/0327d977-13e0-4510-999c-ce78dce08e19.png',
     },
     {
       id: 'mood',
@@ -34,25 +35,29 @@ const FeatureSection: React.FC = () => {
       title: 'Mood & Status Tracking',
       description: 'Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other',
       previewText: 'Sharing and viewing moods visually.',
-      mockupImage: '/images/mood-mockup-small.png', // Use smaller mockup images
+      mockupImage: '/lovable-uploads/6e676b34-8e99-48c8-83af-1ad76f8944c9.png',
     }
   ];
 
   return (
     <section id="features" className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-houseboard-dark mb-8 animate-fade-in">
-          Features Designed for Your Relationship
-        </h2>
-        <p className="text-center text-houseboard-muted mb-12 max-w-3xl mx-auto">
-          Explore how HouseBoard's features can bring you closer.
-        </p>
+        <div className="flex flex-col md:flex-row md:justify-end mb-8">
+          <div className="md:w-2/3">
+            <h2 className="text-3xl md:text-4xl font-bold text-houseboard-dark mb-4">
+              Features Designed for Your Relationship
+            </h2>
+            <p className="text-houseboard-muted max-w-3xl">
+              Explore how HouseBoard's features can bring you closer.
+            </p>
+          </div>
+        </div>
 
         <div className="flex flex-col gap-10 max-w-6xl mx-auto">
           {features.map((feature, index) => (
             <Card
               key={feature.id}
-              className={`overflow-hidden transition-all duration-300 hover:shadow-md scale-100 hover:scale-[1.01] border-0 bg-white flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+              className={`overflow-hidden transition-all duration-300 hover:shadow-md border-0 bg-white flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
             >
               <div className="md:w-1/2 flex justify-center p-6">
                 <div className="relative w-48 h-auto shadow-sm rounded-md overflow-hidden">
@@ -63,7 +68,6 @@ const FeatureSection: React.FC = () => {
                       Mockup Preview
                     </div>
                   )}
-                  {/* Optional: Add a subtle phone frame */}
                   <div className="absolute inset-0 border rounded-md pointer-events-none opacity-50"></div>
                 </div>
               </div>
@@ -77,7 +81,6 @@ const FeatureSection: React.FC = () => {
                     <p className="text-gray-600 text-sm mb-6">{feature.description}</p>
                   </CardContent>
                 </div>
-                {/* CardFooter with Button removed */}
               </div>
             </Card>
           ))}
