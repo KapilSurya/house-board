@@ -9,7 +9,7 @@ const FeatureSection: React.FC = () => {
       id: 'habits',
       icon: <Heart className="h-8 w-8 text-houseboard-medium" />,
       title: 'Build Healthy Habits',
-      description: 'Strengthen your bond by building habits like spending quality time, showing gratitude, and setting shared goals, making your chats more meaningful and connected. Imagine a shared calendar where you can track your progress and celebrate milestones together. See how easily you can log your daily wins!',
+      description: 'Strengthen your bond by building habits like spending quality time, showing gratitude, and setting shared goals, making your chats more meaningful and connected',
       previewText: 'Full screen interactive preview of shared habit tracking and progress will go here.',
       ctaText: 'Explore Shared Habits',
       mockupImage: '/images/habit-full-mockup.png', // Replace with your actual image path
@@ -18,7 +18,7 @@ const FeatureSection: React.FC = () => {
       id: 'log',
       icon: <BookOpen className="h-8 w-8 text-houseboard-medium" />,
       title: 'Your Relationship Log',
-      description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you\'ve grown as a couple. Think of a timeline filled with your special moments and how your feelings have evolved. Scroll through your history and relive those precious memories.',
+      description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you\'ve grown as a couple',
       previewText: 'Full screen placeholder for relationship milestones, habits, and mood timeline will be here.',
       ctaText: 'View Your Log',
       mockupImage: '/images/log-full-mockup.png', // Replace with your actual image path
@@ -27,7 +27,7 @@ const FeatureSection: React.FC = () => {
       id: 'nudges',
       icon: <Bell className="h-8 w-8 text-houseboard-medium" />,
       title: 'Nudge for What Matters',
-      description: 'Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don\'t fall through the cracks. Picture a friendly reminder popping up for that date night you planned. A simple tap keeps you both on the same page.',
+      description: 'Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don\'t fall through the cracks',
       previewText: 'Full screen placeholder for sending gentle nudges with playful animations will appear here.',
       ctaText: 'Send a Nudge',
       mockupImage: '/images/nudge-full-mockup.png', // Replace with your actual image path
@@ -36,7 +36,7 @@ const FeatureSection: React.FC = () => {
       id: 'mood',
       icon: <LineChart className="h-8 w-8 text-houseboard-medium" />,
       title: 'Mood & Status Tracking',
-      description: 'Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other. Envision a simple way to share how you\'re feeling with your partner. See your mood trends over time.',
+      description: 'Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other',
       previewText: 'Full screen placeholder for sharing and viewing moods visually will be shown here.',
       ctaText: 'Track Your Mood',
       mockupImage: '/images/mood-full-mockup.png', // Replace with your actual image path
