@@ -26,7 +26,7 @@ const FeatureSection: React.FC = () => {
       id: 'log',
       icon: <BookOpen className="h-8 w-8 text-houseboard-medium" />,
       title: 'Your Relationship Log',
-      description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you've grown as a couple.',
+      description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you\'ve grown as a couple.',
       previewText: 'Placeholder for relationship milestones, habits, and mood timeline.',
       ctaText: 'View Your Log'
     },
@@ -34,7 +34,7 @@ const FeatureSection: React.FC = () => {
       id: 'nudges',
       icon: <Bell className="h-8 w-8 text-houseboard-medium" />,
       title: 'Nudge for What Matters',
-      description: 'Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don't fall through the cracks.',
+      description: 'Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don\'t fall through the cracks.',
       previewText: 'Placeholder for sending gentle nudges with playful animations.',
       ctaText: 'Send a Nudge'
     },
