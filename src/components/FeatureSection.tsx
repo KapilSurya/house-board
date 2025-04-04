@@ -49,31 +49,35 @@ const FeatureSection: React.FC = () => {
           Each feature in HouseBoard is thoughtfully designed to help you build a stronger, more connected relationship.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-7xl mx-auto">
-          {features.map((feature) => (
-            <Card 
-              key={feature.id} 
-              className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02] border-0 bg-gradient-to-br from-gray-50 to-gray-100"
+        <div className="flex flex-col gap-8 max-w-5xl mx-auto">
+          {features.map((feature, index) => (
+            <Card
+              key={feature.id}
+              className={`overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.01] border-0 bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
             >
-              <CardHeader className="pb-2">
-                <div className="flex items-center gap-3 mb-2">
-                  {feature.icon}
-                  <CardTitle className="text-xl text-houseboard-dark">{feature.title}</CardTitle>
+              <div className="md:w-1/2 flex flex-col justify-between p-6">
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    {feature.icon}
+                    <CardTitle className="text-xl text-houseboard-dark">{feature.title}</CardTitle>
+                  </div>
+                  <CardContent className="p-0">
+                    <p className="text-gray-700 mb-4">{feature.description}</p>
+                  </CardContent>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-700 mb-4">{feature.description}</p>
-                <div className="bg-gray-100 rounded-lg p-3 text-sm text-gray-500 min-h-[80px] flex items-center justify-center text-center">
+                <CardFooter className="p-0 mt-4">
+                  <Button
+                    className="w-full bg-houseboard-medium hover:bg-houseboard-dark text-white transition-colors duration-300"
+                  >
+                    {feature.ctaText}
+                  </Button>
+                </CardFooter>
+              </div>
+              <div className="md:w-1/2 flex items-center justify-center p-6">
+                <div className="bg-gray-100 rounded-lg p-6 text-sm text-gray-500 min-h-[120px] flex items-center justify-center text-center">
                   {feature.previewText}
                 </div>
-              </CardContent>
-              <CardFooter>
-                <Button 
-                  className="w-full bg-houseboard-medium hover:bg-houseboard-dark text-white transition-colors duration-300"
-                >
-                  {feature.ctaText}
-                </Button>
-              </CardFooter>
+              </div>
             </Card>
           ))}
         </div>
