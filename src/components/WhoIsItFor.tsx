@@ -1,45 +1,45 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const WhoIsItFor: React.FC = () => {
-  const [isScrollVisible, setIsScrollVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const storyCards = [
     {
       title: "Emotional Disconnection",
       before: {
-        header: "💔 Before HouseBoard",
-        text: "Even strong relationships can feel fragile. You care — but life gets in the way.",
+        header: "\uD83D\uDC94 Before HouseBoard",
+        text: "Even strong relationships can feel fragile. You care \u2014 but life gets in the way.",
         illustration: "Cluttered chat, tired faces"
       },
       after: {
-        header: "❤️ With HouseBoard",
-        text: "Feel seen. Stay close. Grow together — even in busy seasons.",
+        header: "\u2764\uFE0F With HouseBoard",
+        text: "Feel seen. Stay close. Grow together \u2014 even in busy seasons.",
         illustration: "Shared habit or goal update"
       }
     },
     {
       title: "Unspoken Emotions",
       before: {
-        header: "💔 Before HouseBoard",
+        header: "\uD83D\uDC94 Before HouseBoard",
         text: "Misunderstandings turn into silence. Feelings stay bottled up.",
         illustration: "Someone waiting for a reply"
       },
       after: {
-        header: "❤️ With HouseBoard",
-        text: "Share how you feel in seconds — even when words fail.",
+        header: "\u2764\uFE0F With HouseBoard",
+        text: "Share how you feel in seconds \u2014 even when words fail.",
         illustration: "Mood emoji + tag being sent"
       }
     },
     {
       title: "Busy Life, Drifting Apart",
       before: {
-        header: "💔 Before HouseBoard",
+        header: "\uD83D\uDC94 Before HouseBoard",
         text: "Busyness replaces closeness. Good intentions get lost.",
         illustration: "Missed check-in or late call"
       },
       after: {
-        header: "❤️ With HouseBoard",
+        header: "\u2764\uFE0F With HouseBoard",
         text: "Build small, loving habits that bring you back together.",
         illustration: "Daily habit or to-do list shared"
       }
@@ -47,61 +47,51 @@ const WhoIsItFor: React.FC = () => {
     {
       title: "Missed Moments",
       before: {
-        header: "💔 Before HouseBoard",
-        text: "You try to connect — but it still feels like something's missing.",
+        header: "\uD83D\uDC94 Before HouseBoard",
+        text: "You try to connect \u2014 but it still feels like something's missing.",
         illustration: "One person sending a message, no response"
       },
       after: {
-        header: "❤️ With HouseBoard",
+        header: "\u2764\uFE0F With HouseBoard",
         text: "Turn everyday check-ins into moments of closeness.",
         illustration: "Nudge or quick emoji chat"
       }
     }
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const sectionTop = sectionRef.current.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-      const scrollPosition = sectionTop < windowHeight * 0.7;
-      setIsScrollVisible(scrollPosition);
-    };
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? storyCards.length - 1 : prev - 1));
+  };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === storyCards.length - 1 ? 0 : prev + 1));
+  };
 
   return (
-    <section id="who-is-it-for" className="py-20 bg-white" ref={sectionRef}>
-      <div className="container mx-auto px-4 max-w-4xl">
-        <div className={`transition-all duration-700 ease-in-out ${isScrollVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-[#052534] mb-4">
-            Who is HouseBoard For?
-          </h2>
-          <p className="text-lg md:text-xl text-center text-[#6C7A89] max-w-2xl mx-auto mb-16">
-            Even the strongest relationships face challenges. Misunderstandings grow, emotions go unspoken, and staying connected feels harder than it should.
-          </p>
+    <section id="who-is-it-for" className="py-20 bg-white">
+      <div className="container mx-auto px-4 max-w-3xl text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#052534] mb-4">
+          Who is HouseBoard For?
+        </h2>
+        <p className="text-lg md:text-xl text-[#6C7A89] mb-10">
+          Even the strongest relationships face challenges. Misunderstandings grow, emotions go unspoken, and staying connected feels harder than it should.
+        </p>
 
-          <div className="space-y-16">
+        {/* Carousel Wrapper */}
+        <div className="relative overflow-hidden rounded-3xl shadow-xl bg-[#EFF3F6]">
+          <div className="transition-transform duration-700 ease-in-out flex w-full" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
             {storyCards.map((story, index) => (
-              <div 
-                key={index} 
-                className={`relative flex flex-col md:flex-row overflow-hidden rounded-3xl shadow-lg transition-all duration-500 ease-in-out transform hover:scale-[1.01] ${isScrollVisible ? 'opacity-100' : 'opacity-0'}`}
-                style={{ animationDelay: `${index * 200}ms` }}
-              >
-                {/* Before Panel */}
-                <div className="md:w-1/2 w-full bg-[#EFF3F6] text-[#094663] p-6 md:p-10 rounded-t-3xl md:rounded-t-none md:rounded-l-3xl">
+              <div key={index} className="min-w-full flex flex-col md:flex-row">
+                {/* Before */}
+                <div className="md:w-1/2 w-full bg-[#EFF3F6] text-[#094663] p-6 md:p-10">
                   <h3 className="text-xl font-semibold mb-3">{story.before.header}</h3>
                   <p className="mb-5 text-gray-700">{story.before.text}</p>
                   <div className="h-40 bg-gray-200 rounded-xl flex items-center justify-center text-sm text-gray-400">
                     🔁 Replace with illustration: [{story.before.illustration}]
                   </div>
                 </div>
-
-                {/* After Panel */}
-                <div className="md:w-1/2 w-full bg-[#052534] text-white p-6 md:p-10 rounded-b-3xl md:rounded-b-none md:rounded-r-3xl">
+                {/* After */}
+                <div className="md:w-1/2 w-full bg-[#052534] text-white p-6 md:p-10">
                   <h3 className="text-xl font-semibold mb-3">{story.after.header}</h3>
                   <p className="mb-5 text-[#C7E1E9]">{story.after.text}</p>
                   <div className="h-40 bg-[#0E3444] rounded-xl flex items-center justify-center text-sm text-gray-300">
@@ -111,6 +101,27 @@ const WhoIsItFor: React.FC = () => {
               </div>
             ))}
           </div>
+
+          {/* Navigation */}
+          <div className="absolute inset-0 flex items-center justify-between px-4">
+            <button onClick={handlePrev} className="bg-white/80 hover:bg-white rounded-full p-2 shadow-md transition">
+              <ChevronLeft className="w-6 h-6 text-[#052534]" />
+            </button>
+            <button onClick={handleNext} className="bg-white/80 hover:bg-white rounded-full p-2 shadow-md transition">
+              <ChevronRight className="w-6 h-6 text-[#052534]" />
+            </button>
+          </div>
+        </div>
+
+        {/* Dots */}
+        <div className="flex justify-center mt-6 space-x-2">
+          {storyCards.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentIndex(idx)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${currentIndex === idx ? 'bg-[#052534]' : 'bg-gray-300'}`}
+            ></button>
+          ))}
         </div>
       </div>
     </section>
