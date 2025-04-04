@@ -1,24 +1,15 @@
-
 import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Heart, MessageSquare, BookOpen, Bell, LineChart } from 'lucide-react';
+import { Heart, BookOpen, Bell, LineChart } from 'lucide-react';
 
 const FeatureSection: React.FC = () => {
   const features = [
     {
-      id: 'smart-chat',
-      icon: <MessageSquare className="h-8 w-8 text-houseboard-medium" />,
-      title: 'Smart Chat, Healthy Habits',
-      description: 'Turn everyday chats into moments that matter. Build habits like quality time & gratitude — right inside your conversations.',
-      previewText: 'Interactive preview of mood sharing, status updates, and nudges.',
-      ctaText: 'Try Smart Chat'
-    },
-    {
       id: 'habits',
       icon: <Heart className="h-8 w-8 text-houseboard-medium" />,
-      title: 'Build Positive Habits',
-      description: 'Create and maintain meaningful habits together. Track progress and celebrate wins to strengthen your bond.',
+      title: 'Build Healthy Habits',
+      description: 'Strengthen your bond by building habits like spending quality time, showing gratitude, and setting shared goals, making your chats more meaningful and connected.',
       previewText: 'Interactive preview of shared habit tracking and progress.',
       ctaText: 'Explore Shared Habits'
     },
