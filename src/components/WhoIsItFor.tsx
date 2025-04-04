@@ -74,38 +74,37 @@ const WhoIsItFor: React.FC = () => {
   }, []);
 
   return (
-    <section id="who-is-it-for" className="py-16 bg-white" ref={sectionRef}>
-      <div className="container mx-auto px-4 max-w-5xl">
-        <div className={`transition-all duration-700 ease-in-out ${isScrollVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
+    <section id="who-is-it-for" className="py-20 bg-white" ref={sectionRef}>
+      <div className="container mx-auto px-4 max-w-4xl">
+        <div className={`transition-all duration-700 ease-in-out ${isScrollVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-3xl md:text-4xl font-bold text-center text-[#052534] mb-4">
             Who is HouseBoard For?
           </h2>
-
-          <p className="text-lg md:text-xl text-center text-[#6C7A89] max-w-3xl mx-auto mb-14">
+          <p className="text-lg md:text-xl text-center text-[#6C7A89] max-w-2xl mx-auto mb-16">
             Even the strongest relationships face challenges. Misunderstandings grow, emotions go unspoken, and staying connected feels harder than it should.
           </p>
 
-          <div className="space-y-10">
+          <div className="space-y-16">
             {storyCards.map((story, index) => (
               <div 
-                key={index}
-                className={`grid md:grid-cols-2 gap-4 story-row transition-all duration-700 ease-in-out ${isScrollVisible ? 'opacity-100' : 'opacity-0'}`}
-                style={{ animationDelay: `${index * 150}ms` }}
+                key={index} 
+                className={`relative flex flex-col md:flex-row overflow-hidden rounded-3xl shadow-lg transition-all duration-500 ease-in-out transform hover:scale-[1.01] ${isScrollVisible ? 'opacity-100' : 'opacity-0'}`}
+                style={{ animationDelay: `${index * 200}ms` }}
               >
-                {/* Before Card */}
-                <div className="bg-[#EFF3F6] rounded-xl p-6 md:p-8 shadow-md border border-[#CED6DB]">
-                  <h3 className="text-lg font-semibold text-[#094663] mb-2">{story.before.header}</h3>
-                  <p className="text-[#3A4A58] mb-4">{story.before.text}</p>
-                  <div className="h-32 bg-[#DCE4EA] rounded-lg flex items-center justify-center text-gray-500 text-sm">
+                {/* Before Panel */}
+                <div className="md:w-1/2 w-full bg-[#EFF3F6] text-[#094663] p-6 md:p-10 rounded-t-3xl md:rounded-t-none md:rounded-l-3xl">
+                  <h3 className="text-xl font-semibold mb-3">{story.before.header}</h3>
+                  <p className="mb-5 text-gray-700">{story.before.text}</p>
+                  <div className="h-40 bg-gray-200 rounded-xl flex items-center justify-center text-sm text-gray-400">
                     🔁 Replace with illustration: [{story.before.illustration}]
                   </div>
                 </div>
 
-                {/* After Card */}
-                <div className="bg-[#052534] text-white rounded-xl p-6 md:p-8 shadow-md border border-[#0E3444]">
-                  <h3 className="text-lg font-semibold mb-2">{story.after.header}</h3>
-                  <p className="mb-4">{story.after.text}</p>
-                  <div className="h-32 bg-[#0E3444] rounded-lg flex items-center justify-center text-white/60 text-sm">
+                {/* After Panel */}
+                <div className="md:w-1/2 w-full bg-[#052534] text-white p-6 md:p-10 rounded-b-3xl md:rounded-b-none md:rounded-r-3xl">
+                  <h3 className="text-xl font-semibold mb-3">{story.after.header}</h3>
+                  <p className="mb-5 text-[#C7E1E9]">{story.after.text}</p>
+                  <div className="h-40 bg-[#0E3444] rounded-xl flex items-center justify-center text-sm text-gray-300">
                     🔁 Replace with illustration: [{story.after.illustration}]
                   </div>
                 </div>
