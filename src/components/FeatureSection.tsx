@@ -10,7 +10,7 @@ const FeatureSection: React.FC = () => {
       icon: <Heart className="h-6 w-6 text-houseboard-medium" />,
       title: 'Build Healthy Habits',
       description: 'Strengthen your bond by building habits like spending quality time, showing gratitude, and setting shared goals, making your chats more meaningful and connected',
-      mockupImage: '/lovable-uploads/3ec2ab90-10da-4a5e-96a9-65c31da182a3.png',
+      mockupImage: '/lovable-uploads/5420fada-9bbb-43ec-93bb-ab17074c15ba.png',
       imageAlt: 'Choose habits interface showing gratitude and quality time options'
     },
     {
@@ -18,7 +18,7 @@ const FeatureSection: React.FC = () => {
       icon: <BookOpen className="h-6 w-6 text-houseboard-medium" />,
       title: 'Your Relationship Log',
       description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you\'ve grown as a couple',
-      mockupImage: '/lovable-uploads/b70d91b3-554d-4e43-aeca-47fc04b6775a.png',
+      mockupImage: '/lovable-uploads/789cd80c-543d-4f84-b1ab-17fc0265216f.png',
       imageAlt: 'Relationship log showing a quality time entry with a meaningful conversation'
     },
     {
