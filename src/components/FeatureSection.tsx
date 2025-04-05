@@ -10,7 +10,7 @@ const FeatureSection: React.FC = () => {
       icon: <Heart className="h-6 w-6 text-houseboard-medium" />,
       title: 'Build Healthy Habits',
       description: 'Strengthen your bond by building habits like spending quality time, showing gratitude, and setting shared goals, making your chats more meaningful and connected',
-      mockupImage: '/lovable-uploads/5420fada-9bbb-43ec-93bb-ab17074c15ba.png',
+      mockupImage: '/lovable-uploads/featureHabitsImage.png',
       imageAlt: 'Choose habits interface showing gratitude and quality time options'
     },
     {
@@ -18,7 +18,7 @@ const FeatureSection: React.FC = () => {
       icon: <BookOpen className="h-6 w-6 text-houseboard-medium" />,
       title: 'Your Relationship Log',
       description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you\'ve grown as a couple',
-      mockupImage: '/lovable-uploads/789cd80c-543d-4f84-b1ab-17fc0265216f.png',
+      mockupImage: '/lovable-uploads/relationshipLogImage.png',
       imageAlt: 'Relationship log showing a quality time entry with a meaningful conversation'
     },
     {
@@ -34,7 +34,7 @@ const FeatureSection: React.FC = () => {
       icon: <LineChart className="h-6 w-6 text-houseboard-medium" />,
       title: 'Mood & Status Tracking',
       description: 'Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other',
-      mockupImage: '/lovable-uploads/59cb6f3e-ed49-4cfd-974b-5b33c9f752dd.png',
+      mockupImage: '/lovable-uploads/moodscreenImage.png',
       imageAlt: 'Mood tracking interface showing happy, sad, and loved emotions'
     }
   ];
