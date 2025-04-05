@@ -7,7 +7,7 @@ const FeatureSection: React.FC = () => {
   const features = [
     {
       id: 'habits',
-      icon: <Heart className="h-6 w-6 text-houseboard-medium" />,
+      icon: <Heart className="h-6 w-6 text-[#ffd54f]" />,
       title: 'Build Healthy Habits',
       description: 'Strengthen your bond by building habits like spending quality time, showing gratitude, and setting shared goals, making your chats more meaningful and connected',
       mockupImage: '/lovable-uploads/featureHabitsImage.png',
@@ -15,7 +15,7 @@ const FeatureSection: React.FC = () => {
     },
     {
       id: 'log',
-      icon: <BookOpen className="h-6 w-6 text-houseboard-medium" />,
+      icon: <BookOpen className="h-6 w-6 text-[#ffd54f]" />,
       title: 'Your Relationship Log',
       description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you\'ve grown as a couple',
       mockupImage: '/lovable-uploads/relationshipLogImage.png',
@@ -23,7 +23,7 @@ const FeatureSection: React.FC = () => {
     },
     {
       id: 'nudges',
-      icon: <Bell className="h-6 w-6 text-houseboard-medium" />,
+      icon: <Bell className="h-6 w-6 text-[#ffd54f]" />,
       title: 'Nudge for What Matters',
       description: 'Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don\'t fall through the cracks',
       mockupImage: '/lovable-uploads/0327d977-13e0-4510-999c-ce78dce08e19.png',
@@ -31,7 +31,7 @@ const FeatureSection: React.FC = () => {
     },
     {
       id: 'mood',
-      icon: <LineChart className="h-6 w-6 text-houseboard-medium" />,
+      icon: <LineChart className="h-6 w-6 text-[#ffd54f]" />,
       title: 'Mood & Status Tracking',
       description: 'Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other',
       mockupImage: '/lovable-uploads/moodscreenImage.png',
@@ -40,14 +40,17 @@ const FeatureSection: React.FC = () => {
   ];
 
   return (
-    <section id="features" className="py-16 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="features" className="py-16 relative">
+      {/* Shelf decoration at the top */}
+      <div className="shelf absolute top-0 left-0 right-0"></div>
+      
+      <div className="container mx-auto px-4 pt-4">
         <div className="flex flex-col md:flex-row md:justify-end mb-8">
           <div className="md:w-2/3">
-            <h2 className="text-3xl md:text-4xl font-bold text-houseboard-dark mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Features Designed for Your Relationship
             </h2>
-            <p className="text-houseboard-muted max-w-3xl">
+            <p className="text-gray-300 max-w-3xl">
               Explore how HouseBoard's features can bring you closer.
             </p>
           </div>
@@ -57,10 +60,10 @@ const FeatureSection: React.FC = () => {
           {features.map((feature, index) => (
             <Card
               key={feature.id}
-              className={`overflow-hidden transition-all duration-300 hover:shadow-md border-0 bg-white flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+              className={`overflow-hidden transition-all duration-300 hover:shadow-md card-hover flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
             >
               <div className="md:w-1/2 flex justify-center p-6">
-                <div className="relative w-full max-w-xs shadow-sm rounded-md overflow-hidden">
+                <div className="relative w-full max-w-xs shadow-sm rounded-md overflow-hidden house-window">
                   {feature.mockupImage && (
                     <img 
                       src={feature.mockupImage} 
@@ -69,17 +72,23 @@ const FeatureSection: React.FC = () => {
                       style={{ maxHeight: '500px' }}
                     />
                   )}
-                  <div className="absolute inset-0 border rounded-md pointer-events-none opacity-50"></div>
+                  
+                  {/* Add candle light decoration for each feature */}
+                  {index % 2 === 0 ? (
+                    <div className="absolute bottom-2 right-2 candle-light" style={{ width: '15px', height: '15px' }}></div>
+                  ) : (
+                    <div className="absolute bottom-2 left-2 candle-light" style={{ width: '15px', height: '15px' }}></div>
+                  )}
                 </div>
               </div>
               <div className="md:w-1/2 flex flex-col justify-between p-6">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     {feature.icon}
-                    <CardTitle className="text-xl text-houseboard-dark">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl text-[#ffd54f]">{feature.title}</CardTitle>
                   </div>
                   <CardContent className="p-0">
-                    <p className="text-gray-600 text-sm mb-6">{feature.description}</p>
+                    <p className="text-gray-300 text-sm mb-6">{feature.description}</p>
                   </CardContent>
                 </div>
               </div>
