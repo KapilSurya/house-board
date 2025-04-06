@@ -87,9 +87,7 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
@@ -99,6 +97,7 @@
     font-feature-settings: "rlig" 1, "calt" 1;
     background-color: var(--house-deep-blue);
     position: relative;
+    font-family: 'DM Sans', sans-serif;
   }
 
   body::before {
@@ -125,17 +124,17 @@
     opacity: 0.7;
     z-index: -1;
   }
-  
+
   .star-small {
     width: 1px;
     height: 1px;
   }
-  
+
   .star-medium {
     width: 2px;
     height: 2px;
   }
-  
+
   .star-large {
     width: 3px;
     height: 3px;
@@ -159,6 +158,7 @@
   background-size: 100px 20px;
   opacity: 0.5;
   pointer-events: none;
+  z-index: -1;
 }
 
 .string-lights {
@@ -182,38 +182,6 @@
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(255, 244, 179, 0.7);
   z-index: -1;
-}
-
-.btn-hover-effect {
-  @apply transition-all duration-300 transform hover:scale-105;
-}
-
-.icon-container {
-  @apply flex items-center justify-center w-12 h-12 rounded-full bg-houseboard-medium/20 text-houseboard-medium;
-}
-
-@keyframes float-smooth {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-.animate-float-smooth {
-  animation: float-smooth 5s ease-in-out infinite;
-}
-
-.hover-grow {
-  transition: all 0.3s ease;
-}
-
-.hover-grow:hover {
-  transform: scale(1.05);
-}
-
-.text-gradient {
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  background-image: linear-gradient(to right, #ffd54f, #ffecb3);
 }
 
 .card-hover {
@@ -285,9 +253,22 @@
   z-index: -1;
 }
 
-.house-window {
-  border: 8px solid var(--house-wood);
-  border-radius: 8px;
-  background-color: rgba(173, 216, 230, 0.1);
-  box-shadow: inset 0 0 15px rgba(255, 213, 79, 0.2);
+.text-house-yellow {
+  color: var(--house-light);
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #ffd54f, #ffecb3);
+}
+
+.animate-float-smooth {
+  animation: float-smooth 5s ease-in-out infinite;
+}
+
+@keyframes float-smooth {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
