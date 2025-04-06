@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
           
           <div className="relative bg-transparent rounded-lg max-w-sm mx-auto">
             <img
-              src="/lovable-uploads/0327d977-13e0-4510-999c-ce78dce08e19.png"
+              src="/lovable-uploads/house.png"
               alt="HouseBoard Home Screen"
               className="w-full h-auto rounded-md"
               style={{ maxWidth: "120%" }}
