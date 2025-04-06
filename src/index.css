@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -48,54 +47,22 @@
     --house-wall-blue: #1e3d4c;
     --house-light-blue: #2e4e5f;
     --house-wood: #5d4037;
-    --house-light: #43B3AE; /* Changed to teal from yellow */
-    
-    /* Light mode variables */
+    --house-light: #43B3AE;
     --house-light-deep-blue: #487BD4;
     --house-light-wall-blue: #6A94E2;
     --house-light-light-blue: #8AABEA;
     --house-light-wood: #A47A51;
-    --house-light-accent: #2C3D59; /* Changed to dark blue */
-    --house-light-text: #2C3D59; /* Dark blue for text */
-    --house-light-card-bg: #f5f5f5; /* Light gray/cream for card backgrounds */
+    --house-light-accent: #2C3D59;
+    --house-light-text: #2C3D59;
+    --house-light-card-bg: #f5f5f5;
   }
 
   .dark {
+    color-scheme: dark;
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   * {
@@ -125,76 +92,43 @@
     pointer-events: none;
   }
 
-  .star {
-    position: fixed;
-    width: 2px;
-    height: 2px;
-    background: white;
-    border-radius: 50%;
-    opacity: 0.7;
-    z-index: -1;
-  }
-
-  .star-small {
-    width: 1px;
-    height: 1px;
-  }
-
-  .star-medium {
-    width: 2px;
-    height: 2px;
-  }
-
-  .star-large {
-    width: 3px;
-    height: 3px;
-  }
-  
-  /* Light mode */
-  .light-mode {
-    color-scheme: light;
-  }
-  
-  .light-mode body {
+  .light body {
     background-color: var(--house-light-deep-blue);
   }
-  
-  .light-mode .gradient-bg {
+
+  .light .gradient-bg {
     background: linear-gradient(135deg, var(--house-light-wall-blue) 0%, var(--house-light-light-blue) 100%);
   }
-  
-  .light-mode .card-hover {
-    background-color: rgba(245, 245, 245, 0.9);
-    color: #333;
-  }
-  
-  .light-mode .shelf {
-    background-color: var(--house-light-wood);
-  }
-  
-  .light-mode .text-gradient {
-    background-image: linear-gradient(to right, var(--house-light-text), var(--house-light-text));
+
+  .light .card-hover,
+  .light .who-card,
+  .light .footer {
+    background-color: var(--house-light-card-bg);
     color: var(--house-light-text);
   }
 
-  .light-mode h1, .light-mode h2, .light-mode h3, .light-mode h4, .light-mode h5, .light-mode h6 {
-    color: var(--house-light-text);
+  .light .who-before {
+    filter: grayscale(0.5) brightness(0.95);
   }
 
-  .light-mode .card-hover p {
-    color: #333;
+  .light .text-house-yellow {
+    color: var(--house-light-accent) !important;
   }
 
-  .light-mode .card-hover h3 {
-    color: var(--house-light-text);
+  .text-house-yellow {
+    color: var(--house-light);
   }
-  
-  /* Dark mode */
-  .dark-mode {
-    color-scheme: dark;
+
+  .hero-image {
+    content: url('/lovable-uploads/0327d977-13e0-4510-999c-ce78dce08e19.png');
+  }
+
+  .light .hero-image {
+    content: url('/lovable-uploads/lightHouse.png');
   }
 }
 
+/* Additional styles preserved below */
 .gradient-bg {
   background: linear-gradient(135deg, var(--house-wall-blue) 0%, var(--house-light-blue) 100%);
   position: relative;
@@ -213,142 +147,4 @@
   opacity: 0.5;
   pointer-events: none;
   z-index: -1;
-}
-
-.string-lights {
-  position: absolute;
-  top: -10px;
-  left: 0;
-  right: 0;
-  height: 20px;
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 20 20, 40 0, 60 10 C 80 20, 100 0, 120 10 C 140 20, 160 0, 180 10 C 200 20, 220 0, 240 10' stroke='rgba(255,213,79,0.6)' stroke-width='1' fill='none'/%3E%3Ccircle cx='30' cy='10' r='3' fill='%2343B3AE'/%3E%3Ccircle cx='90' cy='10' r='3' fill='%2343B3AE'/%3E%3Ccircle cx='150' cy='10' r='3' fill='%2343B3AE'/%3E%3Ccircle cx='210' cy='10' r='3' fill='%2343B3AE'/%3E%3C/svg%3E");
-  background-repeat: repeat-x;
-  z-index: 1;
-}
-
-.moon {
-  position: fixed;
-  top: 150px; /* Moved down to avoid navbar overlap */
-  right: 50px;
-  width: 40px;
-  height: 40px;
-  background-color: #fff9c4;
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(255, 244, 179, 0.7);
-  z-index: -1;
-}
-
-.light-mode .moon {
-  background-color: #FFC107;
-  box-shadow: 0 0 30px rgba(255, 193, 7, 0.8);
-}
-
-.card-hover {
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  background-color: rgba(30, 61, 76, 0.8);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.card-hover:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-.candle-light {
-  position: relative;
-}
-
-.candle-light::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: radial-gradient(circle, rgba(67, 179, 174, 0.7) 0%, rgba(67, 179, 174, 0) 70%);
-  border-radius: 50%;
-  z-index: 2;
-  animation: flicker 2s infinite alternate;
-}
-
-@keyframes flicker {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(0.95); }
-}
-
-.shelf {
-  position: relative;
-  height: 20px;
-  background-color: var(--house-wood);
-  border-radius: 4px 4px 0 0;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
-}
-
-.shelf::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 10px;
-  right: 10px;
-  height: 5px;
-  background-color: rgba(0,0,0,0.3);
-  border-radius: 0 0 4px 4px;
-}
-
-.house-roof {
-  position: relative;
-  overflow: hidden;
-}
-
-.house-roof::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: 0;
-  right: 0;
-  height: 100px;
-  background-color: var(--house-deep-blue);
-  transform: skewY(-3deg);
-  z-index: -1;
-}
-
-.text-house-teal {
-  color: var(--house-light);
-}
-
-.text-gradient {
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  background-image: linear-gradient(to right, #43B3AE, #7CD6D2);
-}
-
-.animate-float-smooth {
-  animation: float-smooth 5s ease-in-out infinite;
-}
-
-@keyframes float-smooth {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-/* Add dynamic button hover effects */
-button, .btn-hover-effect {
-  transition: all 0.3s ease;
-}
-
-button:hover, .btn-hover-effect:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* House window styles - removed brown border frames */
-.house-window {
-  position: relative;
-  border-radius: 12px;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-.light-mode .house-window {
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
 }
