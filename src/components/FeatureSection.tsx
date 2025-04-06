@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, BookOpen, Bell, LineChart } from 'lucide-react';
@@ -39,17 +40,17 @@ const FeatureSection: React.FC = () => {
   ];
 
   return (
-    <section id="features" className="py-24 gradient-bg text-white relative overflow-hidden">
+    <section id="features" className="py-16 relative">
       {/* Shelf decoration at the top */}
       <div className="shelf absolute top-0 left-0 right-0"></div>
-
+      
       <div className="container mx-auto px-4 pt-4">
         <div className="flex flex-col md:flex-row md:justify-end mb-8">
           <div className="md:w-2/3">
-            <h2 className="text-4xl font-bold text-house-yellow mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Features Designed for Your Relationship
             </h2>
-            <p className="text-white/80 max-w-3xl">
+            <p className="text-gray-300 max-w-3xl">
               Explore how HouseBoard's features can bring you closer.
             </p>
           </div>
@@ -64,14 +65,15 @@ const FeatureSection: React.FC = () => {
               <div className="md:w-1/2 flex justify-center p-6">
                 <div className="relative w-full max-w-xs shadow-sm rounded-md overflow-hidden house-window">
                   {feature.mockupImage && (
-                    <img
-                      src={feature.mockupImage}
-                      alt={feature.imageAlt || `${feature.title} illustration`}
-                      className="w-full h-auto object-contain rounded"
+                    <img 
+                      src={feature.mockupImage} 
+                      alt={feature.imageAlt || `${feature.title} illustration`} 
+                      className="w-full h-auto object-contain" 
                       style={{ maxHeight: '500px' }}
                     />
                   )}
-
+                  
+                  {/* Add candle light decoration for each feature */}
                   {index % 2 === 0 ? (
                     <div className="absolute bottom-2 right-2 candle-light" style={{ width: '15px', height: '15px' }}></div>
                   ) : (
@@ -83,10 +85,10 @@ const FeatureSection: React.FC = () => {
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     {feature.icon}
-                    <CardTitle className="text-xl text-house-yellow">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl text-[#ffd54f]">{feature.title}</CardTitle>
                   </div>
                   <CardContent className="p-0">
-                    <p className="text-white/80 text-sm mb-6">{feature.description}</p>
+                    <p className="text-gray-300 text-sm mb-6">{feature.description}</p>
                   </CardContent>
                 </div>
               </div>
