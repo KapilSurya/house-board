@@ -72,7 +72,7 @@ const WhoIsItFor: React.FC = () => {
               </ul>
               <div className="mt-6 rounded-xl overflow-hidden house-window">
                 <img 
-                  src="/lovable-uploads/05054301-9b25-4fdd-9181-5bf2a160f3f7.png" 
+                  src="/lovable-uploads/after.png" 
                   alt="After HouseBoard - Connected relationship" 
                   className="w-full h-auto"
                 />

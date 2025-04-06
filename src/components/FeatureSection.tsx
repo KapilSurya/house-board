@@ -18,7 +18,7 @@ const FeatureSection: React.FC = () => {
       icon: <BookOpen className="h-6 w-6 text-[#ffd54f]" />,
       title: 'Your Relationship Log',
       description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you\'ve grown as a couple',
-      mockupImage: '/lovable-uploads/relationshipLog.png',
+      mockupImage: '/lovable-uploads/log.png',
       imageAlt: 'Relationship log showing a quality time entry with a meaningful conversation'
     },
     {
