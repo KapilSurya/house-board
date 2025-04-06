@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-24 wood-texture text-white relative">
+    <section className="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg text-white relative">
       {/* String lights decoration */}
       <div className="string-lights"></div>
       
@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
             
             <Button 
               onClick={() => setDialogOpen(true)}
-              className="newsletter-join-button bg-houseboard-medium hover:bg-teal-600 hover:text-white transition-colors duration-300"
+              className="newsletter-join-button bg-houseboard-medium hover:bg-[#ffd54f] hover:text-houseboard-dark transition-colors duration-300"
             >
               Join Us Now
             </Button>
@@ -44,15 +44,9 @@ const Hero: React.FC = () => {
           
           <div className="relative bg-transparent rounded-lg max-w-sm mx-auto">
             <img
-              src="/lovable-uploads/f372a9fe-8a86-4b51-885b-fba531bb02a2.png"
-              alt="HouseBoard Home Screen"
-              className="w-full h-auto rounded-md dark:hidden"
-              style={{ maxWidth: "120%" }}
-            />
-            <img
               src="/lovable-uploads/house.png"
               alt="HouseBoard Home Screen"
-              className="w-full h-auto rounded-md hidden dark:block"
+              className="w-full h-auto rounded-md"
               style={{ maxWidth: "120%" }}
             />
           </div>

@@ -7,7 +7,7 @@ const FeatureSection: React.FC = () => {
   const features = [
     {
       id: 'habits',
-      icon: <Heart className="h-6 w-6 text-teal-500" />,
+      icon: <Heart className="h-6 w-6 text-[#ffd54f]" />,
       title: 'Build Healthy Habits',
       description: 'Strengthen your bond by building habits like spending quality time, showing gratitude, and setting shared goals, making your chats more meaningful and connected',
       mockupImage: '/lovable-uploads/habits.png',
@@ -15,7 +15,7 @@ const FeatureSection: React.FC = () => {
     },
     {
       id: 'log',
-      icon: <BookOpen className="h-6 w-6 text-teal-500" />,
+      icon: <BookOpen className="h-6 w-6 text-[#ffd54f]" />,
       title: 'Your Relationship Log',
       description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you\'ve grown as a couple',
       mockupImage: '/lovable-uploads/log.png',
@@ -23,7 +23,7 @@ const FeatureSection: React.FC = () => {
     },
     {
       id: 'nudges',
-      icon: <Bell className="h-6 w-6 text-teal-500" />,
+      icon: <Bell className="h-6 w-6 text-[#ffd54f]" />,
       title: 'Nudge for What Matters',
       description: 'Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don\'t fall through the cracks',
       mockupImage: '/lovable-uploads/nudge.png',
@@ -31,7 +31,7 @@ const FeatureSection: React.FC = () => {
     },
     {
       id: 'mood',
-      icon: <LineChart className="h-6 w-6 text-teal-500" />,
+      icon: <LineChart className="h-6 w-6 text-[#ffd54f]" />,
       title: 'Mood & Status Tracking',
       description: 'Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other',
       mockupImage: '/lovable-uploads/mood.png',
@@ -58,15 +58,16 @@ const FeatureSection: React.FC = () => {
           {features.map((feature, index) => (
             <Card
               key={feature.id}
-              className={`overflow-hidden transition-all duration-300 hover:shadow-md card-hover flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'} feature-card`}
+              className={`overflow-hidden transition-all duration-300 hover:shadow-md card-hover flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
             >
               <div className="md:w-2/5 flex justify-center p-4">
-                <div className="relative rounded-md overflow-hidden house-window feature-image-container">
+                <div className="relative w-full max-w-xs rounded-md overflow-hidden house-window">
                   {feature.mockupImage && (
                     <img 
                       src={feature.mockupImage} 
                       alt={feature.imageAlt || `${feature.title} illustration`} 
-                      className="w-full h-full object-contain" 
+                      className="w-full h-auto object-contain" 
+                      style={{ maxHeight: '400px' }}
                     />
                   )}
                   
@@ -82,10 +83,10 @@ const FeatureSection: React.FC = () => {
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     {feature.icon}
-                    <CardTitle className="text-2xl md:text-3xl text-teal-500">{feature.title}</CardTitle>
+                    <CardTitle className="text-2xl md:text-3xl text-[#ffd54f]">{feature.title}</CardTitle>
                   </div>
                   <CardContent className="p-0">
-                    <p className="text-gray-300 text-base md:text-lg lg:text-xl mb-6">{feature.description}</p>
+                    <p className="text-gray-300 text-base md:text-lg mb-6">{feature.description}</p>
                   </CardContent>
                 </div>
               </div>

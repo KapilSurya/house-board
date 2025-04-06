@@ -37,8 +37,8 @@ const WhoIsItFor: React.FC = () => {
 
           {/* Side-by-Side Card View with better alignment */}
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
-            {/* Before View - Made larger and with duller colors */}
-            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col transform scale-105 before-card">
+            {/* Before View */}
+            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col">
               <h3 className="text-2xl font-semibold mb-4 flex items-center text-white">
                 <span className="mr-2">💔</span> Before HouseBoard
               </h3>
@@ -63,7 +63,7 @@ const WhoIsItFor: React.FC = () => {
             </div>
 
             {/* After View */}
-            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col transform after-card">
+            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col">
               <h3 className="text-2xl font-semibold mb-4 flex items-center text-white">
                 <span className="mr-2">❤️</span> After HouseBoard
               </h3>
