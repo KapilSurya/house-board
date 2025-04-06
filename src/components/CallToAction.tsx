@@ -1,8 +1,11 @@
 
-import React from 'react';
-import NewsletterForm from './NewsletterForm';
+import React, { useState } from 'react';
+import { Button } from "@/components/ui/button";
+import NewsletterDialog from './NewsletterDialog';
 
 const CallToAction: React.FC = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   return (
     <section id="cta" className="py-20 gradient-bg text-white">
       <div className="container mx-auto px-4 text-center">
@@ -13,7 +16,36 @@ const CallToAction: React.FC = () => {
           Start your journey to a more connected, meaningful relationship.
           HouseBoard gives you the tools to strengthen your bond every day.
         </p>
-        <NewsletterForm buttonText="Join Us Now" className="mt-8" />
+        
+        <div className="max-w-md mx-auto">
+          <p className="text-base md:text-lg opacity-80 mb-6">
+            Be the first to test HouseBoard and gain super cool benefits from free premiums to customized incentives.
+          </p>
+          
+          <Button 
+            onClick={() => setDialogOpen(true)}
+            className="bg-houseboard-medium hover:bg-[#ffd54f] hover:text-houseboard-dark transition-colors duration-300 px-8 py-6 text-lg"
+          >
+            Join Us Now
+          </Button>
+          
+          <NewsletterDialog 
+            open={dialogOpen}
+            onOpenChange={setDialogOpen}
+          />
+          
+          <div className="mt-6 flex items-center justify-center gap-4 text-sm text-gray-300">
+            <span>or</span>
+            <a 
+              href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-[#ffd54f] hover:text-white transition-colors"
+            >
+              Join our WhatsApp community
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,10 +1,19 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import ThemeToggle from './ThemeToggle';
 
 const Navbar: React.FC = () => {
+  const handleOpenDialog = () => {
+    // Find the "Join Us Now" button in the Hero section and click it
+    const joinButton = document.querySelector('.newsletter-join-button') as HTMLButtonElement;
+    if (joinButton) {
+      joinButton.click();
+    }
+  };
+
   return (
-    <header className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-sm">
+    <header className="fixed top-0 w-full z-50 backdrop-blur-sm bg-gradient-to-b from-black/70 to-transparent">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center">
           <h1 className="text-2xl font-bold text-white">
@@ -24,8 +33,12 @@ const Navbar: React.FC = () => {
           </a>
         </nav>
         
-        <div>
-          <Button className="bg-houseboard-medium hover:bg-[#ffd54f] hover:text-houseboard-dark transition-colors duration-300">
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <Button 
+            className="bg-houseboard-medium hover:bg-[#ffd54f] hover:text-houseboard-dark transition-colors duration-300"
+            onClick={handleOpenDialog}
+          >
             Register Now
           </Button>
         </div>

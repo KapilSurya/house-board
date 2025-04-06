@@ -36,46 +36,52 @@ const WhoIsItFor: React.FC = () => {
           </div>
 
           {/* Side-by-Side Card View with better alignment */}
-          <div className="grid md:grid-cols-2 gap-6 items-center">
+          <div className="grid md:grid-cols-2 gap-6 items-stretch">
             {/* Before View */}
-            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full">
+            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col">
               <h3 className="text-2xl font-semibold mb-4 flex items-center text-white">
                 <span className="mr-2">💔</span> Before HouseBoard
               </h3>
-              <ul className="space-y-3 text-gray-300 list-disc pl-5">
+              <ul className="space-y-3 text-gray-300 list-disc pl-5 mb-6">
                 <li>Misunderstandings turn into silence.</li>
                 <li>Emotions stay bottled up.</li>
                 <li>Busyness replaces closeness.</li>
                 <li>You try — but it still feels like something's missing.</li>
               </ul>
-              <div className="mt-6 rounded-xl overflow-hidden house-window">
-                <img 
-                  src="/lovable-uploads/before.png" 
-                  alt="Before HouseBoard - Communication challenges" 
-                  className="w-full h-auto"
-                />
+              <div className="mt-auto rounded-xl overflow-hidden house-window flex-1">
+                <div className="h-full flex items-center justify-center">
+                  <img 
+                    src="/lovable-uploads/before.png" 
+                    alt="Before HouseBoard - Communication challenges" 
+                    className="w-full h-auto object-contain"
+                    style={{ maxHeight: "300px" }}
+                  />
+                </div>
                 {/* Add candle light decoration */}
                 <div className="absolute bottom-3 right-3 candle-light" style={{ width: '15px', height: '15px' }}></div>
               </div>
             </div>
 
             {/* After View */}
-            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full">
+            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col">
               <h3 className="text-2xl font-semibold mb-4 flex items-center text-white">
                 <span className="mr-2">❤️</span> After HouseBoard
               </h3>
-              <ul className="space-y-3 text-gray-300 list-disc pl-5">
+              <ul className="space-y-3 text-gray-300 list-disc pl-5 mb-6">
                 <li>Share how you feel in seconds — even when words fail.</li>
                 <li>Build healthy, loving habits without effort.</li>
                 <li>Keep track of each other's moods, goals, and little wins.</li>
                 <li>Turn check-ins into moments of closeness.</li>
               </ul>
-              <div className="mt-6 rounded-xl overflow-hidden house-window">
-                <img 
-                  src="/lovable-uploads/after.png" 
-                  alt="After HouseBoard - Connected relationship" 
-                  className="w-full h-auto"
-                />
+              <div className="mt-auto rounded-xl overflow-hidden house-window flex-1">
+                <div className="h-full flex items-center justify-center">
+                  <img 
+                    src="/lovable-uploads/after.png" 
+                    alt="After HouseBoard - Connected relationship" 
+                    className="w-full h-auto object-contain"
+                    style={{ maxHeight: "300px" }}
+                  />
+                </div>
                 {/* Add candle light decoration */}
                 <div className="absolute bottom-3 left-3 candle-light" style={{ width: '15px', height: '15px' }}></div>
               </div>

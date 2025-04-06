@@ -1,8 +1,11 @@
 
-import React from 'react';
-import NewsletterForm from './NewsletterForm';
+import React, { useState } from 'react';
+import { Button } from "@/components/ui/button";
+import NewsletterDialog from './NewsletterDialog';
 
 const Hero: React.FC = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   return (
     <section className="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg text-white relative">
       {/* String lights decoration */}
@@ -16,7 +19,23 @@ const Hero: React.FC = () => {
           <p className="text-lg md:text-xl text-gray-300">
             Communicate effortlessly, build lasting habits, reflect on your journey. Built with your privacy in mind.
           </p>
-          <NewsletterForm buttonText="Join Us Now" />
+          <div className="space-y-4">
+            <p className="text-sm md:text-base text-gray-300 max-w-md">
+              Be the first to test HouseBoard and gain super cool benefits from free premiums to customized incentives.
+            </p>
+            
+            <Button 
+              onClick={() => setDialogOpen(true)}
+              className="newsletter-join-button bg-houseboard-medium hover:bg-[#ffd54f] hover:text-houseboard-dark transition-colors duration-300"
+            >
+              Join Us Now
+            </Button>
+            
+            <NewsletterDialog 
+              open={dialogOpen}
+              onOpenChange={setDialogOpen}
+            />
+          </div>
         </div>
 
         <div className="relative house-window rounded-lg overflow-hidden">
