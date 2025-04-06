@@ -25,11 +25,11 @@ const App = () => {
     const existingMoon = document.querySelector('.moon');
     if (existingMoon) existingMoon.remove();
     
-    // Create moon
+    // Create moon - positioned lower to avoid navbar overlap
     const moon = document.createElement('div');
     moon.className = 'moon';
     // Position the moon lower to avoid navbar overlap
-    moon.style.top = '120px';
+    moon.style.top = '150px';
     container.appendChild(moon);
     
     // Create stars

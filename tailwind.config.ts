@@ -68,6 +68,7 @@ export default {
 					medium: '#094663',
 					light: '#ffffff',
 					morning: '#487BD4',
+					teal: '#008080',
 				},
 			},
 			borderRadius: {

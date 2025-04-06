@@ -48,10 +48,10 @@
     --house-wall-blue: #1e3d4c;
     --house-light-blue: #2e4e5f;
     --house-wood: #5d4037;
-    --house-light: #ffd54f;
+    --house-light: #008080;
     
     /* Light mode variables */
-    --house-light-deep-blue: #487BD4;
+    --house-light-deep-blue: #D3E4FD;
     --house-light-wall-blue: #6A94E2;
     --house-light-light-blue: #8AABEA;
     --house-light-wood: #A47A51;
@@ -154,15 +154,15 @@
   }
   
   .light-mode body {
-    background-color: var(--house-light-deep-blue);
+    background-color: #D3E4FD;
   }
   
   .light-mode .gradient-bg {
-    background: linear-gradient(135deg, var(--house-light-wall-blue) 0%, var(--house-light-light-blue) 100%);
+    background: linear-gradient(135deg, #E6EEF8 0%, #D3E4FD 100%);
   }
   
   .light-mode .card-hover {
-    background-color: rgba(106, 148, 226, 0.8);
+    background-color: rgba(211, 228, 253, 0.8);
   }
   
   .light-mode .shelf {
@@ -170,7 +170,7 @@
   }
   
   .light-mode .text-gradient {
-    background-image: linear-gradient(to right, #ffffff, #f0f4ff);
+    background-image: linear-gradient(to right, #333333, #555555);
   }
   
   /* Dark mode */
@@ -183,6 +183,18 @@
   background: linear-gradient(135deg, var(--house-wall-blue) 0%, var(--house-light-blue) 100%);
   position: relative;
   overflow: hidden;
+}
+
+.wood-texture {
+  background-color: var(--house-wood);
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 20 8, 40 12, 60 10 C 80 8, 100 12, 120 10' stroke='rgba(93,64,55,0.5)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+  position: relative;
+  overflow: hidden;
+}
+
+.light-mode .wood-texture {
+  background-color: #D3E4FD;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 20 8, 40 12, 60 10 C 80 8, 100 12, 120 10' stroke='rgba(106,148,226,0.5)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
 }
 
 .gradient-bg::before {
@@ -205,14 +217,14 @@
   left: 0;
   right: 0;
   height: 20px;
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 20 20, 40 0, 60 10 C 80 20, 100 0, 120 10 C 140 20, 160 0, 180 10 C 200 20, 220 0, 240 10' stroke='rgba(255,213,79,0.6)' stroke-width='1' fill='none'/%3E%3Ccircle cx='30' cy='10' r='3' fill='%23ffd54f'/%3E%3Ccircle cx='90' cy='10' r='3' fill='%23ffd54f'/%3E%3Ccircle cx='150' cy='10' r='3' fill='%23ffd54f'/%3E%3Ccircle cx='210' cy='10' r='3' fill='%23ffd54f'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 20 20, 40 0, 60 10 C 80 20, 100 0, 120 10 C 140 20, 160 0, 180 10 C 200 20, 220 0, 240 10' stroke='rgba(0,128,128,0.6)' stroke-width='1' fill='none'/%3E%3Ccircle cx='30' cy='10' r='3' fill='%23008080'/%3E%3Ccircle cx='90' cy='10' r='3' fill='%23008080'/%3E%3Ccircle cx='150' cy='10' r='3' fill='%23008080'/%3E%3Ccircle cx='210' cy='10' r='3' fill='%23008080'/%3E%3C/svg%3E");
   background-repeat: repeat-x;
   z-index: 1;
 }
 
 .moon {
   position: fixed;
-  top: 50px;
+  top: 150px;
   right: 50px;
   width: 40px;
   height: 40px;
@@ -223,8 +235,8 @@
 }
 
 .light-mode .moon {
-  background-color: #FFC107;
-  box-shadow: 0 0 30px rgba(255, 193, 7, 0.8);
+  background-color: #F1F0FB;
+  box-shadow: 0 0 30px rgba(72, 123, 212, 0.8);
 }
 
 .card-hover {
@@ -249,7 +261,7 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  background: radial-gradient(circle, rgba(255, 213, 79, 0.7) 0%, rgba(255, 213, 79, 0) 70%);
+  background: radial-gradient(circle, rgba(0, 128, 128, 0.7) 0%, rgba(0, 128, 128, 0) 70%);
   border-radius: 50%;
   z-index: 2;
   animation: flicker 2s infinite alternate;
@@ -296,7 +308,7 @@
   z-index: -1;
 }
 
-.text-house-yellow {
+.text-house-teal {
   color: var(--house-light);
 }
 
@@ -304,7 +316,11 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-image: linear-gradient(to right, #ffd54f, #ffecb3);
+  background-image: linear-gradient(to right, #008080, #00a0a0);
+}
+
+.light-mode .text-gradient {
+  background-image: linear-gradient(to right, #333333, #555555);
 }
 
 .animate-float-smooth {
@@ -336,4 +352,25 @@ button:hover, .btn-hover-effect:hover {
 
 .light-mode .house-window {
   border-color: var(--house-light-wood);
+}
+
+/* Before/After HouseBoard section styles */
+.light-mode .before-card {
+  background-color: #F1F0FB;
+  opacity: 0.9;
+}
+
+.light-mode .after-card {
+  background-color: #D3E4FD;
+}
+
+/* Custom styles for feature cards */
+.feature-card {
+  max-height: 600px;
+}
+
+.feature-image-container {
+  height: 300px;
+  max-width: 280px;
+  margin: 0 auto;
 }
