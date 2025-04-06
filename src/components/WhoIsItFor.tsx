@@ -43,14 +43,14 @@ const WhoIsItFor: React.FC = () => {
                 <span className="mr-2">💔</span> Before HouseBoard
               </h3>
               <ul className="space-y-3 text-gray-300 list-disc pl-5">
-                <li>Misunderstandings turn into silence.</li>
+                {/* <li>Misunderstandings turn into silence.</li>
                 <li>Emotions stay bottled up.</li>
                 <li>Busyness replaces closeness.</li>
-                <li>You try — but it still feels like something's missing.</li>
+                <li>You try — but it still feels like something's missing.</li> */}
               </ul>
               <div className="mt-6 rounded-xl overflow-hidden house-window">
                 <img 
-                  src="/lovable-uploads/2e73599f-ae4d-421b-ac36-760872003193.png" 
+                  src="/lovable-uploads/ChatGPT Image Apr 6, 2025, 05_48_43 PM.png" 
                   alt="Before HouseBoard - Communication challenges" 
                   className="w-full h-auto"
                 />
