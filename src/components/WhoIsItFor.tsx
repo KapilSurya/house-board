@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 
@@ -24,7 +25,7 @@ const WhoIsItFor: React.FC = () => {
     <section id="who-is-it-for" className="py-20 relative" ref={sectionRef}>
       {/* Add a shelf decoration */}
       <div className="shelf absolute top-0 left-0 right-0"></div>
-
+      
       <div className="container mx-auto px-4 max-w-5xl pt-6">
         <div className={`transition-all duration-700 ease-in-out ${isScrollVisible ? 'opacity-100' : 'opacity-0'}`}>
           <div className="text-center mb-12">
@@ -38,8 +39,8 @@ const WhoIsItFor: React.FC = () => {
 
           {/* Side-by-Side Card View with better alignment */}
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
-            {/* Before View - Emphasized but balanced */}
-            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col transform scale-105 md:-mr-3 z-10 opacity-90"
+            {/* Before View - Made larger and duller */}
+            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col md:col-span-1 md:scale-110 md:-mr-6 z-10 opacity-90" 
                  style={{ filter: theme === 'dark' ? 'saturate(0.7) brightness(0.9)' : 'saturate(0.8)' }}>
               <h3 className="text-2xl font-semibold mb-4 flex items-center text-white">
                 <span className="mr-2">💔</span> Before HouseBoard
@@ -50,21 +51,22 @@ const WhoIsItFor: React.FC = () => {
                 <li>Busyness replaces closeness.</li>
                 <li>You try — but it still feels like something's missing.</li>
               </ul>
-              <div className="mt-auto rounded-xl overflow-hidden flex-1 relative">
+              <div className="mt-auto rounded-xl overflow-hidden flex-1">
                 <div className="h-full flex items-center justify-center">
-                  <img
-                    src="/lovable-uploads/before.png"
-                    alt="Before HouseBoard - Communication challenges"
+                  <img 
+                    src="/lovable-uploads/before.png" 
+                    alt="Before HouseBoard - Communication challenges" 
                     className="w-full h-auto object-contain"
                     style={{ maxHeight: "300px" }}
                   />
                 </div>
+                {/* Add candle light decoration */}
                 <div className="absolute bottom-3 right-3 candle-light" style={{ width: '15px', height: '15px' }}></div>
               </div>
             </div>
 
             {/* After View */}
-            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col transform scale-100 md:-ml-3">
+            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col md:col-span-1 md:-ml-6">
               <h3 className="text-2xl font-semibold mb-4 flex items-center text-white">
                 <span className="mr-2">❤️</span> After HouseBoard
               </h3>
@@ -74,15 +76,16 @@ const WhoIsItFor: React.FC = () => {
                 <li>Keep track of each other's moods, goals, and little wins.</li>
                 <li>Turn check-ins into moments of closeness.</li>
               </ul>
-              <div className="mt-auto rounded-xl overflow-hidden flex-1 relative">
+              <div className="mt-auto rounded-xl overflow-hidden flex-1">
                 <div className="h-full flex items-center justify-center">
-                  <img
-                    src="/lovable-uploads/after.png"
-                    alt="After HouseBoard - Connected relationship"
+                  <img 
+                    src="/lovable-uploads/after.png" 
+                    alt="After HouseBoard - Connected relationship" 
                     className="w-full h-auto object-contain"
                     style={{ maxHeight: "300px" }}
                   />
                 </div>
+                {/* Add candle light decoration */}
                 <div className="absolute bottom-3 left-3 candle-light" style={{ width: '15px', height: '15px' }}></div>
               </div>
             </div>

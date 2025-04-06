@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, BookOpen, Bell, LineChart } from 'lucide-react';
@@ -46,7 +47,7 @@ const FeatureSection: React.FC = () => {
     <section id="features" className="py-16 relative">
       {/* Shelf decoration at the top */}
       <div className="shelf absolute top-0 left-0 right-0"></div>
-
+      
       <div className="container mx-auto px-4 pt-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -63,17 +64,17 @@ const FeatureSection: React.FC = () => {
               key={feature.id}
               className={`overflow-hidden transition-all duration-300 hover:shadow-md card-hover flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
             >
-              <div className="md:w-2/5 flex justify-center p-6">
-                <div className="relative w-full max-w-md rounded-md overflow-hidden">
+              <div className="md:w-2/5 flex justify-center p-4">
+                <div className="relative w-full max-w-xs rounded-md overflow-hidden">
                   {feature.mockupImage && (
-                    <img
-                      src={feature.mockupImage}
-                      alt={feature.imageAlt || `${feature.title} illustration`}
-                      className="w-full h-auto object-contain"
-                      style={{ maxHeight: '360px', width: '100%' }}
+                    <img 
+                      src={feature.mockupImage} 
+                      alt={feature.imageAlt || `${feature.title} illustration`} 
+                      className="w-full h-auto object-contain" 
+                      style={{ maxHeight: '260px', width: '100%' }}
                     />
                   )}
-
+                  
                   {/* Add candle light decoration for each feature */}
                   {index % 2 === 0 ? (
                     <div className="absolute bottom-2 right-2 candle-light" style={{ width: '15px', height: '15px' }}></div>
