@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -271,4 +272,14 @@
 @keyframes float-smooth {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
+}
+
+/* Add dynamic button hover effects */
+button, .btn-hover-effect {
+  transition: all 0.3s ease;
+}
+
+button:hover, .btn-hover-effect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }

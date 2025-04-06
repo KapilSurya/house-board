@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const Navbar: React.FC = () => {
   return (
-    <header className="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-sm">
+    <header className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-sm">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center">
           <h1 className="text-2xl font-bold text-white">
@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
         </nav>
         
         <div>
-          <Button className="bg-houseboard-medium hover:bg-houseboard-dark text-white btn-hover-effect">
+          <Button className="bg-houseboard-medium hover:bg-[#ffd54f] hover:text-houseboard-dark transition-colors duration-300">
             Register Now
           </Button>
         </div>

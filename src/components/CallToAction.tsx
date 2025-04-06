@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
+import NewsletterForm from './NewsletterForm';
 
 const CallToAction: React.FC = () => {
   return (
@@ -13,12 +13,7 @@ const CallToAction: React.FC = () => {
           Start your journey to a more connected, meaningful relationship.
           HouseBoard gives you the tools to strengthen your bond every day.
         </p>
-        <Button 
-          size="lg" 
-          className="bg-white text-houseboard-dark hover:bg-gray-100 text-lg px-8 py-6 transition-all duration-300 hover:shadow-xl"
-        >
-          Join Us
-        </Button>
+        <NewsletterForm buttonText="Join Us Now" className="mt-8" />
       </div>
     </section>
   );

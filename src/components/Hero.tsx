@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button } from "@/components/ui/button";
+import NewsletterForm from './NewsletterForm';
 
 const Hero: React.FC = () => {
   return (
@@ -16,14 +16,7 @@ const Hero: React.FC = () => {
           <p className="text-lg md:text-xl text-gray-300">
             Communicate effortlessly, build lasting habits, reflect on your journey. Built with your privacy in mind.
           </p>
-          <div className="pt-4 flex flex-col sm:flex-row gap-4">
-            <Button 
-              size="lg" 
-              className="bg-houseboard-medium hover:bg-houseboard-dark text-white text-lg px-8 py-6 transition-all duration-300 hover:shadow-xl"
-            >
-              Join Us Now
-            </Button>
-          </div>
+          <NewsletterForm buttonText="Join Us Now" />
         </div>
 
         <div className="relative house-window rounded-lg overflow-hidden">
