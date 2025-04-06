@@ -32,9 +32,10 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
     setIsSubmitting(true);
     
     try {
+      // Use the correct typing with the "from" method to avoid type errors
       const { error } = await supabase
         .from('newsletter_subscribers')
-        .insert([{ email }]);
+        .insert({ email });
         
       if (error) throw error;
       
