@@ -1,9 +1,11 @@
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const WhoIsItFor: React.FC = () => {
   const [isScrollVisible, setIsScrollVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,8 +39,9 @@ const WhoIsItFor: React.FC = () => {
 
           {/* Side-by-Side Card View with better alignment */}
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
-            {/* Before View */}
-            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col">
+            {/* Before View - Made larger and duller */}
+            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col md:col-span-1 md:scale-110 md:-mr-6 z-10 opacity-90" 
+                 style={{ filter: theme === 'dark' ? 'saturate(0.7) brightness(0.9)' : 'saturate(0.8)' }}>
               <h3 className="text-2xl font-semibold mb-4 flex items-center text-white">
                 <span className="mr-2">💔</span> Before HouseBoard
               </h3>
@@ -48,7 +51,7 @@ const WhoIsItFor: React.FC = () => {
                 <li>Busyness replaces closeness.</li>
                 <li>You try — but it still feels like something's missing.</li>
               </ul>
-              <div className="mt-auto rounded-xl overflow-hidden house-window flex-1">
+              <div className="mt-auto rounded-xl overflow-hidden flex-1">
                 <div className="h-full flex items-center justify-center">
                   <img 
                     src="/lovable-uploads/before.png" 
@@ -63,7 +66,7 @@ const WhoIsItFor: React.FC = () => {
             </div>
 
             {/* After View */}
-            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col">
+            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col md:col-span-1 md:-ml-6">
               <h3 className="text-2xl font-semibold mb-4 flex items-center text-white">
                 <span className="mr-2">❤️</span> After HouseBoard
               </h3>
@@ -73,7 +76,7 @@ const WhoIsItFor: React.FC = () => {
                 <li>Keep track of each other's moods, goals, and little wins.</li>
                 <li>Turn check-ins into moments of closeness.</li>
               </ul>
-              <div className="mt-auto rounded-xl overflow-hidden house-window flex-1">
+              <div className="mt-auto rounded-xl overflow-hidden flex-1">
                 <div className="h-full flex items-center justify-center">
                   <img 
                     src="/lovable-uploads/after.png" 

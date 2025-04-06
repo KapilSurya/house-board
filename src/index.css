@@ -48,14 +48,16 @@
     --house-wall-blue: #1e3d4c;
     --house-light-blue: #2e4e5f;
     --house-wood: #5d4037;
-    --house-light: #ffd54f;
+    --house-light: #43B3AE; /* Changed to teal from yellow */
     
     /* Light mode variables */
     --house-light-deep-blue: #487BD4;
     --house-light-wall-blue: #6A94E2;
     --house-light-light-blue: #8AABEA;
     --house-light-wood: #A47A51;
-    --house-light-accent: #487BD4;
+    --house-light-accent: #2C3D59; /* Changed to dark blue */
+    --house-light-text: #2C3D59; /* Dark blue for text */
+    --house-light-card-bg: #f5f5f5; /* Light gray/cream for card backgrounds */
   }
 
   .dark {
@@ -162,7 +164,8 @@
   }
   
   .light-mode .card-hover {
-    background-color: rgba(106, 148, 226, 0.8);
+    background-color: rgba(245, 245, 245, 0.9);
+    color: #333;
   }
   
   .light-mode .shelf {
@@ -170,7 +173,20 @@
   }
   
   .light-mode .text-gradient {
-    background-image: linear-gradient(to right, #ffffff, #f0f4ff);
+    background-image: linear-gradient(to right, var(--house-light-text), var(--house-light-text));
+    color: var(--house-light-text);
+  }
+
+  .light-mode h1, .light-mode h2, .light-mode h3, .light-mode h4, .light-mode h5, .light-mode h6 {
+    color: var(--house-light-text);
+  }
+
+  .light-mode .card-hover p {
+    color: #333;
+  }
+
+  .light-mode .card-hover h3 {
+    color: var(--house-light-text);
   }
   
   /* Dark mode */
@@ -205,14 +221,14 @@
   left: 0;
   right: 0;
   height: 20px;
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 20 20, 40 0, 60 10 C 80 20, 100 0, 120 10 C 140 20, 160 0, 180 10 C 200 20, 220 0, 240 10' stroke='rgba(255,213,79,0.6)' stroke-width='1' fill='none'/%3E%3Ccircle cx='30' cy='10' r='3' fill='%23ffd54f'/%3E%3Ccircle cx='90' cy='10' r='3' fill='%23ffd54f'/%3E%3Ccircle cx='150' cy='10' r='3' fill='%23ffd54f'/%3E%3Ccircle cx='210' cy='10' r='3' fill='%23ffd54f'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 20 20, 40 0, 60 10 C 80 20, 100 0, 120 10 C 140 20, 160 0, 180 10 C 200 20, 220 0, 240 10' stroke='rgba(255,213,79,0.6)' stroke-width='1' fill='none'/%3E%3Ccircle cx='30' cy='10' r='3' fill='%2343B3AE'/%3E%3Ccircle cx='90' cy='10' r='3' fill='%2343B3AE'/%3E%3Ccircle cx='150' cy='10' r='3' fill='%2343B3AE'/%3E%3Ccircle cx='210' cy='10' r='3' fill='%2343B3AE'/%3E%3C/svg%3E");
   background-repeat: repeat-x;
   z-index: 1;
 }
 
 .moon {
   position: fixed;
-  top: 50px;
+  top: 150px; /* Moved down to avoid navbar overlap */
   right: 50px;
   width: 40px;
   height: 40px;
@@ -249,7 +265,7 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  background: radial-gradient(circle, rgba(255, 213, 79, 0.7) 0%, rgba(255, 213, 79, 0) 70%);
+  background: radial-gradient(circle, rgba(67, 179, 174, 0.7) 0%, rgba(67, 179, 174, 0) 70%);
   border-radius: 50%;
   z-index: 2;
   animation: flicker 2s infinite alternate;
@@ -296,7 +312,7 @@
   z-index: -1;
 }
 
-.text-house-yellow {
+.text-house-teal {
   color: var(--house-light);
 }
 
@@ -304,7 +320,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-image: linear-gradient(to right, #ffd54f, #ffecb3);
+  background-image: linear-gradient(to right, #43B3AE, #7CD6D2);
 }
 
 .animate-float-smooth {
@@ -326,14 +342,13 @@ button:hover, .btn-hover-effect:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* House window styles */
+/* House window styles - removed brown border frames */
 .house-window {
   position: relative;
-  border: 6px solid var(--house-wood);
   border-radius: 12px;
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .light-mode .house-window {
-  border-color: var(--house-light-wood);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
 }

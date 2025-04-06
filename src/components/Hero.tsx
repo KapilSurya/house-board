@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg text-white relative">
+    <section className="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg card-hover text-white relative">
       {/* String lights decoration */}
       <div className="string-lights"></div>
       
@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative house-window rounded-lg overflow-hidden">
+        <div className="relative overflow-hidden rounded-lg">
           {/* Candle light effect in corner */}
           <div className="absolute bottom-3 right-3 candle-light" style={{ width: '15px', height: '15px' }}></div>
           

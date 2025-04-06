@@ -29,7 +29,7 @@ const App = () => {
     const moon = document.createElement('div');
     moon.className = 'moon';
     // Position the moon lower to avoid navbar overlap
-    moon.style.top = '120px';
+    moon.style.top = '150px';
     container.appendChild(moon);
     
     // Create stars
