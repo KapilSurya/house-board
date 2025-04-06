@@ -45,15 +45,13 @@ const FeatureSection: React.FC = () => {
       <div className="shelf absolute top-0 left-0 right-0"></div>
       
       <div className="container mx-auto px-4 pt-4">
-        <div className="flex flex-col md:flex-row md:justify-end mb-8">
-          <div className="md:w-2/3">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Features Designed for Your Relationship
-            </h2>
-            <p className="text-gray-300 max-w-3xl">
-              Explore how HouseBoard's features can bring you closer.
-            </p>
-          </div>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Features Designed for Your Relationship
+          </h2>
+          <p className="text-gray-300 mx-auto max-w-2xl">
+            Explore how HouseBoard's features can bring you closer.
+          </p>
         </div>
 
         <div className="flex flex-col gap-10 max-w-6xl mx-auto">
@@ -63,7 +61,7 @@ const FeatureSection: React.FC = () => {
               className={`overflow-hidden transition-all duration-300 hover:shadow-md card-hover flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
             >
               <div className="md:w-1/2 flex justify-center p-6">
-                <div className="relative w-full max-w-xs shadow-sm rounded-md overflow-hidden house-window">
+                <div className="relative w-full max-w-xs rounded-md overflow-hidden house-window">
                   {feature.mockupImage && (
                     <img 
                       src={feature.mockupImage} 

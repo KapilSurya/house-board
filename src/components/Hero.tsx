@@ -10,23 +10,23 @@ const Hero: React.FC = () => {
       
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-6 relative z-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">
             A safe home for a stronger relationship.
           </h1>
-          <p className="text-lg md:text-xl opacity-90">
+          <p className="text-lg md:text-xl text-gray-300">
             Communicate effortlessly, build lasting habits, reflect on your journey. Built with your privacy in mind.
           </p>
           <div className="pt-4 flex flex-col sm:flex-row gap-4">
             <Button 
               size="lg" 
-              className="bg-white text-houseboard-dark hover:bg-gray-100 text-lg px-8 py-6 transition-all duration-300 hover:shadow-xl"
+              className="bg-houseboard-medium hover:bg-houseboard-dark text-white text-lg px-8 py-6 transition-all duration-300 hover:shadow-xl"
             >
               Join Us Now
             </Button>
           </div>
         </div>
 
-        <div className="rounded-lg overflow-hidden relative house-window p-3">
+        <div className="relative house-window rounded-lg overflow-hidden">
           {/* Candle light effect in corner */}
           <div className="absolute bottom-3 right-3 candle-light" style={{ width: '15px', height: '15px' }}></div>
           
@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
               src="/lovable-uploads/0327d977-13e0-4510-999c-ce78dce08e19.png"
               alt="HouseBoard Home Screen"
               className="w-full h-auto rounded-md"
-              style={{ maxWidth: "110%" }}
+              style={{ maxWidth: "120%" }}
             />
           </div>
         </div>
