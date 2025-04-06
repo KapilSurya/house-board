@@ -10,7 +10,7 @@ const FeatureSection: React.FC = () => {
       icon: <Heart className="h-6 w-6 text-[#ffd54f]" />,
       title: 'Build Healthy Habits',
       description: 'Strengthen your bond by building habits like spending quality time, showing gratitude, and setting shared goals, making your chats more meaningful and connected',
-      mockupImage: '/lovable-uploads/featureHabitsImage.png',
+      mockupImage: '/lovable-uploads/habits.png',
       imageAlt: 'Choose habits interface showing gratitude and quality time options'
     },
     {
@@ -18,7 +18,7 @@ const FeatureSection: React.FC = () => {
       icon: <BookOpen className="h-6 w-6 text-[#ffd54f]" />,
       title: 'Your Relationship Log',
       description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you\'ve grown as a couple',
-      mockupImage: '/lovable-uploads/relationshipLogImage.png',
+      mockupImage: '/lovable-uploads/relationshipLog.png',
       imageAlt: 'Relationship log showing a quality time entry with a meaningful conversation'
     },
     {
@@ -26,7 +26,7 @@ const FeatureSection: React.FC = () => {
       icon: <Bell className="h-6 w-6 text-[#ffd54f]" />,
       title: 'Nudge for What Matters',
       description: 'Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don\'t fall through the cracks',
-      mockupImage: '/lovable-uploads/0327d977-13e0-4510-999c-ce78dce08e19.png',
+      mockupImage: '/lovable-uploads/nudge.png',
       imageAlt: 'Interface for sending gentle nudges to your partner'
     },
     {
@@ -34,7 +34,7 @@ const FeatureSection: React.FC = () => {
       icon: <LineChart className="h-6 w-6 text-[#ffd54f]" />,
       title: 'Mood & Status Tracking',
       description: 'Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other',
-      mockupImage: '/lovable-uploads/moodscreenImage.png',
+      mockupImage: '/lovable-uploads/mood.png',
       imageAlt: 'Mood tracking interface showing happy, sad, and loved emotions'
     }
   ];
