@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import NewsletterDialog from './NewsletterDialog';
@@ -7,7 +6,7 @@ const Hero: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg card-hover text-white relative">
+    <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-[#1f3b4c] text-white relative">
       {/* String lights decoration */}
       <div className="string-lights"></div>
       
@@ -20,15 +19,12 @@ const Hero: React.FC = () => {
             Communicate effortlessly, build lasting habits, reflect on your journey. Built with your privacy in mind.
           </p>
           <div className="space-y-4">
-            
-            
             <Button 
               onClick={() => setDialogOpen(true)}
               className="newsletter-join-button bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300"
             >
               Join Us Now
             </Button>
-            
             <p className="text-sm md:text-base text-gray-300 max-w-md">
               Gain exclusive free access
             </p>
