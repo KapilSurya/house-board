@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
   const { theme } = useTheme();
 
   return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-[#1f3b4c] text-white relative">
+    <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-[#D6E6F2] text-white relative">
       {/* String lights decoration */}
       <div className="string-lights"></div>
 
@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
 
           <div className="relative bg-transparent rounded-lg max-w-sm mx-auto">
             <img
-              src={theme === 'light' ? "/lovable-uploads/lightHouse.png" : "/lovable-uploads/house.png"}
+              src={theme === 'light' ? "/lovable-uploads/lightHouse.jpg" : "/lovable-uploads/house.png"}
               alt="HouseBoard Home Screen"
               className="w-full h-auto rounded-md"
               style={{ maxWidth: "120%" }}
