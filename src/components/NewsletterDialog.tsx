@@ -76,7 +76,9 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md bg-houseboard-dark border-houseboard-medium">
         <DialogHeader>
-          <DialogTitle className="text-2xl text-white">Join HouseBoard</DialogTitle>
+          <DialogTitle className={`text-2xl ${theme === 'light' ? 'text-white' : 'text-white'}`}>
+            Join HouseBoard
+          </DialogTitle>
           <DialogDescription className="text-gray-300">
             Be the first to try HouseBoard and unlock exclusive perks —
             <span className="text-white font-medium"> early access</span>,
@@ -109,7 +111,7 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
             href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" 
             target="_blank" 
             rel="noopener noreferrer"
-            className={`flex items-center gap-2 ${theme === 'light' ? 'text-[#2C3D59]' : 'text-[#43B3AE]'} hover:text-white transition-all duration-300 transform hover:scale-105 font-medium`}
+            className={`flex items-center gap-2 ${theme === 'light' ? 'text-white' : 'text-[#43B3AE]'} hover:text-white transition-all duration-300 transform hover:scale-105 font-medium`}
           >
             <MessageCircle className="h-4 w-4" />
             Join our WhatsApp community

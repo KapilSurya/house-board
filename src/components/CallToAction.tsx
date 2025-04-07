@@ -1,7 +1,7 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import NewsletterDialog from './NewsletterDialog';
+import { MessageCircle } from "lucide-react";
 
 const CallToAction: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -16,32 +16,33 @@ const CallToAction: React.FC = () => {
           Start your journey to a more connected, meaningful relationship.
           HouseBoard gives you the tools to strengthen your bond every day.
         </p>
-        
+
         <div className="max-w-md mx-auto">
           <p className="text-base md:text-lg opacity-80 mb-6">
-            Be the first to test HouseBoard and gain super cool benefits from free premiums to customized incentives.
+            Be the first to explore HouseBoard and unlock exclusive benefits — free premium access, early feature trials, and personalized tools just for you.
           </p>
-          
+
           <Button 
             onClick={() => setDialogOpen(true)}
             className="bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300 px-8 py-6 text-lg"
           >
             Join Us Now
           </Button>
-          
+
           <NewsletterDialog 
             open={dialogOpen}
             onOpenChange={setDialogOpen}
           />
-          
+
           <div className="mt-6 flex items-center justify-center gap-4 text-sm text-gray-300">
             <span>or</span>
             <a 
               href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[#43B3AE] hover:text-white transition-colors"
+              className="flex items-center gap-2 text-[#2C3D59] hover:text-white transition-all duration-300 transform hover:scale-105"
             >
+              <MessageCircle className="h-4 w-4" />
               Join our WhatsApp community
             </a>
           </div>
