@@ -107,7 +107,7 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
             href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-[#2C3D59] hover:text-white transition-all duration-300 transform hover:scale-105"
+            className="flex items-center gap-2 text-[#2C3D59] hover:text-white transition-all duration-300 transform hover:scale-105 font-medium"
           >
             <MessageCircle className="h-4 w-4" />
             Join our WhatsApp community
