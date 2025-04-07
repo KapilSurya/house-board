@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,6 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { MessageCircle } from "lucide-react";
 
 interface NewsletterDialogProps {
   open: boolean;
@@ -76,10 +76,13 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
         <DialogHeader>
           <DialogTitle className="text-2xl text-white">Join HouseBoard</DialogTitle>
           <DialogDescription className="text-gray-300">
-            Be the first to test HouseBoard and gain super cool benefits from free premiums to customized incentives.
+            Be the first to try HouseBoard and unlock exclusive perks —
+            <span className="text-white font-medium"> early access</span>,
+            <span className="text-white font-medium"> free premium membership</span>,
+            and <span className="text-white font-medium">customized features</span> built just for you.
           </DialogDescription>
         </DialogHeader>
-        
+
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Input
             type="email"
@@ -97,15 +100,16 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
             {isSubmitting ? "Joining..." : "Join Us Now"}
           </Button>
         </form>
-        
-        <div className="flex items-center justify-center gap-4 text-sm text-gray-300 mt-4">
+
+        <div className="flex items-center justify-center gap-3 text-sm text-gray-300 mt-5">
           <span>or</span>
           <a 
             href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-[#ffd54f] hover:text-white transition-colors"
+            className="flex items-center gap-2 text-[#2C3D59] hover:text-white transition-all duration-300 transform hover:scale-105"
           >
+            <MessageCircle className="h-4 w-4" />
             Join our WhatsApp community
           </a>
         </div>

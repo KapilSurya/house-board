@@ -20,9 +20,7 @@ const Hero: React.FC = () => {
             Communicate effortlessly, build lasting habits, reflect on your journey. Built with your privacy in mind.
           </p>
           <div className="space-y-4">
-            <p className="text-sm md:text-base text-gray-300 max-w-md">
-              Be the first to test HouseBoard and gain super cool benefits from free premiums to customized incentives.
-            </p>
+            
             
             <Button 
               onClick={() => setDialogOpen(true)}
@@ -31,6 +29,10 @@ const Hero: React.FC = () => {
               Join Us Now
             </Button>
             
+            <p className="text-sm md:text-base text-gray-300 max-w-md">
+              Gain exclusive free access
+            </p>
+
             <NewsletterDialog 
               open={dialogOpen}
               onOpenChange={setDialogOpen}
