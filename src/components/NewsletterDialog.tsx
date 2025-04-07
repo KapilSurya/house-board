@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { MessageCircle, WhatsApp } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { useTheme } from '@/contexts/ThemeContext';
 
 interface NewsletterDialogProps {
@@ -112,7 +111,7 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
             rel="noopener noreferrer"
             className={`flex items-center gap-2 ${theme === 'light' ? 'text-[#2C3D59]' : 'text-[#43B3AE]'} hover:text-white transition-all duration-300 transform hover:scale-105 font-medium`}
           >
-            <WhatsApp className="h-4 w-4" />
+            <MessageCircle className="h-4 w-4" />
             Join our WhatsApp community
           </a>
         </div>
