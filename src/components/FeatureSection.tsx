@@ -64,14 +64,14 @@ const FeatureSection: React.FC = () => {
               key={feature.id}
               className={`overflow-hidden transition-all duration-300 hover:shadow-md card-hover flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
             >
-              <div className="md:w-2/5 flex justify-center p-4">
-                <div className="relative w-full max-w-xs rounded-md overflow-hidden">
+              <div className="md:w-1/2 flex justify-center p-6">
+                <div className="relative w-full max-w-md rounded-md overflow-hidden">
                   {feature.mockupImage && (
                     <img 
                       src={feature.mockupImage} 
                       alt={feature.imageAlt || `${feature.title} illustration`} 
                       className="w-full h-auto object-contain" 
-                      style={{ maxHeight: '260px', width: '100%' }}
+                      style={{ maxHeight: '320px', width: '100%' }}
                     />
                   )}
                   
@@ -83,7 +83,7 @@ const FeatureSection: React.FC = () => {
                   )}
                 </div>
               </div>
-              <div className="md:w-3/5 flex flex-col justify-between p-6">
+              <div className="md:w-1/2 flex flex-col justify-between p-6">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     {feature.icon}

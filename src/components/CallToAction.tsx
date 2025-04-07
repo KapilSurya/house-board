@@ -24,7 +24,7 @@ const CallToAction: React.FC = () => {
           
           <Button 
             onClick={() => setDialogOpen(true)}
-            className="bg-houseboard-medium hover:bg-[#ffd54f] hover:text-houseboard-dark transition-colors duration-300 px-8 py-6 text-lg"
+            className="bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300 px-8 py-6 text-lg"
           >
             Join Us Now
           </Button>
@@ -40,7 +40,7 @@ const CallToAction: React.FC = () => {
               href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[#ffd54f] hover:text-white transition-colors"
+              className="text-[#43B3AE] hover:text-white transition-colors"
             >
               Join our WhatsApp community
             </a>

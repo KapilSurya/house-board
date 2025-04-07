@@ -21,10 +21,19 @@ const WhoIsItFor: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Define light mode specific styles for cards
+  const beforeCardClass = theme === 'dark' 
+    ? 'gradient-bg opacity-90' 
+    : 'bg-gray-200 opacity-95';
+  
+  const afterCardClass = theme === 'dark'
+    ? 'gradient-bg'
+    : 'bg-gray-100';
+
   return (
     <section id="who-is-it-for" className="py-20 relative" ref={sectionRef}>
       {/* Add a shelf decoration */}
-      <div className="shelf absolute top-0 left-0 right-0"></div>
+      <div className={`shelf absolute top-0 left-0 right-0 ${theme === 'light' ? 'opacity-70' : ''}`}></div>
       
       <div className="container mx-auto px-4 max-w-5xl pt-6">
         <div className={`transition-all duration-700 ease-in-out ${isScrollVisible ? 'opacity-100' : 'opacity-0'}`}>
@@ -39,13 +48,13 @@ const WhoIsItFor: React.FC = () => {
 
           {/* Side-by-Side Card View with better alignment */}
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
-            {/* Before View - Made larger and duller */}
-            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col md:col-span-1 md:scale-110 md:-mr-6 z-10 opacity-90" 
+            {/* Before View - Made larger but not overlapping */}
+            <div className={`card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col md:col-span-1 md:scale-105 z-10 ${beforeCardClass}`} 
                  style={{ filter: theme === 'dark' ? 'saturate(0.7) brightness(0.9)' : 'saturate(0.8)' }}>
-              <h3 className="text-2xl font-semibold mb-4 flex items-center text-white">
+              <h3 className={`text-2xl font-semibold mb-4 flex items-center ${theme === 'dark' ? 'text-white' : 'text-[#2C3D59]'}`}>
                 <span className="mr-2">💔</span> Before HouseBoard
               </h3>
-              <ul className="space-y-3 text-gray-300 list-disc pl-5 mb-6">
+              <ul className={`space-y-3 list-disc pl-5 mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                 <li>Misunderstandings turn into silence.</li>
                 <li>Emotions stay bottled up.</li>
                 <li>Busyness replaces closeness.</li>
@@ -66,11 +75,11 @@ const WhoIsItFor: React.FC = () => {
             </div>
 
             {/* After View */}
-            <div className="gradient-bg card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col md:col-span-1 md:-ml-6">
-              <h3 className="text-2xl font-semibold mb-4 flex items-center text-white">
+            <div className={`card-hover rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl h-full flex flex-col md:col-span-1 ${afterCardClass}`}>
+              <h3 className={`text-2xl font-semibold mb-4 flex items-center ${theme === 'dark' ? 'text-white' : 'text-[#2C3D59]'}`}>
                 <span className="mr-2">❤️</span> After HouseBoard
               </h3>
-              <ul className="space-y-3 text-gray-300 list-disc pl-5 mb-6">
+              <ul className={`space-y-3 list-disc pl-5 mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                 <li>Share how you feel in seconds — even when words fail.</li>
                 <li>Build healthy, loving habits without effort.</li>
                 <li>Keep track of each other's moods, goals, and little wins.</li>

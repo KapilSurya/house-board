@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
             
             <Button 
               onClick={() => setDialogOpen(true)}
-              className="newsletter-join-button bg-houseboard-medium hover:bg-[#ffd54f] hover:text-houseboard-dark transition-colors duration-300"
+              className="newsletter-join-button bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300"
             >
               Join Us Now
             </Button>

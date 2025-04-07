@@ -48,14 +48,14 @@
     --house-wall-blue: #1e3d4c;
     --house-light-blue: #2e4e5f;
     --house-wood: #5d4037;
-    --house-light: #43B3AE; /* Changed to teal from yellow */
+    --house-light: #43B3AE; /* Teal accent color */
     
     /* Light mode variables */
     --house-light-deep-blue: #487BD4;
     --house-light-wall-blue: #6A94E2;
     --house-light-light-blue: #8AABEA;
     --house-light-wood: #A47A51;
-    --house-light-accent: #2C3D59; /* Changed to dark blue */
+    --house-light-accent: #2C3D59; /* Dark blue for text */
     --house-light-text: #2C3D59; /* Dark blue for text */
     --house-light-card-bg: #f5f5f5; /* Light gray/cream for card backgrounds */
   }
@@ -157,6 +157,7 @@
   
   .light-mode body {
     background-color: var(--house-light-deep-blue);
+    opacity: 0.95; /* Slightly desaturated background */
   }
   
   .light-mode .gradient-bg {
@@ -170,6 +171,7 @@
   
   .light-mode .shelf {
     background-color: var(--house-light-wood);
+    opacity: 0.8; /* Desaturated wood divider */
   }
   
   .light-mode .text-gradient {
@@ -228,7 +230,7 @@
 
 .moon {
   position: fixed;
-  top: 150px; /* Moved down to avoid navbar overlap */
+  top: 180px; /* Moved down to avoid navbar overlap */
   right: 50px;
   width: 40px;
   height: 40px;
