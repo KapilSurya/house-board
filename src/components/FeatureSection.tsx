@@ -43,12 +43,11 @@ const FeatureSection: React.FC = () => {
   ];
 
   return (
-    <section id="features" className="py-16 relative">
-      {/* Shelf decoration at the top */}
+    <section id="features" className="py-20 relative">
       <div className="shelf absolute top-0 left-0 right-0"></div>
 
-      <div className="container mx-auto px-4 pt-4">
-        <div className="text-center mb-12">
+      <div className="container mx-auto px-4 pt-8">
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Features Designed for Your Relationship
           </h2>
@@ -57,20 +56,20 @@ const FeatureSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex flex-col gap-8 max-w-6xl mx-auto">
+        <div className="flex flex-col gap-14 max-w-6xl mx-auto">
           {features.map((feature, index) => (
             <Card
               key={feature.id}
-              className={`overflow-hidden transition-all duration-300 hover:shadow-md card-hover flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+              className={`overflow-hidden transition-all duration-300 hover:shadow-md card-hover flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'} p-6 rounded-3xl`}
             >
-              <div className="md:w-1/2 flex justify-center p-6">
-                <div className="relative w-full max-w-xl rounded-md overflow-hidden">
+              <div className="md:w-1/2 flex justify-center px-6 py-8">
+                <div className="relative w-full max-w-2xl rounded-md overflow-hidden">
                   {feature.mockupImage && (
                     <img
                       src={feature.mockupImage}
                       alt={feature.imageAlt || `${feature.title} illustration`}
                       className="w-full h-auto object-contain"
-                      style={{ maxHeight: '420px', width: '100%' }}
+                      style={{ maxHeight: '500px', width: '100%' }}
                     />
                   )}
 
@@ -82,9 +81,9 @@ const FeatureSection: React.FC = () => {
                   )}
                 </div>
               </div>
-              <div className="md:w-1/2 flex flex-col justify-between p-6">
+              <div className="md:w-1/2 flex flex-col justify-center p-6">
                 <div>
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center gap-3 mb-5">
                     {feature.icon}
                     <CardTitle className={`text-2xl md:text-3xl ${textColor}`}>{feature.title}</CardTitle>
                   </div>
