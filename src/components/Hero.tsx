@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import NewsletterDialog from './NewsletterDialog';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Hero: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const { theme } = useTheme();
 
   return (
     <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-[#1f3b4c] text-white relative">
       {/* String lights decoration */}
       <div className="string-lights"></div>
-      
+
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-6 relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">
@@ -39,10 +41,10 @@ const Hero: React.FC = () => {
         <div className="relative overflow-hidden rounded-lg">
           {/* Candle light effect in corner */}
           <div className="absolute bottom-3 right-3 candle-light" style={{ width: '15px', height: '15px' }}></div>
-          
+
           <div className="relative bg-transparent rounded-lg max-w-sm mx-auto">
             <img
-              src="/lovable-uploads/house.png"
+              src={theme === 'light' ? "/lovable-uploads/lightHouse.png" : "/lovable-uploads/house.png"}
               alt="HouseBoard Home Screen"
               className="w-full h-auto rounded-md"
               style={{ maxWidth: "120%" }}
