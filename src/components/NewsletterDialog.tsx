@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,7 +11,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, WhatsApp } from "lucide-react";
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface NewsletterDialogProps {
   open: boolean;
@@ -23,6 +25,7 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
 }) => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { theme } = useTheme();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,7 +97,7 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
           />
           <Button 
             type="submit" 
-            className="bg-houseboard-medium hover:bg-[#ffd54f] hover:text-houseboard-dark transition-colors duration-300"
+            className={`${theme === 'light' ? 'text-white' : ''} bg-houseboard-medium hover:bg-[#43B3AE] hover:text-white transition-colors duration-300`}
             disabled={isSubmitting}
           >
             {isSubmitting ? "Joining..." : "Join Us Now"}
@@ -107,9 +110,9 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
             href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-[#2C3D59] hover:text-white transition-all duration-300 transform hover:scale-105 font-medium"
+            className={`flex items-center gap-2 ${theme === 'light' ? 'text-[#2C3D59]' : 'text-[#43B3AE]'} hover:text-white transition-all duration-300 transform hover:scale-105 font-medium`}
           >
-            <MessageCircle className="h-4 w-4" />
+            <WhatsApp className="h-4 w-4" />
             Join our WhatsApp community
           </a>
         </div>
