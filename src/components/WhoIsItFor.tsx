@@ -45,9 +45,9 @@ const WhoIsItFor: React.FC = () => {
 
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
             {/* Before View */}
-            <div className={`card-hover rounded-3xl p-8 shadow-md transition-all duration-300 h-full flex flex-col md:col-span-1 md:scale-100 z-10 ${beforeCardClass}`}>
+            <div className={`card-hover rounded-3xl p-8 shadow-md transition-all duration-300 h-full flex flex-col md:scale-[1.05] z-10 ${beforeCardClass}`}>
               <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                <span className="mr-2">💔</span> Before HouseBoard
+                <span className="mr-2 animate-pulse">💔</span> Before HouseBoard
               </h3>
               <ul className="space-y-3 list-disc pl-5 mb-6">
                 <li>Misunderstandings turn into silence.</li>
@@ -69,9 +69,9 @@ const WhoIsItFor: React.FC = () => {
             </div>
 
             {/* After View */}
-            <div className={`card-hover rounded-3xl p-8 shadow-md hover:shadow-lg hover:scale-[1.01] transition-all duration-300 h-full flex flex-col md:col-span-1 ${afterCardClass}`}>
+            <div className={`card-hover rounded-3xl p-8 shadow-md hover:shadow-lg hover:scale-[1.01] transition-all duration-300 h-full flex flex-col ${afterCardClass}`}>
               <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                <span className="mr-2">❤️</span> After HouseBoard
+                <span className="mr-2 animate-pulse">❤️</span> After HouseBoard
               </h3>
               <ul className="space-y-3 list-disc pl-5 mb-6">
                 <li>Share how you feel in seconds — even when words fail.</li>
