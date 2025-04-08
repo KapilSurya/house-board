@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
             </Button>
             
             <p className="text-sm md:text-base text-gray-300 max-w-md">
-              Gain exclusive free access
+              Gain free exclusive access
             </p>
 
             <NewsletterDialog 
