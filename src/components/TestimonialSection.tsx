@@ -4,7 +4,7 @@ import React from 'react';
 const testimonials = [
   {
     name: "Sarah & Mike",
-    quote: "HouseBoard has transformed how we communicate. We're more in tune with each other's feelings than ever before.",
+    quote: "HiveIn has transformed how we communicate. We're more in tune with each other's feelings than ever before.",
     image: "/placeholder.svg"
   },
   {

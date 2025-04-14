@@ -37,7 +37,7 @@ const WhoIsItFor: React.FC = () => {
         <div className={`transition-all duration-700 ease-in-out ${isScrollVisible ? 'opacity-100' : 'opacity-0'}`}>
           <div className="text-center mb-12">
             <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-[#2C3D59]'}`}>
-              Who is HouseBoard For?
+              Who is HiveIn For?
             </h2>
             <p className={`max-w-2xl mx-auto mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
               Even the strongest relationships face challenges. Misunderstandings grow, emotions go unspoken, and staying connected feels harder than it should.
@@ -48,7 +48,7 @@ const WhoIsItFor: React.FC = () => {
             {/* Before View */}
             <div className={`card-hover rounded-3xl p-8 shadow-md transition-all duration-300 h-full flex flex-col md:scale-[1.05] z-10 ${beforeCardClass}`}>
               <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                <span className="mr-2 animate-pulse">💔</span> Before HouseBoard
+                <span className="mr-2 animate-pulse">💔</span> Before HiveIn
               </h3>
               <ul className="space-y-3 list-disc pl-5 mb-6">
                 <li>Misunderstandings turn into silence.</li>
@@ -60,7 +60,7 @@ const WhoIsItFor: React.FC = () => {
                 <div className="h-full flex items-center justify-center">
                   <img 
                     src="/lovable-uploads/before.png"
-                    alt="Before HouseBoard - Communication challenges"
+                    alt="Before HiveIn - Communication challenges"
                     className="w-full h-auto object-contain"
                     style={{ maxHeight: "300px" }}
                   />
@@ -69,10 +69,10 @@ const WhoIsItFor: React.FC = () => {
               </div>
             </div>
 
-            {/* After View - changed to "With HouseBoard" */}
+            {/* After View - changed to "With HiveIn" */}
             <div className={`card-hover rounded-3xl p-8 shadow-md hover:shadow-lg transition-all duration-300 h-full flex flex-col ${afterCardClass}`}>
               <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                <span className="mr-2 animate-pulse">❤️</span> With HouseBoard
+                <span className="mr-2 animate-pulse">❤️</span> With HiveIn
               </h3>
               <ul className="space-y-3 list-disc pl-5 mb-6">
                 <li>Share how you feel in seconds — even when words fail.</li>
@@ -84,7 +84,7 @@ const WhoIsItFor: React.FC = () => {
                 <div className="h-full flex items-center justify-center">
                   <img 
                     src="/lovable-uploads/after.png"
-                    alt="With HouseBoard - Connected relationship"
+                    alt="With HiveIn - Connected relationship"
                     className="w-full h-auto object-contain"
                     style={{ maxHeight: "300px" }}
                   />

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import NewsletterDialog from './NewsletterDialog';
@@ -14,12 +15,12 @@ const CallToAction: React.FC = () => {
         </h2>
         <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-8">
           Start your journey to a more connected, meaningful relationship.
-          HouseBoard gives you the tools to strengthen your bond every day.
+          HiveIn gives you the tools to strengthen your bond every day.
         </p>
 
         <div className="max-w-md mx-auto">
           <p className="text-base md:text-lg opacity-80 mb-6">
-            Be the first to explore HouseBoard and unlock exclusive benefits — free premium access, early feature trials, and personalized tools just for you.
+            Be the first to explore HiveIn and unlock exclusive benefits — free premium access, early feature trials, and personalized tools just for you.
           </p>
 
           <Button 

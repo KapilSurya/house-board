@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, BookOpen, Bell, LineChart } from 'lucide-react';
@@ -52,7 +53,7 @@ const FeatureSection: React.FC = () => {
             Features Designed for Your Relationship
           </h2>
           <p className="text-gray-300 mx-auto max-w-2xl text-lg">
-            Explore how HouseBoard's features can bring you closer.
+            Explore how HiveIn's features can bring you closer.
           </p>
         </div>
 

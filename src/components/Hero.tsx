@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
             <div className="p-4 rounded-lg bg-white/10 border border-white/20 max-w-md">
               <p className="text-sm text-gray-200">
                 ✨ Want to help build the future of relationships?
-                Join our WhatsApp community and become a HouseBoard insider.
+                Join our WhatsApp community and become a HiveIn insider.
               </p>
               
               <div className="mt-4">
@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
           <div className="relative bg-transparent rounded-lg max-w-sm mx-auto">
             <img
               src="/lovable-uploads/house.png"
-              alt="HouseBoard Home Screen"
+              alt="HiveIn Home Screen"
               className="w-full h-auto rounded-md"
               style={{ maxWidth: "120%" }}
             />

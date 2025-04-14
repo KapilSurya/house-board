@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center">
           <h1 className="text-2xl font-bold text-white">
-            House<span className="text-[#43B3AE]">Board</span>
+            Hive<span className="text-[#43B3AE]">In</span>
           </h1>
         </div>
         
