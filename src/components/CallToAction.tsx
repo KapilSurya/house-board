@@ -14,21 +14,16 @@ const CallToAction: React.FC = () => {
           Build Your Dream Relationship
         </h2>
         <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-8">
-          Start your journey to a more connected, meaningful relationship.
-          HiveIn gives you the tools to strengthen your bond every day.
+        Want to help build the future of relationships?
+        Join our WhatsApp community and become a HouseBoard insider
         </p>
 
         <div className="max-w-md mx-auto">
           <p className="text-base md:text-lg opacity-80 mb-6">
-            Be the first to explore HiveIn and unlock exclusive benefits — free premium access, early feature trials, and personalized tools just for you.
+          ✅ Get early access + free premium
+✅ Request features that fit your love story
+✅ Be part of fun activities that influence how HouseBoard grows
           </p>
-
-          <Button 
-            onClick={() => setDialogOpen(true)}
-            className="bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300 px-8 py-6 text-lg"
-          >
-            Join Us Now
-          </Button>
 
           <NewsletterDialog 
             open={dialogOpen}
@@ -41,9 +36,9 @@ const CallToAction: React.FC = () => {
               href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-[#ffffff]"
+              className={`flex items-center gap-2 px-4 py-3 rounded-md bg-[#25D366] text-white font-medium hover:bg-[#128C7E] transition-all duration-300 transform hover:scale-105 w-full justify-center`}
             >
-              <MessageCircle className="h-4 w-4" />
+              <MessageCircle className="h-5 w-5" />
               Join our WhatsApp community
             </a>
           </div>

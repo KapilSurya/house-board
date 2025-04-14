@@ -36,10 +36,6 @@ const Hero: React.FC = () => {
               </div>
             </div>
 
-            <p className="text-sm text-gray-300 max-w-md">
-              Get free premium, shape the product with your ideas, and build a relationship that thrives — all in one cozy corner.
-            </p>
-
             <NewsletterDialog 
               open={dialogOpen}
               onOpenChange={setDialogOpen}

@@ -12,32 +12,32 @@ const FeatureSection: React.FC = () => {
     {
       id: 'habits',
       icon: <Heart className={`h-6 w-6 ${textColor}`} />,
-      title: 'Build Healthy Habits',
-      description: 'Strengthen your bond by building habits like spending quality time, showing gratitude, and setting shared goals, making your chats more meaningful and connected',
+      title: 'Build healthy habits',
+      description: 'Deepen your bond with daily quality time, gratitude, and shared goals—making every chat count.',
       mockupImage: '/lovable-uploads/habits.png',
       imageAlt: 'Choose habits interface showing gratitude and quality time options'
     },
     {
       id: 'log',
       icon: <BookOpen className={`h-6 w-6 ${textColor}`} />,
-      title: 'Your Relationship Log',
-      description: 'Automatically track moods, habits, and milestones to cherish your journey together and see how you\'ve grown as a couple',
+      title: 'Your relationship log',
+      description: 'Capture moods, habits, and milestones—see your journey as a couple unfold beautifully.',
       mockupImage: '/lovable-uploads/log.png',
       imageAlt: 'Relationship log showing a quality time entry with a meaningful conversation'
     },
     {
       id: 'nudges',
       icon: <Bell className={`h-6 w-6 ${textColor}`} />,
-      title: 'Nudge for What Matters',
-      description: 'Send gentle, thoughtful nudges to stay connected without nagging, making sure important things don\'t fall through the cracks',
+      title: 'Nudge for what matters',
+      description: 'Send thoughtful reminders to check in, share, or reconnect—without feeling like a nag.',
       mockupImage: '/lovable-uploads/nudge.png',
       imageAlt: 'Interface for sending gentle nudges to your partner'
     },
     {
       id: 'mood',
       icon: <LineChart className={`h-6 w-6 ${textColor}`} />,
-      title: 'Mood & Status Tracking',
-      description: 'Express your feelings instantly with mood tracking, making communication effortless and ensuring you both stay in tune with each other',
+      title: 'Mood & status tracking',
+      description: 'Share how you feel in seconds—stay emotionally in sync without saying a word',
       mockupImage: '/lovable-uploads/mood.png',
       imageAlt: 'Mood tracking interface showing happy, sad, and loved emotions'
     }
