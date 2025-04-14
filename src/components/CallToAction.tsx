@@ -20,9 +20,9 @@ const CallToAction: React.FC = () => {
 
         <div className="max-w-md mx-auto">
           <p className="text-base md:text-lg opacity-80 mb-6">
-          ✅ Get early access + free premium
-✅ Request features that fit your love story
-✅ Be part of fun activities that influence how HouseBoard grows
+          <br>✅ Get early access + free premium</br>
+<br>✅ Request features that fit your love story</br>
+<br>✅ Be part of fun activities that influence how HouseBoard grows</br>
           </p>
 
           <NewsletterDialog 

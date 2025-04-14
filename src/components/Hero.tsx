@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-6 relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">
-            A safe space where love feels easy.
+            A safe home for stronger connection
           </h1>
           <p className="text-lg md:text-xl text-gray-300">
             Communicate effortlessly, build lasting habits, reflect on your journey. Built with your privacy in mind.
@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
             <div className="p-4 rounded-lg bg-white/10 border border-white/20 max-w-md">
               <p className="text-sm text-gray-200">
                 ✨ Want to help build the future of relationships?
-                Join our WhatsApp community and become a HiveIn insider.
+                   Join our WhatsApp community and become a HiveIn insider.
               </p>
               
               <div className="mt-4">

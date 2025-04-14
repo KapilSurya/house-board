@@ -3,18 +3,18 @@ import React from 'react';
 
 const testimonials = [
   {
-    name: "Sarah & Mike",
+    name: "Aarav & Meera",
     quote: "HiveIn has transformed how we communicate. We're more in tune with each other's feelings than ever before.",
     image: "/placeholder.svg"
   },
   {
-    name: "Jessica & Daniel",
+    name: "Rohan & Ananya",
     quote: "The habit tracking feature helped us prioritize quality time together despite our busy schedules.",
     image: "/placeholder.svg"
   },
   {
-    name: "Taylor & Jordan",
-    quote: "Sending nudges has become our inside joke - it's a playful way to ask for help without nagging.",
+    name: "Varun & Shreya",
+    quote: "We realised that love isn’t just about big moments—it’s about the small habits and routines that keep us connected every day.",
     image: "/placeholder.svg"
   }
 ];
@@ -53,7 +53,7 @@ const TestimonialSection: React.FC = () => {
               </div>
               <p className="text-gray-300 italic">"{testimonial.quote}"</p>
               <div className="mt-4 flex text-[#ffd54f]">
-                ★★★★★
+                
               </div>
             </div>
           ))}
