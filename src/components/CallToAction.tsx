@@ -14,15 +14,15 @@ const CallToAction: React.FC = () => {
           Build Your Dream Relationship
         </h2>
         <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-8">
-        Want to help build the future of relationships?
-        Join our WhatsApp community and become a HouseBoard insider
+          Want to help build the future of relationships?
+          Join our WhatsApp community and become a HiveIn insider
         </p>
 
         <div className="max-w-md mx-auto">
           <p className="text-base md:text-lg opacity-80 mb-6">
-          <br>✅ Get early access + free premium</br>
-<br>✅ Request features that fit your love story</br>
-<br>✅ Be part of fun activities that influence how HouseBoard grows</br>
+            ✅ Get early access + free premium<br />
+            ✅ Request features that fit your love story<br />
+            ✅ Be part of fun activities that influence how HiveIn grows
           </p>
 
           <NewsletterDialog 
