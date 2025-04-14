@@ -26,11 +26,11 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
       <DialogContent className="sm:max-w-md bg-houseboard-dark border-houseboard-medium">
         <DialogHeader>
           <DialogTitle className={`text-2xl ${theme === 'light' ? 'text-white' : 'text-white'}`}>
-            Join HiveIn Community
+            Join HouseBoard Community
           </DialogTitle>
           <DialogDescription className="text-gray-300">
             ✨ Want to help build the future of relationships?
-            Join our WhatsApp community and become a HiveIn insider.
+            Join our WhatsApp community and become a HouseBoard insider.
           </DialogDescription>
         </DialogHeader>
 
@@ -44,7 +44,7 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
                 <span className="mr-2 text-white">✅</span> Request features that fit your love story
               </li>
               <li className="flex items-start">
-                <span className="mr-2 text-white">✅</span> Be part of fun activities that influence how HiveIn grows
+                <span className="mr-2 text-white">✅</span> Be part of fun activities that influence how HouseBoard grows
               </li>
             </ul>
             <p className="text-sm text-gray-200 mt-2 italic">

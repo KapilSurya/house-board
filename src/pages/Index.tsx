@@ -5,7 +5,7 @@ import Hero from '@/components/Hero';
 import WhoIsItFor from '@/components/WhoIsItFor';
 import FeatureSection from '@/components/FeatureSection';
 import TestimonialSection from '@/components/TestimonialSection';
-import NewsletterForm from '@/components/NewsletterForm';
+import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 
 const Index: React.FC = () => {
@@ -17,11 +17,7 @@ const Index: React.FC = () => {
         <WhoIsItFor />
         <FeatureSection />
         <TestimonialSection />
-        <div className="py-16 gradient-bg">
-          <div className="container mx-auto px-4">
-            <NewsletterForm />
-          </div>
-        </div>
+        <CallToAction />
       </main>
       <Footer />
     </div>

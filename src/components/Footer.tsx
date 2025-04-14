@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-8 mb-8">
           <div className="animate-fade-in">
             <h3 className="text-xl font-bold mb-4 text-white">
-              HiveIn
+              HouseBoard
             </h3>
             <p className="text-gray-300 mb-4">
               A safe digital home for stronger relationships.
@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 text-gray-300">
               <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
                 <Mail size={18} className="text-[#ffd54f]" />
-                <a href="mailto:hello@hivein.app" className="hover:text-white transition-colors">hello@hivein.app</a>
+                <a href="mailto:hello@houseboard.app" className="hover:text-white transition-colors">hello@houseboard.app</a>
               </li>
               <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
                 <Phone size={18} className="text-[#ffd54f]" />
@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="border-t border-gray-700 pt-8 mt-8 text-center text-sm text-gray-400">
-          <p>© {new Date().getFullYear()} HiveIn. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} HouseBoard. All rights reserved.</p>
         </div>
       </div>
     </footer>

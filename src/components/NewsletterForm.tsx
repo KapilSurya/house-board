@@ -26,7 +26,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
           ✨ Want to help build the future of relationships?
         </p>
         <p className="text-sm text-gray-200 mb-4">
-          Join our WhatsApp community and become a HiveIn insider.
+          Join our WhatsApp community and become a HouseBoard insider.
         </p>
         <ul className="text-sm text-gray-200 mb-4 space-y-1">
           <li className="flex items-start">
@@ -36,7 +36,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
             <span className="mr-2 text-white">✅</span> Request features that fit your love story
           </li>
           <li className="flex items-start">
-            <span className="mr-2 text-white">✅</span> Be part of fun activities that influence how HiveIn grows
+            <span className="mr-2 text-white">✅</span> Be part of fun activities that influence how HouseBoard grows
           </li>
         </ul>
         <p className="text-sm text-gray-200 italic mb-4">
