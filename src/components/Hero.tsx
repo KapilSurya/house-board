@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import NewsletterDialog from './NewsletterDialog';
@@ -13,24 +14,51 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-6 relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">
-            A safe home for a stronger relationship.
+            A safe space where love feels easy.
           </h1>
           <p className="text-lg md:text-xl text-gray-300">
             Communicate effortlessly, build lasting habits, reflect on your journey. Built with your privacy in mind.
           </p>
-          <div className="space-y-4">
+          <div className="space-y-6">
+            <div className="p-4 rounded-lg bg-white/10 border border-white/20 max-w-md">
+              <p className="text-base text-white font-medium mb-2">
+                ✨ Want to help build the future of relationships?
+              </p>
+              <p className="text-sm text-gray-200 mb-4">
+                Join our WhatsApp community and become a HouseBoard insider.
+              </p>
+              <ul className="text-sm text-gray-200 mb-4 space-y-1">
+                <li className="flex items-start">
+                  <span className="mr-2 text-white">✅</span> Get early access + free premium
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2 text-white">✅</span> Request features that fit your love story
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2 text-white">✅</span> Be part of fun activities that influence how HouseBoard grows
+                </li>
+              </ul>
+              <p className="text-sm text-gray-200 italic">
+                All designed around you and your partner.
+              </p>
+            </div>
             
-            
-            <Button 
-              onClick={() => setDialogOpen(true)}
-              className="newsletter-join-button bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300"
-            >
-              Join Us Now
-            </Button>
-            
-            <p className="text-sm md:text-base text-gray-300 max-w-md">
-              Gain free exclusive access
-            </p>
+            <div>
+              <p className="text-sm text-gray-200 mb-2">
+                Join our private WhatsApp community for early access, perks & real influence.
+              </p>
+              
+              <Button 
+                onClick={() => setDialogOpen(true)}
+                className="newsletter-join-button bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300"
+              >
+                Join Us Now
+              </Button>
+              
+              <p className="text-sm mt-2 text-gray-300 max-w-md">
+                Get free premium, shape the product with your ideas, and build a relationship that thrives — all in one cozy corner.
+              </p>
+            </div>
 
             <NewsletterDialog 
               open={dialogOpen}

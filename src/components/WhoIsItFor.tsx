@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 
@@ -30,7 +31,7 @@ const WhoIsItFor: React.FC = () => {
 
   return (
     <section id="who-is-it-for" className="py-20 relative" ref={sectionRef}>
-      <div className={`shelf absolute top-0 left-0 right-0 ${theme === 'light' ? 'opacity-70' : ''}`}></div>
+      <div className={`shelf absolute top-0 left-0 right-0 ${theme === 'light' ? 'opacity-50' : ''}`}></div>
 
       <div className="container mx-auto px-4 max-w-5xl pt-6">
         <div className={`transition-all duration-700 ease-in-out ${isScrollVisible ? 'opacity-100' : 'opacity-0'}`}>
@@ -68,10 +69,10 @@ const WhoIsItFor: React.FC = () => {
               </div>
             </div>
 
-            {/* After View */}
-            <div className={`card-hover rounded-3xl p-8 shadow-md hover:shadow-lg hover:scale-[1.01] transition-all duration-300 h-full flex flex-col ${afterCardClass}`}>
+            {/* After View - changed to "With HouseBoard" */}
+            <div className={`card-hover rounded-3xl p-8 shadow-md hover:shadow-lg transition-all duration-300 h-full flex flex-col ${afterCardClass}`}>
               <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                <span className="mr-2 animate-pulse">❤️</span> After HouseBoard
+                <span className="mr-2 animate-pulse">❤️</span> With HouseBoard
               </h3>
               <ul className="space-y-3 list-disc pl-5 mb-6">
                 <li>Share how you feel in seconds — even when words fail.</li>
@@ -83,7 +84,7 @@ const WhoIsItFor: React.FC = () => {
                 <div className="h-full flex items-center justify-center">
                   <img 
                     src="/lovable-uploads/after.png"
-                    alt="After HouseBoard - Connected relationship"
+                    alt="With HouseBoard - Connected relationship"
                     className="w-full h-auto object-contain"
                     style={{ maxHeight: "300px" }}
                   />
