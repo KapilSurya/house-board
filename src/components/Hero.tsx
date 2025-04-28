@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-6 relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">
-          A home built to make love simple
+          A safe home for stronger love 
           </h1>
           <p className="text-lg md:text-xl text-gray-300">
             Communicate effortlessly, build lasting habits, reflect on your journey. Built with your privacy in mind.
