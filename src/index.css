@@ -6,30 +6,57 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
+
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
+
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
+
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
+
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
+
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
+
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
+
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
+
     --radius: 0.5rem;
 
-    --off-white: #E0E6ED;
-    --light-teal: #76D7C4;
-    --muted-yellow: #FFD54F;
-    --deep-blue: #0a1826;
-    --lighter-blue: #162536;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --house-deep-blue: #0a1826;
+    --house-wall-blue: #1e3d4c;
+    --house-light-blue: #2e4e5f;
+    --house-wood: #5d4037;
+    --house-light: #43B3AE; /* Teal accent color */
+    
+    /* Light mode variables */
+    --house-light-deep-blue: #487BD4;
+    --house-light-wall-blue: #6A94E2;
+    --house-light-light-blue: #8AABEA;
+    --house-light-wood: #A47A51;
+    --house-light-accent: #2C3D59; /* Dark blue for text */
+    --house-light-text: #2C3D59; /* Dark blue for text */
+    --house-light-card-bg: #f5f5f5; /* Light gray/cream for card backgrounds */
   }
 
   .dark {
@@ -77,12 +104,9 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
-    background-color: var(--deep-blue);
+    background: linear-gradient(135deg, #1d2b3a 0%, #2a4858 100%);
+    position: relative;
     font-family: 'DM Sans', sans-serif;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-[#E0E6ED];
   }
 
   body::before {
@@ -100,6 +124,72 @@
     pointer-events: none;
   }
 
+  /* Enhanced floating elements */
+  .floating-element {
+    position: fixed;
+    pointer-events: none;
+    animation: float 6s infinite ease-in-out;
+    opacity: 0.15;
+    z-index: -1;
+  }
+
+  .heart {
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle at center, #43B3AE, transparent);
+    clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+  }
+
+  .hexagon {
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle at center, #43B3AE, transparent);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Enhanced section styling */
+  .gradient-bg {
+    background: linear-gradient(135deg, #1d2b3a 0%, #2a4858 100%);
+    position: relative;
+  }
+
+  .gradient-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(67, 179, 174, 0.1) 0%, rgba(67, 179, 174, 0.05) 100%);
+    pointer-events: none;
+  }
+
+  /* Enhanced button styling */
+  .newsletter-join-button {
+    @apply bg-[#43B3AE] hover:bg-[#4DC4BF] text-white transition-all duration-300;
+    box-shadow: 0 0 15px rgba(67, 179, 174, 0.3);
+  }
+
+  .newsletter-join-button:hover {
+    box-shadow: 0 0 20px rgba(67, 179, 174, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Enhanced text styling */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, #43B3AE, #7CD6D2);
+  }
   .star {
     position: fixed;
     width: 2px;
@@ -125,13 +215,14 @@
     height: 3px;
   }
   
+  /* Light mode */
   .light-mode {
     color-scheme: light;
   }
   
   .light-mode body {
     background-color: var(--house-light-deep-blue);
-    opacity: 0.95;
+    opacity: 0.95; /* Slightly desaturated background */
   }
   
   .light-mode .gradient-bg {
@@ -145,7 +236,7 @@
   
   .light-mode .shelf {
     background-color: var(--house-light-wood);
-    opacity: 0.8;
+    opacity: 0.8; /* Desaturated wood divider */
   }
   
   .light-mode .text-gradient {
@@ -165,6 +256,7 @@
     color: var(--house-light-text);
   }
   
+  /* Dark mode */
   .dark-mode {
     color-scheme: dark;
   }
@@ -203,7 +295,7 @@
 
 .moon {
   position: fixed;
-  top: 180px;
+  top: 180px; /* Moved down to avoid navbar overlap */
   right: 50px;
   width: 40px;
   height: 40px;
@@ -221,7 +313,7 @@
 .card-hover {
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  background-color: var(--lighter-blue);
+  background-color: rgba(30, 61, 76, 0.8);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -307,6 +399,7 @@
   50% { transform: translateY(-5px); }
 }
 
+/* Add dynamic button hover effects */
 button, .btn-hover-effect {
   transition: all 0.3s ease;
 }
@@ -316,6 +409,7 @@ button:hover, .btn-hover-effect:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* House window styles - removed brown border frames */
 .house-window {
   position: relative;
   border-radius: 12px;
