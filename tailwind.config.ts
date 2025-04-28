@@ -12,10 +12,10 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
+      padding: "2rem",
       screens: {
-        '2xl': '1400px'
-      }
+        "2xl": "1400px",
+      },
     },
     extend: {
       colors: {
@@ -63,14 +63,18 @@ export default {
           ring: 'hsl(var(--sidebar-ring))'
         },
         houseboard: {
-          dark: '#0a1826',
-          medium: '#162536',
-          light: '#E0E6ED',
-          teal: '#43B3AE',
-          yellow: '#FFD54F',
-          peach: '#FFCBA4',
-          lavender: '#D7CFE2',
+          dark: '#052534',
+          medium: '#094663',
+          light: '#ffffff',
+          morning: '#487BD4',
         },
+        hivein: {
+          offwhite: "#E0E6ED",
+          teal: "#76D7C4",
+          yellow: "#FFD54F",
+          deepblue: "#0a1826",
+          lighterblue: "#162536",
+        }
       },
       borderRadius: {
         lg: 'var(--radius)',

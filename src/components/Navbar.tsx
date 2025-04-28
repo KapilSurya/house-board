@@ -12,27 +12,28 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 backdrop-blur-sm bg-gradient-to-b from-black/70 to-transparent">
+    <header className="fixed top-0 w-full z-50 bg-[#0a1826]/90 backdrop-blur-sm border-b border-[#162536]">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
           <img 
-            src="/lovable-uploads/bf904c21-ef0c-4190-97d4-9f3811f4a99a.png"
-            alt="HiveIn Logo"
-            className="h-8 w-8 mr-2"
+            src="/lovable-uploads/2d9cc7b6-e84f-42a6-bca6-4c5dbc89ce2f.png" 
+            alt="HiveIn Logo" 
+            className="h-8 w-auto"
           />
-          <h1 className="text-2xl font-bold text-[#E0E6ED]">
-            Hive<span className="text-[#43B3AE]">In</span>
+          <h1 className="text-2xl font-bold">
+            <span className="text-[#E0E6ED]">Hive</span>
+            <span className="text-[#76D7C4]">In</span>
           </h1>
         </div>
         
         <nav className="hidden md:flex space-x-8">
-          <a href="#features" className="text-[#E0E6ED] hover:text-[#43B3AE] transition-colors">
+          <a href="#features" className="text-[#E0E6ED] hover:text-[#76D7C4] transition-colors">
             Features
           </a>
-          <a href="#who-is-it-for" className="text-[#E0E6ED] hover:text-[#43B3AE] transition-colors">
+          <a href="#who-is-it-for" className="text-[#E0E6ED] hover:text-[#76D7C4] transition-colors">
             Who Is It For
           </a>
-          <a href="#testimonials" className="text-[#E0E6ED] hover:text-[#43B3AE] transition-colors">
+          <a href="#testimonials" className="text-[#E0E6ED] hover:text-[#76D7C4] transition-colors">
             Testimonials
           </a>
         </nav>
@@ -40,7 +41,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center gap-3">
           <ThemeToggle />
           <Button 
-            className="bg-[#43B3AE] text-[#0a1826] hover:bg-[#FFD54F] hover:text-[#0a1826] transition-colors duration-300"
+            className="bg-[#76D7C4] hover:bg-[#FFD54F] text-[#0a1826] font-medium transition-colors duration-300"
             onClick={handleOpenDialog}
           >
             Register Now
