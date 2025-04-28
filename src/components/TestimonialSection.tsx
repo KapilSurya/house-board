@@ -4,17 +4,17 @@ import React from 'react';
 const testimonials = [
   {
     name: "Aarav & Meera",
-    quote: "We often misunderstood each other’s moods, sometimes silence felt easier than trying to explain.",
+    quote: "HiveIn has transformed how we communicate. We're more in tune with each other's feelings than ever before.",
     image: "/placeholder.svg"
   },
   {
     name: "Rohan & Ananya",
-    quote: "We kept saying we’d spend more quality time together, but busy days turned into weeks without real connection.",
+    quote: "The habit tracking feature helped us prioritize quality time together despite our busy schedules.",
     image: "/placeholder.svg"
   },
   {
     name: "Varun & Shreya",
-    quote: "We realised that love isn’t just about big moments, it’s about the small habits and routines that keep us connected every day.",
+    quote: "We realised that love isn’t just about big moments—it’s about the small habits and routines that keep us connected every day.",
     image: "/placeholder.svg"
   }
 ];
@@ -27,7 +27,7 @@ const TestimonialSection: React.FC = () => {
       
       <div className="container mx-auto px-4 pt-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-          Those who build HiveIn
+          What Couples Are Saying
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
