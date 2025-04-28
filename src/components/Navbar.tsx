@@ -15,18 +15,23 @@ const Navbar: React.FC = () => {
   return (
     <header className="fixed top-0 w-full z-50 backdrop-blur-sm bg-gradient-to-b from-black/70 to-transparent">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
+          <img 
+            src="/lovable-uploads/8c253fbd-5ccb-40a0-8f63-5e01ae108072.png" 
+            alt="HiveIn Logo" 
+            className="w-8 h-8"
+          />
           <h1 className="text-2xl font-bold text-white">
             Hive<span className="text-[#43B3AE]">In</span>
           </h1>
         </div>
         
         <nav className="hidden md:flex space-x-8">
-          <a href="#features" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
-            Features
-          </a>
           <a href="#who-is-it-for" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
             Who Is It For
+          </a>
+          <a href="#features" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
+            Features
           </a>
           <a href="#testimonials" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
             Testimonials
