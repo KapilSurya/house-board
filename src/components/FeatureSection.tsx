@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, BookOpen, Bell, LineChart } from 'lucide-react';
@@ -6,7 +5,7 @@ import { useTheme } from '@/contexts/ThemeContext';
 
 const FeatureSection: React.FC = () => {
   const { theme } = useTheme();
-  const textColor = theme === 'dark' ? 'text-[#43B3AE]' : 'text-[#2C3D59]';
+  const textColor = 'text-white';
 
   const features = [
     {
@@ -74,7 +73,6 @@ const FeatureSection: React.FC = () => {
                     />
                   )}
 
-                  {/* Add candle light decoration for each feature */}
                   {index % 2 === 0 ? (
                     <div className="absolute bottom-2 right-2 candle-light" style={{ width: '15px', height: '15px' }}></div>
                   ) : (
@@ -86,7 +84,7 @@ const FeatureSection: React.FC = () => {
                 <div>
                   <div className="flex items-center gap-3 mb-5">
                     {feature.icon}
-                    <CardTitle className={`text-2xl md:text-3xl ${textColor}`}>{feature.title}</CardTitle>
+                    <CardTitle className="text-2xl md:text-3xl text-white">{feature.title}</CardTitle>
                   </div>
                   <CardContent className="p-0">
                     <p className="text-gray-300 text-base md:text-lg mb-6">{feature.description}</p>
