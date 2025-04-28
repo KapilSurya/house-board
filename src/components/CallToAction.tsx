@@ -7,7 +7,7 @@ const CallToAction: React.FC = () => {
   return <section id="cta" className="py-20 gradient-bg text-white">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Build Your Dream Relationship
+          Make love simple with HiveIn
         </h2>
         <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-8">
           Want to help build the future of relationships?
