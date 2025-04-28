@@ -12,56 +12,48 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 const queryClient = new QueryClient();
 
 const App = () => {
+  // Add stars to the background
   useEffect(() => {
     const starCount = 50;
-    const heartCount = 15;
-    const hexagonCount = 10;
     const container = document.body;
     
-    // Remove existing elements
-    const existingElements = document.querySelectorAll('.floating-element, .star, .moon');
-    existingElements.forEach(el => el.remove());
+    // Remove any existing stars to prevent duplicates on re-render
+    const existingStars = document.querySelectorAll('.star');
+    existingStars.forEach(star => star.remove());
+    
+    // Remove existing moon
+    const existingMoon = document.querySelector('.moon');
+    if (existingMoon) existingMoon.remove();
     
     // Create moon
     const moon = document.createElement('div');
     moon.className = 'moon';
-    moon.style.top = '180px';
+    // Position the moon lower to avoid navbar overlap
+    moon.style.top = '180px'; // Moved down even more
     container.appendChild(moon);
     
     // Create stars
     for (let i = 0; i < starCount; i++) {
       const star = document.createElement('div');
       star.className = `star star-${['small', 'medium', 'large'][Math.floor(Math.random() * 3)]}`;
+      
+      // Random position
       star.style.left = `${Math.random() * 100}vw`;
       star.style.top = `${Math.random() * 100}vh`;
+      
+      // Random twinkle animation
       star.style.animation = `flicker ${2 + Math.random() * 3}s infinite alternate`;
       star.style.animationDelay = `${Math.random() * 5}s`;
+      
       container.appendChild(star);
     }
     
-    // Create hearts
-    for (let i = 0; i < heartCount; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'floating-element heart';
-      heart.style.left = `${Math.random() * 100}vw`;
-      heart.style.top = `${Math.random() * 100}vh`;
-      heart.style.animationDelay = `${Math.random() * 5}s`;
-      container.appendChild(heart);
-    }
-    
-    // Create hexagons
-    for (let i = 0; i < hexagonCount; i++) {
-      const hexagon = document.createElement('div');
-      hexagon.className = 'floating-element hexagon';
-      hexagon.style.left = `${Math.random() * 100}vw`;
-      hexagon.style.top = `${Math.random() * 100}vh`;
-      hexagon.style.animationDelay = `${Math.random() * 5}s`;
-      container.appendChild(hexagon);
-    }
-    
+    // Cleanup function
     return () => {
-      const elements = document.querySelectorAll('.floating-element, .star, .moon');
-      elements.forEach(el => el.remove());
+      const stars = document.querySelectorAll('.star');
+      stars.forEach(star => star.remove());
+      const moon = document.querySelector('.moon');
+      if (moon) moon.remove();
     };
   }, []);
 
