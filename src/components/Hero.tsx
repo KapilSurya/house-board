@@ -14,11 +14,8 @@ const Hero: React.FC = () => {
             Communicate effortlessly, build lasting habits, reflect on your journey. Built with your privacy in mind.
           </p>
           <div className="space-y-4">
-            <div className="p-4 rounded-lg bg-white/10 border border-white/20 max-w-md">
-              <p className="text-sm text-gray-200">
-                ✨ Want to help build the future of relationships?
-                   Join our WhatsApp community and become a HiveIn insider.
-              </p>
+            <div className="p-4 rounded-lg border border-white/20 max-w-md bg-[#d8f0ff]">
+              <p className="text-sm text-gray-900">Want to help build the future of relationships? Join our WhatsApp community and become a HiveIn insider.</p>
               
               <div className="mt-4">
                 <Button onClick={() => setDialogOpen(true)} className="newsletter-join-button bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300">Shape HiveIn</Button>
