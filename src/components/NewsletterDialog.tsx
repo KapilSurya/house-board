@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface NewsletterDialogProps {
   open: boolean;
@@ -18,6 +19,8 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
   open, 
   onOpenChange 
 }) => {
+  const { theme } = useTheme();
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md bg-houseboard-dark border-houseboard-medium">
@@ -54,7 +57,7 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
               href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-3 rounded-md bg-[#25D366] text-white font-medium hover:bg-[#128C7E] transition-all duration-300 transform hover:scale-105 w-full justify-center"
+              className={`flex items-center gap-2 px-4 py-3 rounded-md bg-[#25D366] text-white font-medium hover:bg-[#128C7E] transition-all duration-300 transform hover:scale-105 w-full justify-center`}
             >
               <MessageCircle className="h-5 w-5" />
               Join our WhatsApp community

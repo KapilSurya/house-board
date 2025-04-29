@@ -7,21 +7,21 @@ const Hero: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg card-hover text-white relative">
+    <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-[#0a1826]/90 card-hover text-white relative">
       {/* String lights decoration */}
       <div className="string-lights"></div>
       
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-6 relative z-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">
-          A safe home for stronger love 
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
+            A safe home for <span className="text-[#43B3AE]">stronger love</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-300">
+          <p className="text-lg md:text-xl text-white">
             Communicate effortlessly, build lasting habits, reflect on your journey. Built with your privacy in mind.
           </p>
           <div className="space-y-4">
-            <div className="p-4 rounded-lg bg-white/10 border border-white/20 max-w-md">
-              <p className="text-sm text-gray-200">
+            <div className="p-4 rounded-lg bg-[#162536]/80 border border-white/20 max-w-md">
+              <p className="text-sm text-white">
                 ✨ Want to help build the future of relationships?
                    Join our WhatsApp community and become a HiveIn insider.
               </p>
@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
               <div className="mt-4">
                 <Button 
                   onClick={() => setDialogOpen(true)}
-                  className="newsletter-join-button bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300"
+                  className="newsletter-join-button bg-[#43B3AE] hover:bg-[#5ECCC7] text-white hover:text-[#0a1826] transition-colors duration-300"
                 >
                   Join Us Now
                 </Button>

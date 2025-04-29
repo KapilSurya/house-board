@@ -7,19 +7,18 @@ import { MessageCircle } from "lucide-react";
 const CallToAction: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   
-  return (
-    <section id="cta" className="py-20 gradient-bg text-white">
+  return <section id="cta" className="py-20 bg-[#162536] text-white">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-          Build Your Dream Relationship
+          Build Your <span className="text-[#FFD54F]">Dream Relationship</span>
         </h2>
-        <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-8">
+        <p className="text-lg md:text-xl text-white max-w-2xl mx-auto mb-8">
           Want to help build the future of relationships?
           Join our WhatsApp community and become a HiveIn insider
         </p>
 
         <div className="max-w-md mx-auto">
-          <p className="text-base opacity-90 mb-6 text-center mx-0 px-px py-0 my-[4px] font-normal md:text-base">
+          <p className="text-base text-white mb-6 text-center mx-0 px-px py-0 my-[4px] font-normal md:text-base">
             ✅ Get early access + free premium<br />
             ✅ Request features that fit your love story<br />
             ✅ Be part of fun activities that influence how HiveIn grows
@@ -27,18 +26,17 @@ const CallToAction: React.FC = () => {
 
           <NewsletterDialog open={dialogOpen} onOpenChange={setDialogOpen} />
 
-          <div className="mt-6 flex items-center justify-center gap-4 text-sm">
+          <div className="mt-6 flex items-center justify-center gap-4 text-sm text-white">
             <span>
-            </span>
-            <a href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-3 rounded-md bg-[#25D366] text-white font-medium hover:bg-[#128C7E] transition-all duration-300 transform hover:scale-105 w-full justify-center shadow-lg">
+          </span>
+            <a href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" target="_blank" rel="noopener noreferrer" className={`flex items-center gap-2 px-4 py-3 rounded-md bg-[#25D366] text-white font-medium hover:bg-[#128C7E] transition-all duration-300 transform hover:scale-105 w-full justify-center`}>
               <MessageCircle className="h-5 w-5" />
               Join our WhatsApp community
             </a>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
 
 export default CallToAction;
