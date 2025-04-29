@@ -15,7 +15,7 @@ const CallToAction: React.FC = () => {
         </p>
 
         <div className="max-w-md mx-auto">
-          <p className="text-base opacity-80 mb-6 font-normal px-0 md:text-lg text-center">
+          <p className="text-base opacity-80 mb-6 text-center mx-0 px-px py-0 my-[4px] font-normal md:text-base">
             ✅ Get early access + free premium<br />
             ✅ Request features that fit your love story<br />
             ✅ Be part of fun activities that influence how HiveIn grows
