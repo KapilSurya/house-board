@@ -21,9 +21,7 @@ const Hero: React.FC = () => {
               </p>
               
               <div className="mt-4">
-                <Button onClick={() => setDialogOpen(true)} className="newsletter-join-button bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300">
-                  Join Us Now
-                </Button>
+                <Button onClick={() => setDialogOpen(true)} className="newsletter-join-button bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300">Shape HiveIn</Button>
               </div>
             </div>
 
