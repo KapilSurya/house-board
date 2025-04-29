@@ -25,7 +25,7 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md bg-houseboard-dark border-houseboard-medium">
         <DialogHeader>
-          <DialogTitle className={`text-2xl ${theme === 'light' ? 'text-white' : 'text-white'}`}>
+          <DialogTitle className="text-2xl text-white">
             Join HiveIn Community
           </DialogTitle>
           <DialogDescription className="text-gray-300">
