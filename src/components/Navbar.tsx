@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
   return <header className="fixed top-0 w-full z-50 backdrop-blur-sm bg-gradient-to-b from-black/70 to-transparent">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <img src="/lovable-uploads/8c253fbd-5ccb-40a0-8f63-5e01ae108072.png" alt="HiveIn Logo" className="w-8 h-8" />
+          <img alt="HiveIn Logo" className="w-8 h-8" src="/lovable-uploads/ca0af61c-6896-4e91-9fa4-03d93d138db7.png" />
           <h1 className="text-2xl font-bold text-white">
             Hive<span className="text-[#43B3AE]">In</span>
           </h1>
