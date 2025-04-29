@@ -1,12 +1,11 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-
 const WhoIsItFor: React.FC = () => {
   const [isScrollVisible, setIsScrollVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const { theme } = useTheme();
-
+  const {
+    theme
+  } = useTheme();
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
@@ -15,22 +14,13 @@ const WhoIsItFor: React.FC = () => {
       const scrollPosition = sectionTop < windowHeight * 0.7;
       setIsScrollVisible(scrollPosition);
     };
-
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const beforeCardClass = theme === 'dark'
-    ? 'bg-[#1f2a33] text-gray-300'
-    : 'bg-[#e3e3e3] text-[#2C3D59] border border-gray-300';
-
-  const afterCardClass = theme === 'dark'
-    ? 'bg-[#1d3540] text-white'
-    : 'bg-[#fdfaf5] text-[#2C3D59] border border-gray-200';
-
-  return (
-    <section id="who-is-it-for" className="py-20 relative" ref={sectionRef}>
+  const beforeCardClass = theme === 'dark' ? 'bg-[#1f2a33] text-gray-300' : 'bg-[#e3e3e3] text-[#2C3D59] border border-gray-300';
+  const afterCardClass = theme === 'dark' ? 'bg-[#1d3540] text-white' : 'bg-[#fdfaf5] text-[#2C3D59] border border-gray-200';
+  return <section id="who-is-it-for" className="py-20 relative" ref={sectionRef}>
       <div className={`shelf absolute top-0 left-0 right-0 ${theme === 'light' ? 'opacity-50' : ''}`}></div>
 
       <div className="container mx-auto px-4 max-w-5xl pt-6">
@@ -58,14 +48,11 @@ const WhoIsItFor: React.FC = () => {
               </ul>
               <div className="mt-auto rounded-xl overflow-hidden flex-1">
                 <div className="h-full flex items-center justify-center">
-                  <img 
-                    src="/lovable-uploads/before.png"
-                    alt="Before HiveIn - Communication challenges"
-                    className="w-full h-auto object-contain"
-                    style={{ maxHeight: "300px" }}
-                  />
+                  <img src="/lovable-uploads/before.png" alt="Before HiveIn - Communication challenges" className="w-full h-auto object-contain" style={{
+                  maxHeight: "300px"
+                }} />
                 </div>
-                <div className="absolute bottom-3 right-3 candle-light" style={{ width: '15px', height: '15px' }}></div>
+                
               </div>
             </div>
 
@@ -82,21 +69,16 @@ const WhoIsItFor: React.FC = () => {
               </ul>
               <div className="mt-auto rounded-xl overflow-hidden flex-1">
                 <div className="h-full flex items-center justify-center">
-                  <img 
-                    src="/lovable-uploads/after.png"
-                    alt="With HiveIn - Connected relationship"
-                    className="w-full h-auto object-contain"
-                    style={{ maxHeight: "300px" }}
-                  />
+                  <img src="/lovable-uploads/after.png" alt="With HiveIn - Connected relationship" className="w-full h-auto object-contain" style={{
+                  maxHeight: "300px"
+                }} />
                 </div>
-                <div className="absolute bottom-3 left-3 candle-light" style={{ width: '15px', height: '15px' }}></div>
+                
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default WhoIsItFor;
