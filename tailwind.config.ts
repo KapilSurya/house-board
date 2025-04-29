@@ -117,14 +117,6 @@ export default {
 					'50%': {
 						transform: 'translateY(-10px)'
 					}
-				},
-				'text-shimmer': {
-					'0%': {
-						backgroundPosition: '0% 50%'
-					},
-					'100%': {
-						backgroundPosition: '100% 50%'
-					}
 				}
 			},
 			animation: {
@@ -133,27 +125,8 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out',
 				'pulse-gentle': 'pulse-gentle 3s infinite ease-in-out',
 				'float': 'float 6s infinite ease-in-out',
-				'text-shimmer': 'text-shimmer 3s ease-in-out infinite',
-			},
-			textShadow: {
-				sm: '0 1px 2px rgba(0, 0, 0, 0.2)',
-				DEFAULT: '0 2px 4px rgba(0, 0, 0, 0.3)',
-				lg: '0 8px 16px rgba(0, 0, 0, 0.3)',
-			},
+			}
 		}
 	},
-	plugins: [
-		require("tailwindcss-animate"),
-		function({ addUtilities }: any) {
-			const newUtilities = {
-				'.text-shadow': {
-					textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
-				},
-				'.text-shadow-lg': {
-					textShadow: '0 8px 16px rgba(0, 0, 0, 0.3)',
-				},
-			}
-			addUtilities(newUtilities)
-		},
-	],
+	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
