@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
         
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <Button className="bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300" onClick={handleOpenDialog}>Shape HiveIn</Button>
+          <Button className="bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300" onClick={handleOpenDialog}>Join the community </Button>
         </div>
       </div>
     </header>;
