@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import ThemeToggle from './ThemeToggle';
+
 const Navbar: React.FC = () => {
   const handleOpenDialog = () => {
     // Find the "Join Us Now" button in the Hero section and click it
@@ -9,7 +10,9 @@ const Navbar: React.FC = () => {
       joinButton.click();
     }
   };
-  return <header className="fixed top-0 w-full z-50 backdrop-blur-sm bg-gradient-to-b from-black/70 to-transparent">
+  
+  return (
+    <header className="fixed top-0 w-full z-50 backdrop-blur-sm bg-gradient-to-b from-black/80 to-transparent">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <img src="/lovable-uploads/8c253fbd-5ccb-40a0-8f63-5e01ae108072.png" alt="HiveIn Logo" className="w-8 h-8" />
@@ -31,10 +34,11 @@ const Navbar: React.FC = () => {
         </nav>
         
         <div className="flex items-center gap-3">
-          <ThemeToggle />
-          <Button className="bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300" onClick={handleOpenDialog}>Shape HiveIn</Button>
+          <Button className="bg-[#43B3AE] hover:bg-[#2d8f8b] text-black font-medium hover:text-white transition-colors duration-300" onClick={handleOpenDialog}>Shape HiveIn</Button>
         </div>
       </div>
-    </header>;
+    </header>
+  );
 };
+
 export default Navbar;
