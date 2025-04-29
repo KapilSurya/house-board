@@ -2,9 +2,11 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, BookOpen, Bell, LineChart } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const FeatureSection: React.FC = () => {
-  const textColor = 'text-[#FFD54F]';
+  const { theme } = useTheme();
+  const textColor = theme === 'dark' ? 'text-[#43B3AE]' : 'text-[#2C3D59]';
 
   const features = [
     {
@@ -42,15 +44,15 @@ const FeatureSection: React.FC = () => {
   ];
 
   return (
-    <section id="features" className="py-20 relative bg-[#0a1826]">
+    <section id="features" className="py-20 relative">
       <div className="shelf absolute top-0 left-0 right-0"></div>
 
       <div className="container mx-auto px-4 pt-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Features Designed for <span className="text-[#43B3AE]">Your Relationship</span>
+            Features Designed for Your Relationship
           </h2>
-          <p className="text-white mx-auto max-w-2xl text-lg">
+          <p className="text-gray-300 mx-auto max-w-2xl text-lg">
             Explore how HiveIn's features can bring you closer.
           </p>
         </div>
@@ -59,7 +61,7 @@ const FeatureSection: React.FC = () => {
           {features.map((feature, index) => (
             <Card
               key={feature.id}
-              className={`overflow-hidden transition-all duration-300 hover:shadow-md card-hover flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'} p-6 rounded-3xl bg-[#162536]/80`}
+              className={`overflow-hidden transition-all duration-300 hover:shadow-md card-hover flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'} p-6 rounded-3xl`}
             >
               <div className="md:w-1/2 flex justify-center px-6 py-8">
                 <div className="relative w-full max-w-2xl rounded-md overflow-hidden">
@@ -84,10 +86,10 @@ const FeatureSection: React.FC = () => {
                 <div>
                   <div className="flex items-center gap-3 mb-5">
                     {feature.icon}
-                    <CardTitle className={`text-2xl md:text-3xl text-[#FFD54F]`}>{feature.title}</CardTitle>
+                    <CardTitle className={`text-2xl md:text-3xl ${textColor}`}>{feature.title}</CardTitle>
                   </div>
                   <CardContent className="p-0">
-                    <p className="text-white text-base md:text-lg mb-6">{feature.description}</p>
+                    <p className="text-gray-300 text-base md:text-lg mb-6">{feature.description}</p>
                   </CardContent>
                 </div>
               </div>
