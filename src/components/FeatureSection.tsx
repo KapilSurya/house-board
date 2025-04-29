@@ -2,11 +2,10 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, BookOpen, Bell, LineChart } from 'lucide-react';
-import { useTheme } from '@/contexts/ThemeContext';
 
 const FeatureSection: React.FC = () => {
-  const { theme } = useTheme();
-  const textColor = theme === 'dark' ? 'text-[#43B3AE]' : 'text-[#2C3D59]';
+  // Always using dark theme now
+  const textColor = 'text-[#43B3AE]';
 
   const features = [
     {
@@ -49,7 +48,7 @@ const FeatureSection: React.FC = () => {
 
       <div className="container mx-auto px-4 pt-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-shadow">
             Features Designed for Your Relationship
           </h2>
           <p className="text-gray-300 mx-auto max-w-2xl text-lg">
@@ -61,7 +60,7 @@ const FeatureSection: React.FC = () => {
           {features.map((feature, index) => (
             <Card
               key={feature.id}
-              className={`overflow-hidden transition-all duration-300 hover:shadow-md card-hover flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'} p-6 rounded-3xl`}
+              className={`overflow-hidden transition-all duration-300 hover:shadow-lg card-hover flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'} p-6 rounded-3xl border-[#43B3AE]/20`}
             >
               <div className="md:w-1/2 flex justify-center px-6 py-8">
                 <div className="relative w-full max-w-2xl rounded-md overflow-hidden">
@@ -69,7 +68,7 @@ const FeatureSection: React.FC = () => {
                     <img
                       src={feature.mockupImage}
                       alt={feature.imageAlt || `${feature.title} illustration`}
-                      className="w-full h-auto object-contain"
+                      className="w-full h-auto object-contain rounded-lg border border-[#43B3AE]/20"
                       style={{ maxHeight: '500px', width: '100%' }}
                     />
                   )}
@@ -86,10 +85,10 @@ const FeatureSection: React.FC = () => {
                 <div>
                   <div className="flex items-center gap-3 mb-5">
                     {feature.icon}
-                    <CardTitle className={`text-2xl md:text-3xl ${textColor}`}>{feature.title}</CardTitle>
+                    <CardTitle className="text-2xl md:text-3xl text-[#43B3AE]">{feature.title}</CardTitle>
                   </div>
                   <CardContent className="p-0">
-                    <p className="text-gray-300 text-base md:text-lg mb-6">{feature.description}</p>
+                    <p className="text-white text-base md:text-lg mb-6">{feature.description}</p>
                   </CardContent>
                 </div>
               </div>
