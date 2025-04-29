@@ -25,7 +25,10 @@ const TestimonialSection: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => <div key={index} className="card-hover p-6 rounded-xl transition-shadow duration-300 relative overflow-hidden">
               {/* Add candle light decoration */}
-              
+              <div className={`absolute ${index % 2 === 0 ? 'bottom-2 right-2' : 'bottom-2 left-2'} candle-light`} style={{
+            width: '15px',
+            height: '15px'
+          }}></div>
               
               <div className="flex items-center mb-4">
                 
