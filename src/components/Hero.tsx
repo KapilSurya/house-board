@@ -10,12 +10,12 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-6 relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">A safe home for your love</h1>
-          <p className="text-lg md:text-xl text-gray-300">
+          <p className="text-lg md:text-xl text-gray-50">
             Communicate effortlessly, build lasting habits, reflect on your journey. Built with your privacy in mind.
           </p>
           <div className="space-y-4">
-            <div className="p-4 rounded-lg border border-white/20 max-w-md bg-[#d8f0ff]">
-              <p className="text-sm text-gray-900">Want to help build the future of relationships? Join our WhatsApp community and become a HiveIn insider.</p>
+            <div className="p-4 rounded-lg border border-white/20 max-w-md bg-[#d8f0ff]/[0.23]">
+              <p className="text-sm text-gray-50">Want to help build the future of relationships? Join our WhatsApp community and become a HiveIn insider.</p>
               
               <div className="mt-4">
                 <Button onClick={() => setDialogOpen(true)} className="newsletter-join-button bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300">Shape HiveIn</Button>
