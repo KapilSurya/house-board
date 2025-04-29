@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import ThemeToggle from './ThemeToggle';
+
 const Navbar: React.FC = () => {
   const handleOpenDialog = () => {
     // Find the "Join Us Now" button in the Hero section and click it
@@ -19,20 +20,19 @@ const Navbar: React.FC = () => {
         </div>
         
         <nav className="hidden md:flex space-x-8">
-          <a href="#who-is-it-for" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
+          <a href="#who-is-it-for" className="text-white hover:text-[#43B3AE] transition-colors">
             Who Is It For
           </a>
-          <a href="#features" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
+          <a href="#features" className="text-white hover:text-[#43B3AE] transition-colors">
             Features
           </a>
-          <a href="#testimonials" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
+          <a href="#testimonials" className="text-white hover:text-[#43B3AE] transition-colors">
             Testimonials
           </a>
         </nav>
         
         <div className="flex items-center gap-3">
-          <ThemeToggle />
-          <Button className="bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300" onClick={handleOpenDialog}>Shape HiveIn</Button>
+          <Button className="bg-[#43B3AE] hover:bg-[#5ECCC7] hover:text-houseboard-dark transition-colors duration-300" onClick={handleOpenDialog}>Shape HiveIn</Button>
         </div>
       </div>
     </header>;

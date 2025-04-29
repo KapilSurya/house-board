@@ -49,15 +49,6 @@
     --house-light-blue: #2e4e5f;
     --house-wood: #5d4037;
     --house-light: #43B3AE; /* Teal accent color */
-    
-    /* Light mode variables */
-    --house-light-deep-blue: #487BD4;
-    --house-light-wall-blue: #6A94E2;
-    --house-light-light-blue: #8AABEA;
-    --house-light-wood: #A47A51;
-    --house-light-accent: #2C3D59; /* Dark blue for text */
-    --house-light-text: #2C3D59; /* Dark blue for text */
-    --house-light-card-bg: #f5f5f5; /* Light gray/cream for card backgrounds */
   }
 
   .dark {
@@ -120,7 +111,7 @@
     background-image: url('/lovable-uploads/f2bb2dca-5d3f-4778-87f6-70cba144cdbf.png');
     background-size: cover;
     background-position: center;
-    opacity: 0.15;
+    opacity: 0.3;
     z-index: -2;
     pointer-events: none;
   }
@@ -131,7 +122,7 @@
     height: 2px;
     background: white;
     border-radius: 50%;
-    opacity: 0.7;
+    opacity: 0.8;
     z-index: -1;
   }
 
@@ -150,50 +141,33 @@
     height: 3px;
   }
   
-  /* Light mode */
-  .light-mode {
-    color-scheme: light;
-  }
-  
-  .light-mode body {
-    background-color: var(--house-light-deep-blue);
-    opacity: 0.95; /* Slightly desaturated background */
-  }
-  
-  .light-mode .gradient-bg {
-    background: linear-gradient(135deg, var(--house-light-wall-blue) 0%, var(--house-light-light-blue) 100%);
-  }
-  
-  .light-mode .card-hover {
-    background-color: rgba(245, 245, 245, 0.9);
-    color: #333;
-  }
-  
-  .light-mode .shelf {
-    background-color: var(--house-light-wood);
-    opacity: 0.8; /* Desaturated wood divider */
-  }
-  
-  .light-mode .text-gradient {
-    background-image: linear-gradient(to right, var(--house-light-text), var(--house-light-text));
-    color: var(--house-light-text);
+  .shooting-star {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+    animation: shoot 3s ease-out infinite;
   }
 
-  .light-mode h1, .light-mode h2, .light-mode h3, .light-mode h4, .light-mode h5, .light-mode h6 {
-    color: var(--house-light-text);
-  }
-
-  .light-mode .card-hover p {
-    color: #333;
-  }
-
-  .light-mode .card-hover h3 {
-    color: var(--house-light-text);
-  }
-  
-  /* Dark mode */
-  .dark-mode {
-    color-scheme: dark;
+  @keyframes shoot {
+    0% {
+      transform: translate(0, 0) rotate(45deg) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    20% {
+      transform: translate(250px, 250px) rotate(45deg) scale(1);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(500px, 500px) rotate(45deg) scale(1);
+      opacity: 0;
+    }
   }
 }
 
@@ -230,19 +204,14 @@
 
 .moon {
   position: fixed;
-  top: 180px; /* Moved down to avoid navbar overlap */
+  top: 180px;
   right: 50px;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background-color: #fff9c4;
   border-radius: 50%;
-  box-shadow: 0 0 20px rgba(255, 244, 179, 0.7);
+  box-shadow: 0 0 30px rgba(255, 244, 179, 0.7);
   z-index: -1;
-}
-
-.light-mode .moon {
-  background-color: #FFC107;
-  box-shadow: 0 0 30px rgba(255, 193, 7, 0.8);
 }
 
 .card-hover {
@@ -349,8 +318,4 @@ button:hover, .btn-hover-effect:hover {
   position: relative;
   border-radius: 12px;
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-.light-mode .house-window {
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
 }
