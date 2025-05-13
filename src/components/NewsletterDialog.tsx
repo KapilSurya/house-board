@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useTheme } from '@/contexts/ThemeContext';
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 interface NewsletterDialogProps {
   open: boolean;
@@ -26,21 +27,33 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Here you would typically send this to your backend
-    // Simulating API call with timeout
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const { data, error } = await supabase.functions.invoke('subscribe-newsletter', {
+        body: { email }
+      });
+      
+      if (error) throw error;
+      
       toast({
         title: "Thank you for subscribing!",
         description: "You'll be the first to know about updates and exclusive offers.",
       });
       setEmail("");
       onOpenChange(false);
-    }, 1000);
+    } catch (error) {
+      console.error('Error submitting email:', error);
+      toast({
+        title: "Oops! Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

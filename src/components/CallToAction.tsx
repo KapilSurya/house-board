@@ -1,30 +1,41 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import NewsletterDialog from './NewsletterDialog';
 import { Input } from "@/components/ui/input";
 import { Mail } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const CallToAction: React.FC = () => {
-  const [dialogOpen, setDialogOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Here you would typically send this to your backend
-    // Simulating API call with timeout
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const { data, error } = await supabase.functions.invoke('subscribe-newsletter', {
+        body: { email }
+      });
+      
+      if (error) throw error;
+      
       toast({
         title: "Thank you for subscribing!",
         description: "You'll be the first to know about updates and exclusive offers.",
       });
       setEmail("");
-    }, 1000);
+    } catch (error) {
+      console.error('Error submitting email:', error);
+      toast({
+        title: "Oops! Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return <section id="cta" className="py-20 gradient-bg text-white">
@@ -43,8 +54,6 @@ const CallToAction: React.FC = () => {
             ✅ Request features that fit your love story<br />
             ✅ Be part of the journey that influences how HiveIn grows
           </p>
-
-          <NewsletterDialog open={dialogOpen} onOpenChange={setDialogOpen} />
 
           <div className="mt-6 flex items-center justify-center gap-4 text-sm text-gray-300">
             <form onSubmit={handleSubmit} className="w-full space-y-3">

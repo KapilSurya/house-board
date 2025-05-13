@@ -1,31 +1,11 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import NewsletterDialog from './NewsletterDialog';
 import { Mail } from "lucide-react";
-import { toast } from "@/hooks/use-toast";
 
 const Hero: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Here you would typically send this to your backend
-    // Simulating API call with timeout
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Thank you for subscribing!",
-        description: "You'll be the first to know about updates and exclusive offers.",
-      });
-      setEmail("");
-    }, 1000);
-  };
 
   return <section className="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg card-hover text-white relative">
       {/* String lights decoration */}
@@ -39,26 +19,15 @@ const Hero: React.FC = () => {
           </p>
           <div className="space-y-4">
             <div className="p-4 rounded-lg border border-white/20 max-w-md bg-[#d8f0ff]/[0.23]">
-              <p className="text-sm text-gray-200 mb-3">Want to help build the future of relationships? Subscribe for early access and updates.</p>
+              <p className="text-sm text-gray-200 mb-3">Want to help build the future of relationships? Join our community for early access and updates.</p>
               
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <Input
-                  type="email"
-                  placeholder="Enter your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="bg-white/20 border-white/30 text-white placeholder:text-gray-400"
-                />
-                <Button 
-                  type="submit" 
-                  className="newsletter-join-button w-full bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300"
-                  disabled={isSubmitting}
-                >
-                  <Mail className="h-5 w-5 mr-2" />
-                  {isSubmitting ? "Subscribing..." : "Shape HiveIn"}
-                </Button>
-              </form>
+              <Button 
+                onClick={() => setDialogOpen(true)}
+                className="newsletter-join-button w-full bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300"
+              >
+                <Mail className="h-5 w-5 mr-2" />
+                Shape HiveIn
+              </Button>
             </div>
 
             <NewsletterDialog open={dialogOpen} onOpenChange={setDialogOpen} />
