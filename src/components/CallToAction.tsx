@@ -1,9 +1,32 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import NewsletterDialog from './NewsletterDialog';
-import { MessageCircle } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Mail } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
+
 const CallToAction: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Here you would typically send this to your backend
+    // Simulating API call with timeout
+    setTimeout(() => {
+      setIsSubmitting(false);
+      toast({
+        title: "Thank you for subscribing!",
+        description: "You'll be the first to know about updates and exclusive offers.",
+      });
+      setEmail("");
+    }, 1000);
+  };
+
   return <section id="cta" className="py-20 gradient-bg text-white">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -11,28 +34,43 @@ const CallToAction: React.FC = () => {
         </h2>
         <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-8">
           Want to help build the future of relationships?
-          Join our WhatsApp community and become a HiveIn insider
+          Join our community and become a HiveIn insider
         </p>
 
         <div className="max-w-md mx-auto">
           <p className="text-base opacity-80 mb-6 text-center mx-0 px-px py-0 my-[4px] font-normal md:text-base">
             ✅ Get early access + free premium<br />
             ✅ Request features that fit your love story<br />
-            ✅ Be part of fun activities that influence how HiveIn grows
+            ✅ Be part of the journey that influences how HiveIn grows
           </p>
 
           <NewsletterDialog open={dialogOpen} onOpenChange={setDialogOpen} />
 
           <div className="mt-6 flex items-center justify-center gap-4 text-sm text-gray-300">
-            <span>
-          </span>
-            <a href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" target="_blank" rel="noopener noreferrer" className={`flex items-center gap-2 px-4 py-3 rounded-md bg-[#25D366] text-white font-medium hover:bg-[#128C7E] transition-all duration-300 transform hover:scale-105 w-full justify-center`}>
-              <MessageCircle className="h-5 w-5" />
-              Join our WhatsApp community
-            </a>
+            <form onSubmit={handleSubmit} className="w-full space-y-3">
+              <div className="flex flex-col space-y-2">
+                <Input
+                  type="email"
+                  placeholder="Enter your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="bg-white/20 border-white/30 text-white placeholder:text-gray-400"
+                />
+              </div>
+              <Button 
+                type="submit" 
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-houseboard-medium text-white font-medium hover:bg-[#43B3AE] transition-all duration-300"
+                disabled={isSubmitting}
+              >
+                <Mail className="h-5 w-5" />
+                {isSubmitting ? "Subscribing..." : "Subscribe to Updates"}
+              </Button>
+            </form>
           </div>
         </div>
       </div>
     </section>;
 };
+
 export default CallToAction;
