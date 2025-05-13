@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { MessageCircle } from "lucide-react";
+import React, { useState } from 'react';
+import { Mail } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -8,7 +8,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { useTheme } from '@/contexts/ThemeContext';
+import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 interface NewsletterDialogProps {
   open: boolean;
@@ -20,6 +24,37 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
   onOpenChange 
 }) => {
   const { theme } = useTheme();
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('subscribe-newsletter', {
+        body: { email }
+      });
+      
+      if (error) throw error;
+      
+      toast({
+        title: "Thank you for subscribing!",
+        description: "You'll be the first to know about updates and exclusive offers.",
+      });
+      setEmail("");
+      onOpenChange(false);
+    } catch (error) {
+      console.error('Error submitting email:', error);
+      toast({
+        title: "Oops! Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -29,8 +64,7 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
             Join HiveIn Community
           </DialogTitle>
           <DialogDescription className="text-gray-300">
-            ✨ Want to help build the future of relationships?
-            Join our WhatsApp community and become a HiveIn insider.
+            ✨ Be the first to know when we launch exciting new features
           </DialogDescription>
         </DialogHeader>
 
@@ -44,25 +78,31 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
                 <span className="mr-2 text-white">✅</span> Request features that fit your love story
               </li>
               <li className="flex items-start">
-                <span className="mr-2 text-white">✅</span> Be part of fun activities that influence how HiveIn grows
+                <span className="mr-2 text-white">✅</span> Stay updated on new features & improvements
               </li>
             </ul>
-            <p className="text-sm text-gray-200 mt-2 italic">
-              All designed around you and your partner.
-            </p>
           </div>
           
-          <div className="flex items-center justify-center pt-4">
-            <a 
-              href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={`flex items-center gap-2 px-4 py-3 rounded-md bg-[#25D366] text-white font-medium hover:bg-[#128C7E] transition-all duration-300 transform hover:scale-105 w-full justify-center`}
+          <form onSubmit={handleSubmit} className="space-y-3">
+            <div className="flex flex-col space-y-2">
+              <Input
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="bg-white/20 border-white/30 text-white placeholder:text-gray-400"
+              />
+            </div>
+            <Button 
+              type="submit" 
+              className="w-full bg-houseboard-medium hover:bg-[#43B3AE] text-white" 
+              disabled={isSubmitting}
             >
-              <MessageCircle className="h-5 w-5" />
-              Join our WhatsApp community
-            </a>
-          </div>
+              <Mail className="h-5 w-5 mr-2" />
+              {isSubmitting ? "Subscribing..." : "Subscribe to Updates"}
+            </Button>
+          </form>
         </div>
       </DialogContent>
     </Dialog>

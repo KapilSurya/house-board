@@ -2,7 +2,10 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import NewsletterDialog from './NewsletterDialog';
-import { MessageCircle } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Mail } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 interface NewsletterFormProps {
   buttonText?: string;
@@ -10,13 +13,43 @@ interface NewsletterFormProps {
 }
 
 const NewsletterForm: React.FC<NewsletterFormProps> = ({ 
-  buttonText = "Join Us", 
+  buttonText = "Subscribe", 
   className = "" 
 }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleOpenDialog = () => {
     setDialogOpen(true);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('subscribe-newsletter', {
+        body: { email }
+      });
+      
+      if (error) throw error;
+      
+      toast({
+        title: "Thank you for subscribing!",
+        description: "You'll be the first to know about updates and exclusive offers.",
+      });
+      setEmail("");
+    } catch (error) {
+      console.error('Error submitting email:', error);
+      toast({
+        title: "Oops! Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -26,7 +59,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
           ✨ Want to help build the future of relationships?
         </p>
         <p className="text-sm text-gray-200 mb-4">
-          Join our WhatsApp community and become a HiveIn insider.
+          Join our community and become a HiveIn insider.
         </p>
         <ul className="text-sm text-gray-200 mb-4 space-y-1">
           <li className="flex items-start">
@@ -36,22 +69,33 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
             <span className="mr-2 text-white">✅</span> Request features that fit your love story
           </li>
           <li className="flex items-start">
-            <span className="mr-2 text-white">✅</span> Be part of fun activities that influence how HiveIn grows
+            <span className="mr-2 text-white">✅</span> Be part of the journey that influences how HiveIn grows
           </li>
         </ul>
         <p className="text-sm text-gray-200 italic mb-4">
           All designed around you and your partner.
         </p>
         
-        <a 
-          href="https://chat.whatsapp.com/CHkLcYPYaCxKAgGabxNvSy" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-[#25D366] text-white font-medium hover:bg-[#128C7E] transition-all duration-300 w-full"
-        >
-          <MessageCircle className="h-5 w-5" />
-          Join our WhatsApp community
-        </a>
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <div className="flex flex-col space-y-2">
+            <Input
+              type="email"
+              placeholder="Enter your email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="bg-white/20 border-white/30 text-white placeholder:text-gray-400"
+            />
+          </div>
+          <Button 
+            type="submit" 
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-houseboard-medium text-white font-medium hover:bg-[#43B3AE] transition-all duration-300"
+            disabled={isSubmitting}
+          >
+            <Mail className="h-5 w-5" />
+            {isSubmitting ? "Subscribing..." : buttonText}
+          </Button>
+        </form>
       </div>
       
       <NewsletterDialog 
