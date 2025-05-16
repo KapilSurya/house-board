@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,17 +10,18 @@ import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { useStarsBackground } from "./hooks/useStarsBackground";
 
-const queryClient = new QueryClient();
-
 const StarsBackgroundEffect = () => {
   useStarsBackground();
   return null;
 };
 
 const App = () => {
+  // Create QueryClient inside the component
+  const queryClient = new QueryClient();
+  
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
           <Sonner />
@@ -32,8 +34,8 @@ const App = () => {
             </Routes>
           </BrowserRouter>
         </TooltipProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 };
 
