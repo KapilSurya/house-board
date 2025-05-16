@@ -7,6 +7,8 @@ import FeatureSection from '@/components/FeatureSection';
 import TestimonialSection from '@/components/TestimonialSection';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
+import FaqSection from '@/components/FaqSection';
+import FullWidthCta from '@/components/FullWidthCta';
 
 const Index: React.FC = () => {
   return (
@@ -16,7 +18,9 @@ const Index: React.FC = () => {
         <Hero />
         <WhoIsItFor />
         <FeatureSection />
+        <FullWidthCta />
         <TestimonialSection />
+        <FaqSection />
         <CallToAction />
       </main>
       <Footer />

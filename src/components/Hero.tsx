@@ -13,9 +13,9 @@ const Hero: React.FC = () => {
       
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-6 relative z-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">A safe home for your love</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">Build Your Relationship Home. One Ritual at a Time.</h1>
           <p className="text-lg md:text-xl text-gray-50">
-            Communicate effortlessly, build lasting habits, reflect on your journey. Built with your privacy in mind.
+            HiveIn is a relationship app that helps couples stay close, share moods, and grow together through shared habits.
           </p>
           <div className="space-y-4">
             <div className="p-4 rounded-lg border border-white/20 max-w-md bg-[#d8f0ff]/[0.23]">
@@ -42,9 +42,14 @@ const Hero: React.FC = () => {
         }}></div>
           
           <div className="relative bg-transparent rounded-lg max-w-sm mx-auto">
-            <img src="/lovable-uploads/house.png" alt="HiveIn Home Screen" className="w-full h-auto rounded-md" style={{
-            maxWidth: "120%"
-          }} />
+            <img 
+              src="/lovable-uploads/house.png" 
+              alt="Couple using HiveIn app to build daily rituals" 
+              className="w-full h-auto rounded-md" 
+              style={{
+                maxWidth: "120%"
+              }}
+            />
           </div>
         </div>
       </div>
