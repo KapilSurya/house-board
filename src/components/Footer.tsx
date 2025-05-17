@@ -29,15 +29,15 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 text-gray-300">
               <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
                 <Mail size={18} className="text-[#ffd54f]" />
-                <a href="mailto:hello@hivein.app" className="hover:text-white transition-colors">hello@hivein.app</a>
+                <a href="mailto:hiveinapp@gmail.com" className="hover:text-white transition-colors">hiveinapp@gmail.com</a>
               </li>
               <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
                 <Phone size={18} className="text-[#ffd54f]" />
-                <a href="tel:+1234567890" className="hover:text-white transition-colors">+1 (234) 567-890</a>
+                <a href="tel:+919100857172" className="hover:text-white transition-colors">+91 9100857172</a>
               </li>
               <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
                 <MapPin size={18} className="text-[#ffd54f]" />
-                <span>123 Relationship Rd, Digital Home</span>
+                <span>Thub, Hyderabad, Telangana</span>
               </li>
               <li>
                 <div className="flex space-x-4 mt-4">

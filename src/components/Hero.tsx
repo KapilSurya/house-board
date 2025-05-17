@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
       
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-6 relative z-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">Build Your Relationship Home. One Ritual at a Time.</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">A safe home for your love</h1>
           <p className="text-lg md:text-xl text-gray-50">
             HiveIn is a relationship app that helps couples stay close, share moods, and grow together through shared habits.
           </p>
