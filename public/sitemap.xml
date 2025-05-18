@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;url&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;loc&gt;https://hivein.app/&lt;/loc&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;priority&gt;1.0&lt;/priority&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;/url&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;url&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;loc&gt;https://hivein.app/features&lt;/loc&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;priority&gt;0.9&lt;/priority&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;/url&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;url&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;loc&gt;https://hivein.app/faq&lt;/loc&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;priority&gt;0.8&lt;/priority&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;/url&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+  <row>
+    <_xml_version_1_0_encoding_UTF_8_>&lt;/urlset&gt;</_xml_version_1_0_encoding_UTF_8_>
+  </row>
+</root>
