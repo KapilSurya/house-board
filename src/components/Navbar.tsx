@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import ThemeToggle from './ThemeToggle';
@@ -17,18 +18,6 @@ const Navbar: React.FC = () => {
             Hive<span className="text-[#43B3AE]">In</span>
           </h1>
         </div>
-        
-        <nav className="hidden md:flex space-x-8">
-          <a href="#who-is-it-for" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
-            Who Is It For
-          </a>
-          <a href="#features" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
-            Features
-          </a>
-          <a href="#testimonials" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
-            Testimonials
-          </a>
-        </nav>
         
         <div className="flex items-center gap-3">
           <ThemeToggle />

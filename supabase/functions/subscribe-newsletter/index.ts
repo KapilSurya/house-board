@@ -55,6 +55,27 @@ serve(async (req) => {
       
       if (error) throw error;
       
+      // Send welcome email by calling the welcome-email function
+      try {
+        const welcomeResponse = await fetch(`${supabaseUrl}/functions/v1/welcome-email`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${supabaseKey}`
+          },
+          body: JSON.stringify({ email })
+        });
+        
+        if (!welcomeResponse.ok) {
+          console.error('Failed to send welcome email:', await welcomeResponse.text());
+        } else {
+          console.log('Welcome email sent successfully');
+        }
+      } catch (emailError) {
+        console.error('Error sending welcome email:', emailError);
+        // We don't want to fail the subscription if the email fails
+      }
+      
       return new Response(
         JSON.stringify({ success: true }),
         { 
@@ -69,7 +90,7 @@ serve(async (req) => {
       { 
         status: 405, 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
-      }
+        }
     );
   } catch (error) {
     console.error('Error processing request:', error);

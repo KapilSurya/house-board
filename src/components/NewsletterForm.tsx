@@ -19,13 +19,29 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
   const [dialogOpen, setDialogOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailError, setEmailError] = useState("");
 
   const handleOpenDialog = () => {
     setDialogOpen(true);
   };
 
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Reset previous error
+    setEmailError("");
+    
+    // Validate email
+    if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
@@ -84,8 +100,13 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="bg-white/20 border-white/30 text-white placeholder:text-gray-400"
+              className={`bg-white/20 border-white/30 text-white placeholder:text-gray-400 ${
+                emailError ? 'border-red-500' : ''
+              }`}
             />
+            {emailError && (
+              <p className="text-red-400 text-xs">{emailError}</p>
+            )}
           </div>
           <Button 
             type="submit" 

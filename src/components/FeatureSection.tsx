@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, BookOpen, Bell, LineChart } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { Link } from 'react-router-dom';
 
 const FeatureSection: React.FC = () => {
   const { theme } = useTheme();
@@ -13,33 +14,33 @@ const FeatureSection: React.FC = () => {
       id: 'habits',
       icon: <Heart className={`h-6 w-6 ${textColor}`} />,
       title: 'Build healthy habits',
-      description: 'Deepen your bond with daily quality time, gratitude, and shared goals—making every chat count.',
+      description: 'Deepen your bond with daily quality time, gratitude, and shared goals—making every <Link to="/features/habits" className="underline hover:text-[#43B3AE]">habit tracking</Link> count.',
       mockupImage: '/lovable-uploads/habits.png',
-      imageAlt: 'Choose habits interface showing gratitude and quality time options'
+      imageAlt: 'Couple completing gratitude habit on HiveIn'
     },
     {
       id: 'log',
       icon: <BookOpen className={`h-6 w-6 ${textColor}`} />,
       title: 'Your relationship log',
-      description: 'Capture moods, habits, and milestones—see your journey as a couple unfold beautifully.',
+      description: 'Capture moods, habits, and milestones in your <Link to="/features/log" className="underline hover:text-[#43B3AE]">relationship log</Link>—see your journey as a couple unfold beautifully.',
       mockupImage: '/lovable-uploads/log.png',
-      imageAlt: 'Relationship log showing a quality time entry with a meaningful conversation'
+      imageAlt: 'HiveIn chat screen with emotional check-in'
     },
     {
       id: 'nudges',
       icon: <Bell className={`h-6 w-6 ${textColor}`} />,
       title: 'Nudge for what matters',
-      description: 'Send thoughtful reminders to check in, share, or reconnect—without feeling like a nag.',
+      description: 'Send thoughtful reminders with our <Link to="/features/chat" className="underline hover:text-[#43B3AE]">chat and nudges</Link> to check in, share, or reconnect—without feeling like a nag.',
       mockupImage: '/lovable-uploads/nudge.png',
-      imageAlt: 'Interface for sending gentle nudges to your partner'
+      imageAlt: 'HiveIn chat screen with emotional check-in'
     },
     {
       id: 'mood',
       icon: <LineChart className={`h-6 w-6 ${textColor}`} />,
       title: 'Mood & status tracking',
-      description: 'Share how you feel in seconds—stay emotionally in sync without saying a word',
+      description: 'Share how you feel in seconds with our <Link to="/features/gratitude" className="underline hover:text-[#43B3AE]">gratitude habit</Link> and mood tracking—stay emotionally in sync without saying a word',
       mockupImage: '/lovable-uploads/mood.png',
-      imageAlt: 'Mood tracking interface showing happy, sad, and loved emotions'
+      imageAlt: 'HiveIn mood tracking feature screenshot'
     }
   ];
 
@@ -68,7 +69,7 @@ const FeatureSection: React.FC = () => {
                   {feature.mockupImage && (
                     <img
                       src={feature.mockupImage}
-                      alt={feature.imageAlt || `${feature.title} illustration`}
+                      alt={feature.imageAlt}
                       className="w-full h-auto object-contain"
                       style={{ maxHeight: '500px', width: '100%' }}
                     />
@@ -89,7 +90,7 @@ const FeatureSection: React.FC = () => {
                     <CardTitle className={`text-2xl md:text-3xl ${textColor}`}>{feature.title}</CardTitle>
                   </div>
                   <CardContent className="p-0">
-                    <p className="text-gray-300 text-base md:text-lg mb-6">{feature.description}</p>
+                    <p className="text-gray-300 text-base md:text-lg mb-6" dangerouslySetInnerHTML={{ __html: feature.description }}></p>
                   </CardContent>
                 </div>
               </div>
