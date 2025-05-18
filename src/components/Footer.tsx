@@ -17,11 +17,6 @@ const Footer: React.FC = () => {
             <p className="text-gray-300 mb-4">
               A safe digital home for stronger relationships.
             </p>
-            <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-white transition-colors hover:underline">About Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors hover:underline">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors hover:underline">Terms of Service</a></li>
-            </ul>
           </div>
           
           <div className="animate-fade-in">
