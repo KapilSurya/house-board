@@ -10,16 +10,16 @@ import {
 const FaqSection: React.FC = () => {
   const faqs = [
     {
-      question: "What makes HiveIn different from other couple apps?",
-      answer: "HiveIn doesn't just help you chat. It helps you grow together with shared habits, mood tracking, and emotional nudges—all in one cozy space."
+      question: "Is HiveIn just another relationship chat app?",
+      answer: "Not really. HiveIn isn't just for talking — it's for growing together. We blend chat with shared habits, moods, nudges, and daily rituals that actually bring you closer."
     },
     {
-      question: "Is HiveIn good for long-distance couples?",
-      answer: "Yes! HiveIn helps couples feel emotionally close even when they're physically apart. Track habits, nudge your partner, and share check-ins with ease."
+      question: "Do both partners need to download the app?",
+      answer: "Yes — that's what makes it special. HiveIn is designed for couples to use together. It's like a synced space for habits, emotions, and little moments that matter."
     },
     {
-      question: "Can we personalize the app experience?",
-      answer: "Absolutely. Your mood affects your 2D home interface, and every habit journey feels personal to you as a couple."
+      question: "Is HiveIn for long-distance couples or couples living together?",
+      answer: "Both! Long-distance couples use HiveIn to feel close despite the miles. Live-in couples use it to bring intention back into everyday life. It adapts to your relationship."
     }
   ];
 
