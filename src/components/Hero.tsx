@@ -8,6 +8,11 @@ const Hero: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   return <section className="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg card-hover text-white relative">
+      {/* Meta tags for Open Graph and better previews */}
+      <meta property="og:title" content="HiveIn – A safe home for your love" />
+      <meta property="og:description" content="HiveIn is a relationship app that helps couples stay close, share moods, and grow together through shared habits." />
+      <meta property="og:image" content="/lovable-uploads/house.png" />
+      
       {/* String lights decoration */}
       <div className="string-lights"></div>
       

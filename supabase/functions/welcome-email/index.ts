@@ -7,7 +7,13 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
+// Get API key from environment variables (this is set in your Supabase secrets)
+const resendApiKey = Deno.env.get('RESEND_API_KEY');
+if (!resendApiKey) {
+  console.error('RESEND_API_KEY is not set in environment variables');
+}
+
+const resend = new Resend(resendApiKey);
 
 serve(async (req) => {
   // Handle CORS preflight requests
@@ -32,7 +38,7 @@ serve(async (req) => {
       // Send welcome email using Resend
       try {
         const emailContent = {
-          from: 'HiveIn <hello@yourdomain.com>', // Replace with your verified domain
+          from: 'HiveIn <hiveinapp@gmail.com>', // Updated to use the gmail address
           to: email,
           subject: "You're in 💌 Let's build something beautiful together",
           html: `
@@ -63,6 +69,7 @@ serve(async (req) => {
 
         console.log("Sending welcome email to:", email);
         console.log("Email content:", emailContent);
+        console.log("Using Resend API key:", resendApiKey ? "API key is set" : "API key is missing");
         
         const { data, error } = await resend.emails.send(emailContent);
         
