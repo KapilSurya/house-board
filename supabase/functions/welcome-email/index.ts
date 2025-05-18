@@ -1,15 +1,13 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.38.4";
+import { Resend } from "npm:resend@2.0.0";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const supabaseUrl = 'https://yyijabeyffphcvjlrent.supabase.co';
-const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
-const supabase = createClient(supabaseUrl, supabaseKey);
+const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
 
 serve(async (req) => {
   // Handle CORS preflight requests
@@ -31,11 +29,13 @@ serve(async (req) => {
         );
       }
       
-      // Send welcome email using the email service
-      const emailContent = {
-        to: email,
-        subject: "You're in 💌 Let's build something beautiful together",
-        html: `
+      // Send welcome email using Resend
+      try {
+        const emailContent = {
+          from: 'HiveIn <hello@yourdomain.com>', // Replace with your verified domain
+          to: email,
+          subject: "You're in 💌 Let's build something beautiful together",
+          html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
           <h2 style="color: #43B3AE;">Hey there,</h2>
           
@@ -59,22 +59,31 @@ serve(async (req) => {
           Team HiveIn</p>
         </div>
         `,
-      };
-      
-      // In a real implementation, you would use an email service like Resend, SendGrid, etc.
-      console.log("Sending welcome email to:", email);
-      console.log("Email content:", emailContent);
-      
-      // Mock successful email send for now
-      // TODO: Integrate with actual email service
-      
-      return new Response(
-        JSON.stringify({ success: true, message: "Welcome email will be sent" }),
-        { 
-          status: 200, 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        };
+
+        console.log("Sending welcome email to:", email);
+        console.log("Email content:", emailContent);
+        
+        const { data, error } = await resend.emails.send(emailContent);
+        
+        if (error) {
+          console.error("Error sending email:", error);
+          throw error;
         }
-      );
+        
+        console.log("Email sent successfully:", data);
+        
+        return new Response(
+          JSON.stringify({ success: true, message: "Welcome email sent successfully" }),
+          { 
+            status: 200, 
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+          }
+        );
+      } catch (emailError) {
+        console.error('Error sending email via Resend:', emailError);
+        throw emailError;
+      }
     }
 
     return new Response(

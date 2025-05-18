@@ -68,6 +68,8 @@ serve(async (req) => {
         
         if (!welcomeResponse.ok) {
           console.error('Failed to send welcome email:', await welcomeResponse.text());
+        } else {
+          console.log('Welcome email sent successfully');
         }
       } catch (emailError) {
         console.error('Error sending welcome email:', emailError);
