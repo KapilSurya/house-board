@@ -76,8 +76,10 @@ const LoveLetterDialog: React.FC<LoveLetterDialogProps> = ({
       
       if (error) throw error;
       
-      // Dismiss loading toast
-      toast.dismiss(loadingToast);
+      // Dismiss loading toast - fixed method call
+      if (loadingToast && loadingToast.id) {
+        toast.dismiss(loadingToast.id);
+      }
       
       toast({
         title: "Your surprise is on its way!",
@@ -97,8 +99,10 @@ const LoveLetterDialog: React.FC<LoveLetterDialogProps> = ({
     } catch (error) {
       console.error('Error sending love letter:', error);
       
-      // Dismiss loading toast
-      toast.dismiss(loadingToast);
+      // Dismiss loading toast - fixed method call
+      if (loadingToast && loadingToast.id) {
+        toast.dismiss(loadingToast.id);
+      }
       
       toast({
         title: "Oops! Something went wrong",
@@ -124,7 +128,7 @@ const LoveLetterDialog: React.FC<LoveLetterDialogProps> = ({
             Want to make it extra special?
           </DialogTitle>
           <DialogDescription className="text-gray-300">
-            You can send your partner a surprise love letter. We'll deliver it to their inbox like a digital keepsake 💌
+            Send a custom love letter to your partner's email
             <p className="text-gray-400 italic text-sm mt-1">Your message is private and will be deleted after delivery.</p>
           </DialogDescription>
         </DialogHeader>

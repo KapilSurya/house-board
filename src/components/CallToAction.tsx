@@ -30,8 +30,10 @@ const CallToAction: React.FC = () => {
       
       if (error) throw error;
       
-      // Dismiss loading toast
-      toast.dismiss(loadingToast);
+      // Dismiss loading toast - fixed method call
+      if (loadingToast && loadingToast.id) {
+        toast.dismiss(loadingToast.id);
+      }
       
       toast({
         title: "Thank you for subscribing!",
@@ -45,8 +47,10 @@ const CallToAction: React.FC = () => {
     } catch (error) {
       console.error('Error submitting email:', error);
       
-      // Dismiss loading toast
-      toast.dismiss(loadingToast);
+      // Dismiss loading toast - fixed method call
+      if (loadingToast && loadingToast.id) {
+        toast.dismiss(loadingToast.id);
+      }
       
       toast({
         title: "Oops! Something went wrong",
@@ -65,8 +69,7 @@ const CallToAction: React.FC = () => {
           Make love fun and exciting
         </h2>
         <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-8">
-          Want to help build the future of relationships?
-          Join our community and become a HiveIn insider
+          Join early access and also send a letter to your partner!
         </p>
 
         <div className="max-w-md mx-auto">

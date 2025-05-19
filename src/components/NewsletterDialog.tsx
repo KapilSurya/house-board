@@ -7,6 +7,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -63,8 +64,10 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
       
       if (error) throw error;
       
-      // Dismiss loading toast
-      toast.dismiss(loadingToast);
+      // Dismiss loading toast - fixed method call
+      if (loadingToast && loadingToast.id) {
+        toast.dismiss(loadingToast.id);
+      }
       
       toast({
         title: "Thank you for subscribing!",
@@ -78,8 +81,10 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
     } catch (error) {
       console.error('Error submitting email:', error);
       
-      // Dismiss loading toast
-      toast.dismiss(loadingToast);
+      // Dismiss loading toast - fixed method call
+      if (loadingToast && loadingToast.id) {
+        toast.dismiss(loadingToast.id);
+      }
       
       toast({
         title: "Oops! Something went wrong",
@@ -104,6 +109,10 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
               HiveIn launches in June 2025. Join the early access list and you'll receive:
             </DialogDescription>
           </DialogHeader>
+          
+          <DialogClose className="absolute right-2 top-2 p-1 text-white opacity-70 hover:opacity-100">
+            <div className="h-4 w-4" />
+          </DialogClose>
 
           <div className="space-y-4 py-4">
             <div className="bg-white/10 p-4 rounded-lg">
