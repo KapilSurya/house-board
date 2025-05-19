@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
-import LoveLetterDialog from './LoveLetterDialog';
+import NewsletterDialog from './NewsletterDialog'; // ✅ adjust this if your dialog is named differently
 
 const CallToAction: React.FC = () => {
-  const [loveLetterDialogOpen, setLoveLetterDialogOpen] = useState(false);
+  const [earlyAccessDialogOpen, setEarlyAccessDialogOpen] = useState(false);
 
   const handleClick = () => {
-    setLoveLetterDialogOpen(true);
+    setEarlyAccessDialogOpen(true);
   };
 
   return (
@@ -39,10 +39,10 @@ const CallToAction: React.FC = () => {
         </div>
       </div>
 
-      <LoveLetterDialog
-        open={loveLetterDialogOpen}
-        onOpenChange={setLoveLetterDialogOpen}
-        userEmail={''} // No email captured from here now
+      {/* ✅ Replace with your actual early access dialog component */}
+      <NewsletterDialog
+        open={earlyAccessDialogOpen}
+        onOpenChange={setEarlyAccessDialogOpen}
       />
     </section>
   );
