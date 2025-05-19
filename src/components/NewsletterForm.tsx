@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Mail } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import LoveLetterDialog from './LoveLetterDialog';
 
 interface NewsletterFormProps {
   buttonText?: string;
@@ -17,6 +18,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
   className = "" 
 }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [loveLetterDialogOpen, setLoveLetterDialogOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailError, setEmailError] = useState("");
@@ -54,14 +56,19 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
       toast({
         title: "Thank you for subscribing!",
         description: "You'll be the first to know about updates and exclusive offers.",
+        duration: 3000, // Auto-close after 3 seconds
       });
+      
+      // Open the love letter dialog
+      setLoveLetterDialogOpen(true);
       setEmail("");
     } catch (error) {
       console.error('Error submitting email:', error);
       toast({
         title: "Oops! Something went wrong",
         description: "Please try again later.",
-        variant: "destructive"
+        variant: "destructive",
+        duration: 3000, // Auto-close after 3 seconds
       });
     } finally {
       setIsSubmitting(false);
@@ -72,20 +79,20 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
     <div className={`space-y-4 ${className}`}>
       <div className="bg-white/10 p-4 rounded-lg max-w-xl mx-auto">
         <p className="text-base text-white font-medium mb-2">
-          ✨ Want to help build the future of relationships?
+          ✨ Make love fun and exciting
         </p>
         <p className="text-sm text-gray-200 mb-4">
           Join our community and become a HiveIn insider.
         </p>
         <ul className="text-sm text-gray-200 mb-4 space-y-1">
           <li className="flex items-start">
-            <span className="mr-2 text-white">✅</span> Get early access + free premium
+            <span className="mr-2 text-white">✅</span> Free Premium Access for Life
           </li>
           <li className="flex items-start">
-            <span className="mr-2 text-white">✅</span> Request features that fit your love story
+            <span className="mr-2 text-white">✅</span> Priority say in future feature requests
           </li>
           <li className="flex items-start">
-            <span className="mr-2 text-white">✅</span> Be part of the journey that influences how HiveIn grows
+            <span className="mr-2 text-white">✅</span> Send a custom love letter to your partner's email
           </li>
         </ul>
         <p className="text-sm text-gray-200 italic mb-4">
@@ -122,6 +129,12 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
       <NewsletterDialog 
         open={dialogOpen}
         onOpenChange={setDialogOpen}
+      />
+      
+      <LoveLetterDialog
+        open={loveLetterDialogOpen}
+        onOpenChange={setLoveLetterDialogOpen}
+        userEmail={email}
       />
     </div>
   );

@@ -1,85 +1,51 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Mail } from "lucide-react";
-import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import NewsletterDialog from './NewsletterDialog'; // ✅ adjust this if your dialog is named differently
 
 const CallToAction: React.FC = () => {
-  const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [earlyAccessDialogOpen, setEarlyAccessDialogOpen] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    try {
-      const { data, error } = await supabase.functions.invoke('subscribe-newsletter', {
-        body: { email }
-      });
-      
-      if (error) throw error;
-      
-      toast({
-        title: "Thank you for subscribing!",
-        description: "You'll be the first to know about updates and exclusive offers.",
-      });
-      setEmail("");
-    } catch (error) {
-      console.error('Error submitting email:', error);
-      toast({
-        title: "Oops! Something went wrong",
-        description: "Please try again later.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+  const handleClick = () => {
+    setEarlyAccessDialogOpen(true);
   };
 
-  return <section id="cta" className="py-20 gradient-bg text-white">
+  return (
+    <section id="cta" className="py-20 gradient-bg text-white">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Make love simple with HiveIn
+          Make love fun and exciting
         </h2>
         <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-8">
-          Want to help build the future of relationships?
-          Join our community and become a HiveIn insider
+          Join early access and also send a letter to your partner!
         </p>
 
         <div className="max-w-md mx-auto">
           <p className="text-base opacity-80 mb-6 text-center mx-0 px-px py-0 my-[4px] font-normal md:text-base">
-            ✅ Get early access + free premium<br />
-            ✅ Request features that fit your love story<br />
-            ✅ Be part of the journey that influences how HiveIn grows
+            ✅ Free Premium Access for Life<br />
+            ✅ Priority say in future feature requests<br />
+            ✅ Send a custom love letter to your partner's email
           </p>
 
           <div className="mt-6 flex items-center justify-center gap-4 text-sm text-gray-300">
-            <form onSubmit={handleSubmit} className="w-full space-y-3">
-              <div className="flex flex-col space-y-2">
-                <Input
-                  type="email"
-                  placeholder="Enter your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="bg-white/20 border-white/30 text-white placeholder:text-gray-400"
-                />
-              </div>
-              <Button 
-                type="submit" 
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-houseboard-medium text-white font-medium hover:bg-[#43B3AE] transition-all duration-300"
-                disabled={isSubmitting}
-              >
-                <Mail className="h-5 w-5" />
-                {isSubmitting ? "Subscribing..." : "Subscribe to Updates"}
-              </Button>
-            </form>
+            <Button 
+              onClick={handleClick}
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-houseboard-medium text-white font-medium hover:bg-[#43B3AE] transition-all duration-300"
+            >
+              <Mail className="h-5 w-5" />
+              Subscribe to Updates
+            </Button>
           </div>
         </div>
       </div>
-    </section>;
+
+      {/* ✅ Replace with your actual early access dialog component */}
+      <NewsletterDialog
+        open={earlyAccessDialogOpen}
+        onOpenChange={setEarlyAccessDialogOpen}
+      />
+    </section>
+  );
 };
 
 export default CallToAction;

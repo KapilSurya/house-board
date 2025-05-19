@@ -9,6 +9,36 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      love_letters: {
+        Row: {
+          delivered: boolean | null
+          error: string | null
+          id: string
+          message: string | null
+          partner_email: string | null
+          sender_email: string | null
+          sent_at: string | null
+        }
+        Insert: {
+          delivered?: boolean | null
+          error?: string | null
+          id?: string
+          message?: string | null
+          partner_email?: string | null
+          sender_email?: string | null
+          sent_at?: string | null
+        }
+        Update: {
+          delivered?: boolean | null
+          error?: string | null
+          id?: string
+          message?: string | null
+          partner_email?: string | null
+          sender_email?: string | null
+          sent_at?: string | null
+        }
+        Relationships: []
+      }
       newsletter_subscribers: {
         Row: {
           created_at: string
