@@ -54,7 +54,7 @@ serve(async (req) => {
         sent_at: new Date().toISOString(),
       };
       
-      // Insert into a love_letters table (we'll create this table later)
+      // Insert into the love_letters table
       const { data: savedLetter, error: dbError } = await supabase
         .from('love_letters')
         .insert([loveLetter])
@@ -64,6 +64,17 @@ serve(async (req) => {
       if (dbError) {
         console.error('Database error:', dbError);
         throw new Error('Failed to save love letter');
+      }
+      
+      if (!resendApiKey) {
+        console.error('Missing Resend API key');
+        return new Response(
+          JSON.stringify({ error: 'Email service configuration error' }),
+          { 
+            status: 500, 
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+          }
+        );
       }
       
       // Send the love letter email

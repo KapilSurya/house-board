@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
           </p>
           <div className="space-y-4">
             <div className="p-4 rounded-lg border border-white/20 max-w-md bg-[#d8f0ff]/[0.23]">
-              <p className="text-sm text-gray-200 mb-3">Want to help build the future of relationships? Join our community for early access and updates.</p>
+              <p className="text-sm text-gray-200 mb-3">Join early access and also send a letter to your partner!</p>
               
               <Button 
                 onClick={() => setDialogOpen(true)}

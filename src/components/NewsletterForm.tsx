@@ -79,20 +79,20 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
     <div className={`space-y-4 ${className}`}>
       <div className="bg-white/10 p-4 rounded-lg max-w-xl mx-auto">
         <p className="text-base text-white font-medium mb-2">
-          ✨ Want to help build the future of relationships?
+          ✨ Make love fun and exciting
         </p>
         <p className="text-sm text-gray-200 mb-4">
           Join our community and become a HiveIn insider.
         </p>
         <ul className="text-sm text-gray-200 mb-4 space-y-1">
           <li className="flex items-start">
-            <span className="mr-2 text-white">✅</span> Get early access + free premium
+            <span className="mr-2 text-white">✅</span> Free Premium Access for Life
           </li>
           <li className="flex items-start">
-            <span className="mr-2 text-white">✅</span> Request features that fit your love story
+            <span className="mr-2 text-white">✅</span> Priority say in future feature requests
           </li>
           <li className="flex items-start">
-            <span className="mr-2 text-white">✅</span> Be part of the journey that influences how HiveIn grows
+            <span className="mr-2 text-white">✅</span> Send a custom love letter to your partner's email
           </li>
         </ul>
         <p className="text-sm text-gray-200 italic mb-4">

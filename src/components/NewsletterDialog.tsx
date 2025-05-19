@@ -101,7 +101,7 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
                   <span className="mr-2 text-white">✅</span> Priority say in future feature requests
                 </li>
                 <li className="flex items-start">
-                  <span className="mr-2 text-white">✅</span> A chance to surprise your partner with something heartfelt
+                  <span className="mr-2 text-white">✅</span> Send a custom love letter to your partner's email
                 </li>
               </ul>
             </div>
