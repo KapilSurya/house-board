@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from '@/contexts/ThemeContext';
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import LoveLetterDialog from './LoveLetterDialog';
 
 interface NewsletterDialogProps {
   open: boolean;
@@ -27,6 +28,7 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailError, setEmailError] = useState("");
+  const [loveLetterDialogOpen, setLoveLetterDialogOpen] = useState(false);
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -57,15 +59,19 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
       toast({
         title: "Thank you for subscribing!",
         description: "You'll be the first to know about updates and exclusive offers.",
+        duration: 3000, // Auto-close after 3 seconds
       });
-      setEmail("");
+
+      // Close current dialog and open love letter dialog
       onOpenChange(false);
+      setLoveLetterDialogOpen(true);
     } catch (error) {
       console.error('Error submitting email:', error);
       toast({
         title: "Oops! Something went wrong",
         description: "Please try again later.",
-        variant: "destructive"
+        variant: "destructive",
+        duration: 3000, // Auto-close after 3 seconds
       });
     } finally {
       setIsSubmitting(false);
@@ -73,60 +79,71 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md bg-houseboard-dark border-houseboard-medium">
-        <DialogHeader>
-          <DialogTitle className={`text-2xl ${theme === 'light' ? 'text-white' : 'text-white'}`}>
-            Join HiveIn Community
-          </DialogTitle>
-          <DialogDescription className="text-gray-300">
-            ✨ Be the first to know when we launch exciting new features
-          </DialogDescription>
-        </DialogHeader>
+    <>
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="sm:max-w-md bg-houseboard-dark border-houseboard-medium">
+          <DialogHeader>
+            <DialogTitle className={`text-2xl ${theme === 'light' ? 'text-white' : 'text-white'}`}>
+              You're One Step Closer to HiveIn 💌
+            </DialogTitle>
+            <DialogDescription className="text-gray-300">
+              HiveIn launches in June 2025. Join the early access list and you'll receive:
+            </DialogDescription>
+          </DialogHeader>
 
-        <div className="space-y-4 py-4">
-          <div className="bg-white/10 p-4 rounded-lg">
-            <ul className="text-sm text-gray-200 space-y-2">
-              <li className="flex items-start">
-                <span className="mr-2 text-white">✅</span> Get early access + free premium
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2 text-white">✅</span> Request features that fit your love story
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2 text-white">✅</span> Stay updated on new features & improvements
-              </li>
-            </ul>
-          </div>
-          
-          <form onSubmit={handleSubmit} className="space-y-3">
-            <div className="flex flex-col space-y-2">
-              <Input
-                type="email"
-                placeholder="Enter your email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className={`bg-white/20 border-white/30 text-white placeholder:text-gray-400 ${
-                  emailError ? 'border-red-500' : ''
-                }`}
-              />
-              {emailError && (
-                <p className="text-red-400 text-xs">{emailError}</p>
-              )}
+          <div className="space-y-4 py-4">
+            <div className="bg-white/10 p-4 rounded-lg">
+              <ul className="text-sm text-gray-200 space-y-2">
+                <li className="flex items-start">
+                  <span className="mr-2 text-white">✅</span> Free Premium Access for Life
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2 text-white">✅</span> Priority say in future feature requests
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2 text-white">✅</span> A chance to surprise your partner with something heartfelt
+                </li>
+              </ul>
             </div>
-            <Button 
-              type="submit" 
-              className="w-full bg-houseboard-medium hover:bg-[#43B3AE] text-white" 
-              disabled={isSubmitting}
-            >
-              <Mail className="h-5 w-5 mr-2" />
-              {isSubmitting ? "Subscribing..." : "Subscribe to Updates"}
-            </Button>
-          </form>
-        </div>
-      </DialogContent>
-    </Dialog>
+            
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div className="flex flex-col space-y-2">
+                <label className="text-sm text-gray-200">
+                  Enter your email to reserve your spot:
+                </label>
+                <Input
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className={`bg-white/20 border-white/30 text-white placeholder:text-gray-400 ${
+                    emailError ? 'border-red-500' : ''
+                  }`}
+                />
+                {emailError && (
+                  <p className="text-red-400 text-xs">{emailError}</p>
+                )}
+              </div>
+              <Button 
+                type="submit" 
+                className="w-full bg-houseboard-medium hover:bg-[#43B3AE] text-white" 
+                disabled={isSubmitting}
+              >
+                <Mail className="h-5 w-5 mr-2" />
+                {isSubmitting ? "Subscribing..." : "Get Early Access"}
+              </Button>
+            </form>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <LoveLetterDialog 
+        open={loveLetterDialogOpen}
+        onOpenChange={setLoveLetterDialogOpen}
+        userEmail={email}
+      />
+    </>
   );
 };
 

@@ -1,14 +1,10 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.38.4";
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+import { corsHeaders } from "../_shared/cors.ts";
 
 const supabaseUrl = 'https://yyijabeyffphcvjlrent.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl5aWphYmV5ZmZwaGN2amxyZW50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM5NDAyODgsImV4cCI6MjA1OTUxNjI4OH0.I0Bz5JkVCxZt37UKPio_CmIj6wiXYHANglfD5emXqC4';
+const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 serve(async (req) => {
@@ -55,13 +51,14 @@ serve(async (req) => {
       
       if (error) throw error;
       
-      // Send welcome email by calling the welcome-email function
+      // Send welcome email
       try {
         const welcomeResponse = await fetch(`${supabaseUrl}/functions/v1/welcome-email`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${supabaseKey}`
+            'Authorization': `Bearer ${supabaseKey}`,
+            ...corsHeaders
           },
           body: JSON.stringify({ email })
         });
@@ -90,7 +87,7 @@ serve(async (req) => {
       { 
         status: 405, 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
-        }
+      }
     );
   } catch (error) {
     console.error('Error processing request:', error);

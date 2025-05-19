@@ -12,6 +12,7 @@ import WhoIsItForPage from "./pages/WhoIsItFor";
 import FAQ from "./pages/FAQ";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { useStarsBackground } from "./hooks/useStarsBackground";
+import { HelmetProvider } from "react-helmet-async";
 
 const StarsBackgroundEffect = () => {
   useStarsBackground();
@@ -24,23 +25,25 @@ const App = () => {
   
   return (
     <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <StarsBackgroundEffect />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/features" element={<Features />} />
-              <Route path="/who-is-it-for" element={<WhoIsItForPage />} />
-              <Route path="/faq" element={<FAQ />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </QueryClientProvider>
+      <HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner richColors closeButton />
+            <StarsBackgroundEffect />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/features" element={<Features />} />
+                <Route path="/who-is-it-for" element={<WhoIsItForPage />} />
+                <Route path="/faq" element={<FAQ />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </QueryClientProvider>
+      </HelmetProvider>
     </ThemeProvider>
   );
 };

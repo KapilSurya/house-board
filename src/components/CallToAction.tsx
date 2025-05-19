@@ -5,10 +5,12 @@ import { Input } from "@/components/ui/input";
 import { Mail } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import LoveLetterDialog from './LoveLetterDialog';
 
 const CallToAction: React.FC = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [loveLetterDialogOpen, setLoveLetterDialogOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,14 +26,19 @@ const CallToAction: React.FC = () => {
       toast({
         title: "Thank you for subscribing!",
         description: "You'll be the first to know about updates and exclusive offers.",
+        duration: 3000, // Auto-close after 3 seconds
       });
+      
+      // Open love letter dialog
+      setLoveLetterDialogOpen(true);
       setEmail("");
     } catch (error) {
       console.error('Error submitting email:', error);
       toast({
         title: "Oops! Something went wrong",
         description: "Please try again later.",
-        variant: "destructive"
+        variant: "destructive",
+        duration: 3000, // Auto-close after 3 seconds
       });
     } finally {
       setIsSubmitting(false);
@@ -79,6 +86,12 @@ const CallToAction: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <LoveLetterDialog
+        open={loveLetterDialogOpen}
+        onOpenChange={setLoveLetterDialogOpen}
+        userEmail={email}
+      />
     </section>;
 };
 

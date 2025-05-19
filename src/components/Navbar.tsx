@@ -2,11 +2,13 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import ThemeToggle from './ThemeToggle';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const handleOpenDialog = () => {
     // Find the "Join Us Now" button in the Hero section and click it
@@ -38,11 +40,14 @@ const Navbar: React.FC = () => {
         <Link to="/features" className="text-white hover:text-[#43B3AE] transition-colors">Features</Link>
         <Link to="/who-is-it-for" className="text-white hover:text-[#43B3AE] transition-colors">Who is it for</Link>
         <Link to="/faq" className="text-white hover:text-[#43B3AE] transition-colors">FAQ</Link>
-        <a href="https://blog.hivein.app" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#43B3AE] transition-colors">Blog</a>
+        {/* Blog link removed temporarily */}
       </nav>
       
       <div className="flex items-center gap-3">
-        <ThemeToggle />
+        {/* Only show ThemeToggle on desktop */}
+        <div className="hidden md:block">
+          <ThemeToggle />
+        </div>
         <Button className="bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300" onClick={handleOpenDialog}>
           Join the community
         </Button>
@@ -61,7 +66,28 @@ const Navbar: React.FC = () => {
           <Link to="/features" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>Features</Link>
           <Link to="/who-is-it-for" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>Who is it for</Link>
           <Link to="/faq" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>FAQ</Link>
-          <a href="https://blog.hivein.app" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>Blog</a>
+          {/* Blog link removed temporarily */}
+          
+          {/* Theme toggle in mobile menu */}
+          <button 
+            className="flex items-center gap-2 text-white hover:text-[#43B3AE] transition-colors py-2 px-4" 
+            onClick={() => {
+              toggleTheme();
+              // Don't close menu when toggling theme
+            }}
+          >
+            {theme === 'dark' ? (
+              <>
+                <Sun size={18} />
+                <span>Light Mode</span>
+              </>
+            ) : (
+              <>
+                <Moon size={18} />
+                <span>Dark Mode</span>
+              </>
+            )}
+          </button>
         </nav>
       </div>
     )}

@@ -1,17 +1,43 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import NewsletterDialog from './NewsletterDialog';
 import { Mail } from "lucide-react";
+import { Helmet } from 'react-helmet';
 
 const Hero: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  return <section className="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg card-hover text-white relative">
-      {/* Meta tags for Open Graph and better previews */}
-      <meta property="og:title" content="HiveIn – A safe home for your love" />
-      <meta property="og:description" content="HiveIn is a relationship app that helps couples stay close, share moods, and grow together through shared habits." />
-      <meta property="og:image" content="/lovable-uploads/house.png" />
+  // Update the document title and meta tags for SEO
+  useEffect(() => {
+    document.title = "HiveIn – A safe home for your love | Relationship App";
+  }, []);
+
+  return (
+    <section className="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg card-hover text-white relative">
+      <Helmet>
+        <title>HiveIn – A safe home for your love | Relationship App</title>
+        <meta name="description" content="HiveIn is a relationship app that helps couples stay close, share moods, and grow together through shared habits." />
+        <meta name="keywords" content="relationship app, couples app, relationship building, love, partnership, HiveIn" />
+        <meta name="author" content="HiveIn" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://hivein.app/" />
+        <meta property="og:title" content="HiveIn – A safe home for your love" />
+        <meta property="og:description" content="HiveIn is a relationship app that helps couples stay close, share moods, and grow together through shared habits." />
+        <meta property="og:image" content="https://hivein.app/lovable-uploads/house.png" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://hivein.app/" />
+        <meta property="twitter:title" content="HiveIn – A safe home for your love" />
+        <meta property="twitter:description" content="HiveIn is a relationship app that helps couples stay close, share moods, and grow together through shared habits." />
+        <meta property="twitter:image" content="https://hivein.app/lovable-uploads/house.png" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://hivein.app/" />
+      </Helmet>
       
       {/* String lights decoration */}
       <div className="string-lights"></div>
@@ -58,7 +84,8 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 
 export default Hero;

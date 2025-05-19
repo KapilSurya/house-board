@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Mail } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import LoveLetterDialog from './LoveLetterDialog';
 
 interface NewsletterFormProps {
   buttonText?: string;
@@ -17,6 +18,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
   className = "" 
 }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [loveLetterDialogOpen, setLoveLetterDialogOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailError, setEmailError] = useState("");
@@ -54,14 +56,19 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
       toast({
         title: "Thank you for subscribing!",
         description: "You'll be the first to know about updates and exclusive offers.",
+        duration: 3000, // Auto-close after 3 seconds
       });
+      
+      // Open the love letter dialog
+      setLoveLetterDialogOpen(true);
       setEmail("");
     } catch (error) {
       console.error('Error submitting email:', error);
       toast({
         title: "Oops! Something went wrong",
         description: "Please try again later.",
-        variant: "destructive"
+        variant: "destructive",
+        duration: 3000, // Auto-close after 3 seconds
       });
     } finally {
       setIsSubmitting(false);
@@ -122,6 +129,12 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
       <NewsletterDialog 
         open={dialogOpen}
         onOpenChange={setDialogOpen}
+      />
+      
+      <LoveLetterDialog
+        open={loveLetterDialogOpen}
+        onOpenChange={setLoveLetterDialogOpen}
+        userEmail={email}
       />
     </div>
   );
