@@ -6,6 +6,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -132,6 +133,10 @@ const LoveLetterDialog: React.FC<LoveLetterDialogProps> = ({
             <p className="text-gray-400 italic text-sm mt-1">Your message is private and will be deleted after delivery.</p>
           </DialogDescription>
         </DialogHeader>
+
+        <DialogClose className="absolute right-2 top-2 p-1 text-white opacity-70 hover:opacity-100">
+          <div className="h-4 w-4 text-white" />
+        </DialogClose>
 
         <div className="space-y-4 py-4">
           <form onSubmit={handleSubmit} className="space-y-4">

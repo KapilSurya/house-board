@@ -17,15 +17,6 @@ interface LoveLetterRequest {
   message: string;
 }
 
-// Custom type for tracking love letters
-interface LoveLetter {
-  id?: string;
-  sender_email: string;
-  partner_email: string;
-  message: string;
-  sent_at: string;
-}
-
 serve(async (req) => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
@@ -133,64 +124,52 @@ serve(async (req) => {
       `;
       
       try {
-        // Store the love letter in database first
-        const loveLetter: LoveLetter = {
-          sender_email: senderEmail,
-          partner_email: partnerEmail,
-          message,
-          sent_at: new Date().toISOString(),
-        };
+        // Generate a temporary ID for tracing (won't be stored long-term)
+        const tempId = crypto.randomUUID();
         
-        // Insert into the love_letters table
-        const { data: savedLetter, error: dbError } = await supabase
-          .from('love_letters')
-          .insert([loveLetter])
-          .select()
-          .single();
+        // Directly send the email without storing the full message content
+        // Import Resend dynamically for better startup performance
+        const { Resend } = await import('npm:resend@2.0.0');
+        const resend = new Resend(resendApiKey);
         
-        if (dbError) {
-          console.error('Database error:', dbError);
-          throw new Error('Failed to save love letter');
+        const emailResponse = await resend.emails.send({
+          from: 'HiveIn <surprise@hivein.app>',
+          to: [partnerEmail],
+          subject: 'Someone sent you a special surprise ❤️',
+          html: emailHtml,
+        });
+        
+        if (!emailResponse || emailResponse.error) {
+          throw new Error(`Failed to send email: ${emailResponse?.error?.message || 'Unknown error'}`);
         }
         
-        // Send the email in parallel with background task
-        // Import Resend dynamically for better startup performance
-        const sendEmailTask = async () => {
-          const { Resend } = await import('npm:resend@2.0.0');
-          const resend = new Resend(resendApiKey);
+        // Only log that a letter was sent, without storing the actual content
+        // This preserves privacy while allowing for analytics
+        const { data: logEntry, error: logError } = await supabase
+          .from('love_letters')
+          .insert([{
+            sender_email: senderEmail,
+            partner_email: partnerEmail,
+            message: '[Content encrypted and sent]', // Don't store actual message
+            sent_at: new Date().toISOString(),
+            delivered: true
+          }])
+          .select('id')
+          .single();
           
-          const emailResponse = await resend.emails.send({
-            from: 'HiveIn <surprise@hivein.app>',
-            to: [partnerEmail],
-            subject: 'Someone sent you a special surprise ❤️',
-            html: emailHtml,
-          });
-          
-          // Update the record to mark it as sent and trigger automatic deletion
-          await supabase
-            .from('love_letters')
-            .update({ delivered: true })
-            .eq('id', savedLetter.id);
-            
-          return emailResponse;
-        };
-        
-        // Use EdgeRuntime waitUntil for background task if available (Deno Deploy)
-        if (typeof EdgeRuntime !== 'undefined') {
-          EdgeRuntime.waitUntil(sendEmailTask());
-        } else {
-          // Fallback for environments without waitUntil
-          sendEmailTask().catch(err => console.error('Background email task error:', err));
+        if (logError) {
+          console.error('Warning: Failed to log love letter sending:', logError);
+          // Continue execution - don't fail the request if just logging fails
         }
         
         return new Response(
-          JSON.stringify({ success: true, id: savedLetter.id }),
+          JSON.stringify({ success: true, id: tempId }),
           { 
             status: 200, 
             headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
           }
         );
-      } catch (emailError) {
+      } catch (emailError: any) {
         console.error('Email sending error:', emailError);
         
         return new Response(
@@ -210,7 +189,7 @@ serve(async (req) => {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
       }
     );
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error processing request:', error);
     
     return new Response(

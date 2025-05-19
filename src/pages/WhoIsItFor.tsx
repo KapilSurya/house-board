@@ -1,7 +1,12 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import WhoIsItForSection from '@/components/WhoIsItFor';
+import Hero from '@/components/Hero';
+import WhoIsItFor from '@/components/WhoIsItFor';
+import FeatureSection from '@/components/FeatureSection';
+import TestimonialSection from '@/components/TestimonialSection';
+import FaqSection from '@/components/FaqSection';
+import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 import { Helmet } from 'react-helmet-async';
 
@@ -32,8 +37,13 @@ const WhoIsItForPage: React.FC = () => {
       </Helmet>
       
       <Navbar />
-      <main className="flex-grow pt-20">
-        <WhoIsItForSection />
+      <main className="flex-grow">
+        <Hero />
+        <WhoIsItFor />
+        <FeatureSection />
+        <TestimonialSection />
+        <FaqSection />
+        <CallToAction />
       </main>
       <Footer />
     </div>
