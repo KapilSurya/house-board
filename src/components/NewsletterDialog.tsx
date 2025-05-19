@@ -49,12 +49,22 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
     
     setIsSubmitting(true);
     
+    // Show immediate loading toast for better UX perception
+    const loadingToast = toast({
+      title: "Subscribing...",
+      description: "Just a moment while we add you to the waitlist.",
+      duration: 5000, // Fallback in case operation takes longer
+    });
+    
     try {
       const { data, error } = await supabase.functions.invoke('subscribe-newsletter', {
         body: { email }
       });
       
       if (error) throw error;
+      
+      // Dismiss loading toast
+      toast.dismiss(loadingToast);
       
       toast({
         title: "Thank you for subscribing!",
@@ -67,6 +77,10 @@ const NewsletterDialog: React.FC<NewsletterDialogProps> = ({
       setLoveLetterDialogOpen(true);
     } catch (error) {
       console.error('Error submitting email:', error);
+      
+      // Dismiss loading toast
+      toast.dismiss(loadingToast);
+      
       toast({
         title: "Oops! Something went wrong",
         description: "Please try again later.",

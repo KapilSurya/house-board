@@ -16,3 +16,22 @@ CREATE INDEX IF NOT EXISTS love_letters_partner_email_idx ON public.love_letters
 
 -- Add comment for documentation
 COMMENT ON TABLE public.love_letters IS 'Stores love letters sent by users to their partners';
+
+-- Create function to delete delivered messages after 24 hours
+CREATE OR REPLACE FUNCTION delete_delivered_love_letters() RETURNS TRIGGER AS $$
+BEGIN
+  -- Delete the record immediately after setting delivered=true
+  IF NEW.delivered = true THEN
+    DELETE FROM public.love_letters WHERE id = NEW.id;
+    RETURN NULL; -- Row is deleted, so return NULL
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Create trigger to auto-delete delivered messages
+DROP TRIGGER IF EXISTS trigger_delete_delivered_love_letters ON public.love_letters;
+CREATE TRIGGER trigger_delete_delivered_love_letters
+AFTER UPDATE ON public.love_letters
+FOR EACH ROW
+EXECUTE FUNCTION delete_delivered_love_letters();

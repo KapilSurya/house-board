@@ -58,6 +58,13 @@ const LoveLetterDialog: React.FC<LoveLetterDialogProps> = ({
     
     setIsSubmitting(true);
     
+    // Show immediate toast for better UX perception
+    const loadingToast = toast({
+      title: "Sending your love letter...",
+      description: "Your message is on its way.",
+      duration: 10000, // Long duration as a fallback
+    });
+    
     try {
       const { data, error } = await supabase.functions.invoke('send-love-letter', {
         body: { 
@@ -68,6 +75,9 @@ const LoveLetterDialog: React.FC<LoveLetterDialogProps> = ({
       });
       
       if (error) throw error;
+      
+      // Dismiss loading toast
+      toast.dismiss(loadingToast);
       
       toast({
         title: "Your surprise is on its way!",
@@ -86,6 +96,10 @@ const LoveLetterDialog: React.FC<LoveLetterDialogProps> = ({
       
     } catch (error) {
       console.error('Error sending love letter:', error);
+      
+      // Dismiss loading toast
+      toast.dismiss(loadingToast);
+      
       toast({
         title: "Oops! Something went wrong",
         description: "Please try again later.",
@@ -111,6 +125,7 @@ const LoveLetterDialog: React.FC<LoveLetterDialogProps> = ({
           </DialogTitle>
           <DialogDescription className="text-gray-300">
             You can send your partner a surprise love letter. We'll deliver it to their inbox like a digital keepsake 💌
+            <p className="text-gray-400 italic text-sm mt-1">Your message is private and will be deleted after delivery.</p>
           </DialogDescription>
         </DialogHeader>
 

@@ -46,26 +46,6 @@ serve(async (req) => {
         );
       }
       
-      // Store the love letter in database first
-      const loveLetter: LoveLetter = {
-        sender_email: senderEmail,
-        partner_email: partnerEmail,
-        message,
-        sent_at: new Date().toISOString(),
-      };
-      
-      // Insert into the love_letters table
-      const { data: savedLetter, error: dbError } = await supabase
-        .from('love_letters')
-        .insert([loveLetter])
-        .select()
-        .single();
-      
-      if (dbError) {
-        console.error('Database error:', dbError);
-        throw new Error('Failed to save love letter');
-      }
-      
       if (!resendApiKey) {
         console.error('Missing Resend API key');
         return new Response(
@@ -77,7 +57,7 @@ serve(async (req) => {
         );
       }
       
-      // Send the love letter email
+      // Prepare the email HTML before database operations for better performance
       const emailHtml = `
       <!DOCTYPE html>
       <html>
@@ -153,22 +133,55 @@ serve(async (req) => {
       `;
       
       try {
-        // Import Resend dynamically
-        const { Resend } = await import('npm:resend@2.0.0');
-        const resend = new Resend(resendApiKey);
+        // Store the love letter in database first
+        const loveLetter: LoveLetter = {
+          sender_email: senderEmail,
+          partner_email: partnerEmail,
+          message,
+          sent_at: new Date().toISOString(),
+        };
         
-        const emailResponse = await resend.emails.send({
-          from: 'HiveIn <surprise@hivein.app>',
-          to: [partnerEmail],
-          subject: 'Someone sent you a special surprise ❤️',
-          html: emailHtml,
-        });
-        
-        // Update the record to mark it as sent
-        await supabase
+        // Insert into the love_letters table
+        const { data: savedLetter, error: dbError } = await supabase
           .from('love_letters')
-          .update({ delivered: true })
-          .eq('id', savedLetter.id);
+          .insert([loveLetter])
+          .select()
+          .single();
+        
+        if (dbError) {
+          console.error('Database error:', dbError);
+          throw new Error('Failed to save love letter');
+        }
+        
+        // Send the email in parallel with background task
+        // Import Resend dynamically for better startup performance
+        const sendEmailTask = async () => {
+          const { Resend } = await import('npm:resend@2.0.0');
+          const resend = new Resend(resendApiKey);
+          
+          const emailResponse = await resend.emails.send({
+            from: 'HiveIn <surprise@hivein.app>',
+            to: [partnerEmail],
+            subject: 'Someone sent you a special surprise ❤️',
+            html: emailHtml,
+          });
+          
+          // Update the record to mark it as sent and trigger automatic deletion
+          await supabase
+            .from('love_letters')
+            .update({ delivered: true })
+            .eq('id', savedLetter.id);
+            
+          return emailResponse;
+        };
+        
+        // Use EdgeRuntime waitUntil for background task if available (Deno Deploy)
+        if (typeof EdgeRuntime !== 'undefined') {
+          EdgeRuntime.waitUntil(sendEmailTask());
+        } else {
+          // Fallback for environments without waitUntil
+          sendEmailTask().catch(err => console.error('Background email task error:', err));
+        }
         
         return new Response(
           JSON.stringify({ success: true, id: savedLetter.id }),
@@ -180,13 +193,13 @@ serve(async (req) => {
       } catch (emailError) {
         console.error('Email sending error:', emailError);
         
-        // Mark as failed in database
-        await supabase
-          .from('love_letters')
-          .update({ delivered: false, error: JSON.stringify(emailError) })
-          .eq('id', savedLetter.id);
-        
-        throw new Error('Failed to send love letter email');
+        return new Response(
+          JSON.stringify({ error: 'Failed to send love letter email', details: emailError.message }),
+          { 
+            status: 500, 
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+          }
+        );
       }
     }
 

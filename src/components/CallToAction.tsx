@@ -16,6 +16,13 @@ const CallToAction: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    // Show immediate loading toast for better UX perception
+    const loadingToast = toast({
+      title: "Subscribing...",
+      description: "Adding you to our early access list.",
+      duration: 5000, // Fallback duration in case operation takes longer
+    });
+    
     try {
       const { data, error } = await supabase.functions.invoke('subscribe-newsletter', {
         body: { email }
@@ -23,10 +30,13 @@ const CallToAction: React.FC = () => {
       
       if (error) throw error;
       
+      // Dismiss loading toast
+      toast.dismiss(loadingToast);
+      
       toast({
         title: "Thank you for subscribing!",
         description: "You'll be the first to know about updates and exclusive offers.",
-        duration: 3000, // Auto-close after 3 seconds
+        duration: 3000,
       });
       
       // Open love letter dialog
@@ -34,11 +44,15 @@ const CallToAction: React.FC = () => {
       setEmail("");
     } catch (error) {
       console.error('Error submitting email:', error);
+      
+      // Dismiss loading toast
+      toast.dismiss(loadingToast);
+      
       toast({
         title: "Oops! Something went wrong",
         description: "Please try again later.",
         variant: "destructive",
-        duration: 3000, // Auto-close after 3 seconds
+        duration: 3000,
       });
     } finally {
       setIsSubmitting(false);
@@ -48,7 +62,7 @@ const CallToAction: React.FC = () => {
   return <section id="cta" className="py-20 gradient-bg text-white">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Build Your Dream Relationship
+          Make love fun and exciting
         </h2>
         <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-8">
           Want to help build the future of relationships?
@@ -57,9 +71,9 @@ const CallToAction: React.FC = () => {
 
         <div className="max-w-md mx-auto">
           <p className="text-base opacity-80 mb-6 text-center mx-0 px-px py-0 my-[4px] font-normal md:text-base">
-            ✅ Get early access + free premium<br />
-            ✅ Request features that fit your love story<br />
-            ✅ Be part of the journey that influences how HiveIn grows
+            ✅ Free Premium Access for Life<br />
+            ✅ Priority say in future feature requests<br />
+            ✅ Send a custom love letter to your partner's email
           </p>
 
           <div className="mt-6 flex items-center justify-center gap-4 text-sm text-gray-300">
