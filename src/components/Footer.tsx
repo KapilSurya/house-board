@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const Footer: React.FC = () => {
       <div className="string-lights"></div>
       
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-8 mb-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div className="animate-fade-in">
             <h3 className="text-xl font-bold mb-4 text-white">
               HiveIn
@@ -17,6 +18,27 @@ const Footer: React.FC = () => {
             <p className="text-gray-300 mb-4">
               A safe digital home for stronger relationships.
             </p>
+          </div>
+          
+          <div className="animate-fade-in">
+            <h4 className="font-semibold mb-4 text-white">Site Links</h4>
+            <ul className="space-y-2 text-gray-300">
+              <li className="transition-all duration-300 hover:translate-x-1">
+                <Link to="/" className="hover:text-white transition-colors">Home</Link>
+              </li>
+              <li className="transition-all duration-300 hover:translate-x-1">
+                <Link to="/features" className="hover:text-white transition-colors">Features</Link>
+              </li>
+              <li className="transition-all duration-300 hover:translate-x-1">
+                <Link to="/who-is-it-for" className="hover:text-white transition-colors">Who is it for</Link>
+              </li>
+              <li className="transition-all duration-300 hover:translate-x-1">
+                <Link to="/faq" className="hover:text-white transition-colors">FAQ</Link>
+              </li>
+              <li className="transition-all duration-300 hover:translate-x-1">
+                <a href="https://blog.hivein.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Blog</a>
+              </li>
+            </ul>
           </div>
           
           <div className="animate-fade-in">

@@ -8,9 +8,9 @@ const corsHeaders = {
 };
 
 // Get API key from environment variables (this is set in your Supabase secrets)
-const resendApiKey = Deno.env.get('RESEND_API_KEY');
+const resendApiKey = Deno.env.get('WelcomeMail'); // Changed from RESEND_API_KEY to WelcomeMail
 if (!resendApiKey) {
-  console.error('RESEND_API_KEY is not set in environment variables');
+  console.error('WelcomeMail secret is not set in environment variables');
 }
 
 const resend = new Resend(resendApiKey);
@@ -69,7 +69,7 @@ serve(async (req) => {
 
         console.log("Sending welcome email to:", email);
         console.log("Email content:", emailContent);
-        console.log("Using Resend API key:", resendApiKey ? "API key is set" : "API key is missing");
+        console.log("Using Resend API key from WelcomeMail:", resendApiKey ? "API key is set" : "API key is missing");
         
         const { data, error } = await resend.emails.send(emailContent);
         
