@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import NewsletterDialog from './NewsletterDialog';
 import { Mail } from "lucide-react";
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 const Hero: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
