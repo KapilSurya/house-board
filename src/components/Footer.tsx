@@ -1,13 +1,10 @@
-
 import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
 const Footer: React.FC = () => {
-  return (
-    <footer className="gradient-bg text-white py-12 relative">
+  return <footer className="gradient-bg text-white py-12 relative">
       {/* String lights decoration */}
-      <div className="string-lights"></div>
+      
       
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
@@ -73,8 +70,6 @@ const Footer: React.FC = () => {
           <p>© {new Date().getFullYear()} HiveIn. All rights reserved.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
