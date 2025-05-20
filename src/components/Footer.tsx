@@ -7,7 +7,6 @@ const Footer: React.FC = () => {
   return (
     <footer className="gradient-bg text-white py-12 relative">
       {/* String lights decoration */}
-      <div className="string-lights"></div>
       
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
