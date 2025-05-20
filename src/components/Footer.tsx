@@ -11,7 +11,8 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div className="animate-fade-in">
-            <h3 className="text-xl font-bold mb-4 text-white">
+            <h3 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
+              <img alt="HiveIn Logo" className="w-6 h-6" src="/lovable-uploads/ca0af61c-6896-4e91-9fa4-03d93d138db7.png" />
               HiveIn
             </h3>
             <p className="text-gray-300 mb-4">
@@ -35,7 +36,7 @@ const Footer: React.FC = () => {
                 <Link to="/faq" className="hover:text-white transition-colors">FAQ</Link>
               </li>
               <li className="transition-all duration-300 hover:translate-x-1">
-                <a href="https://blog.hivein.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Blog</a>
+                <Link to="/blogs" className="hover:text-white transition-colors">Blog</Link>
               </li>
             </ul>
           </div>

@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import ThemeToggle from './ThemeToggle';
 import { Menu, X, Moon, Sun } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
 
   const handleOpenDialog = () => {
     // Find the "Join Us Now" button in the Hero section and click it
@@ -20,6 +21,27 @@ const Navbar: React.FC = () => {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  // Handle section navigation with smooth scrolling
+  const handleNavigation = (sectionId: string) => {
+    // Close mobile menu if open
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+    
+    // Check if we're already on the homepage
+    if (location.pathname === '/') {
+      // We're on the homepage, just scroll to the section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // We're not on the homepage, navigate to homepage with the section in the URL
+      // The section scrolling will be handled after the page loads
+      window.location.href = `/#${sectionId}`;
+    }
   };
 
   return <header className="fixed top-0 w-full z-50 backdrop-blur-sm bg-gradient-to-b from-black/70 to-transparent">
@@ -37,9 +59,24 @@ const Navbar: React.FC = () => {
       
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center space-x-6">
-        <Link to="/features" className="text-white hover:text-[#43B3AE] transition-colors">Features</Link>
-        <Link to="/who-is-it-for" className="text-white hover:text-[#43B3AE] transition-colors">Who is it for</Link>
-        <Link to="/faq" className="text-white hover:text-[#43B3AE] transition-colors">FAQ</Link>
+        <button 
+          onClick={() => handleNavigation('features')} 
+          className="text-white hover:text-[#43B3AE] transition-colors"
+        >
+          Features
+        </button>
+        <button 
+          onClick={() => handleNavigation('who-is-it-for')} 
+          className="text-white hover:text-[#43B3AE] transition-colors"
+        >
+          Who is it for
+        </button>
+        <button 
+          onClick={() => handleNavigation('faq')} 
+          className="text-white hover:text-[#43B3AE] transition-colors"
+        >
+          FAQ
+        </button>
         <Link to="/blogs" className="text-white hover:text-[#43B3AE] transition-colors">Blog</Link>
       </nav>
       
@@ -63,10 +100,25 @@ const Navbar: React.FC = () => {
     {mobileMenuOpen && (
       <div className="md:hidden bg-black/90 backdrop-blur-md">
         <nav className="flex flex-col space-y-4 p-4">
-          <Link to="/features" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>Features</Link>
-          <Link to="/who-is-it-for" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>Who is it for</Link>
-          <Link to="/faq" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>FAQ</Link>
-          <Link to="/blogs" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
+          <button 
+            onClick={() => handleNavigation('features')} 
+            className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4 text-left"
+          >
+            Features
+          </button>
+          <button 
+            onClick={() => handleNavigation('who-is-it-for')} 
+            className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4 text-left"
+          >
+            Who is it for
+          </button>
+          <button 
+            onClick={() => handleNavigation('faq')} 
+            className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4 text-left"
+          >
+            FAQ
+          </button>
+          <Link to="/blogs" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4">Blog</Link>
           
           {/* Theme toggle in mobile menu */}
           <button 
