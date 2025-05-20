@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
         <Link to="/features" className="text-white hover:text-[#43B3AE] transition-colors">Features</Link>
         <Link to="/who-is-it-for" className="text-white hover:text-[#43B3AE] transition-colors">Who is it for</Link>
         <Link to="/faq" className="text-white hover:text-[#43B3AE] transition-colors">FAQ</Link>
-        {/* Blog link removed temporarily */}
+        <Link to="/blogs" className="text-white hover:text-[#43B3AE] transition-colors">Blog</Link>
       </nav>
       
       <div className="flex items-center gap-3">
@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
           <Link to="/features" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>Features</Link>
           <Link to="/who-is-it-for" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>Who is it for</Link>
           <Link to="/faq" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>FAQ</Link>
-          {/* Blog link removed temporarily */}
+          <Link to="/blogs" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
           
           {/* Theme toggle in mobile menu */}
           <button 
