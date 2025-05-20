@@ -4,15 +4,16 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import { useStarsBackground } from "./hooks/useStarsBackground";
+import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Features from "./pages/Features";
 import WhoIsItForPage from "./pages/WhoIsItFor";
 import FAQ from "./pages/FAQ";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import { useStarsBackground } from "./hooks/useStarsBackground";
-import { HelmetProvider } from "react-helmet-async";
+import BlogIndex from "./pages/BlogIndex";
+import BlogPost from "./pages/BlogPost";
 
 const StarsBackgroundEffect = () => {
   useStarsBackground();
@@ -37,6 +38,8 @@ const App = () => {
                 <Route path="/features" element={<Features />} />
                 <Route path="/who-is-it-for" element={<WhoIsItForPage />} />
                 <Route path="/faq" element={<FAQ />} />
+                <Route path="/blogs" element={<BlogIndex />} />
+                <Route path="/blogs/:slug" element={<BlogPost />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

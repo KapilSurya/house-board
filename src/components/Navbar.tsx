@@ -1,14 +1,15 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import ThemeToggle from './ThemeToggle';
-import { Menu, X, Moon, Sun } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
 
   const handleOpenDialog = () => {
     // Find the "Join Us Now" button in the Hero section and click it
@@ -21,6 +22,33 @@ const Navbar: React.FC = () => {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      // If not on the homepage, navigate to homepage first with a section hash
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+    
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      setMobileMenuOpen(false);
+    }
+  };
+
+  // Handle hash in URL for direct navigation to sections
+  useEffect(() => {
+    if (location.hash) {
+      const sectionId = location.hash.substring(1);
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 500); // Delay to ensure component is mounted
+    }
+  }, [location]);
 
   return <header className="fixed top-0 w-full z-50 backdrop-blur-sm bg-gradient-to-b from-black/70 to-transparent">
     <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -37,10 +65,27 @@ const Navbar: React.FC = () => {
       
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center space-x-6">
-        <Link to="/features" className="text-white hover:text-[#43B3AE] transition-colors">Features</Link>
-        <Link to="/who-is-it-for" className="text-white hover:text-[#43B3AE] transition-colors">Who is it for</Link>
-        <Link to="/faq" className="text-white hover:text-[#43B3AE] transition-colors">FAQ</Link>
-        {/* Blog link removed temporarily */}
+        <button 
+          onClick={() => scrollToSection('features')} 
+          className="text-white hover:text-[#43B3AE] transition-colors"
+        >
+          Features
+        </button>
+        <button 
+          onClick={() => scrollToSection('who-is-it-for')} 
+          className="text-white hover:text-[#43B3AE] transition-colors"
+        >
+          Who is it for
+        </button>
+        <button 
+          onClick={() => scrollToSection('faq')} 
+          className="text-white hover:text-[#43B3AE] transition-colors"
+        >
+          FAQ
+        </button>
+        <Link to="/blogs" className="text-white hover:text-[#43B3AE] transition-colors">
+          Blog
+        </Link>
       </nav>
       
       <div className="flex items-center gap-3">
@@ -63,10 +108,31 @@ const Navbar: React.FC = () => {
     {mobileMenuOpen && (
       <div className="md:hidden bg-black/90 backdrop-blur-md">
         <nav className="flex flex-col space-y-4 p-4">
-          <Link to="/features" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>Features</Link>
-          <Link to="/who-is-it-for" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>Who is it for</Link>
-          <Link to="/faq" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4" onClick={() => setMobileMenuOpen(false)}>FAQ</Link>
-          {/* Blog link removed temporarily */}
+          <button 
+            onClick={() => scrollToSection('features')}
+            className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4 text-left"
+          >
+            Features
+          </button>
+          <button 
+            onClick={() => scrollToSection('who-is-it-for')}
+            className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4 text-left"
+          >
+            Who is it for
+          </button>
+          <button 
+            onClick={() => scrollToSection('faq')}
+            className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4 text-left"
+          >
+            FAQ
+          </button>
+          <Link 
+            to="/blogs" 
+            className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Blog
+          </Link>
           
           {/* Theme toggle in mobile menu */}
           <button 
@@ -78,12 +144,12 @@ const Navbar: React.FC = () => {
           >
             {theme === 'dark' ? (
               <>
-                <Sun size={18} />
+                <span className="i-lucide-sun h-5 w-5" />
                 <span>Light Mode</span>
               </>
             ) : (
               <>
-                <Moon size={18} />
+                <span className="i-lucide-moon h-5 w-5" />
                 <span>Dark Mode</span>
               </>
             )}
