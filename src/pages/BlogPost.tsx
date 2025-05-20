@@ -89,7 +89,7 @@ const BlogPost = () => {
       // Blockquote
       if (paragraph.startsWith('> ')) {
         return (
-          <blockquote key={i} className="border-l-4 border-[#0a1826] pl-4 py-2 my-6 bg-blue-50/50 italic">
+          <blockquote key={i} className="border-l-4 border-[#1e3d4c] pl-4 py-2 my-6 bg-blue-50/50 italic">
             <p className="text-gray-700">{paragraph.replace('> ', '')}</p>
           </blockquote>
         );
@@ -117,7 +117,7 @@ const BlogPost = () => {
         ) : error ? (
           <div className="text-center py-12">
             <p className="text-red-500">Error loading article. Please try again later.</p>
-            <Link to="/blogs" className="text-[#0a1826] hover:underline mt-4 inline-block">
+            <Link to="/blogs" className="text-[#1e3d4c] hover:underline mt-4 inline-block">
               ← Back to all articles
             </Link>
           </div>
@@ -125,11 +125,11 @@ const BlogPost = () => {
           <>
             {/* Header */}
             <div className="container mx-auto px-4 text-center mb-8 max-w-3xl">
-              <Link to="/blogs" className="text-[#0a1826] hover:underline mb-6 inline-block">
+              <Link to="/blogs" className="text-[#1e3d4c] hover:underline mb-6 inline-block">
                 ← Back to all articles
               </Link>
               
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-[#0a1826] mb-4">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-[#1e3d4c] mb-4">
                 {post.title}
               </h1>
               
@@ -155,7 +155,7 @@ const BlogPost = () => {
                   className="w-full max-h-[500px] object-cover" 
                 />
               ) : (
-                <div className="w-full h-[300px] md:h-[400px] bg-[#1e3d4c] flex items-center justify-center">
+                <div className="w-full h-[300px] md:h-[400px] bg-[#2e4e5f] flex items-center justify-center">
                   <span className="text-white/30 text-2xl font-serif">HiveIn Journal</span>
                 </div>
               )}
@@ -169,10 +169,10 @@ const BlogPost = () => {
               
               {/* CTA */}
               <div className="mt-16 mb-8 p-6 bg-blue-50 rounded-lg border border-blue-100 text-center">
-                <h3 className="text-xl font-medium text-[#0a1826] mb-3">
+                <h3 className="text-xl font-medium text-[#1e3d4c] mb-3">
                   HiveIn is designed to help couples stay emotionally close, even in busy lives.
                 </h3>
-                <Button asChild className="bg-[#0a1826] hover:bg-[#1e3d4c] mt-2">
+                <Button asChild className="bg-[#1e3d4c] hover:bg-[#2e4e5f] mt-2">
                   <Link to="/">
                     Explore the App <ArrowRight size={16} className="ml-1" />
                   </Link>
@@ -183,7 +183,7 @@ const BlogPost = () => {
         ) : (
           <div className="text-center py-12">
             <p className="text-gray-600">Blog post not found</p>
-            <Link to="/blogs" className="text-[#0a1826] hover:underline mt-4 inline-block">
+            <Link to="/blogs" className="text-[#1e3d4c] hover:underline mt-4 inline-block">
               ← Back to all articles
             </Link>
           </div>

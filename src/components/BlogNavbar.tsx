@@ -1,12 +1,9 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Menu, X } from 'lucide-react';
 
 const BlogNavbar: React.FC = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
   const handleOpenDialog = () => {
     // Find the "Join Us Now" button in the Hero section and click it
     const joinButton = document.querySelector('.newsletter-join-button') as HTMLButtonElement;
@@ -16,7 +13,7 @@ const BlogNavbar: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#0a1826] shadow-sm">
+    <header className="fixed top-0 w-full z-50 bg-[#1e3d4c] shadow-sm">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Link to="/">
@@ -31,25 +28,13 @@ const BlogNavbar: React.FC = () => {
         
         <div className="flex items-center gap-3">
           <Button 
-            className="bg-white hover:bg-gray-100 text-[#0a1826]" 
+            className="bg-white hover:bg-gray-100 text-[#1e3d4c]" 
             onClick={handleOpenDialog}
           >
             Join the community
           </Button>
-          
-          {/* Mobile menu button */}
-          <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
       </div>
-      
-      {/* Mobile menu - simplified since we removed the links */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0a1826] shadow-md">
-          <nav className="flex flex-col space-y-4 p-4"></nav>
-        </div>
-      )}
     </header>
   );
 };

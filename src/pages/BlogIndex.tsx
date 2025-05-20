@@ -72,7 +72,7 @@ const BlogIndex = () => {
       <main className="pt-24 pb-16">
         {/* Header */}
         <div className="container mx-auto px-4 text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#0a1826] mb-4">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#1e3d4c] mb-4">
             The HiveIn Journal
           </h1>
           <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
@@ -98,7 +98,7 @@ const BlogIndex = () => {
                   key={blog.id} 
                   className="group"
                 >
-                  <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-[#0a1826] border border-gray-700 h-full flex flex-col">
+                  <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-[#1e3d4c] border border-gray-700 h-full flex flex-col">
                     <div className="aspect-[16/9] bg-gray-800 overflow-hidden">
                       {blog.cover_image_url ? (
                         <img 
@@ -107,7 +107,7 @@ const BlogIndex = () => {
                           className="w-full h-full object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full bg-[#1e3d4c] flex items-center justify-center">
+                        <div className="w-full h-full bg-[#2e4e5f] flex items-center justify-center">
                           <span className="text-white/30 text-xl font-serif">HiveIn Journal</span>
                         </div>
                       )}
