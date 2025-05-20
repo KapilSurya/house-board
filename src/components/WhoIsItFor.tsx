@@ -1,37 +1,97 @@
-import React from 'react';
+
+import React, { useState, useEffect, useRef } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const WhoIsItFor: React.FC = () => {
+  const [isScrollVisible, setIsScrollVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const sectionTop = sectionRef.current.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      const scrollPosition = sectionTop < windowHeight * 0.7;
+      setIsScrollVisible(scrollPosition);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const beforeCardClass = theme === 'dark'
+    ? 'bg-[#1f2a33] text-gray-300'
+    : 'bg-[#e3e3e3] text-[#2C3D59] border border-gray-300';
+
+  const afterCardClass = theme === 'dark'
+    ? 'bg-[#1d3540] text-white'
+    : 'bg-[#fdfaf5] text-[#2C3D59] border border-gray-200';
+
   return (
-    <section id="who-is-it-for" className="py-20 bg-gradient-to-t from-black/50 to-transparent">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">
-          Who is Hive<span className="text-[#43B3AE]">In</span> for?
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* For Couples */}
-          <div className="bg-houseboard-medium/10 p-6 rounded-lg shadow-md text-white animate-fade-in">
-            <h3 className="text-xl font-semibold mb-4">For Couples</h3>
-            <p className="text-gray-300">
-              Strengthen your relationship through shared habits, mood sharing, and more.
+    <section id="who-is-it-for" className="py-20 relative" ref={sectionRef}>
+      <div className={`shelf absolute top-0 left-0 right-0 ${theme === 'light' ? 'opacity-50' : ''}`}></div>
+
+      <div className="container mx-auto px-4 max-w-5xl pt-6">
+        <div className={`transition-all duration-700 ease-in-out ${isScrollVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="text-center mb-12">
+            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-[#2C3D59]'}`}>
+              Who is HiveIn For?
+            </h2>
+            <p className={`max-w-2xl mx-auto mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+              Even the strongest relationships face challenges. Misunderstandings grow, emotions go unspoken, and staying connected feels harder than it should.
             </p>
           </div>
 
-          {/* For Long Distance Relationships */}
-          <div className="bg-houseboard-medium/10 p-6 rounded-lg shadow-md text-white animate-fade-in delay-100">
-            <h3 className="text-xl font-semibold mb-4">
-              For Long Distance Relationships
-            </h3>
-            <p className="text-gray-300">
-              Stay connected and close despite the distance with virtual activities and shared experiences.
-            </p>
-          </div>
+          <div className="grid md:grid-cols-2 gap-6 items-stretch">
+            {/* Before View */}
+            <div className={`card-hover rounded-3xl p-8 shadow-md transition-all duration-300 h-full flex flex-col md:scale-[1.05] z-10 ${beforeCardClass}`}>
+              <h3 className="text-2xl font-semibold mb-4 flex items-center">
+                <span className="mr-2 animate-pulse">💔</span> Before HiveIn
+              </h3>
+              <ul className="space-y-3 list-disc pl-5 mb-6">
+                <li>Misunderstandings turn into silence.</li>
+                <li>Emotions stay bottled up.</li>
+                <li>Busyness replaces closeness.</li>
+                <li>You try — but it still feels like something's missing.</li>
+              </ul>
+              <div className="mt-auto rounded-xl overflow-hidden flex-1">
+                <div className="h-full flex items-center justify-center">
+                  <img 
+                    src="/lovable-uploads/before.png"
+                    alt="Before HiveIn - Communication challenges"
+                    className="w-full h-auto object-contain"
+                    style={{ maxHeight: "300px" }}
+                  />
+                </div>
+                <div className="absolute bottom-3 right-3 candle-light" style={{ width: '15px', height: '15px' }}></div>
+              </div>
+            </div>
 
-          {/* For Busy Partners */}
-          <div className="bg-houseboard-medium/10 p-6 rounded-lg shadow-md text-white animate-fade-in delay-200">
-            <h3 className="text-xl font-semibold mb-4">For Busy Partners</h3>
-            <p className="text-gray-300">
-              Make the most of your time together with easy-to-integrate habits and quick check-ins.
-            </p>
+            {/* After View - changed to "With HiveIn" */}
+            <div className={`card-hover rounded-3xl p-8 shadow-md hover:shadow-lg transition-all duration-300 h-full flex flex-col ${afterCardClass}`}>
+              <h3 className="text-2xl font-semibold mb-4 flex items-center">
+                <span className="mr-2 animate-pulse">❤️</span> With HiveIn
+              </h3>
+              <ul className="space-y-3 list-disc pl-5 mb-6">
+                <li>Share how you feel in seconds — even when words fail.</li>
+                <li>Build healthy, loving habits without effort.</li>
+                <li>Keep track of each other's moods, goals, and little wins.</li>
+                <li>Turn check-ins into moments of closeness.</li>
+              </ul>
+              <div className="mt-auto rounded-xl overflow-hidden flex-1">
+                <div className="h-full flex items-center justify-center">
+                  <img 
+                    src="/lovable-uploads/after.png"
+                    alt="With HiveIn - Connected relationship"
+                    className="w-full h-auto object-contain"
+                    style={{ maxHeight: "300px" }}
+                  />
+                </div>
+                <div className="absolute bottom-3 left-3 candle-light" style={{ width: '15px', height: '15px' }}></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

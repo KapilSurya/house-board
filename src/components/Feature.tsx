@@ -14,21 +14,19 @@ import {
 interface FeatureProps {
   title: string;
   description: string;
-  ctaText?: string;
+  ctaText: string;
   imageRight?: boolean;
   iconName?: string;
   compact?: boolean;
-  icon?: string;
 }
 
 const Feature: React.FC<FeatureProps> = ({
   title,
   description,
-  ctaText = "Learn more",
+  ctaText,
   imageRight = false,
   iconName = 'MessageSquare',
-  compact = false,
-  icon
+  compact = false
 }) => {
   const icons: Record<string, LucideIcon> = {
     MessageSquare,
@@ -58,11 +56,9 @@ const Feature: React.FC<FeatureProps> = ({
           {title}
         </h3>
         <p className="text-gray-700">{description}</p>
-        {ctaText && (
-          <Button className="mt-2 bg-houseboard-medium hover:bg-houseboard-dark text-white btn-hover-effect transform transition-all duration-300 hover:scale-105">
-            {ctaText}
-          </Button>
-        )}
+        <Button className="mt-2 bg-houseboard-medium hover:bg-houseboard-dark text-white btn-hover-effect transform transition-all duration-300 hover:scale-105">
+          {ctaText}
+        </Button>
       </div>
 
       <div className={cn(
@@ -75,13 +71,9 @@ const Feature: React.FC<FeatureProps> = ({
         )}>
           <div className="absolute top-0 left-0 right-0 h-6 bg-gray-300 rounded-t-xl"></div>
           <div className="mt-6 h-[calc(100%-6px)] bg-gradient-to-br from-houseboard-dark/10 to-houseboard-medium/20 p-4 flex flex-col items-center justify-center">
-            {icon ? (
-              <img src={icon} alt={title} className="w-14 h-14 object-contain mb-4" />
-            ) : (
-              <div className="w-14 h-14 rounded-full bg-white shadow-md flex items-center justify-center mb-4 animate-pulse-gentle">
-                <FeatureIcon className="w-8 h-8 text-houseboard-medium" />
-              </div>
-            )}
+            <div className="w-14 h-14 rounded-full bg-white shadow-md flex items-center justify-center mb-4 animate-pulse-gentle">
+              <FeatureIcon className="w-8 h-8 text-houseboard-medium" />
+            </div>
             <p className="text-houseboard-dark font-medium text-center mb-2">{title}</p>
             <p className="text-sm text-gray-600 text-center">Tap to explore</p>
             

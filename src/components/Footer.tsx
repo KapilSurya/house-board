@@ -27,16 +27,16 @@ const Footer: React.FC = () => {
                 <Link to="/" className="hover:text-white transition-colors">Home</Link>
               </li>
               <li className="transition-all duration-300 hover:translate-x-1">
-                <Link to="/#features" className="hover:text-white transition-colors">Features</Link>
+                <Link to="/features" className="hover:text-white transition-colors">Features</Link>
               </li>
               <li className="transition-all duration-300 hover:translate-x-1">
-                <Link to="/#who-is-it-for" className="hover:text-white transition-colors">Who is it for</Link>
+                <Link to="/who-is-it-for" className="hover:text-white transition-colors">Who is it for</Link>
               </li>
               <li className="transition-all duration-300 hover:translate-x-1">
-                <Link to="/#faq" className="hover:text-white transition-colors">FAQ</Link>
+                <Link to="/faq" className="hover:text-white transition-colors">FAQ</Link>
               </li>
               <li className="transition-all duration-300 hover:translate-x-1">
-                <Link to="/blogs" className="hover:text-white transition-colors">Blog</Link>
+                <a href="https://blog.hivein.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Blog</a>
               </li>
             </ul>
           </div>
