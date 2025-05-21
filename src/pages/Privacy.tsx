@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { Helmet } from "react-helmet-async";
 import Navbar from '@/components/BlogNavbar';
 import Footer from '@/components/Footer';
-
 const Privacy = () => {
-  return (
-    <div className="bg-white min-h-screen">
+  return <div className="bg-white min-h-screen">
       <Helmet>
         <title>Privacy Policy - HiveIn</title>
         <meta name="description" content="Learn how HiveIn protects your privacy and handles your data." />
@@ -29,7 +26,7 @@ const Privacy = () => {
               <li>Notify you when HiveIn becomes available</li>
               <li>Invite you to send an optional love letter to your partner</li>
             </ul>
-            <p>If you choose to send a love letter, we store the message in an encrypted format. However, the email addresses involved (sender and receiver) remain visible to enable delivery.</p>
+            <p>If you choose to send a love letter, we store the message in an encrypted format. However, the email addresses involved (sender and receiver) remain visible to enable delivery. The contents of the mail will be visible to the mail provider (resend), to allow it to send the mail. However, the contents will not be viewed by either the HiveIn or the Resend team.</p>
             
             <h2 className="text-2xl font-bold mt-8 mb-4 text-[#1e3d4c]">2. What We Will Collect (Once the App Is Live)</h2>
             <p>When HiveIn launches, we will collect additional data to power key features and personalize your experience. This may include:</p>
@@ -72,8 +69,6 @@ const Privacy = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Privacy;
