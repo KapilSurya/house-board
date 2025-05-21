@@ -1,15 +1,40 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 
 const BlogNavbar: React.FC = () => {
+  const location = useLocation();
+  
   const handleOpenDialog = () => {
     // Find the "Join Us Now" button in the Hero section and click it
     const joinButton = document.querySelector('.newsletter-join-button') as HTMLButtonElement;
     if (joinButton) {
       joinButton.click();
+    } else {
+      // If newsletter button not found, try to find one in the NewsletterForm
+      const newsletterForm = document.createElement('div');
+      newsletterForm.style.display = 'none';
+      document.body.appendChild(newsletterForm);
+      
+      // Create a temporary React component with the NewsletterForm
+      const tempButton = document.createElement('button');
+      tempButton.className = 'newsletter-join-button';
+      newsletterForm.appendChild(tempButton);
+      
+      // Click the temporary button
+      tempButton.click();
+      
+      // Clean up after dialog is shown
+      setTimeout(() => {
+        document.body.removeChild(newsletterForm);
+      }, 1000);
     }
+  };
+
+  // Determine if link is active
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
 
   return (
@@ -25,6 +50,16 @@ const BlogNavbar: React.FC = () => {
             </div>
           </Link>
         </div>
+        
+        {/* Add Blog Link to Nav */}
+        <nav className="hidden md:flex items-center space-x-6">
+          <Link 
+            to="/blogs" 
+            className={`${isActive('/blogs') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}
+          >
+            Blog
+          </Link>
+        </nav>
         
         <div className="flex items-center gap-3">
           <Button 

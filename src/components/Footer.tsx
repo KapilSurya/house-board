@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 text-gray-300">
               <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
                 <Mail size={18} className="text-[#ffd54f]" />
-                <a href="mailto:hiveinapp@gmail.com" className="hover:text-white transition-colors">hiveinapp@gmail.com</a>
+                <a href="mailto:team@hivein.app" className="hover:text-white transition-colors">team@hivein.app</a>
               </li>
               <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
                 <Phone size={18} className="text-[#ffd54f]" />

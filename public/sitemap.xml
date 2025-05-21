@@ -3,68 +3,80 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hivein.app/</loc>
-    <lastmod>2025-05-20</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://hivein.app/features</loc>
-    <lastmod>2025-05-20</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://hivein.app/who-is-it-for</loc>
-    <lastmod>2025-05-20</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://hivein.app/faq</loc>
-    <lastmod>2025-05-20</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://hivein.app/blogs</loc>
-    <lastmod>2025-05-20</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://hivein.app/about</loc>
+    <lastmod>2025-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hivein.app/privacy</loc>
+    <lastmod>2025-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://hivein.app/blogs/building-stronger-communication</loc>
-    <lastmod>2025-05-20</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://hivein.app/blogs/power-of-daily-rituals</loc>
-    <lastmod>2025-05-20</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://hivein.app/blogs/navigating-conflict</loc>
-    <lastmod>2025-05-20</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://hivein.app/blogs/art-of-active-listening</loc>
-    <lastmod>2025-05-20</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://hivein.app/privacy</loc>
-    <lastmod>2025-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://hivein.app/blogs/test-blog-title-2</loc>
+    <lastmod>2025-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://hivein.app/about</loc>
-    <lastmod>2025-05-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://hivein.app/blogs/test-blog-title-3</loc>
+    <lastmod>2025-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

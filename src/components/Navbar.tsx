@@ -2,10 +2,11 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const handleOpenDialog = () => {
     // Find the "Join Us Now" button in the Hero section and click it
@@ -17,6 +18,11 @@ const Navbar: React.FC = () => {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  // Determine if link is active
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
 
   return <header className="fixed top-0 w-full z-50 backdrop-blur-sm bg-gradient-to-b from-black/70 to-transparent">
@@ -34,9 +40,26 @@ const Navbar: React.FC = () => {
       
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center space-x-6">
-        <Link to="/features" className="text-white hover:text-[#43B3AE] transition-colors">Features</Link>
-        <Link to="/who-is-it-for" className="text-white hover:text-[#43B3AE] transition-colors">Who is it for</Link>
-        <Link to="/faq" className="text-white hover:text-[#43B3AE] transition-colors">FAQ</Link>
+        <Link 
+          to="/features" 
+          className={`${isActive('/features') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}>
+          Features
+        </Link>
+        <Link 
+          to="/who-is-it-for" 
+          className={`${isActive('/who-is-it-for') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}>
+          Who is it for
+        </Link>
+        <Link 
+          to="/faq" 
+          className={`${isActive('/faq') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}>
+          FAQ
+        </Link>
+        <Link 
+          to="/blogs" 
+          className={`${isActive('/blogs') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}>
+          Blog
+        </Link>
       </nav>
       
       <div className="flex items-center gap-3">
@@ -55,9 +78,26 @@ const Navbar: React.FC = () => {
     {mobileMenuOpen && (
       <div className="md:hidden bg-black/90 backdrop-blur-md">
         <nav className="flex flex-col space-y-4 p-4">
-          <Link to="/features" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4">Features</Link>
-          <Link to="/who-is-it-for" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4">Who is it for</Link>
-          <Link to="/faq" className="text-white hover:text-[#43B3AE] transition-colors py-2 px-4">FAQ</Link>
+          <Link 
+            to="/features" 
+            className={`${isActive('/features') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors py-2 px-4`}>
+            Features
+          </Link>
+          <Link 
+            to="/who-is-it-for" 
+            className={`${isActive('/who-is-it-for') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors py-2 px-4`}>
+            Who is it for
+          </Link>
+          <Link 
+            to="/faq" 
+            className={`${isActive('/faq') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors py-2 px-4`}>
+            FAQ
+          </Link>
+          <Link 
+            to="/blogs" 
+            className={`${isActive('/blogs') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors py-2 px-4`}>
+            Blog
+          </Link>
         </nav>
       </div>
     )}
