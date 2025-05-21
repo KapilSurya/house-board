@@ -47,6 +47,7 @@ const App = () => {
                 <Route path="/love/:id" element={<LoveLetter />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/love/:id" element={<LoveLetterViewer />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
