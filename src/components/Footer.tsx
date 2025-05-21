@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
             <h2 className="text-lg font-semibold mb-4">Contact</h2>
             <ul className="space-y-2">
               <li className="text-gray-300 flex items-start">
-                <span className="mr-2">📨</span>
+                
                 <a href="mailto:team@hivein.app" className="hover:text-[#43B3AE] transition-colors">
                   team@hivein.app
                 </a>
