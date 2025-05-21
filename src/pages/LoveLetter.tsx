@@ -56,7 +56,7 @@ const LoveLetter: React.FC = () => {
         }
 
         // Decrypt the message
-        const decryptedMessage = decryptLetter(data.message);
+        const decryptedMessage = decryptLetter(data.message || '');
         
         if (!decryptedMessage) {
           setError('Unable to read this love letter');
@@ -73,7 +73,7 @@ const LoveLetter: React.FC = () => {
         }
 
         setLetter({
-          sender_email: data.sender_email,
+          sender_email: data.sender_email || '',
           message: decryptedMessage,
         });
       } catch (err) {
@@ -148,7 +148,7 @@ const LoveLetter: React.FC = () => {
                 </div>
                 
                 <div className="mt-8 text-right italic text-gray-600">
-                  With love, from {letter?.sender_email.split('@')[0]}
+                  With love, from {letter?.sender_email ? letter.sender_email.split('@')[0] : 'Someone special'}
                 </div>
               </div>
               

@@ -49,6 +49,7 @@ export type Database = {
           id: string
           message: string | null
           partner_email: string | null
+          read_at: string | null
           sender_email: string | null
           sent_at: string | null
         }
@@ -58,6 +59,7 @@ export type Database = {
           id?: string
           message?: string | null
           partner_email?: string | null
+          read_at?: string | null
           sender_email?: string | null
           sent_at?: string | null
         }
@@ -67,6 +69,7 @@ export type Database = {
           id?: string
           message?: string | null
           partner_email?: string | null
+          read_at?: string | null
           sender_email?: string | null
           sent_at?: string | null
         }
