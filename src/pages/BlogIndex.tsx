@@ -143,9 +143,9 @@ const BlogIndex = () => {
                           className="w-full h-full object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full bg-[#2e4e5f] flex items-center justify-center">
-                          <span className="text-white/30 text-xl font-serif">HiveIn Journal</span>
-                        </div>
+                        <div className="w-full h-full bg-white flex items-center justify-center border border-gray-200">
+                          <span className="text-gray-400 text-xl font-serif">HiveIn Journal</span></div>
+
                       )}
                     </div>
 
