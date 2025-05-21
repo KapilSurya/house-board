@@ -43,37 +43,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://hivein.app/blogs/building-stronger-communication</loc>
-    <lastmod>2025-05-21</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://hivein.app/blogs/power-of-daily-rituals</loc>
-    <lastmod>2025-05-21</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://hivein.app/blogs/navigating-conflict</loc>
-    <lastmod>2025-05-21</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://hivein.app/blogs/art-of-active-listening</loc>
-    <lastmod>2025-05-21</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://hivein.app/blogs/test-blog-title-2</loc>
-    <lastmod>2025-05-21</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://hivein.app/blogs/test-blog-title-3</loc>
+    <loc>https://hivein.app/blogs/how-we-used-ai-to-build-hivein</loc>
     <lastmod>2025-05-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
