@@ -1,35 +1,15 @@
 
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 
 const BlogNavbar: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   
   const handleOpenDialog = () => {
-    // Find the "Join Us Now" button in the Hero section and click it
-    const joinButton = document.querySelector('.newsletter-join-button') as HTMLButtonElement;
-    if (joinButton) {
-      joinButton.click();
-    } else {
-      // If newsletter button not found, try to find one in the NewsletterForm
-      const newsletterForm = document.createElement('div');
-      newsletterForm.style.display = 'none';
-      document.body.appendChild(newsletterForm);
-      
-      // Create a temporary React component with the NewsletterForm
-      const tempButton = document.createElement('button');
-      tempButton.className = 'newsletter-join-button';
-      newsletterForm.appendChild(tempButton);
-      
-      // Click the temporary button
-      tempButton.click();
-      
-      // Clean up after dialog is shown
-      setTimeout(() => {
-        document.body.removeChild(newsletterForm);
-      }, 1000);
-    }
+    // Navigate to home page and set a query parameter to open the dialog
+    navigate('/?openDialog=true');
   };
 
   // Determine if link is active
@@ -51,13 +31,18 @@ const BlogNavbar: React.FC = () => {
           </Link>
         </div>
         
-        {/* Add Blog Link to Nav */}
         <nav className="hidden md:flex items-center space-x-6">
+          <Link 
+            to="/" 
+            className={`${isActive('/') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}
+          >
+            Home
+          </Link>
           <Link 
             to="/blogs" 
             className={`${isActive('/blogs') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}
           >
-            Blog
+            Blogs
           </Link>
         </nav>
         

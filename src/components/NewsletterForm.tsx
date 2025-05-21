@@ -7,6 +7,8 @@ import { Mail } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import LoveLetterDialog from './LoveLetterDialog';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 
 interface NewsletterFormProps {
   buttonText?: string;
@@ -20,8 +22,12 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
   const [dialogOpen, setDialogOpen] = useState(false);
   const [loveLetterDialogOpen, setLoveLetterDialogOpen] = useState(false);
   const [email, setEmail] = useState("");
+  const [age, setAge] = useState<string>("");
+  const [gender, setGender] = useState<string>("");
+  const [city, setCity] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailError, setEmailError] = useState("");
+  const [formExpanded, setFormExpanded] = useState(false);
 
   const handleOpenDialog = () => {
     setDialogOpen(true);
@@ -48,7 +54,12 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
     
     try {
       const { data, error } = await supabase.functions.invoke('subscribe-newsletter', {
-        body: { email }
+        body: { 
+          email,
+          age: age ? parseInt(age) : null,
+          gender,
+          city
+        }
       });
       
       if (error) throw error;
@@ -62,6 +73,10 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
       // Open the love letter dialog
       setLoveLetterDialogOpen(true);
       setEmail("");
+      setAge("");
+      setGender("");
+      setCity("");
+      setFormExpanded(false);
     } catch (error) {
       console.error('Error submitting email:', error);
       toast({
@@ -72,6 +87,12 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
       });
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleEmailFocus = () => {
+    if (!formExpanded) {
+      setFormExpanded(true);
     }
   };
 
@@ -106,6 +127,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
               placeholder="Enter your email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onFocus={handleEmailFocus}
               required
               className={`bg-white/20 border-white/30 text-white placeholder:text-gray-400 ${
                 emailError ? 'border-red-500' : ''
@@ -115,6 +137,51 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
               <p className="text-red-400 text-xs">{emailError}</p>
             )}
           </div>
+
+          {formExpanded && (
+            <div className="space-y-3 animate-fadeIn">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="flex flex-col space-y-1">
+                  <Label className="text-sm text-gray-300">Age (Optional)</Label>
+                  <Input
+                    type="number"
+                    placeholder="Your age"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                    className="bg-white/20 border-white/30 text-white placeholder:text-gray-400"
+                  />
+                </div>
+
+                <div className="flex flex-col space-y-1">
+                  <Label className="text-sm text-gray-300">Gender (Optional)</Label>
+                  <Select value={gender} onValueChange={setGender}>
+                    <SelectTrigger className="bg-white/20 border-white/30 text-white">
+                      <SelectValue placeholder="Select gender" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="male">Male</SelectItem>
+                      <SelectItem value="female">Female</SelectItem>
+                      <SelectItem value="non-binary">Non-binary</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="prefer-not-to-say">Prefer not to say</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="flex flex-col space-y-1">
+                <Label className="text-sm text-gray-300">City (Optional)</Label>
+                <Input
+                  type="text"
+                  placeholder="Your city"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  className="bg-white/20 border-white/30 text-white placeholder:text-gray-400"
+                />
+              </div>
+            </div>
+          )}
+
           <Button 
             type="submit" 
             className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-houseboard-medium text-white font-medium hover:bg-[#43B3AE] transition-all duration-300"

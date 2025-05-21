@@ -1,92 +1,98 @@
-
 import React from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
 const Footer: React.FC = () => {
-  return (
-    <footer className="gradient-bg text-white py-12 relative">
-      {/* String lights decoration */}
-      
+  return <footer className="bg-[#1e3d4c] text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          <div className="animate-fade-in">
-            <h3 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
-              <img alt="HiveIn Logo" className="w-6 h-6" src="/lovable-uploads/ca0af61c-6896-4e91-9fa4-03d93d138db7.png" />
-              HiveIn
-            </h3>
-            <p className="text-gray-300 mb-4">
-              A safe digital home for stronger relationships.
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* First column */}
+          <div className="space-y-4">
+            <Link to="/" className="flex items-center">
+              <img src="/lovable-uploads/ca0af61c-6896-4e91-9fa4-03d93d138db7.png" alt="HiveIn Logo" className="h-10 w-10 mr-2" />
+              <span className="text-xl font-bold">Hive<span className="text-[#43B3AE]">In</span></span>
+            </Link>
+            <p className="text-gray-300 text-sm">
+              Building love through daily habits.
             </p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <span className="sr-only">Twitter</span>
+                
+              </a>
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <span className="sr-only">Instagram</span>
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
+                </svg>
+              </a>
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <span className="sr-only">Discord</span>
+                
+              </a>
+            </div>
           </div>
           
-          <div className="animate-fade-in">
-            <h4 className="font-semibold mb-4 text-white">Site Links</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li className="transition-all duration-300 hover:translate-x-1">
-                <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              </li>
-              <li className="transition-all duration-300 hover:translate-x-1">
-                <Link to="/features" className="hover:text-white transition-colors">Features</Link>
-              </li>
-              <li className="transition-all duration-300 hover:translate-x-1">
-                <Link to="/who-is-it-for" className="hover:text-white transition-colors">Who is it for</Link>
-              </li>
-              <li className="transition-all duration-300 hover:translate-x-1">
-                <Link to="/faq" className="hover:text-white transition-colors">FAQ</Link>
-              </li>
-            </ul>
-          </div>
-          
-          <div className="animate-fade-in">
-            <h4 className="font-semibold mb-4 text-white">Resources</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li className="transition-all duration-300 hover:translate-x-1">
-                <Link to="/blogs" className="hover:text-white transition-colors">Blog</Link>
-              </li>
-              <li className="transition-all duration-300 hover:translate-x-1">
-                <Link to="/about" className="hover:text-white transition-colors">About Us</Link>
-              </li>
-              <li className="transition-all duration-300 hover:translate-x-1">
-                <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-              </li>
-            </ul>
-          </div>
-          
-          <div className="animate-fade-in">
-            <h4 className="font-semibold mb-4 text-white">Contact Us</h4>
-            <ul className="space-y-3 text-gray-300">
-              <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
-                <Mail size={18} className="text-[#ffd54f]" />
-                <a href="mailto:team@hivein.app" className="hover:text-white transition-colors">team@hivein.app</a>
-              </li>
-              <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
-                <Phone size={18} className="text-[#ffd54f]" />
-                <a href="tel:+919100857172" className="hover:text-white transition-colors">+91 9100857172</a>
-              </li>
-              <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
-                <MapPin size={18} className="text-[#ffd54f]" />
-                <span>Thub, Hyderabad, Telangana</span>
+          {/* Second column - Pages */}
+          <div>
+            <h2 className="text-lg font-semibold mb-4">Pages</h2>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/features" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
+                  Features
+                </Link>
               </li>
               <li>
-                <div className="flex space-x-4 mt-4">
-                  <a href="https://www.instagram.com/hiveinapp/" className="text-gray-300 hover:text-[#ffd54f] transition-all duration-300 transform hover:scale-110" target="_blank" rel="noopener noreferrer">
-                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd"></path>
-                    </svg>
-                  </a>
-                </div>
+                <Link to="/who-is-it-for" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
+                  Who is it for
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link to="/blogs" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
+                  Blogs
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Third column - Legal */}
+          <div>
+            <h2 className="text-lg font-semibold mb-4">Legal</h2>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/privacy" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-gray-300 hover:text-[#43B3AE] transition-colors">
+                  About Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Fourth column - Contact */}
+          <div>
+            <h2 className="text-lg font-semibold mb-4">Contact</h2>
+            <ul className="space-y-2">
+              <li className="text-gray-300 flex items-start">
+                
+                <a href="mailto:team@hivein.app" className="hover:text-[#43B3AE] transition-colors">
+                  team@hivein.app
+                </a>
               </li>
             </ul>
           </div>
         </div>
         
-        <div className="border-t border-gray-700 pt-8 mt-8 text-center text-sm text-gray-400">
-          <p>© {new Date().getFullYear()} HiveIn. All rights reserved.</p>
+        <div className="border-t border-gray-700 mt-8 pt-6 text-sm text-gray-400 text-center">
+          <p>&copy; {new Date().getFullYear()} HiveIn. All rights reserved.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
