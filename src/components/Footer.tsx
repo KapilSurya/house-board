@@ -7,12 +7,12 @@ const Footer: React.FC = () => {
   return (
     <footer className="gradient-bg text-white py-12 relative">
       {/* String lights decoration */}
-      <div className="string-lights"></div>
       
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div className="animate-fade-in">
-            <h3 className="text-xl font-bold mb-4 text-white">
+            <h3 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
+              <img alt="HiveIn Logo" className="w-6 h-6" src="/lovable-uploads/ca0af61c-6896-4e91-9fa4-03d93d138db7.png" />
               HiveIn
             </h3>
             <p className="text-gray-300 mb-4">
@@ -35,8 +35,20 @@ const Footer: React.FC = () => {
               <li className="transition-all duration-300 hover:translate-x-1">
                 <Link to="/faq" className="hover:text-white transition-colors">FAQ</Link>
               </li>
+            </ul>
+          </div>
+          
+          <div className="animate-fade-in">
+            <h4 className="font-semibold mb-4 text-white">Resources</h4>
+            <ul className="space-y-2 text-gray-300">
               <li className="transition-all duration-300 hover:translate-x-1">
-                <a href="https://blog.hivein.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Blog</a>
+                <Link to="/blogs" className="hover:text-white transition-colors">Blog</Link>
+              </li>
+              <li className="transition-all duration-300 hover:translate-x-1">
+                <Link to="/about" className="hover:text-white transition-colors">About Us</Link>
+              </li>
+              <li className="transition-all duration-300 hover:translate-x-1">
+                <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
               </li>
             </ul>
           </div>
@@ -46,7 +58,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 text-gray-300">
               <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
                 <Mail size={18} className="text-[#ffd54f]" />
-                <a href="mailto:hiveinapp@gmail.com" className="hover:text-white transition-colors">hiveinapp@gmail.com</a>
+                <a href="mailto:team@hivein.app" className="hover:text-white transition-colors">team@hivein.app</a>
               </li>
               <li className="flex items-center gap-2 transition-all duration-300 hover:translate-x-1">
                 <Phone size={18} className="text-[#ffd54f]" />
