@@ -112,7 +112,7 @@ const LoveLetterDialog: React.FC<LoveLetterDialogProps> = ({
           </DialogTitle>
           <DialogDescription className="text-gray-300">
             Send a custom love letter to your partner's email
-            <p className="text-gray-400 italic text-sm mt-1">Your message is private</p>
+            
           </DialogDescription>
         </DialogHeader>
 
