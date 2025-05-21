@@ -14,6 +14,7 @@ export type Database = {
           content: string | null
           cover_image_url: string | null
           id: string
+          is_draft: boolean | null
           published_at: string | null
           slug: string
           summary: string | null
@@ -23,6 +24,7 @@ export type Database = {
           content?: string | null
           cover_image_url?: string | null
           id?: string
+          is_draft?: boolean | null
           published_at?: string | null
           slug: string
           summary?: string | null
@@ -32,6 +34,7 @@ export type Database = {
           content?: string | null
           cover_image_url?: string | null
           id?: string
+          is_draft?: boolean | null
           published_at?: string | null
           slug?: string
           summary?: string | null
@@ -71,18 +74,27 @@ export type Database = {
       }
       newsletter_subscribers: {
         Row: {
+          age: number | null
+          city: string | null
           created_at: string
           email: string
+          gender: string | null
           id: string
         }
         Insert: {
+          age?: number | null
+          city?: string | null
           created_at?: string
           email: string
+          gender?: string | null
           id?: string
         }
         Update: {
+          age?: number | null
+          city?: string | null
           created_at?: string
           email?: string
+          gender?: string | null
           id?: string
         }
         Relationships: []

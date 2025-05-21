@@ -15,7 +15,7 @@ serve(async (req) => {
 
   try {
     if (req.method === 'POST') {
-      const { email } = await req.json();
+      const { email, age, gender, city } = await req.json();
       
       if (!email || typeof email !== 'string') {
         return new Response(
@@ -44,10 +44,15 @@ serve(async (req) => {
         );
       }
       
-      // Insert email into database
+      // Insert email into database with demographic data
       const { data, error } = await supabase
         .from('newsletter_subscribers')
-        .insert([{ email }]);
+        .insert([{ 
+          email,
+          age: age || null,
+          gender: gender || null,
+          city: city || null
+        }]);
       
       if (error) throw error;
       
