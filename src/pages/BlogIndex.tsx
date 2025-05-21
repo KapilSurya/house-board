@@ -134,7 +134,7 @@ const BlogIndex = () => {
                   key={blog.id} 
                   className="group"
                 >
-                  <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-[#1e3d4c] border border-gray-700 h-full flex flex-col">
+                  <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white border border-gray-200 h-full flex flex-col">
                     <div className="aspect-[16/9] bg-gray-800 overflow-hidden">
                       {blog.cover_image_url ? (
                         <img 
