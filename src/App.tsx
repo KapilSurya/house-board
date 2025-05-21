@@ -7,13 +7,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import Features from "./pages/FeaturesPage";
+import Features from "./pages/Features";
 import WhoIsItForPage from "./pages/WhoIsItForPage";
 import FaqPage from "./pages/FaqPage";
 import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
 import Privacy from "./pages/Privacy";
 import About from "./pages/About";
+import LoveLetter from "./pages/LoveLetter";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { useStarsBackground } from "./hooks/useStarsBackground";
 import { HelmetProvider } from "react-helmet-async";
@@ -43,6 +44,7 @@ const App = () => {
                 <Route path="/faq" element={<FaqPage />} />
                 <Route path="/blogs" element={<BlogIndex />} />
                 <Route path="/blogs/:slug" element={<BlogPost />} />
+                <Route path="/love/:id" element={<LoveLetter />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/about" element={<About />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

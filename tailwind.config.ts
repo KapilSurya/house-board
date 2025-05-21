@@ -70,6 +70,10 @@ export default {
 					morning: '#487BD4',
 				},
 			},
+			fontFamily: {
+				'dancing': ['"Dancing Script"', 'cursive'],
+				'playfair': ['"Playfair Display"', 'serif'],
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',

@@ -2,6 +2,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { corsHeaders } from "../_shared/cors.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.38.4";
+import * as CryptoJS from "https://cdn.skypack.dev/crypto-js@4.1.1";
 
 // Initialize Supabase client
 const supabaseUrl = 'https://yyijabeyffphcvjlrent.supabase.co';
@@ -10,6 +11,9 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Get Resend API key from environment variables
 const resendApiKey = Deno.env.get('WelcomeMail') || '';
+
+// This would come from an environment variable in a real application
+const ENCRYPTION_SECRET = 'hivein-love-secret';
 
 interface LoveLetterRequest {
   senderEmail: string;
@@ -48,86 +52,101 @@ serve(async (req) => {
         );
       }
       
-      // Prepare the email HTML before database operations for better performance
-      const emailHtml = `
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <meta charset="utf-8">
-          <title>A Special Message For You</title>
-          <style>
-            body {
-              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-              line-height: 1.6;
-              color: #333;
-              max-width: 600px;
-              margin: 0 auto;
-              padding: 20px;
-            }
-            .love-letter {
-              background-color: #fff9f9;
-              border: 1px solid #ffccd5;
-              border-radius: 12px;
-              padding: 25px;
-              box-shadow: 0 4px 12px rgba(255, 166, 166, 0.15);
-              position: relative;
-              margin-top: 20px;
-            }
-            .love-letter:before {
-              content: '';
-              position: absolute;
-              top: -12px;
-              left: 24px;
-              width: 24px;
-              height: 24px;
-              background-color: #fff9f9;
-              border-top: 1px solid #ffccd5;
-              border-left: 1px solid #ffccd5;
-              transform: rotate(45deg);
-            }
-            .message {
-              font-size: 16px;
-              white-space: pre-line;
-              color: #333;
-              line-height: 1.8;
-            }
-            .from {
-              margin-top: 20px;
-              font-style: italic;
-              color: #888;
-            }
-            .heart {
-              color: #ff6b6b;
-            }
-            .footer {
-              margin-top: 40px;
-              font-size: 12px;
-              color: #999;
-              text-align: center;
-            }
-          </style>
-        </head>
-        <body>
-          <h2>Someone has sent you a special message ❤️</h2>
-          
-          <div class="love-letter">
-            <div class="message">${message.replace(/\n/g, '<br>')}</div>
-            <div class="from">With love, from ${senderEmail}</div>
-          </div>
-          
-          <div class="footer">
-            <p>This message was sent through <a href="https://hivein.app">HiveIn</a>, an app for couples to build a stronger relationship.</p>
-            <p>Want to surprise your partner too? <a href="https://hivein.app">Join our community</a>.</p>
-          </div>
-        </body>
-      </html>
-      `;
-      
       try {
-        // Generate a temporary ID for tracing (won't be stored long-term)
-        const tempId = crypto.randomUUID();
+        // Encrypt the message
+        const encryptedMessage = CryptoJS.AES.encrypt(message, ENCRYPTION_SECRET).toString();
         
-        // Directly send the email without storing the full message content
+        // Generate a UUID for the love letter
+        const letterId = crypto.randomUUID();
+        
+        // Store the encrypted letter in the database
+        const { data: letterData, error: letterError } = await supabase
+          .from('love_letters')
+          .insert([{
+            id: letterId,
+            sender_email: senderEmail,
+            partner_email: partnerEmail,
+            message: encryptedMessage,
+            sent_at: new Date().toISOString(),
+            delivered: false
+          }])
+          .select('id')
+          .single();
+          
+        if (letterError) {
+          throw new Error(`Failed to store love letter: ${letterError.message}`);
+        }
+        
+        // Generate the letter view URL
+        const letterUrl = `https://hivein.app/love/${letterId}`;
+        
+        // Prepare the email HTML - now pointing to the secure letter URL
+        const emailHtml = `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <title>A Special Message For You</title>
+            <style>
+              body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                line-height: 1.6;
+                color: #333;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+              }
+              .message-container {
+                background-color: #fff9f9;
+                border: 1px solid #ffccd5;
+                border-radius: 12px;
+                padding: 25px;
+                box-shadow: 0 4px 12px rgba(255, 166, 166, 0.15);
+                margin-top: 20px;
+                text-align: center;
+              }
+              .button {
+                display: inline-block;
+                background-color: #d6336c;
+                color: white;
+                padding: 12px 24px;
+                border-radius: 6px;
+                text-decoration: none;
+                font-weight: bold;
+                margin: 20px 0;
+              }
+              .heart {
+                color: #ff6b6b;
+                font-size: 24px;
+              }
+              .footer {
+                margin-top: 40px;
+                font-size: 12px;
+                color: #999;
+                text-align: center;
+              }
+            </style>
+          </head>
+          <body>
+            <h2>Someone has sent you a special message ❤️</h2>
+            
+            <div class="message-container">
+              <p>A secret love letter is waiting for you.</p>
+              <p>Someone wants to share their feelings with you in a special way.</p>
+              
+              <a href="${letterUrl}" class="button">Read Your Love Letter</a>
+              
+              <p><small>This link will take you to a secure page where you can read your message.</small></p>
+            </div>
+            
+            <div class="footer">
+              <p>This message was sent through <a href="https://hivein.app">HiveIn</a>, an app for couples to build a stronger relationship.</p>
+              <p>Want to surprise your partner too? <a href="https://hivein.app">Join our community</a>.</p>
+            </div>
+          </body>
+        </html>
+        `;
+        
         // Import Resend dynamically for better startup performance
         const { Resend } = await import('npm:resend@2.0.0');
         const resend = new Resend(resendApiKey);
@@ -143,27 +162,14 @@ serve(async (req) => {
           throw new Error(`Failed to send email: ${emailResponse?.error?.message || 'Unknown error'}`);
         }
         
-        // Only log that a letter was sent, without storing the actual content
-        // This preserves privacy while allowing for analytics
-        const { data: logEntry, error: logError } = await supabase
+        // Update the letter as delivered
+        await supabase
           .from('love_letters')
-          .insert([{
-            sender_email: senderEmail,
-            partner_email: partnerEmail,
-            message: '[Content encrypted and sent]', // Don't store actual message
-            sent_at: new Date().toISOString(),
-            delivered: true
-          }])
-          .select('id')
-          .single();
-          
-        if (logError) {
-          console.error('Warning: Failed to log love letter sending:', logError);
-          // Continue execution - don't fail the request if just logging fails
-        }
+          .update({ delivered: true })
+          .eq('id', letterId);
         
         return new Response(
-          JSON.stringify({ success: true, id: tempId }),
+          JSON.stringify({ success: true, id: letterId, url: letterUrl }),
           { 
             status: 200, 
             headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
