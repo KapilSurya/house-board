@@ -14,8 +14,7 @@ const BlogNavbar: React.FC = () => {
 
   // Determine if link is active
   const isActive = (path: string) => {
-    return location.pathname === path || 
-           (path !== '/' && location.pathname.startsWith(path));
+    return location.pathname === path;
   };
 
   return (
