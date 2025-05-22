@@ -127,15 +127,15 @@ const BlogIndex = () => {
               <p className="text-red-500">Error loading articles. Please try again later.</p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
               {blogs && blogs.map((blog) => (
                 <Link 
                   to={`/blogs/${blog.slug}`} 
                   key={blog.id} 
                   className="group"
                 >
-                  <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-[#1e3d4c] border border-gray-700 h-full flex flex-col">
-                    <div className="aspect-[16/9] bg-gray-800 overflow-hidden">
+                  <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-[#1e3d4c] border border-gray-700 h-full flex flex-col max-w-md mx-auto w-full">
+                    <div className="aspect-[16/9] bg-cream overflow-hidden h-48">
                       {blog.cover_image_url ? (
                         <img 
                           src={blog.cover_image_url} 
@@ -143,9 +143,9 @@ const BlogIndex = () => {
                           className="w-full h-full object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full bg-white flex items-center justify-center border border-gray-200">
-                          <span className="text-gray-400 text-xl font-serif">HiveIn Journal</span></div>
-
+                        <div className="w-full h-full bg-[#fffdf8] flex items-center justify-center border border-gray-200">
+                          <span className="text-gray-500 text-xl font-serif">HiveIn Journal</span>
+                        </div>
                       )}
                     </div>
 

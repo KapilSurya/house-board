@@ -52,6 +52,11 @@ const Navbar: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             <Link 
+              to="/" 
+              className={`${isActive('/') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}>
+              Home
+            </Link>
+            <Link 
               to="/features" 
               className={`${isActive('/features') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}>
               Features
@@ -92,6 +97,11 @@ const Navbar: React.FC = () => {
         {mobileMenuOpen && (
           <div className="md:hidden bg-black/90 backdrop-blur-md">
             <nav className="flex flex-col space-y-4 p-4">
+              <Link 
+                to="/"
+                className={`${isActive('/') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors py-2 px-4`}>
+                Home
+              </Link>
               <Link 
                 to="/features" 
                 className={`${isActive('/features') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors py-2 px-4`}>
