@@ -146,16 +146,16 @@ const BlogPost = () => {
               </div>
             </div>
 
-            {/* Cover image */}
-            <div className="w-full mb-12">
+            {/* Cover image - now constrained to content width */}
+            <div className="container mx-auto px-4 max-w-[720px] mb-12">
               {post.cover_image_url ? (
                 <img 
                   src={post.cover_image_url} 
                   alt={post.title}
-                  className="w-full max-h-[500px] object-cover" 
+                  className="w-full h-auto object-cover rounded-lg" 
                 />
               ) : (
-                <div className="w-full h-[300px] md:h-[400px] bg-[#2e4e5f] flex items-center justify-center">
+                <div className="w-full h-[250px] bg-[#2e4e5f] flex items-center justify-center rounded-lg">
                   <span className="text-white/30 text-2xl font-serif">HiveIn Journal</span>
                 </div>
               )}

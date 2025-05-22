@@ -42,14 +42,17 @@ const Hero: React.FC = () => {
       {/* String lights decoration */}
       <div className="string-lights"></div>
       
-      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
-        <div className="space-y-6 relative z-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">A safe home for your love</h1>
-          <p className="text-lg md:text-xl text-gray-50">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+        {/* Adjusted text content to be more centered and prominent */}
+        <div className="space-y-6 relative z-10 text-center md:text-left md:w-1/2 mb-8 md:mb-0 mx-auto md:mx-0">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">
+            A safe home for your love
+          </h1>
+          <p className="text-lg md:text-xl text-gray-50 mx-auto md:mx-0 max-w-md">
             HiveIn is a relationship app that helps couples stay close, share moods, and grow together through shared habits.
           </p>
-          <div className="space-y-4">
-            <div className="p-4 rounded-lg border border-white/20 max-w-md bg-[#d8f0ff]/[0.23]">
+          <div className="space-y-4 max-w-md mx-auto md:mx-0">
+            <div className="p-4 rounded-lg border border-white/20 bg-[#d8f0ff]/[0.23]">
               <p className="text-sm text-gray-200 mb-3">Join early access and also send a letter to your partner!</p>
               
               <Button 
@@ -65,12 +68,13 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-lg">
+        {/* Image section */}
+        <div className="relative overflow-hidden rounded-lg md:w-1/2">
           {/* Candle light effect in corner */}
           <div className="absolute bottom-3 right-3 candle-light" style={{
-          width: '15px',
-          height: '15px'
-        }}></div>
+            width: '15px',
+            height: '15px'
+          }}></div>
           
           <div className="relative bg-transparent rounded-lg max-w-sm mx-auto">
             <img 
