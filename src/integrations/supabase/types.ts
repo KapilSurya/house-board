@@ -74,27 +74,18 @@ export type Database = {
       }
       newsletter_subscribers: {
         Row: {
-          age: number | null
-          city: string | null
           created_at: string
           email: string
-          gender: string | null
           id: string
         }
         Insert: {
-          age?: number | null
-          city?: string | null
           created_at?: string
           email: string
-          gender?: string | null
           id?: string
         }
         Update: {
-          age?: number | null
-          city?: string | null
           created_at?: string
           email?: string
-          gender?: string | null
           id?: string
         }
         Relationships: []

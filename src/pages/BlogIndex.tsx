@@ -108,7 +108,7 @@ const BlogIndex = () => {
       <main className="pt-24 pb-16">
         {/* Header */}
         <div className="container mx-auto px-4 text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#1e3d4c] mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#1e3d4c] mb-4">
             The HiveIn Journal
           </h1>
           <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
@@ -116,8 +116,12 @@ const BlogIndex = () => {
           </p>
         </div>
 
-        {/* Blog Grid */}
-        <div className="container mx-auto px-4">
+        {/* Blog Section with Heading */}
+        <div className="container mx-auto px-4 mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1e3d4c] mb-6 border-b border-gray-200 pb-3">
+            Building of HiveIn
+          </h2>
+          
           {isLoading ? (
             <div className="text-center py-12">
               <p className="text-gray-600">Loading articles...</p>
@@ -127,15 +131,16 @@ const BlogIndex = () => {
               <p className="text-red-500">Error loading articles. Please try again later.</p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {blogs && blogs.map((blog) => (
                 <Link 
                   to={`/blogs/${blog.slug}`} 
                   key={blog.id} 
-                  className="group"
+                  className="group mx-auto w-full max-w-md md:mx-0"
                 >
                   <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-[#1e3d4c] border border-gray-700 h-full flex flex-col">
-                    <div className="aspect-[16/9] bg-gray-800 overflow-hidden">
+                    {/* Image area - reduced height with 40% ratio */}
+                    <div className="aspect-[16/9] overflow-hidden h-40">
                       {blog.cover_image_url ? (
                         <img 
                           src={blog.cover_image_url} 
@@ -143,22 +148,23 @@ const BlogIndex = () => {
                           className="w-full h-full object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full bg-white flex items-center justify-center border border-gray-200">
-                          <span className="text-gray-400 text-xl font-serif">HiveIn Journal</span></div>
-
+                        <div className="w-full h-full bg-[#fffdf8] flex items-center justify-center">
+                          <span className="text-gray-500 text-xl">HiveIn Journal</span>
+                        </div>
                       )}
                     </div>
 
-                    <div className="p-4 flex flex-col flex-grow">
-                      <h3 className="text-lg font-bold text-white mb-2 font-serif line-clamp-2">
+                    {/* Text content - increased proportion to 60% */}
+                    <div className="p-5 flex flex-col flex-grow">
+                      <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
                         {blog.title}
                       </h3>
                       
-                      <p className="text-gray-300 mb-3 text-sm line-clamp-2 flex-grow">
+                      <p className="text-gray-300 mb-3 text-sm line-clamp-3 flex-grow">
                         {blog.summary}
                       </p>
                       
-                      <div className="flex items-center justify-between mt-auto">
+                      <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-700">
                         <span className="text-xs text-gray-400">
                           {blog.published_at && formatDate(new Date(blog.published_at))}
                         </span>
