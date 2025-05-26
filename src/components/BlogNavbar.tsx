@@ -23,7 +23,7 @@ const BlogNavbar: React.FC = () => {
         <div className="flex items-center gap-2">
           <Link to="/">
             <div className="flex items-center gap-2">
-              <img alt="HiveIn Logo" className="w-8 h-8" src="/lovable-uploads/ca0af61c-6896-4e91-9fa4-03d93d138db7.png" />
+              <img alt="HiveIn Logo" className="w-8 h-8" src="/lovable-uploads/ca0af61c-6896-4e91-9fa4-03d93d138db7.webp" />
               <h1 className="text-2xl font-bold text-white">
                 Hive<span className="text-[#43B3AE]">In</span>
               </h1>

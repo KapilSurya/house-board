@@ -26,14 +26,14 @@ const Hero: React.FC = () => {
         <meta property="og:url" content="https://hivein.app/" />
         <meta property="og:title" content="HiveIn – A safe home for your love" />
         <meta property="og:description" content="HiveIn is a relationship app that helps couples stay close, share moods, and grow together through shared habits." />
-        <meta property="og:image" content="https://hivein.app/lovable-uploads/house.png" />
+        <meta property="og:image" content="https://hivein.app/lovable-uploads/house.webp" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://hivein.app/" />
         <meta property="twitter:title" content="HiveIn – A safe home for your love" />
         <meta property="twitter:description" content="HiveIn is a relationship app that helps couples stay close, share moods, and grow together through shared habits." />
-        <meta property="twitter:image" content="https://hivein.app/lovable-uploads/house.png" />
+        <meta property="twitter:image" content="https://hivein.app/lovable-uploads/house.webp" />
 
         {/* Canonical URL */}
         <link rel="canonical" href="https://hivein.app/" />
@@ -78,9 +78,11 @@ const Hero: React.FC = () => {
           
           <div className="relative bg-transparent rounded-lg max-w-sm mx-auto">
             <img 
-              src="/lovable-uploads/house.png" 
+              src="/lovable-uploads/house.webp" 
               alt="Couple using HiveIn app to build daily rituals" 
-              className="w-full h-auto rounded-md" 
+              className="w-full h-auto rounded-md"
+              width="400"
+              height="400"
               style={{
                 maxWidth: "120%"
               }}
