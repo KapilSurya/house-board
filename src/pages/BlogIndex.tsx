@@ -89,14 +89,14 @@ const BlogIndex = () => {
           <meta property="og:url" content="https://hivein.app/blogs" />
           <meta property="og:title" content="The HiveIn Journal - Ideas and Rituals for Modern Love" />
           <meta property="og:description" content="Ideas, rituals, and stories to help modern love thrive. Discover expert relationship advice and practical tips for couples." />
-          <meta property="og:image" content="https://hivein.app/lovable-uploads/house.png" />
+          <meta property="og:image" content="https://hivein.app/lovable-uploads/house.webp" />
           
           {/* Twitter */}
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://hivein.app/blogs" />
           <meta property="twitter:title" content="The HiveIn Journal - Ideas and Rituals for Modern Love" />
           <meta property="twitter:description" content="Ideas, rituals, and stories to help modern love thrive. Discover expert relationship advice and practical tips for couples." />
-          <meta property="twitter:image" content="https://hivein.app/lovable-uploads/house.png" />
+          <meta property="twitter:image" content="https://hivein.app/lovable-uploads/house.webp" />
           
           {/* Canonical URL */}
           <link rel="canonical" href="https://hivein.app/blogs" />
@@ -146,9 +146,12 @@ const BlogIndex = () => {
                           src={blog.cover_image_url} 
                           alt={`Cover image for ${blog.title}`} 
                           className="w-full h-full object-cover"
+                          width="400"
+                          height="160"
+                          loading="lazy"
                         />
                       ) : (
-                        <div className="w-full h-full bg-[#fffdf8] flex items-center justify-center">
+                        <div className="w-full h-full bg-white flex items-center justify-center">
                           <span className="text-gray-500 text-xl">HiveIn Journal</span>
                         </div>
                       )}

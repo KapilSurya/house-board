@@ -152,7 +152,10 @@ const BlogPost = () => {
                 <img 
                   src={post.cover_image_url} 
                   alt={post.title}
-                  className="w-full h-auto object-cover rounded-lg" 
+                  className="w-full h-auto object-cover rounded-lg"
+                  width="720"
+                  height="400"
+                  loading="lazy"
                 />
               ) : (
                 <div className="w-full h-[250px] bg-[#2e4e5f] flex items-center justify-center rounded-lg">
