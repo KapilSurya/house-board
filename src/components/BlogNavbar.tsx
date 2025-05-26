@@ -1,61 +1,50 @@
 
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Button } from "@/components/ui/button";
+import { Link, useLocation } from 'react-router-dom';
 
 const BlogNavbar: React.FC = () => {
   const location = useLocation();
-  const navigate = useNavigate();
-  
-  const handleOpenDialog = () => {
-    // Navigate to home page and set a query parameter to open the dialog
-    navigate('/?openDialog=true');
-  };
-
-  // Determine if link is active
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
+  const isHome = location.pathname === '/';
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#1e3d4c] shadow-sm">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Link to="/">
-            <div className="flex items-center gap-2">
-              <img alt="HiveIn Logo" className="w-8 h-8" src="/lovable-uploads/ca0af61c-6896-4e91-9fa4-03d93d138db7.webp" />
-              <h1 className="text-2xl font-bold text-white">
-                Hive<span className="text-[#43B3AE]">In</span>
-              </h1>
-            </div>
-          </Link>
-        </div>
-        
-        <nav className="hidden md:flex items-center space-x-6">
-          <Link 
-            to="/" 
-            className={`${isActive('/') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}
-          >
-            Home
-          </Link>
-          <Link 
-            to="/blogs" 
-            className={`${isActive('/blogs') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}
-          >
-            Blogs
-          </Link>
-        </nav>
-        
-        <div className="flex items-center gap-3">
-          <Button 
-            className="bg-white hover:bg-gray-100 text-[#1e3d4c]" 
-            onClick={handleOpenDialog}
-          >
-            Join the community
-          </Button>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo and Home Link */}
+          <div className="flex items-center space-x-8">
+            <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+              <img 
+                src="/lovable-uploads/ca0af61c-6896-4e91-9fa4-03d93d138db7.webp" 
+                alt="HiveIn Logo" 
+                className="h-10 w-10"
+                width="40"
+                height="40"
+              />
+              <span className="text-xl font-bold text-[#1e3d4c]">HiveIn</span>
+            </Link>
+            
+            <Link
+              to="/"
+              className={`text-sm font-medium transition-colors hover:text-[#1e3d4c] ${
+                isHome ? 'text-[#1e3d4c] border-b-2 border-[#1e3d4c] pb-1' : 'text-gray-600'
+              }`}
+            >
+              Home
+            </Link>
+          </div>
+
+          {/* Right side navigation */}
+          <div className="flex items-center space-x-6">
+            <Link 
+              to="/blogs" 
+              className="text-sm font-medium text-gray-600 hover:text-[#1e3d4c] transition-colors"
+            >
+              Journal
+            </Link>
+          </div>
         </div>
       </div>
-    </header>
+    </nav>
   );
 };
 
