@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
           {/* First column */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center">
-              <img src="/lovable-uploads/ca0af61c-6896-4e91-9fa4-03d93d138db7.png" alt="HiveIn Logo" className="h-10 w-10 mr-2" />
+              <img src="/lovable-uploads/ca0af61c-6896-4e91-9fa4-03d93d138db7.webp" alt="HiveIn Logo" className="h-10 w-10 mr-2" />
               <span className="text-xl font-bold">Hive<span className="text-[#43B3AE]">In</span></span>
             </Link>
             <p className="text-gray-300 text-sm">

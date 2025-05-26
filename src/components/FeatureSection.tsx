@@ -15,7 +15,7 @@ const FeatureSection: React.FC = () => {
       icon: <Heart className={`h-6 w-6 ${textColor}`} />,
       title: 'Build healthy habits',
       description: 'Deepen your bond with daily quality time, gratitude, and shared goals—making every <Link to="/features/habits" className="underline hover:text-[#43B3AE]">habit tracking</Link> count.',
-      mockupImage: '/lovable-uploads/habits.png',
+      mockupImage: '/lovable-uploads/habits.webp',
       imageAlt: 'Couple completing gratitude habit on HiveIn'
     },
     {
@@ -23,7 +23,7 @@ const FeatureSection: React.FC = () => {
       icon: <BookOpen className={`h-6 w-6 ${textColor}`} />,
       title: 'Your relationship log',
       description: 'Capture moods, habits, and milestones in your <Link to="/features/log" className="underline hover:text-[#43B3AE]">relationship log</Link>—see your journey as a couple unfold beautifully.',
-      mockupImage: '/lovable-uploads/log.png',
+      mockupImage: '/lovable-uploads/log.webp',
       imageAlt: 'HiveIn chat screen with emotional check-in'
     },
     {
@@ -31,7 +31,7 @@ const FeatureSection: React.FC = () => {
       icon: <Bell className={`h-6 w-6 ${textColor}`} />,
       title: 'Nudge for what matters',
       description: 'Send thoughtful reminders with our <Link to="/features/chat" className="underline hover:text-[#43B3AE]">chat and nudges</Link> to check in, share, or reconnect—without feeling like a nag.',
-      mockupImage: '/lovable-uploads/nudge.png',
+      mockupImage: '/lovable-uploads/nudge.webp',
       imageAlt: 'HiveIn chat screen with emotional check-in'
     },
     {
@@ -39,7 +39,7 @@ const FeatureSection: React.FC = () => {
       icon: <LineChart className={`h-6 w-6 ${textColor}`} />,
       title: 'Mood & status tracking',
       description: 'Share how you feel in seconds with our <Link to="/features/gratitude" className="underline hover:text-[#43B3AE]">gratitude habit</Link> and mood tracking—stay emotionally in sync without saying a word',
-      mockupImage: '/lovable-uploads/mood.png',
+      mockupImage: '/lovable-uploads/mood.webp',
       imageAlt: 'HiveIn mood tracking feature screenshot'
     }
   ];

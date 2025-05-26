@@ -59,7 +59,7 @@ const WhoIsItFor: React.FC = () => {
               <div className="mt-auto rounded-xl overflow-hidden flex-1">
                 <div className="h-full flex items-center justify-center">
                   <img 
-                    src="/lovable-uploads/before.png"
+                    src="/lovable-uploads/before.webp"
                     alt="Before HiveIn - Communication challenges"
                     className="w-full h-auto object-contain"
                     style={{ maxHeight: "300px" }}
@@ -83,7 +83,7 @@ const WhoIsItFor: React.FC = () => {
               <div className="mt-auto rounded-xl overflow-hidden flex-1">
                 <div className="h-full flex items-center justify-center">
                   <img 
-                    src="/lovable-uploads/after.png"
+                    src="/lovable-uploads/after.webp"
                     alt="With HiveIn - Connected relationship"
                     className="w-full h-auto object-contain"
                     style={{ maxHeight: "300px" }}

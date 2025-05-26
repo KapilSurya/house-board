@@ -23,14 +23,14 @@ const Features: React.FC = () => {
         <meta property="og:url" content="https://hivein.app/features" />
         <meta property="og:title" content="HiveIn Features | Daily Habits & Mood Tracking for Couples" />
         <meta property="og:description" content="Discover HiveIn's features including daily habits, mood tracking, and relationship nudges to strengthen your partnership." />
-        <meta property="og:image" content="https://hivein.app/lovable-uploads/house.png" />
+        <meta property="og:image" content="https://hivein.app/lovable-uploads/house.webp" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://hivein.app/features" />
         <meta property="twitter:title" content="HiveIn Features | Daily Habits & Mood Tracking for Couples" />
         <meta property="twitter:description" content="Discover HiveIn's features including daily habits, mood tracking, and relationship nudges to strengthen your partnership." />
-        <meta property="twitter:image" content="https://hivein.app/lovable-uploads/house.png" />
+        <meta property="twitter:image" content="https://hivein.app/lovable-uploads/house.webp" />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://hivein.app/features" />

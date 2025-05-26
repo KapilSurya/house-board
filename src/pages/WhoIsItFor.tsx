@@ -23,14 +23,14 @@ const WhoIsItForPage: React.FC = () => {
         <meta property="og:url" content="https://hivein.app/who-is-it-for" />
         <meta property="og:title" content="Who Is HiveIn For? | Building Better Relationships Together" />
         <meta property="og:description" content="HiveIn is designed for couples at all stages who want to nurture their relationship through shared habits and meaningful connection." />
-        <meta property="og:image" content="https://hivein.app/lovable-uploads/house.png" />
+        <meta property="og:image" content="https://hivein.app/lovable-uploads/house.webp" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://hivein.app/who-is-it-for" />
         <meta property="twitter:title" content="Who Is HiveIn For? | Building Better Relationships Together" />
         <meta property="twitter:description" content="HiveIn is designed for couples at all stages who want to nurture their relationship through shared habits and meaningful connection." />
-        <meta property="twitter:image" content="https://hivein.app/lovable-uploads/house.png" />
+        <meta property="twitter:image" content="https://hivein.app/lovable-uploads/house.webp" />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://hivein.app/who-is-it-for" />
