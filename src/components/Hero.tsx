@@ -42,13 +42,13 @@ const Hero: React.FC = () => {
       {/* String lights decoration */}
       <div className="string-lights"></div>
       
-      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center">
-        {/* Text content centered and prominent */}
-        <div className="space-y-6 relative z-10 text-center md:text-left md:w-1/2 mb-8 md:mb-0">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+        {/* Adjusted text content to be more centered and prominent */}
+        <div className="space-y-6 relative z-10 text-center md:text-left md:w-1/2 mb-8 md:mb-0 mx-auto md:mx-0">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gradient">
             A safe home for your love
           </h1>
-          <p className="text-lg md:text-xl text-gray-50 max-w-md mx-auto md:mx-0">
+          <p className="text-lg md:text-xl text-gray-50 mx-auto md:mx-0 max-w-md">
             HiveIn is a relationship app that helps couples stay close, share moods, and grow together through shared habits.
           </p>
           <div className="space-y-4 max-w-md mx-auto md:mx-0">
@@ -68,21 +68,24 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Image section - fixed layout shift with explicit dimensions */}
-        <div className="relative overflow-hidden rounded-lg md:w-1/2 flex justify-center">
+        {/* Image section */}
+        <div className="relative overflow-hidden rounded-lg md:w-1/2">
           {/* Candle light effect in corner */}
           <div className="absolute bottom-3 right-3 candle-light" style={{
             width: '15px',
             height: '15px'
           }}></div>
           
-          <div className="relative bg-transparent rounded-lg max-w-sm">
+          <div className="relative bg-transparent rounded-lg max-w-sm mx-auto">
             <img 
               src="/lovable-uploads/house.webp" 
               alt="Couple using HiveIn app to build daily rituals" 
               className="w-full h-auto rounded-md"
               width="400"
               height="400"
+              style={{
+                maxWidth: "120%"
+              }}
             />
           </div>
         </div>

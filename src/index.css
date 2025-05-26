@@ -108,7 +108,6 @@
     background-color: var(--house-deep-blue);
     position: relative;
     font-family: 'DM Sans', sans-serif;
-    font-display: swap;
   }
 
   body::before {
@@ -118,7 +117,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/lovable-uploads/f2bb2dca-5d3f-4778-87f6-70cba144cdbf.webp');
+    background-image: url('/lovable-uploads/f2bb2dca-5d3f-4778-87f6-70cba144cdbf.png');
     background-size: cover;
     background-position: center;
     opacity: 0.15;
@@ -195,12 +194,6 @@
   /* Dark mode */
   .dark-mode {
     color-scheme: dark;
-  }
-
-  /* Font optimization */
-  @font-face {
-    font-family: 'DM Sans';
-    font-display: swap;
   }
 }
 

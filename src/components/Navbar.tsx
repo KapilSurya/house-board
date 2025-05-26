@@ -1,132 +1,138 @@
 
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import NewsletterDialog from './NewsletterDialog';
 
 const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === '/';
+  const navigate = useNavigate();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  // Check for openDialog query param on mount
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('openDialog') === 'true') {
+      setDialogOpen(true);
+      // Clean up the URL
+      navigate(location.pathname, { replace: true });
+    }
+  }, [location, navigate]);
+
+  const handleOpenDialog = () => {
+    setDialogOpen(true);
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  // Determine if link is active
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo and Home Link */}
-          <div className="flex items-center space-x-8">
-            <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-              <img 
-                src="/lovable-uploads/ca0af61c-6896-4e91-9fa4-03d93d138db7.webp" 
-                alt="HiveIn Logo" 
-                className="h-10 w-10"
-                width="40"
-                height="40"
-              />
-              <span className="text-xl font-bold text-white">HiveIn</span>
-            </Link>
-            
-            <Link
-              to="/"
-              className={`hidden md:block text-sm font-medium transition-colors hover:text-white ${
-                isHome ? 'text-white border-b-2 border-white pb-1' : 'text-gray-300'
-              }`}
-            >
-              Home
+    <>
+      <header className="fixed top-0 w-full z-50 backdrop-blur-sm bg-gradient-to-b from-black/70 to-transparent">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Link to="/">
+              <div className="flex items-center gap-2">
+                <img alt="HiveIn Logo" className="w-8 h-8" src="/lovable-uploads/ca0af61c-6896-4e91-9fa4-03d93d138db7.webp" />
+                <h1 className="text-2xl font-bold text-white">
+                  Hive<span className="text-[#43B3AE]">In</span>
+                </h1>
+              </div>
             </Link>
           </div>
-
+          
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
+            <Link 
+              to="/" 
+              className={`${isActive('/') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}>
+              Home
+            </Link>
             <Link 
               to="/features" 
-              className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
-            >
+              className={`${isActive('/features') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}>
               Features
             </Link>
             <Link 
               to="/who-is-it-for" 
-              className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
-            >
-              Who It's For
-            </Link>
-            <Link 
-              to="/blogs" 
-              className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
-            >
-              Journal
+              className={`${isActive('/who-is-it-for') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}>
+              Who is it for
             </Link>
             <Link 
               to="/faq" 
-              className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
-            >
+              className={`${isActive('/faq') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}>
               FAQ
             </Link>
-            <ThemeToggle />
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-4">
-            <ThemeToggle />
-            <button
-              onClick={toggleMenu}
-              className="text-white hover:text-gray-300 transition-colors"
+            <Link 
+              to="/blogs" 
+              className={`${isActive('/blogs') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors`}>
+              Blogs
+            </Link>
+          </nav>
+          
+          <div className="flex items-center gap-3">
+            <Button 
+              className="bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300" 
+              onClick={handleOpenDialog}
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              Join the community
+            </Button>
+            
+            {/* Mobile menu button */}
+            <button className="md:hidden text-white" onClick={toggleMobileMenu}>
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white/10 backdrop-blur-md border-t border-white/20 py-4">
-            <div className="flex flex-col space-y-4">
-              <Link
+        
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-black/90 backdrop-blur-md">
+            <nav className="flex flex-col space-y-4 p-4">
+              <Link 
                 to="/"
-                className={`text-sm font-medium transition-colors hover:text-white px-4 py-2 ${
-                  isHome ? 'text-white bg-white/10 rounded-md' : 'text-gray-300'
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
+                className={`${isActive('/') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors py-2 px-4`}>
                 Home
               </Link>
               <Link 
                 to="/features" 
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors px-4 py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
+                className={`${isActive('/features') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors py-2 px-4`}>
                 Features
               </Link>
               <Link 
                 to="/who-is-it-for" 
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors px-4 py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Who It's For
-              </Link>
-              <Link 
-                to="/blogs" 
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors px-4 py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Journal
+                className={`${isActive('/who-is-it-for') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors py-2 px-4`}>
+                Who is it for
               </Link>
               <Link 
                 to="/faq" 
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors px-4 py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
+                className={`${isActive('/faq') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors py-2 px-4`}>
                 FAQ
               </Link>
-            </div>
+              <Link 
+                to="/blogs" 
+                className={`${isActive('/blogs') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors py-2 px-4`}>
+                Blogs
+              </Link>
+            </nav>
           </div>
         )}
-      </div>
-    </nav>
+      </header>
+      
+      {/* Newsletter dialog for "Join the community" button */}
+      <NewsletterDialog 
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+      />
+    </>
   );
 };
 
