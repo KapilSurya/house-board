@@ -48,4 +48,10 @@
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
+    <url>
+    <loc>https://hivein.app/blogs/couple-habits-app</loc>
+    <lastmod>2025-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
