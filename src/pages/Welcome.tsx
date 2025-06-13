@@ -38,7 +38,6 @@ const Welcome: React.FC = () => {
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">You took the first step! 🎉</h1>
           
           <p className="mb-6 text-zinc-50 px-0 my-0 text-lg">Start building healthy habits through complete
-
 🔒End-to-End Encryption🔒</p>
 
           {/* Brief About HiveIn */}
