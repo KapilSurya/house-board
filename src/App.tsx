@@ -14,6 +14,7 @@ import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
 import Privacy from "./pages/Privacy";
 import About from "./pages/About";
+import Welcome from "./pages/Welcome";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { useStarsBackground } from "./hooks/useStarsBackground";
 import { HelmetProvider } from "react-helmet-async";
@@ -45,6 +46,7 @@ const App = () => {
                 <Route path="/blogs/:slug" element={<BlogPost />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/welcome-verified" element={<Welcome />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
