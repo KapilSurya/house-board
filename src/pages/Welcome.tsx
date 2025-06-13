@@ -37,7 +37,7 @@ const Welcome: React.FC = () => {
           {/* Welcome Message */}
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">You took the first step! 🎉</h1>
           
-          <p className="mb-6 text-zinc-50 px-0 my-0 text-lg">Start building healthy habits through complete
+          <p className="mb-6 text-zinc-50 px-0 my-0 text-lg">Start building healthy habits through complete 
 🔒End-to-End Encryption🔒</p>
 
           {/* Brief About HiveIn */}
@@ -67,7 +67,7 @@ const Welcome: React.FC = () => {
               </Button>
             </Link>
             <Link to="/blogs">
-              <Button variant="outline" className="border-white/30 hover:bg-white/10 px-6 py-2 text-zinc-50">
+              <Button variant="outline" className="border-white/30 px-6 py-2 text-zinc-50 bg-houseboard-medium">
                 Read Our Blog
               </Button>
             </Link>
