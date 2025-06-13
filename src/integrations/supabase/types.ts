@@ -42,6 +42,30 @@ export type Database = {
         }
         Relationships: []
       }
+      feedback: {
+        Row: {
+          contact_info: string | null
+          contact_type: string | null
+          created_at: string
+          feedback_text: string
+          id: string
+        }
+        Insert: {
+          contact_info?: string | null
+          contact_type?: string | null
+          created_at?: string
+          feedback_text: string
+          id?: string
+        }
+        Update: {
+          contact_info?: string | null
+          contact_type?: string | null
+          created_at?: string
+          feedback_text?: string
+          id?: string
+        }
+        Relationships: []
+      }
       love_letters: {
         Row: {
           delivered: boolean | null

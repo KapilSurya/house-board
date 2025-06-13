@@ -1,11 +1,15 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import NewsletterDialog from './NewsletterDialog';
+import FeedbackDialog from './FeedbackDialog';
+
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [feedbackDialogOpen, setFeedbackDialogOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -20,9 +24,15 @@ const Navbar: React.FC = () => {
       });
     }
   }, [location, navigate]);
+
   const handleOpenDialog = () => {
     setDialogOpen(true);
   };
+
+  const handleOpenFeedback = () => {
+    setFeedbackDialogOpen(true);
+  };
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
@@ -31,7 +41,9 @@ const Navbar: React.FC = () => {
   const isActive = (path: string) => {
     return location.pathname === path;
   };
-  return <>
+
+  return (
+    <>
       <header className="fixed top-0 w-full z-50 backdrop-blur-sm bg-gradient-to-b from-black/70 to-transparent">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -65,7 +77,9 @@ const Navbar: React.FC = () => {
           </nav>
           
           <div className="flex items-center gap-3">
-            <Button className="bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300" onClick={handleOpenDialog}>Free early access</Button>
+            <Button className="bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300" onClick={handleOpenFeedback}>
+              Feedback
+            </Button>
             
             {/* Mobile menu button */}
             <button className="md:hidden text-white" onClick={toggleMobileMenu}>
@@ -75,7 +89,8 @@ const Navbar: React.FC = () => {
         </div>
         
         {/* Mobile menu */}
-        {mobileMenuOpen && <div className="md:hidden bg-black/90 backdrop-blur-md">
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-black/90 backdrop-blur-md">
             <nav className="flex flex-col space-y-4 p-4">
               <Link to="/" className={`${isActive('/') ? 'text-[#43B3AE]' : 'text-white'} hover:text-[#43B3AE] transition-colors py-2 px-4`}>
                 Home
@@ -93,11 +108,17 @@ const Navbar: React.FC = () => {
                 Blogs
               </Link>
             </nav>
-          </div>}
+          </div>
+        )}
       </header>
       
       {/* Newsletter dialog for "Join the community" button */}
       <NewsletterDialog open={dialogOpen} onOpenChange={setDialogOpen} />
-    </>;
+      
+      {/* Feedback dialog */}
+      <FeedbackDialog open={feedbackDialogOpen} onOpenChange={setFeedbackDialogOpen} />
+    </>
+  );
 };
+
 export default Navbar;
