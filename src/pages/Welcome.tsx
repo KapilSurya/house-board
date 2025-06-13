@@ -37,7 +37,7 @@ const Welcome: React.FC = () => {
           {/* Welcome Message */}
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">You took the first step! 🎉</h1>
           
-          <p className="text-lg mb-6">Start building healthy habits through complete
+          <p className="text-lg mb-6 text-zinc-50">Start building healthy habits through complete
 End-to-End Encryption</p>
 
           {/* Brief About HiveIn */}
