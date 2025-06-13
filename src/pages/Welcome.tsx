@@ -37,12 +37,13 @@ const Welcome: React.FC = () => {
           {/* Welcome Message */}
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">You took the first step! 🎉</h1>
           
-          <p className="text-lg mb-6 text-zinc-50">Start building healthy habits through complete
-End-to-End Encryption</p>
+          <p className="mb-6 text-zinc-50 px-0 my-0 text-lg">Start building healthy habits through complete
+
+🔒End-to-End Encryption🔒</p>
 
           {/* Brief About HiveIn */}
           <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 mb-8 border border-white/20">
-            <h2 className="text-xl font-semibold text-white mb-3">
+            <h2 className="font-semibold text-white mb-3 text-lg">
               You're in Early Access
             </h2>
             <p className="text-white/90 mb-3">
@@ -55,9 +56,7 @@ End-to-End Encryption</p>
 
           {/* Newsletter Signup */}
           <div className="mb-8">
-            <h3 className="text-lg font-semibold text-white mb-4">
-              Stay Updated
-            </h3>
+            
             <NewsletterForm buttonText="Join Our Community" className="max-w-md mx-auto" />
           </div>
 
