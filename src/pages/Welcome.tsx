@@ -1,15 +1,10 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Shield, MessageSquare } from 'lucide-react';
+import { CheckCircle, Shield, ExternalLink } from 'lucide-react';
 import NewsletterForm from '@/components/NewsletterForm';
 import Footer from '@/components/Footer';
-import FeedbackDialog from '@/components/FeedbackDialog';
-
 const Welcome: React.FC = () => {
-  const [feedbackOpen, setFeedbackOpen] = React.useState(false);
-
   return <div className="min-h-screen flex flex-col bg-gradient-to-b from-houseboard-dark to-houseboard-medium">
       {/* Header */}
       <header className="w-full z-50 backdrop-blur-sm bg-gradient-to-b from-black/70 to-transparent">
@@ -42,8 +37,8 @@ const Welcome: React.FC = () => {
           {/* Welcome Message */}
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">You took the first step! 🎉</h1>
           
-          <p className="mb-4 text-zinc-50 px-0 my-0 text-lg">Start building healthy habits through complete</p>
-          <p className="mb-6 text-zinc-50 px-0 my-0 text-lg"><strong>🔒 End-to-End Encryption 🔒</strong></p>
+          <p className="mb-6 text-zinc-50 px-0 my-0 text-lg">Start building healthy habits through complete 
+🔒End-to-End Encryption🔒</p>
 
           {/* Brief About HiveIn */}
           <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 mb-8 border border-white/20">
@@ -60,6 +55,7 @@ const Welcome: React.FC = () => {
 
           {/* Newsletter Signup */}
           <div className="mb-8">
+            
             <NewsletterForm buttonText="Join Our Community" className="max-w-md mx-auto" />
           </div>
 
@@ -70,29 +66,20 @@ const Welcome: React.FC = () => {
                 Learn More About HiveIn
               </Button>
             </Link>
-            <Button 
-              onClick={() => setFeedbackOpen(true)}
-              variant="outline" 
-              className="border-white/30 px-6 py-2 text-zinc-50 bg-houseboard-medium hover:bg-white/20"
-            >
-              <MessageSquare className="w-4 h-4 mr-2" />
-              Give Feedback
-            </Button>
             <Link to="/blogs">
               <Button variant="outline" className="border-white/30 px-6 py-2 text-zinc-50 bg-houseboard-medium">
                 Read Our Blog
               </Button>
             </Link>
           </div>
+
+          {/* Social Links */}
+          
         </div>
       </main>
 
       {/* Footer */}
       <Footer />
-
-      {/* Feedback Dialog */}
-      <FeedbackDialog open={feedbackOpen} onOpenChange={setFeedbackOpen} />
     </div>;
 };
-
 export default Welcome;
