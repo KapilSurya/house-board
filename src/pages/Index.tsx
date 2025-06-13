@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import WhoIsItFor from '@/components/WhoIsItFor';
@@ -8,9 +8,12 @@ import TestimonialSection from '@/components/TestimonialSection';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 import FaqSection from '@/components/FaqSection';
+import FeedbackDialog from '@/components/FeedbackDialog';
 import { Helmet } from 'react-helmet-async';
 
 const Index: React.FC = () => {
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Helmet>
@@ -38,7 +41,7 @@ const Index: React.FC = () => {
         </script>
       </Helmet>
       
-      <Navbar />
+      <Navbar onFeedbackClick={() => setFeedbackOpen(true)} />
       <main className="flex-grow">
         <Hero />
         <WhoIsItFor />
@@ -48,6 +51,8 @@ const Index: React.FC = () => {
         <CallToAction />
       </main>
       <Footer />
+      
+      <FeedbackDialog open={feedbackOpen} onOpenChange={setFeedbackOpen} />
     </div>
   );
 };
