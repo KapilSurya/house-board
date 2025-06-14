@@ -15,6 +15,7 @@ import BlogPost from "./pages/BlogPost";
 import Privacy from "./pages/Privacy";
 import About from "./pages/About";
 import Welcome from "./pages/Welcome";
+import ResetPassword from "./pages/ResetPassword";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { useStarsBackground } from "./hooks/useStarsBackground";
 import { HelmetProvider } from "react-helmet-async";
