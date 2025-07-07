@@ -14,6 +14,7 @@ import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
 import Privacy from "./pages/Privacy";
 import About from "./pages/About";
+import AccountDeletion from "./pages/AccountDeletion";
 import Welcome from "./pages/Welcome";
 import ResetPassword from "./pages/ResetPassword";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -47,6 +48,7 @@ const App = () => {
                 <Route path="/blogs/:slug" element={<BlogPost />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/account-deletion" element={<AccountDeletion />} />
                 <Route path="/welcome-verified" element={<Welcome />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
