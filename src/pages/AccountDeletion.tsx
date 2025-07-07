@@ -133,10 +133,8 @@ const AccountDeletion = () => {
                     <p className="text-gray-600 text-sm font-medium">Consider deleting  your account in the app settings, it has the same effect and is faster</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-2">App-Based Deletion</h3>
-                    <p className="text-gray-600 text-sm">
-                      You can also delete your account directly from within the HiveIn mobile app by going to Settings → Account → Delete Account.
-                    </p>
+                    
+                    
                   </div>
                 </CardContent>
               </Card>
@@ -187,8 +185,8 @@ const AccountDeletion = () => {
                       <span className="font-semibold text-gray-800">90 days max</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 text-sm">Legal Obligations</span>
-                      <span className="font-semibold text-gray-800">As required by law</span>
+                      
+                      
                     </div>
                   </div>
                 </CardContent>
