@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Helmet } from "react-helmet-async";
 import { Button } from '@/components/ui/button';
@@ -14,61 +13,54 @@ import { useToast } from '@/hooks/use-toast';
 import Navbar from '@/components/BlogNavbar';
 import Footer from '@/components/Footer';
 import { Trash2, Shield, Clock, AlertTriangle } from 'lucide-react';
-
 const formSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
-  reason: z.string().optional(),
+  reason: z.string().optional()
 });
-
 type FormData = z.infer<typeof formSchema>;
-
 const AccountDeletion = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: '',
-      reason: '',
-    },
+      reason: ''
+    }
   });
-
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase
-        .from('account_deletion_requests')
-        .insert({
-          email: data.email,
-          reason: data.reason || null,
-        });
-
+      const {
+        error
+      } = await supabase.from('account_deletion_requests').insert({
+        email: data.email,
+        reason: data.reason || null
+      });
       if (error) {
         throw error;
       }
-
       setIsSubmitted(true);
       toast({
         title: "Request Submitted",
-        description: "Your account deletion request has been received and will be processed within 30 days.",
+        description: "Your account deletion request has been received and will be processed within 30 days."
       });
     } catch (error) {
       console.error('Error submitting deletion request:', error);
       toast({
         title: "Error",
         description: "Failed to submit your request. Please try again or contact support.",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsSubmitting(false);
     }
   };
-
   if (isSubmitted) {
-    return (
-      <div className="bg-white min-h-screen">
+    return <div className="bg-white min-h-screen">
         <Helmet>
           <title>Request Submitted - HiveIn</title>
           <meta name="description" content="Your account deletion request has been submitted successfully." />
@@ -92,11 +84,7 @@ const AccountDeletion = () => {
                 <p className="text-gray-600 mb-4">
                   You will receive a confirmation email once your account has been deleted.
                 </p>
-                <Button
-                  onClick={() => window.location.href = '/'}
-                  variant="outline"
-                  className="border-green-300 text-green-700 hover:bg-green-50"
-                >
+                <Button onClick={() => window.location.href = '/'} variant="outline" className="border-green-300 text-green-700 hover:bg-green-50">
                   Return to Homepage
                 </Button>
               </CardContent>
@@ -105,12 +93,9 @@ const AccountDeletion = () => {
         </main>
 
         <Footer />
-      </div>
-    );
+      </div>;
   }
-
-  return (
-    <div className="bg-white min-h-screen">
+  return <div className="bg-white min-h-screen">
       <Helmet>
         <title>Request Account Deletion - HiveIn</title>
         <meta name="description" content="Request deletion of your HiveIn account and all associated data." />
@@ -145,9 +130,7 @@ const AccountDeletion = () => {
                 <CardContent className="space-y-4">
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-2">Alternative Solutions</h3>
-                    <p className="text-gray-600 text-sm">
-                      Consider temporarily deactivating your account in the app settings instead of permanent deletion.
-                    </p>
+                    <p className="text-gray-600 text-sm font-medium">Consider deleting  your account in the app settings, it has the same effect and is faster</p>
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-2">App-Based Deletion</h3>
@@ -224,42 +207,25 @@ const AccountDeletion = () => {
                 <CardContent>
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="email" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Email Address *</FormLabel>
                             <FormControl>
-                              <Input
-                                placeholder="Enter your account email"
-                                {...field}
-                                disabled={isSubmitting}
-                              />
+                              <Input placeholder="Enter your account email" {...field} disabled={isSubmitting} />
                             </FormControl>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
 
-                      <FormField
-                        control={form.control}
-                        name="reason"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="reason" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Reason (Optional)</FormLabel>
                             <FormControl>
-                              <Textarea
-                                placeholder="Help us improve by sharing why you're leaving..."
-                                className="min-h-[100px]"
-                                {...field}
-                                disabled={isSubmitting}
-                              />
+                              <Textarea placeholder="Help us improve by sharing why you're leaving..." className="min-h-[100px]" {...field} disabled={isSubmitting} />
                             </FormControl>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
 
                       <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
                         <div className="flex items-start gap-3">
@@ -273,11 +239,7 @@ const AccountDeletion = () => {
                         </div>
                       </div>
 
-                      <Button
-                        type="submit"
-                        className="w-full bg-red-600 hover:bg-red-700 text-white"
-                        disabled={isSubmitting}
-                      >
+                      <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white" disabled={isSubmitting}>
                         {isSubmitting ? 'Submitting Request...' : 'Submit Deletion Request'}
                       </Button>
                     </form>
@@ -299,8 +261,6 @@ const AccountDeletion = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default AccountDeletion;
