@@ -74,6 +74,27 @@ export type Database = {
         }
         Relationships: []
       }
+      early_access_requests: {
+        Row: {
+          email: string
+          id: string
+          requested_at: string
+          status: string
+        }
+        Insert: {
+          email: string
+          id?: string
+          requested_at?: string
+          status?: string
+        }
+        Update: {
+          email?: string
+          id?: string
+          requested_at?: string
+          status?: string
+        }
+        Relationships: []
+      }
       feedback: {
         Row: {
           contact_info: string | null
