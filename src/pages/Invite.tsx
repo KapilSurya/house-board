@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Copy, ExternalLink, Heart, Rocket, Sparkles } from "lucide-react";
+import { Copy, ExternalLink, Heart, Rocket, Sparkles, Key } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 type LastAction = {
@@ -123,7 +123,7 @@ const Invite: React.FC = () => {
     : `Pair on HiveIn with code ${code ?? ""}. Read your partner's invite.`;
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col">
+    <div className="min-h-screen flex flex-col">
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription.slice(0, 155)} />
@@ -139,19 +139,19 @@ const Invite: React.FC = () => {
         <section className="relative">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 animate-fade-in">
             <header className="text-center mb-8">
-              <div className="inline-flex items-center gap-2 text-primary mb-2">
+              <div className="inline-flex items-center gap-2 text-house-teal mb-2">
                 <Sparkles className="h-5 w-5" />
                 <span className="text-sm font-medium tracking-wide">A gentle invite</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl font-semibold font-serif tracking-tight">
+              <h1 className="text-3xl sm:text-4xl font-semibold font-serif tracking-tight text-white">
                 A Love Letter for You
               </h1>
-              <p className="text-muted-foreground mt-2">
+              <p className="mt-2 text-white/80">
                 Open this with the HiveIn app to pair instantly, or copy the code below.
               </p>
             </header>
 
-            <Card className="shadow-sm">
+            <Card className="shadow-sm gradient-bg card-hover text-white ring-1 ring-white/10 border-transparent">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Heart className="h-5 w-5 text-primary" />
@@ -163,21 +163,21 @@ const Invite: React.FC = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 {/* Pairing Key - HiveIn Home */}
-                <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-primary/10 via-background to-secondary/10 p-5 ring-1 ring-primary/20 shadow-md animate-fade-in">
-                  <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-primary/10 blur-2xl" />
+                <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-white/5 p-5 ring-1 ring-white/10 shadow-md animate-fade-in">
+                  <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div>
-                      <div className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
-                        <Sparkles className="h-4 w-4 text-primary" />
+                      <div className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-white/70">
+                        <Key className="h-4 w-4" />
                         Your home key
                       </div>
                       <div className="mt-2">
-                        <div className="inline-flex items-center gap-3 rounded-xl border border-primary/30 bg-card/80 px-4 py-3 shadow-sm ring-1 ring-inset ring-primary/20 hover-scale">
-                          <span className="text-sm text-muted-foreground">Code</span>
+                        <div className="inline-flex items-center gap-3 rounded-xl border border-white/30 bg-white/10 px-4 py-3 shadow-sm ring-1 ring-inset ring-white/10 backdrop-blur-sm hover-scale">
+                          <span className="text-sm text-white/70">Code</span>
                           <span className="text-3xl font-semibold tracking-[0.35em]">{code || "······"}</span>
                         </div>
                       </div>
-                      <p className="mt-2 text-sm text-muted-foreground">
+                      <p className="mt-2 text-sm text-white/80">
                         This is the key to your shared HiveIn home. Share it with care.
                       </p>
                     </div>
@@ -189,15 +189,13 @@ const Invite: React.FC = () => {
 
                 {/* Love Letter - Scroll */}
                 {letter && (
-                  <div className="relative overflow-hidden rounded-2xl border border-accent/40 bg-gradient-to-b from-accent/20 to-background/40 shadow-md">
-                    <div className="absolute left-4 right-4 top-3 h-2 rounded-full bg-accent/40" />
-                    <div className="absolute left-4 right-4 bottom-3 h-2 rounded-full bg-accent/40" />
+                  <div className="relative overflow-hidden rounded-2xl border border-rose-200/40 bg-gradient-to-b from-rose-100/70 to-rose-50/50 shadow-md backdrop-blur-sm before:absolute before:inset-x-6 before:top-2 before:h-3 before:rounded-full before:bg-rose-200/60 after:absolute after:inset-x-6 after:bottom-2 after:h-3 after:rounded-full after:bg-rose-200/60">
                     <div className="px-6 py-8 sm:px-8 sm:py-10">
-                      <div className="text-xs uppercase text-muted-foreground tracking-wide mb-3">Love letter</div>
-                      <blockquote className="font-handwriting text-2xl leading-relaxed tracking-wide text-foreground/90">
+                      <div className="text-xs uppercase tracking-wide mb-3 text-rose-700/80">Love letter</div>
+                      <blockquote className="font-handwriting text-3xl leading-relaxed tracking-wide text-rose-900">
                         {letter}
                       </blockquote>
-                      <div className="mt-4 text-sm text-muted-foreground">
+                      <div className="mt-4 text-sm text-rose-700/80">
                         — sealed with care in your HiveIn home
                       </div>
                     </div>
@@ -206,13 +204,13 @@ const Invite: React.FC = () => {
 
                 {/* Last Action - Teaser */}
                 {laText && (
-                  <div className="rounded-2xl border bg-muted/30 p-5">
-                    <div className="text-sm uppercase text-muted-foreground mb-2">A peek inside</div>
-                    <p className="text-sm text-muted-foreground mb-3">
-                      Your partner has been tending to your HiveIn home. Join to see it together.
+                  <div className="rounded-2xl border border-white/20 bg-white/5 p-5 text-white">
+                    <div className="text-sm uppercase text-white/70 mb-2">A peek inside your shared home</div>
+                    <p className="text-sm text-white/80 mb-3">
+                      Your partner has been tending to your HiveIn home. Join the app to see it together.
                     </p>
                     <div className="flex items-center gap-2">
-                      <Rocket className="h-4 w-4 text-primary" />
+                      <Rocket className="h-4 w-4 text-house-teal" />
                       <span className="font-medium">{laText}</span>
                     </div>
                   </div>
@@ -252,7 +250,7 @@ const Invite: React.FC = () => {
 
             {/* Loading and error states */}
             {loading && (
-              <p className="text-center text-muted-foreground mt-6">Loading your invite…</p>
+              <p className="text-center text-white/80 mt-6">Loading your invite…</p>
             )}
             {error && (
               <p className="text-center text-destructive mt-6">{error}</p>
