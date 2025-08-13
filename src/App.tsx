@@ -18,6 +18,7 @@ import AccountDeletion from "./pages/AccountDeletion";
 import EarlyAccess from "./pages/EarlyAccess";
 import Welcome from "./pages/Welcome";
 import ResetPassword from "./pages/ResetPassword";
+import Invite from "./pages/Invite";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { useStarsBackground } from "./hooks/useStarsBackground";
 import { HelmetProvider } from "react-helmet-async";
@@ -53,6 +54,7 @@ const App = () => {
                 <Route path="/early-access" element={<EarlyAccess />} />
                 <Route path="/welcome-verified" element={<Welcome />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
+                <Route path="/invite" element={<Invite />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
