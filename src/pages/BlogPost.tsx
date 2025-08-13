@@ -2,7 +2,8 @@
 import React from 'react';
 import { useQuery } from "@tanstack/react-query";
 import { useParams, Link } from 'react-router-dom';
-import { supabase } from "@/integrations/supabase/client";
+import { db } from "@/integrations/firebase/client";
+import { collection, query, where, getDocs, limit } from "firebase/firestore";
 import { Helmet } from "react-helmet-async";
 import Navbar from '@/components/BlogNavbar';
 import Footer from '@/components/Footer';
@@ -58,17 +59,14 @@ const BlogPost = () => {
   const { data: post, isLoading, error } = useQuery({
     queryKey: ['blog', slug],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .eq('slug', slug)
-        .maybeSingle();
-      
-      if (error) throw error;
-      // If post not found, use test blog if URLs match
-      if (!data && slug === testBlogContent.slug) return testBlogContent;
-      if (!data) throw new Error("Blog post not found");
-      return data;
+      if (!slug) throw new Error('Missing slug');
+      const postsRef = collection(db, 'blog_posts');
+      const q = query(postsRef, where('slug', '==', slug), limit(1));
+      const snapshot = await getDocs(q);
+      const doc = snapshot.docs[0]?.data();
+      if (!doc && slug === testBlogContent.slug) return testBlogContent;
+      if (!doc) throw new Error('Blog post not found');
+      return doc as any;
     }
   });
 

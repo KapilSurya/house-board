@@ -4,7 +4,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { auth } from "@/integrations/firebase/client";
+import { confirmPasswordReset, verifyPasswordResetCode } from "firebase/auth";
 
 const ResetPassword: React.FC = () => {
   const [password, setPassword] = useState('');
@@ -17,16 +18,12 @@ const ResetPassword: React.FC = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    const setupSession = async () => {
+    const verifyCode = async () => {
       try {
-        // Extract tokens from URL
-        const accessToken = searchParams.get('access_token');
-        const refreshToken = searchParams.get('refresh_token');
-        const type = searchParams.get('type');
-        
-        console.log('Reset password tokens:', { accessToken: !!accessToken, refreshToken: !!refreshToken, type });
-        
-        if (!accessToken || !refreshToken || type !== 'recovery') {
+        const mode = searchParams.get('mode');
+        const oobCode = searchParams.get('oobCode');
+
+        if (mode !== 'resetPassword' || !oobCode) {
           toast({
             title: "Invalid reset link",
             description: "This password reset link is invalid or has expired.",
@@ -36,39 +33,13 @@ const ResetPassword: React.FC = () => {
           return;
         }
 
-        // Set the session with the tokens from the URL
-        const { data, error } = await supabase.auth.setSession({
-          access_token: accessToken,
-          refresh_token: refreshToken
-        });
-
-        if (error) {
-          console.error('Session setup error:', error);
-          toast({
-            title: "Session error",
-            description: "Failed to establish authentication session. Please request a new reset link.",
-            variant: "destructive",
-          });
-          navigate('/');
-          return;
-        }
-
-        if (data.session) {
-          console.log('Session established successfully');
-          setSessionValid(true);
-        } else {
-          toast({
-            title: "Session invalid",
-            description: "Could not establish a valid session. Please request a new reset link.",
-            variant: "destructive",
-          });
-          navigate('/');
-        }
+        await verifyPasswordResetCode(auth, oobCode);
+        setSessionValid(true);
       } catch (error: any) {
-        console.error('Session setup error:', error);
+        console.error('Reset code verification error:', error);
         toast({
-          title: "Setup error",
-          description: "An error occurred while setting up the reset session.",
+          title: "Invalid or expired link",
+          description: "Please request a new password reset link.",
           variant: "destructive",
         });
         navigate('/');
@@ -77,7 +48,7 @@ const ResetPassword: React.FC = () => {
       }
     };
 
-    setupSession();
+    verifyCode();
   }, [searchParams, navigate, toast]);
 
   const handleResetPassword = async (e: React.FormEvent) => {
@@ -113,13 +84,12 @@ const ResetPassword: React.FC = () => {
     setLoading(true);
 
     try {
-      const { error } = await supabase.auth.updateUser({
-        password: password
-      });
-
-      if (error) {
-        throw error;
+      const oobCode = searchParams.get('oobCode');
+      if (!oobCode) {
+        throw new Error('Missing reset code');
       }
+
+      await confirmPasswordReset(auth, oobCode, password);
 
       toast({
         title: "Password updated successfully",

@@ -8,7 +8,8 @@ import { useToast } from '@/hooks/use-toast';
 import Navbar from '@/components/BlogNavbar';
 import Footer from '@/components/Footer';
 import { Mail, Shield, Heart, Lock, ArrowRight, Users, Sparkles } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
+import { db } from '@/integrations/firebase/client';
+import { addDoc, collection, query, where, getDocs, limit } from 'firebase/firestore';
 
 const EarlyAccess = () => {
   const [email, setEmail] = useState('');
@@ -36,28 +37,33 @@ const EarlyAccess = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
-        .from('early_access_requests')
-        .insert({ email });
-
-      if (error) {
-        if (error.code === '23505') { // Unique constraint violation
-          toast({
-            title: "Already Registered",
-            description: "This email is already on our early access list!",
-            variant: "destructive"
-          });
-        } else {
-          throw error;
-        }
-      } else {
-        setIsSubmitted(true);
+      const existingQ = query(
+        collection(db, 'early_access_requests'),
+        where('email', '==', email),
+        limit(1)
+      );
+      const existing = await getDocs(existingQ);
+      if (!existing.empty) {
         toast({
-          title: "Welcome to Early Access!",
-          description: "You'll be notified when HiveIn becomes available. Thank you for your interest!"
+          title: "Already Registered",
+          description: "This email is already on our early access list!",
+          variant: "destructive"
         });
-        setEmail('');
+        setIsSubmitting(false);
+        return;
       }
+
+      await addDoc(collection(db, 'early_access_requests'), {
+        email,
+        created_at: new Date().toISOString()
+      });
+
+      setIsSubmitted(true);
+      toast({
+        title: "Welcome to Early Access!",
+        description: "You'll be notified when HiveIn becomes available. Thank you for your interest!"
+      });
+      setEmail('');
     } catch (error) {
       console.error('Error submitting early access request:', error);
       toast({

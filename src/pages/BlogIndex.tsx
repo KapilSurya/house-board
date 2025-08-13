@@ -2,7 +2,8 @@
 import React from 'react';
 import { useQuery } from "@tanstack/react-query";
 import { Link } from 'react-router-dom';
-import { supabase } from "@/integrations/supabase/client";
+import { db } from "@/integrations/firebase/client";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { HelmetProvider, Helmet } from "react-helmet-async";
 import Navbar from '@/components/BlogNavbar';
 import Footer from '@/components/Footer';
@@ -65,14 +66,11 @@ const BlogIndex = () => {
   const { data: blogs, isLoading, error } = useQuery({
     queryKey: ['blogs'],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .order('published_at', { ascending: false });
-      
-      if (error) throw error;
-      // If no blogs in database, use test blogs
-      return data?.length > 0 ? data : testBlogs;
+      const postsRef = collection(db, 'blog_posts');
+      const q = query(postsRef, orderBy('published_at', 'desc'));
+      const snapshot = await getDocs(q);
+      const data = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+      return data.length > 0 ? (data as any) : testBlogs;
     }
   });
 

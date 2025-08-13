@@ -6,7 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { supabase } from "@/integrations/supabase/client";
+import { db } from "@/integrations/firebase/client";
+import { addDoc, collection } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from 'lucide-react';
 
@@ -36,15 +37,12 @@ const FeedbackDialog: React.FC<FeedbackDialogProps> = ({ open, onOpenChange }) =
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
-        .from('feedback')
-        .insert({
-          feedback_text: feedback.trim(),
-          contact_info: contactInfo.trim() || null,
-          contact_type: contactInfo.trim() ? contactType : null,
-        });
-
-      if (error) throw error;
+      await addDoc(collection(db, 'feedback'), {
+        feedback_text: feedback.trim(),
+        contact_info: contactInfo.trim() || null,
+        contact_type: contactInfo.trim() ? contactType : null,
+        created_at: new Date().toISOString(),
+      });
 
       toast({
         title: "Thank you for your feedback!",

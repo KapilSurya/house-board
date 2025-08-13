@@ -59,7 +59,7 @@ const Privacy = () => {
           <h2 className="text-2xl font-bold mt-8 mb-4 text-[#1e3d4c]">5. Third-party Services</h2>
           <p>HiveIn uses trusted third-party services to deliver a secure and reliable experience:</p>
           <ul className="list-disc pl-6 mb-6">
-            <li><strong>Supabase</strong> – for secure authentication, encrypted storage, and real-time sync</li>
+            <li><strong>Firebase</strong> – for secure authentication, Firestore storage, and serverless functions</li>
             <li><strong>Resend</strong> – for sending verification emails and love letters</li>
             <li><strong>Amplitude</strong> – for app usage analytics (completely anonymized, separated for staging and production)</li>
           </ul>
@@ -84,7 +84,7 @@ const Privacy = () => {
 
           <h2 className="text-2xl font-bold mt-8 mb-4 text-[#1e3d4c]">8. Data Storage and Security</h2>
           <ul className="list-disc pl-6 mb-6">
-            <li>All data is stored securely via Supabase, with encryption at rest and in transit</li>
+            <li>All data is stored securely via Firebase, with encryption at rest and in transit</li>
             <li>Sensitive data like logs and love letters are end-to-end encrypted</li>
             <li>Access is tightly controlled and monitored internally</li>
           </ul>

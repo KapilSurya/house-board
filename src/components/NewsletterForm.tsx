@@ -4,7 +4,8 @@ import NewsletterDialog from './NewsletterDialog';
 import { Input } from "@/components/ui/input";
 import { Mail } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { db } from "@/integrations/firebase/client";
+import { addDoc, collection, getDocs, limit, query, where } from "firebase/firestore";
 import LoveLetterDialog from './LoveLetterDialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
@@ -45,24 +46,31 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
     }
     setIsSubmitting(true);
     try {
-      const {
-        data,
-        error
-      } = await supabase.functions.invoke('subscribe-newsletter', {
-        body: {
+      const existingQ = query(
+        collection(db, 'newsletter_subscribers'),
+        where('email', '==', email),
+        limit(1)
+      );
+      const existing = await getDocs(existingQ);
+      if (!existing.empty) {
+        toast({
+          title: "You're already subscribed!",
+          description: "Thanks for staying in the loop.",
+        });
+      } else {
+        await addDoc(collection(db, 'newsletter_subscribers'), {
           email,
           age: age ? parseInt(age) : null,
-          gender,
-          city
-        }
-      });
-      if (error) throw error;
-      toast({
-        title: "Thank you for subscribing!",
-        description: "You'll be the first to know about updates and exclusive offers.",
-        duration: 3000 // Auto-close after 3 seconds
-      });
-
+          gender: gender || null,
+          city: city || null,
+          created_at: new Date().toISOString(),
+        });
+        toast({
+          title: "Thank you for subscribing!",
+          description: "You'll be the first to know about updates and exclusive offers.",
+          duration: 3000
+        });
+      }
       // Open the love letter dialog
       setLoveLetterDialogOpen(true);
       setEmail("");

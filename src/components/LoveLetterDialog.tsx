@@ -5,7 +5,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Heart, Send } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { db } from "@/integrations/firebase/client";
+import { addDoc, collection } from "firebase/firestore";
 interface LoveLetterDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -53,25 +54,26 @@ const LoveLetterDialog: React.FC<LoveLetterDialogProps> = ({
       duration: 10000 // Long duration as a fallback
     });
     try {
-      const {
-        data,
-        error
-      } = await supabase.functions.invoke('send-love-letter', {
-        body: {
-          senderEmail: userEmail,
-          partnerEmail,
-          message
-        }
+      const subject = encodeURIComponent('A special message for you ❤️');
+      const body = encodeURIComponent(`${message}\n\n— Sent via HiveIn (${userEmail})`);
+      window.location.href = `mailto:${encodeURIComponent(partnerEmail)}?subject=${subject}&body=${body}`;
+
+      // Log intent client-side for analytics (optional)
+      await addDoc(collection(db, 'love_letters'), {
+        sender_email: userEmail,
+        partner_email: partnerEmail,
+        message: '[Client-initiated email] Content sent via mailto',
+        sent_at: new Date().toISOString(),
+        delivered: null
       });
-      if (error) throw error;
 
       // Dismiss loading toast - fixed method call
       if (loadingToast && loadingToast.id) {
         toast.dismiss(loadingToast.id);
       }
       toast({
-        title: "Your surprise is on its way!",
-        description: "We'll deliver it soon with love. ❤️",
+        title: "Open your mail client to send",
+        description: "We opened your email app with the message prefilled.",
         duration: 3000
       });
 

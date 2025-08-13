@@ -8,7 +8,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { supabase } from '@/integrations/supabase/client';
+import { db } from '@/integrations/firebase/client';
+import { addDoc, collection } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import Navbar from '@/components/BlogNavbar';
 import Footer from '@/components/Footer';
@@ -34,15 +35,11 @@ const AccountDeletion = () => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const {
-        error
-      } = await supabase.from('account_deletion_requests').insert({
+      await addDoc(collection(db, 'account_deletion_requests'), {
         email: data.email,
-        reason: data.reason || null
+        reason: data.reason || null,
+        created_at: new Date().toISOString()
       });
-      if (error) {
-        throw error;
-      }
       setIsSubmitted(true);
       toast({
         title: "Request Submitted",
