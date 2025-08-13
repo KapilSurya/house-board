@@ -82,20 +82,20 @@ const Invite: React.FC = () => {
 
   const deepLink = useMemo(() => {
     const c = code || "";
-    const r = refParam || data?.c || "";
+    const r = refParam || "";
     return `com.hiveinnative.app://invite?code=${encodeURIComponent(c)}&ref=${encodeURIComponent(r)}`;
-  }, [code, refParam, data?.c]);
+  }, [code, refParam]);
 
   const PLAY_STORE = "https://play.google.com/store/apps/details?id=com.hiveinnative.app";
   const APP_STORE = "https://apps.apple.com/app/id0000000000"; // TODO: replace with real App Store ID
 
   const playStoreLink = useMemo(
-    () => appendParams(PLAY_STORE, { code: code || undefined, ref: refParam || data?.c }),
-    [code, refParam, data?.c]
+    () => appendParams(PLAY_STORE, { code: code || undefined, ref: refParam || undefined }),
+    [code, refParam]
   );
   const appStoreLink = useMemo(
-    () => appendParams(APP_STORE, { code: code || undefined, ref: refParam || data?.c }),
-    [code, refParam, data?.c]
+    () => appendParams(APP_STORE, { code: code || undefined, ref: refParam || undefined }),
+    [code, refParam]
   );
 
   const handleCopy = async () => {
@@ -110,8 +110,8 @@ const Invite: React.FC = () => {
 
   const lastActionLabel = (la?: LastAction | null) => {
     if (!la) return null;
-    if (la.f === "chatMessages") return "Sent a message";
-    if (la.f === "dailyQuestions") return la.a ? `Answered: "${la.a}"` : "Answered a daily question";
+    if (la.f === "chatMessages") return "Sent a message in chat";
+    if (la.f === "dailyQuestions") return "Answered a daily question";
     return null;
   };
 
@@ -127,7 +127,7 @@ const Invite: React.FC = () => {
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription.slice(0, 155)} />
-        <link rel="canonical" href={`https://hivein.app/invite?code=${encodeURIComponent(code || "")}&ref=${encodeURIComponent(refParam || data?.c || "")}`} />
+        <link rel="canonical" href={`https://hivein.app/invite?ref=${encodeURIComponent(refParam || "")}`} />
         <meta name="robots" content="index,follow" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription.slice(0, 200)} />
@@ -162,34 +162,58 @@ const Invite: React.FC = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                {/* Pairing Code */}
-                <div className="rounded-md border bg-card p-4 flex items-center justify-between">
-                  <div>
-                    <div className="text-xs uppercase text-muted-foreground">Pairing Code</div>
-                    <div className="text-2xl font-semibold tracking-widest mt-1">{code || "— — — — — —"}</div>
+                {/* Pairing Key - HiveIn Home */}
+                <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-primary/10 via-background to-secondary/10 p-5 ring-1 ring-primary/20 shadow-md animate-fade-in">
+                  <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-primary/10 blur-2xl" />
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div>
+                      <div className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
+                        <Sparkles className="h-4 w-4 text-primary" />
+                        Your home key
+                      </div>
+                      <div className="mt-2">
+                        <div className="inline-flex items-center gap-3 rounded-xl border border-primary/30 bg-card/80 px-4 py-3 shadow-sm ring-1 ring-inset ring-primary/20 hover-scale">
+                          <span className="text-sm text-muted-foreground">Code</span>
+                          <span className="text-3xl font-semibold tracking-[0.35em]">{code || "······"}</span>
+                        </div>
+                      </div>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        This is the key to your shared HiveIn home. Share it with care.
+                      </p>
+                    </div>
+                    <Button size="lg" onClick={handleCopy} disabled={!code} aria-label="Copy pairing code" className="shrink-0">
+                      <Copy className="h-4 w-4 mr-2" /> Copy code
+                    </Button>
                   </div>
-                  <Button variant="outline" onClick={handleCopy} disabled={!code} aria-label="Copy pairing code">
-                    <Copy className="h-4 w-4 mr-2" /> Copy
-                  </Button>
                 </div>
 
-                {/* Love Letter */}
+                {/* Love Letter - Scroll */}
                 {letter && (
-                  <div className="rounded-lg border bg-muted/30 p-5">
-                    <div className="text-sm uppercase text-muted-foreground mb-2">Love Letter</div>
-                    <blockquote className="border-l-4 border-primary pl-4 italic leading-8">
-                      {letter}
-                    </blockquote>
+                  <div className="relative overflow-hidden rounded-2xl border border-accent/40 bg-gradient-to-b from-accent/20 to-background/40 shadow-md">
+                    <div className="absolute left-4 right-4 top-3 h-2 rounded-full bg-accent/40" />
+                    <div className="absolute left-4 right-4 bottom-3 h-2 rounded-full bg-accent/40" />
+                    <div className="px-6 py-8 sm:px-8 sm:py-10">
+                      <div className="text-xs uppercase text-muted-foreground tracking-wide mb-3">Love letter</div>
+                      <blockquote className="font-handwriting text-2xl leading-relaxed tracking-wide text-foreground/90">
+                        {letter}
+                      </blockquote>
+                      <div className="mt-4 text-sm text-muted-foreground">
+                        — sealed with care in your HiveIn home
+                      </div>
+                    </div>
                   </div>
                 )}
 
-                {/* Last Action */}
+                {/* Last Action - Teaser */}
                 {laText && (
-                  <div className="rounded-lg border bg-muted/30 p-5">
-                    <div className="text-sm uppercase text-muted-foreground mb-1">Last seen in HiveIn</div>
+                  <div className="rounded-2xl border bg-muted/30 p-5">
+                    <div className="text-sm uppercase text-muted-foreground mb-2">A peek inside</div>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      Your partner has been tending to your HiveIn home. Join to see it together.
+                    </p>
                     <div className="flex items-center gap-2">
                       <Rocket className="h-4 w-4 text-primary" />
-                      <span>{laText}</span>
+                      <span className="font-medium">{laText}</span>
                     </div>
                   </div>
                 )}
