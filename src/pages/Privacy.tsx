@@ -24,10 +24,9 @@ const Privacy = () => {
           <p>At this stage, we collect only your email address through our website waitlist and early access forms. This allows us to:</p>
           <ul className="list-disc pl-6 mb-6">
             <li>Share product updates with you</li>
-            <li>Notify you when HiveIn becomes available</li>
-            <li>Invite you to send an optional love letter to your partner</li>
+            <li>Collect optional feedback to improve the product</li>
           </ul>
-          <p>If you choose to send a love letter, we store the message in an encrypted format. However, the email addresses involved (sender and receiver) remain visible to enable delivery. The contents of the mail will be visible to the mail provider (Resend), to allow it to send the mail. However, the contents will not be viewed by either the HiveIn or the Resend team.</p>
+          <p>We no longer collect newsletter signups or love letters on the website.</p>
 
           <h2 className="text-2xl font-bold mt-8 mb-4 text-[#1e3d4c]">2. What We Will Collect (Once the App Is Live)</h2>
           <p>When HiveIn launches, we will collect additional data to power key features and personalize your experience. This may include:</p>
@@ -59,8 +58,7 @@ const Privacy = () => {
           <h2 className="text-2xl font-bold mt-8 mb-4 text-[#1e3d4c]">5. Third-party Services</h2>
           <p>HiveIn uses trusted third-party services to deliver a secure and reliable experience:</p>
           <ul className="list-disc pl-6 mb-6">
-            <li><strong>Firebase</strong> – for secure authentication, Firestore storage, and serverless functions</li>
-            <li><strong>Resend</strong> – for sending verification emails and love letters</li>
+            <li><strong>Firebase</strong> – for Firestore storage of feedback and pairing invites</li>
             <li><strong>Amplitude</strong> – for app usage analytics (completely anonymized, separated for staging and production)</li>
           </ul>
           <p>None of these services receive raw personal data like message content. Only the minimum metadata required for function is used.</p>

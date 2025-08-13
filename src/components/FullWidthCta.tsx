@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
-import NewsletterDialog from './NewsletterDialog';
 
 const FullWidthCta: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -22,14 +21,12 @@ const FullWidthCta: React.FC = () => {
         </p>
         
         <Button 
-          onClick={() => setDialogOpen(true)}
+          onClick={() => (window.location.href = '#cta')}
           size="lg"
           className="bg-[#43B3AE] hover:bg-[#52D8D2] text-houseboard-dark font-bold text-lg px-8 py-6 h-auto"
         >
-          Get Early Access <ArrowRight className="ml-2 h-5 w-5" />
+          Learn More <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
-        
-        <NewsletterDialog open={dialogOpen} onOpenChange={setDialogOpen} />
       </div>
     </section>
   );

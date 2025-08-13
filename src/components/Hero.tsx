@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import NewsletterDialog from './NewsletterDialog';
 import { Mail } from "lucide-react";
 import { Helmet } from 'react-helmet-async';
 
@@ -53,18 +52,15 @@ const Hero: React.FC = () => {
           </p>
           <div className="space-y-4 max-w-md mx-auto md:mx-0">
             <div className="p-4 rounded-lg border border-white/20 bg-[#d8f0ff]/[0.23]">
-              <p className="text-sm text-gray-200 mb-3">Join early access and also send a letter to your partner!</p>
-              
+              <p className="text-sm text-gray-200 mb-3">Share your thoughts with us to shape HiveIn.</p>
               <Button 
-                onClick={() => setDialogOpen(true)}
-                className="newsletter-join-button w-full bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300"
+                onClick={() => (window.location.href = '#cta')}
+                className="w-full bg-houseboard-medium hover:bg-[#43B3AE] hover:text-houseboard-dark transition-colors duration-300"
               >
                 <Mail className="h-5 w-5 mr-2" />
-                Shape HiveIn
+                Give Feedback
               </Button>
             </div>
-
-            <NewsletterDialog open={dialogOpen} onOpenChange={setDialogOpen} />
           </div>
         </div>
 

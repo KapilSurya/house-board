@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
-import NewsletterDialog from './NewsletterDialog'; // ✅ adjust this if your dialog is named differently
 
 const CallToAction: React.FC = () => {
   const [earlyAccessDialogOpen, setEarlyAccessDialogOpen] = useState(false);
-
-  const handleClick = () => {
-    setEarlyAccessDialogOpen(true);
-  };
 
   return (
     <section id="cta" className="py-20 gradient-bg text-white">
@@ -17,7 +12,7 @@ const CallToAction: React.FC = () => {
           Make love fun and exciting
         </h2>
         <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-8">
-          Join early access and also send a letter to your partner!
+          Share feedback to help us build the right thing for couples.
         </p>
 
         <div className="max-w-md mx-auto">
@@ -29,21 +24,18 @@ const CallToAction: React.FC = () => {
 
           <div className="mt-6 flex items-center justify-center gap-4 text-sm text-gray-300">
             <Button 
-              onClick={handleClick}
+              onClick={() => (window.location.href = '#feedback')}
               className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-houseboard-medium text-white font-medium hover:bg-[#43B3AE] transition-all duration-300"
             >
               <Mail className="h-5 w-5" />
-              Subscribe to Updates
+              Give Feedback
             </Button>
           </div>
         </div>
       </div>
 
-      {/* ✅ Replace with your actual early access dialog component */}
-      <NewsletterDialog
-        open={earlyAccessDialogOpen}
-        onOpenChange={setEarlyAccessDialogOpen}
-      />
+      {/* Feedback anchor target */}
+      <div id="feedback" />
     </section>
   );
 };

@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Shield, ExternalLink } from 'lucide-react';
-import NewsletterForm from '@/components/NewsletterForm';
 import Footer from '@/components/Footer';
 import FeedbackDialog from '@/components/FeedbackDialog';
 
@@ -63,9 +62,9 @@ const Welcome: React.FC = () => {
             </p>
           </div>
 
-          {/* Newsletter Signup */}
-          <div className="mb-8">
-            <NewsletterForm buttonText="Join Our Community" className="max-w-md mx-auto" />
+          {/* Feedback encouragement */}
+          <div className="mb-8 text-zinc-50">
+            Help us improve HiveIn by sharing your feedback below.
           </div>
 
           {/* Action Buttons */}

@@ -3,12 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import NewsletterDialog from './NewsletterDialog';
 import FeedbackDialog from './FeedbackDialog';
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [dialogOpen, setDialogOpen] = useState(false);
   const [feedbackDialogOpen, setFeedbackDialogOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -17,17 +15,10 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     if (params.get('openDialog') === 'true') {
-      setDialogOpen(true);
-      // Clean up the URL
-      navigate(location.pathname, {
-        replace: true
-      });
+      // Clean URL only
+      navigate(location.pathname, { replace: true });
     }
   }, [location, navigate]);
-
-  const handleOpenDialog = () => {
-    setDialogOpen(true);
-  };
 
   const handleOpenFeedback = () => {
     setFeedbackDialogOpen(true);
@@ -111,9 +102,6 @@ const Navbar: React.FC = () => {
           </div>
         )}
       </header>
-      
-      {/* Newsletter dialog for "Join the community" button */}
-      <NewsletterDialog open={dialogOpen} onOpenChange={setDialogOpen} />
       
       {/* Feedback dialog */}
       <FeedbackDialog open={feedbackDialogOpen} onOpenChange={setFeedbackDialogOpen} />

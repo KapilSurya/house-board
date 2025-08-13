@@ -15,7 +15,6 @@ import BlogPost from "./pages/BlogPost";
 import Privacy from "./pages/Privacy";
 import About from "./pages/About";
 import AccountDeletion from "./pages/AccountDeletion";
-import EarlyAccess from "./pages/EarlyAccess";
 import Welcome from "./pages/Welcome";
 import ResetPassword from "./pages/ResetPassword";
 import Invite from "./pages/Invite";
@@ -51,7 +50,6 @@ const App = () => {
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/account-deletion" element={<AccountDeletion />} />
-                <Route path="/early-access" element={<EarlyAccess />} />
                 <Route path="/welcome-verified" element={<Welcome />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/invite" element={<Invite />} />
