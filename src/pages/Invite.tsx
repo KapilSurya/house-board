@@ -137,94 +137,77 @@ const Invite: React.FC = () => {
               </p>
             </header>
 
-            <Card className="shadow-sm gradient-bg card-hover text-white ring-1 ring-white/10 border-transparent">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Heart className="h-5 w-5 text-primary" />
-                  Your Invite
-                </CardTitle>
-                <CardDescription>
-                  A small page for a big feeling — crafted with care by HiveIn.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {/* Pairing Key - HiveIn Home */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-white/5 p-5 ring-1 ring-white/10 shadow-md animate-fade-in">
-                  <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                    <div>
-                      <div className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-white/70">
-                        <Key className="h-4 w-4" />
-                        Your home key
+            <div className="space-y-8">
+              {/* Love Letter */}
+              {letter && (
+                <div className="relative overflow-hidden rounded-3xl border border-house-teal/20 bg-gradient-to-br from-white/95 to-house-teal/5 shadow-lg backdrop-blur-sm">
+                  <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-house-teal/30 via-house-sage/30 to-house-teal/30" />
+                  <div className="px-8 py-10 sm:px-12 sm:py-14">
+                    <div className="text-center mb-8">
+                      <div className="inline-flex items-center gap-2 text-house-teal/70 mb-2">
+                        <Heart className="h-4 w-4" />
+                        <span className="text-sm font-medium tracking-wide">A letter for you</span>
                       </div>
-                      <div className="mt-2">
-                        <div className="inline-flex items-center gap-3 rounded-xl border border-white/30 bg-white/10 px-4 py-3 shadow-sm ring-1 ring-inset ring-white/10 backdrop-blur-sm hover-scale">
-                          <span className="text-sm text-white/70">Code</span>
-                          <span className="text-3xl font-semibold tracking-[0.35em]">{code || "······"}</span>
-                        </div>
-                      </div>
-                      <p className="mt-2 text-sm text-white/80">
-                        This is the key to your shared HiveIn home. Share it with care.
-                      </p>
                     </div>
-                    <Button size="lg" onClick={handleCopy} disabled={!code} aria-label="Copy pairing code" className="shrink-0">
-                      <Copy className="h-4 w-4 mr-2" /> Copy code
-                    </Button>
+                    <div className="font-handwriting text-2xl sm:text-3xl leading-relaxed tracking-wide text-center text-slate-700 max-w-2xl mx-auto">
+                      {letter}
+                    </div>
+                    <div className="mt-8 text-center text-sm text-house-teal/70">
+                      — written with love
+                    </div>
                   </div>
                 </div>
+              )}
 
-                {/* Love Letter - Scroll */}
-                {letter && <div className="relative overflow-hidden rounded-2xl border border-rose-200/40 bg-gradient-to-b from-rose-100/70 to-rose-50/50 shadow-md backdrop-blur-sm before:absolute before:inset-x-6 before:top-2 before:h-3 before:rounded-full before:bg-rose-200/60 after:absolute after:inset-x-6 after:bottom-2 after:h-3 after:rounded-full after:bg-rose-200/60">
-                    <div className="px-6 py-8 sm:px-8 sm:py-10">
-                      <div className="text-xs uppercase tracking-wide mb-3 text-rose-700/80">Love letter</div>
-                      <blockquote className="font-handwriting text-3xl leading-relaxed tracking-wide text-rose-900">
-                        {letter}
-                      </blockquote>
-                      <div className="mt-4 text-sm text-rose-700/80">
-                        — sealed with care in your HiveIn home
+              {/* Pairing Code */}
+              <div className="text-center space-y-4">
+                <div className="inline-flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-6 py-4 shadow-sm ring-1 ring-inset ring-white/10 backdrop-blur-sm">
+                  <span className="text-lg font-mono tracking-[0.3em] text-white">{code || "······"}</span>
+                  <Button 
+                    size="sm" 
+                    variant="ghost" 
+                    onClick={handleCopy} 
+                    disabled={!code} 
+                    className="text-white/70 hover:text-white hover:bg-white/10"
+                  >
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                </div>
+                <p className="text-sm text-white/60">
+                  Use this code to join your shared home
+                </p>
+              </div>
+
+              {/* App Store Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <a href={playStoreLink} target="_blank" rel="noopener" className="flex-1">
+                  <Button variant="secondary" className="w-full h-14 text-base" size="lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center">
+                        <div className="w-4 h-4 bg-gradient-to-br from-green-400 to-blue-500 rounded-sm"></div>
+                      </div>
+                      <div className="text-left">
+                        <div className="text-xs opacity-70">Get it on</div>
+                        <div className="font-semibold">Google Play</div>
                       </div>
                     </div>
-                  </div>}
-
-                {/* Last Action - Teaser */}
-                {laText && <div className="rounded-2xl border border-white/20 bg-white/5 p-5 text-white">
-                    <div className="text-sm uppercase text-white/70 mb-2">A peek inside your shared home</div>
-                    <p className="text-sm text-white/80 mb-3">
-                      Your partner has been tending to your HiveIn home. Join the app to see it together.
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <Rocket className="h-4 w-4 text-house-teal" />
-                      <span className="font-medium">{laText}</span>
+                  </Button>
+                </a>
+                <a href={appStoreLink} target="_blank" rel="noopener" className="flex-1">
+                  <Button variant="outline" className="w-full h-14 text-base border-white/20 hover:bg-white/10" size="lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-6 h-6 bg-gradient-to-br from-blue-400 to-blue-600 rounded-sm flex items-center justify-center">
+                        <div className="w-3 h-3 bg-white rounded-sm"></div>
+                      </div>
+                      <div className="text-left">
+                        <div className="text-xs opacity-70">Download on the</div>
+                        <div className="font-semibold">App Store</div>
+                      </div>
                     </div>
-                  </div>}
-
-                <Separator />
-
-                {/* Actions */}
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <a href={deepLink} className="w-full sm:w-auto">
-                    <Button className="w-full" size="lg">
-                      Open in app
-                    </Button>
-                  </a>
-                  <a href={playStoreLink} target="_blank" rel="noopener" className="w-full sm:w-auto">
-                    <Button variant="secondary" className="w-full" size="lg">
-                      Google Play <ExternalLink className="h-4 w-4 ml-2" />
-                    </Button>
-                  </a>
-                  <a href={appStoreLink} target="_blank" rel="noopener" className="w-full sm:w-auto">
-                    <Button variant="outline" className="w-full" size="lg">
-                      App Store <ExternalLink className="h-4 w-4 ml-2" />
-                    </Button>
-                  </a>
-                </div>
-
-                {/* Helpful links */}
-                <div className="text-sm text-muted-foreground">
-                  
-                </div>
-              </CardContent>
-            </Card>
+                  </Button>
+                </a>
+              </div>
+            </div>
 
             {/* Loading and error states */}
             {loading && <p className="text-center text-white/80 mt-6">Loading your invite…</p>}
