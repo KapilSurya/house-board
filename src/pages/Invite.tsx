@@ -124,7 +124,7 @@ const Invite: React.FC = () => {
       <main className="flex-1">
         <section className="relative">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 animate-fade-in">
-            <header className="text-center mb-8">
+            <header className="text-center mb-8 mt-16 sm:mt-20">
               <h1 className="text-3xl sm:text-4xl font-semibold font-serif tracking-tight text-white">
                 A Love Letter for You
               </h1>
