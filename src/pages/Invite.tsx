@@ -137,74 +137,91 @@ const Invite: React.FC = () => {
               </p>
             </header>
 
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {/* Love Letter */}
               {letter && (
-                <div className="relative overflow-hidden rounded-3xl border border-house-teal/20 bg-gradient-to-br from-white/95 to-house-teal/5 shadow-lg backdrop-blur-sm">
-                  <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-house-teal/30 via-house-sage/30 to-house-teal/30" />
-                  <div className="px-8 py-10 sm:px-12 sm:py-14">
-                    <div className="text-center mb-8">
-                      <div className="inline-flex items-center gap-2 text-house-teal/70 mb-2">
-                        <Heart className="h-4 w-4" />
-                        <span className="text-sm font-medium tracking-wide">A letter for you</span>
+                <div className="relative mx-auto max-w-lg">
+                  {/* Scroll Design */}
+                  <div className="relative bg-gradient-to-b from-pink-50 to-pink-100 rounded-t-3xl rounded-b-lg shadow-2xl border border-pink-200/50">
+                    {/* Scroll Top Curl */}
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-24 h-8 bg-gradient-to-b from-pink-100 to-pink-200 rounded-t-full border-t border-x border-pink-200/50 shadow-lg"></div>
+                    
+                    {/* Letter Content */}
+                    <div className="px-6 py-10 sm:px-8 sm:py-12 relative">
+                      {/* Ruled Lines Background */}
+                      <div className="absolute inset-0 opacity-20 px-6 py-10 sm:px-8 sm:py-12">
+                        {Array.from({ length: 12 }).map((_, i) => (
+                          <div key={i} className="border-b border-pink-300" style={{ marginTop: `${2.0 + i * 2.0}rem` }}></div>
+                        ))}
+                      </div>
+                      
+                      {/* Letter Text */}
+                      <div 
+                        className="relative font-handwriting text-lg sm:text-xl leading-relaxed text-slate-700"
+                        style={{ fontFamily: 'Caveat, cursive', lineHeight: '2.0rem' }}
+                      >
+                        {letter}
+                      </div>
+                      
+                      {/* Signature */}
+                      <div className="mt-6 text-right">
+                        <div 
+                          className="font-handwriting text-base text-slate-600 inline-block"
+                          style={{ fontFamily: 'Caveat, cursive' }}
+                        >
+                          — with love ♡
+                        </div>
                       </div>
                     </div>
-                    <div className="font-handwriting text-2xl sm:text-3xl leading-relaxed tracking-wide text-center text-slate-700 max-w-2xl mx-auto">
-                      {letter}
-                    </div>
-                    <div className="mt-8 text-center text-sm text-house-teal/70">
-                      — written with love
-                    </div>
+                    
+                    {/* Scroll Bottom Curl */}
+                    <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-20 h-6 bg-gradient-to-t from-pink-100 to-pink-200 rounded-b-full border-b border-x border-pink-200/50 shadow-lg"></div>
                   </div>
                 </div>
               )}
 
               {/* Pairing Code */}
-              <div className="text-center space-y-4">
-                <div className="inline-flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-6 py-4 shadow-sm ring-1 ring-inset ring-white/10 backdrop-blur-sm">
-                  <span className="text-lg font-mono tracking-[0.3em] text-white">{code || "······"}</span>
+              <div className="text-center space-y-3">
+                <div className="inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 shadow-sm backdrop-blur-sm">
+                  <span className="text-base font-mono tracking-[0.2em] text-white/90">{code || "······"}</span>
                   <Button 
                     size="sm" 
                     variant="ghost" 
                     onClick={handleCopy} 
                     disabled={!code} 
-                    className="text-white/70 hover:text-white hover:bg-white/10"
+                    className="text-white/60 hover:text-white/80 hover:bg-white/5 h-7 w-7 p-0"
                   >
-                    <Copy className="h-4 w-4" />
+                    <Copy className="h-3 w-3" />
                   </Button>
                 </div>
-                <p className="text-sm text-white/60">
-                  Use this code to join your shared home
+                <p className="text-xs text-white/50">
+                  Use this code to join the house
                 </p>
               </div>
 
               {/* App Store Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-sm mx-auto">
                 <a href={playStoreLink} target="_blank" rel="noopener" className="flex-1">
-                  <Button variant="secondary" className="w-full h-14 text-base" size="lg">
-                    <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center">
-                        <div className="w-4 h-4 bg-gradient-to-br from-green-400 to-blue-500 rounded-sm"></div>
-                      </div>
-                      <div className="text-left">
-                        <div className="text-xs opacity-70">Get it on</div>
-                        <div className="font-semibold">Google Play</div>
-                      </div>
+                  <div className="flex items-center justify-center gap-2 bg-black text-white rounded-lg px-4 py-2.5 hover:bg-gray-800 transition-colors">
+                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                    </svg>
+                    <div className="text-left">
+                      <div className="text-xs opacity-75">GET IT ON</div>
+                      <div className="text-sm font-semibold">Google Play</div>
                     </div>
-                  </Button>
+                  </div>
                 </a>
                 <a href={appStoreLink} target="_blank" rel="noopener" className="flex-1">
-                  <Button variant="outline" className="w-full h-14 text-base border-white/20 hover:bg-white/10" size="lg">
-                    <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 bg-gradient-to-br from-blue-400 to-blue-600 rounded-sm flex items-center justify-center">
-                        <div className="w-3 h-3 bg-white rounded-sm"></div>
-                      </div>
-                      <div className="text-left">
-                        <div className="text-xs opacity-70">Download on the</div>
-                        <div className="font-semibold">App Store</div>
-                      </div>
+                  <div className="flex items-center justify-center gap-2 bg-black text-white rounded-lg px-4 py-2.5 hover:bg-gray-800 transition-colors">
+                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z"/>
+                    </svg>
+                    <div className="text-left">
+                      <div className="text-xs opacity-75">Download on the</div>
+                      <div className="text-sm font-semibold">App Store</div>
                     </div>
-                  </Button>
+                  </div>
                 </a>
               </div>
             </div>
