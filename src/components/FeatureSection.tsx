@@ -15,15 +15,15 @@ const FeatureSection: React.FC = () => {
       icon: <MessageCircleQuestion className={`h-6 w-6 ${textColor}`} />,
       title: 'Daily Questions & Quiz',
       description: 'Discover new things about each other with thoughtful daily questions and compatibility quizzes designed to deepen your understanding and strengthen your bond.',
-      mockupImage: '/lovable-uploads/habits.webp',
+      mockupImage: '/lovable-uploads/activitiesPage.png',
       imageAlt: 'Couple answering daily questions on HiveIn'
     },
     {
       id: 'encryption',
       icon: <Shield className={`h-6 w-6 ${textColor}`} />,
       title: 'End-to-End Encrypted',
-      description: 'Your conversations and moments are completely private with military-grade end-to-end encryption. Only you and your partner can access your shared memories.',
-      mockupImage: '/lovable-uploads/log.webp',
+      description: 'Your conversations and moments are completely private with end-to-end encryption. Only you and your partner can access your shared memories.',
+      mockupImage: '/lovable-uploads/chatPage.jpg',
       imageAlt: 'HiveIn security and encryption features'
     },
     {
@@ -31,7 +31,7 @@ const FeatureSection: React.FC = () => {
       icon: <Bell className={`h-6 w-6 ${textColor}`} />,
       title: 'Fun Nudges & Attention',
       description: 'Playful and loving nudges to update your partner or get their attention. Stay connected throughout the day with gentle reminders and sweet pokes.',
-      mockupImage: '/lovable-uploads/nudge.webp',
+      mockupImage: '/lovable-uploads/nudgePage.jpg',
       imageAlt: 'HiveIn fun nudges and attention features'
     },
     {

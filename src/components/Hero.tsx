@@ -73,15 +73,19 @@ const Hero: React.FC = () => {
           }}></div>
           
           <div className="relative bg-transparent rounded-lg max-w-sm mx-auto">
-            <img 
-              src="/lovable-uploads/house.webp" 
-              alt="Couple using HiveIn app to build daily rituals" 
+            <video 
+              src="/lovable-uploads/heroSectionVid.mp4" 
+              aria-label="Couple using HiveIn app to build daily rituals" 
               className="w-full h-auto rounded-md"
               width="400"
               height="400"
               style={{
                 maxWidth: "120%"
               }}
+              autoPlay
+              muted
+              loop
+              playsInline
             />
           </div>
         </div>

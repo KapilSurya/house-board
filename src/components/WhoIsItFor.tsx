@@ -76,9 +76,9 @@ const WhoIsItFor: React.FC = () => {
               </h3>
               <ul className="space-y-3 list-disc pl-5 mb-6">
                 <li>Share how you feel in seconds — even when words fail.</li>
-                <li>Build healthy, loving habits without effort.</li>
-                <li>Keep track of each other's moods, goals, and little wins.</li>
-                <li>Turn check-ins into moments of closeness.</li>
+                <li>Know each other deeply through thoughtful questions.</li>
+                <li>Understand shared preferences with quiz.</li>
+                <li>Maintain meaningful discussion while also having fun with nudges.</li>
               </ul>
               <div className="mt-auto rounded-xl overflow-hidden flex-1">
                 <div className="h-full flex items-center justify-center">
