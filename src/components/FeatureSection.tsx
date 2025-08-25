@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Heart, BookOpen, Bell, LineChart } from 'lucide-react';
+import { MessageCircleQuestion, Shield, Bell, MessageSquare } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Link } from 'react-router-dom';
 
@@ -11,36 +11,36 @@ const FeatureSection: React.FC = () => {
 
   const features = [
     {
-      id: 'habits',
-      icon: <Heart className={`h-6 w-6 ${textColor}`} />,
-      title: 'Build healthy habits',
-      description: 'Deepen your bond with daily quality time, gratitude, and shared goals—making every <Link to="/features/habits" className="underline hover:text-[#43B3AE]">habit tracking</Link> count.',
+      id: 'questions',
+      icon: <MessageCircleQuestion className={`h-6 w-6 ${textColor}`} />,
+      title: 'Daily Questions & Quiz',
+      description: 'Discover new things about each other with thoughtful daily questions and compatibility quizzes designed to deepen your understanding and strengthen your bond.',
       mockupImage: '/lovable-uploads/habits.webp',
-      imageAlt: 'Couple completing gratitude habit on HiveIn'
+      imageAlt: 'Couple answering daily questions on HiveIn'
     },
     {
-      id: 'log',
-      icon: <BookOpen className={`h-6 w-6 ${textColor}`} />,
-      title: 'Your relationship log',
-      description: 'Capture moods, habits, and milestones in your <Link to="/features/log" className="underline hover:text-[#43B3AE]">relationship log</Link>—see your journey as a couple unfold beautifully.',
+      id: 'encryption',
+      icon: <Shield className={`h-6 w-6 ${textColor}`} />,
+      title: 'End-to-End Encrypted',
+      description: 'Your conversations and moments are completely private with military-grade end-to-end encryption. Only you and your partner can access your shared memories.',
       mockupImage: '/lovable-uploads/log.webp',
-      imageAlt: 'HiveIn chat screen with emotional check-in'
+      imageAlt: 'HiveIn security and encryption features'
     },
     {
       id: 'nudges',
       icon: <Bell className={`h-6 w-6 ${textColor}`} />,
-      title: 'Nudge for what matters',
-      description: 'Send thoughtful reminders with our <Link to="/features/chat" className="underline hover:text-[#43B3AE]">chat and nudges</Link> to check in, share, or reconnect—without feeling like a nag.',
+      title: 'Fun Nudges & Attention',
+      description: 'Playful and loving nudges to update your partner or get their attention. Stay connected throughout the day with gentle reminders and sweet pokes.',
       mockupImage: '/lovable-uploads/nudge.webp',
-      imageAlt: 'HiveIn chat screen with emotional check-in'
+      imageAlt: 'HiveIn fun nudges and attention features'
     },
     {
-      id: 'mood',
-      icon: <LineChart className={`h-6 w-6 ${textColor}`} />,
-      title: 'Mood & status tracking',
-      description: 'Share how you feel in seconds with our <Link to="/features/gratitude" className="underline hover:text-[#43B3AE]">gratitude habit</Link> and mood tracking—stay emotionally in sync without saying a word',
+      id: 'discussions',
+      icon: <MessageSquare className={`h-6 w-6 ${textColor}`} />,
+      title: 'Meaningful Conversations',
+      description: 'Keep the spark alive with conversation starters and discussion topics that help you maintain deep, meaningful connections beyond everyday small talk.',
       mockupImage: '/lovable-uploads/mood.webp',
-      imageAlt: 'HiveIn mood tracking feature screenshot'
+      imageAlt: 'HiveIn conversation and discussion features'
     }
   ];
 
