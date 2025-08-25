@@ -39,7 +39,7 @@ const FeatureSection: React.FC = () => {
       icon: <MessageSquare className={`h-6 w-6 ${textColor}`} />,
       title: 'Meaningful Conversations',
       description: 'Keep the spark alive with conversation starters and discussion topics that help you maintain deep, meaningful connections beyond everyday small talk.',
-      mockupImage: '/lovable-uploads/mood.webp',
+      mockupImage: '/lovable-uploads/homePage.png',
       imageAlt: 'HiveIn conversation and discussion features'
     }
   ];
@@ -65,12 +65,12 @@ const FeatureSection: React.FC = () => {
               className={`overflow-hidden transition-all duration-300 hover:shadow-md card-hover flex flex-col md:flex-row items-center ${index % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'} p-6 rounded-3xl`}
             >
               <div className="md:w-1/2 flex justify-center px-6 py-8">
-                <div className="relative w-full max-w-2xl rounded-md overflow-hidden">
+                <div className="relative w-full max-w-2xl rounded-2xl overflow-hidden border-2 border-white/20 shadow-lg">
                   {feature.mockupImage && (
                     <img
                       src={feature.mockupImage}
                       alt={feature.imageAlt}
-                      className="w-full h-auto object-contain"
+                      className="w-full h-auto object-contain rounded-2xl"
                       style={{ maxHeight: '500px', width: '100%' }}
                     />
                   )}

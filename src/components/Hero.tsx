@@ -72,15 +72,15 @@ const Hero: React.FC = () => {
             height: '15px'
           }}></div>
           
-          <div className="relative bg-transparent rounded-lg max-w-sm mx-auto">
+          <div className="relative bg-transparent rounded-2xl max-w-xs mx-auto border-2 border-white/20 shadow-lg overflow-hidden">
             <video 
               src="/lovable-uploads/heroSectionVid.mp4" 
               aria-label="Couple using HiveIn app to build daily rituals" 
-              className="w-full h-auto rounded-md"
-              width="400"
-              height="400"
+              className="w-full h-auto rounded-2xl"
+              width="320"
+              height="320"
               style={{
-                maxWidth: "120%"
+                maxWidth: "100%"
               }}
               autoPlay
               muted
