@@ -21,14 +21,13 @@ type LastAction = {
 interface InviteDoc {
   c: string; // pairing code
   by?: string | null;
-  ll?: string | null; // love letter
   la?: LastAction | null; // last action
   cAt?: unknown;
   uAt?: unknown;
   ttl?: unknown;
   v?: number;
 }
-const pageTitle = "HiveIn Love Letter Invite — Pair with your partner";
+const pageTitle = "HiveIn Invite — Pair with your partner";
 function appendParams(base: string, params: Record<string, string | undefined>) {
   try {
     const url = new URL(base);
@@ -147,9 +146,8 @@ const Invite: React.FC = () => {
       setSubmitting(false);
     }
   };
-  const letter = data?.ll?.trim();
   const laText = lastActionLabel(data?.la);
-  const pageDescription = letter ? `A love letter and invite to pair on HiveIn. Code: ${code ?? ""}.` : `Pair on HiveIn with code ${code ?? ""}. Read your partner's invite.`;
+  const pageDescription = `Pair on HiveIn with code ${code ?? ""}. Read your partner's invite.`;
   return <div className="min-h-screen flex flex-col">
       <Helmet>
         <title>{pageTitle}</title>
@@ -167,7 +165,7 @@ const Invite: React.FC = () => {
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 animate-fade-in">
             <header className="text-center mb-8 mt-16 sm:mt-20">
               <h1 className="text-3xl sm:text-4xl font-semibold font-serif tracking-tight text-white">
-                A Love Letter for You
+                Join Your Partner
               </h1>
               <p className="mt-2 text-white/80">
                 Open this with the HiveIn app to pair instantly, or copy the code below.
@@ -175,48 +173,6 @@ const Invite: React.FC = () => {
             </header>
 
             <div className="space-y-6 sm:space-y-8">
-              {/* Love Letter */}
-              {letter && (
-                <div className="relative mx-auto max-w-lg">
-                  {/* Scroll Design */}
-                  <div className="relative bg-gradient-to-b from-pink-50 to-pink-100 rounded-t-3xl rounded-b-lg shadow-2xl border border-pink-200/50">
-                    {/* Scroll Top Curl */}
-                    <div className="absolute -top-4 left-0 right-0 h-8 bg-gradient-to-b from-pink-100 to-pink-200 rounded-t-full border-t border-x border-pink-200/50 shadow-lg"></div>
-                    
-                    {/* Letter Content */}
-                    <div className="px-6 py-10 sm:px-8 sm:py-12 relative">
-                      {/* Ruled Lines Background */}
-                      <div className="absolute left-6 right-6 sm:left-8 sm:right-8 top-10 sm:top-12">
-                        {Array.from({ length: Math.ceil((letter?.length || 0) / 60) + 2 }).map((_, i) => (
-                          <div key={i} className="border-b border-pink-300/30" style={{ marginTop: `${2.0 + i * 2.0}rem` }}></div>
-                        ))}
-                      </div>
-                      
-                      {/* Letter Text */}
-                      <div 
-                        className="relative font-handwriting text-lg sm:text-xl leading-relaxed text-slate-700"
-                        style={{ fontFamily: 'Caveat, cursive', lineHeight: '2.0rem' }}
-                      >
-                        {letter}
-                      </div>
-                      
-                      {/* Signature */}
-                      <div className="mt-6 text-right">
-                        <div 
-                          className="font-handwriting text-base text-slate-600 inline-block"
-                          style={{ fontFamily: 'Caveat, cursive' }}
-                        >
-                          — with love ♡
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Scroll Bottom Curl */}
-                    <div className="absolute -bottom-3 left-0 right-0 h-6 bg-gradient-to-t from-pink-100 to-pink-200 rounded-b-full border-b border-x border-pink-200/50 shadow-lg"></div>
-                  </div>
-                </div>
-              )}
-
               {/* Pairing Code */}
               <div className="text-center space-y-3">
                 <div className="inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 shadow-sm backdrop-blur-sm">

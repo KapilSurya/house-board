@@ -19,7 +19,7 @@ const CallToAction: React.FC = () => {
           <p className="text-base opacity-80 mb-6 text-center mx-0 px-px py-0 my-[4px] font-normal md:text-base">
             ✅ Free Premium Access for Life<br />
             ✅ Priority say in future feature requests<br />
-            ✅ Send a custom love letter to your partner's email
+            ✅ Early access to new features
           </p>
 
           <div className="mt-6 flex items-center justify-center gap-4 text-sm text-gray-300">
